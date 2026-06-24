@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeTest Future State &amp; Commercial Workstream Tracker</title>
+<style>
+  :root {
+    --nhs-dark: #003087;
+    --nhs-blue: #005EB8;
+    --nhs-light: #7EC8E3;
+    --pale: #D5E8F0;
+    --yellow: #FFF3CD;
+    --ink: #231F20;
+    --muted: #556;
+    --border: #dbe5ee;
+    --bg: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Abadi", "Segoe UI", Arial, sans-serif; color: var(--ink); margin: 0; padding: 0; background: var(--bg); line-height: 1.5; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+  header.banner { background: var(--nhs-dark); color: #fff; padding: 28px 32px; border-radius: 6px; margin-bottom: 20px; }
+  header.banner h1 { margin: 0 0 6px; font-size: 26px; font-weight: 700; }
+  header.banner p.lead { margin: 0; color: var(--nhs-light); font-size: 15px; }
+  header.banner .meta { margin-top: 14px; font-size: 12px; color: #cfe4f3; display: flex; flex-wrap: wrap; gap: 18px; }
+  header.banner .meta strong { color: #fff; margin-right: 6px; }
+  nav.toc { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; }
+  nav.toc a { color: var(--nhs-blue); text-decoration: none; margin-right: 14px; font-weight: 600; }
+  nav.toc a:hover { text-decoration: underline; }
+  h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
+  h3 { color: var(--nhs-blue); font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid var(--nhs-blue); padding-bottom: 4px; }
+  h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 8px; }
+  .card.summary { border-top: 4px solid var(--nhs-blue); }
+  .card.summary .stat { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .card.summary p { margin: 4px 0; font-size: 13px; }
+  .callout { background: var(--yellow); border-left: 4px solid var(--nhs-blue); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .callout strong { color: var(--nhs-dark); }
+  .callout p { margin: 4px 0; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
+  th { background: var(--nhs-blue); color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
+  td { background: var(--pale); padding: 8px 10px; border-bottom: 2px solid #fff; vertical-align: top; }
+  td.label { background: var(--nhs-blue); color: #fff; font-weight: 600; width: 180px; }
+  table.narrow td { font-size: 12.5px; }
+  table th.w-action { width: 36%; }
+  table th.w-owner { width: 14%; }
+  table th.w-due { width: 14%; }
+  table th.w-dep { width: 22%; }
+  table th.w-status { width: 14%; }
+  .pill { display: inline-block; background: var(--nhs-blue); color: #fff; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-right: 4px; vertical-align: middle; }
+  .pill.amber { background: #c27803; }
+  .pill.red { background: #b00020; }
+  .pill.green { background: #146c2e; }
+  .pill.grey { background: #555; }
+  .pill.dark { background: var(--nhs-dark); }
+  .tag { background: var(--pale); color: var(--nhs-dark); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 4px; display: inline-block; }
+  .source { font-size: 11.5px; color: var(--muted); font-style: italic; }
+  .ws { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 18px 22px; margin: 0 0 22px; }
+  .ws .ws-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 2px solid var(--nhs-blue); padding-bottom: 8px; margin-bottom: 14px; }
+  .ws .ws-head h2 { margin: 0; background: none; color: var(--nhs-dark); padding: 0; font-size: 20px; }
+  .ws .ws-head .status-row { font-size: 13px; }
+  .ws .ws-summary { background: var(--pale); padding: 12px 16px; border-radius: 4px; margin: 0 0 14px; font-size: 13px; }
+  .ws .ws-summary p { margin: 4px 0; }
+  ul.audit { margin: 4px 0 14px 22px; padding: 0; font-size: 13px; }
+  ul.audit li { margin-bottom: 5px; }
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
+  footer p { margin: 4px 0; }
+  @media (max-width: 900px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="banner">
+    <h1>HomeTest Future State &amp; Commercial Workstream Tracker</h1>
+    <p class="lead">Live status, milestones, dependencies and scope authorisation across the HomeTest Future State and Commercial workstreams. Maintained for vigilance and audit, not for show.</p>
+    <div class="meta">
+      <span><strong>Owners</strong> Scott Eason &amp; Rachel Flower</span>
+      <span><strong>Last updated</strong> 24 June 2026</span>
+      <span><strong>Phase</strong> Phase 2 starting. Phase 1 closed at 22 June Leeds SLT playback.</span>
+      <span><strong>Cadence</strong> Refreshed as the position moves.</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="#context">Context</a>
+    <a href="#summary">At a glance</a>
+    <a href="#mou">MoUs (Private Beta + Acute)</a>
+    <a href="#ig">IG</a>
+    <a href="#fsns">Future State Next Stages</a>
+    <a href="#defensive">Defensive posture</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <!-- ===================== CONTEXT ===================== -->
+  <h2 id="context">Where the programme sits today</h2>
+
+  <div class="card">
+    <p>The HomeTest Future State 12-week Discovery closed at the SLT playback on Monday 22 June 2026 in Leeds. Recommendation Paper v1.0 was issued by Scott to SLT on Friday 19 June and shared with Louise Bird (NHSE Finance) on 23 June. The decision in principle is an <strong>open framework under PA23</strong>, not a dynamic market, captured verbatim in James Cowley's 22 June post-playback email: <em>"Headline 'commercial vehicle' recommendation in principle is to create an NHSE facilitated national marketplace. Such marketplace achieved through a procurement to create an 'open framework' as opposed to a dynamic market."</em> The post-play-back paper is in SharePoint as Rec Paper v1.1.</p>
+
+    <p><strong>Live state today (24 June, evening).</strong> Rec Paper v1.1 (Post Play Back) is in SharePoint under Procurement Options and Planning, reflecting the open framework landing. Commercial Sourcing Strategy HomeTest HIV v0.1 draft also in SharePoint, James holding the pen from the November template Scott originally created. James preparing a half-day workshop to walk SLT through the procurement process and key sourcing strategy decisions. Scott building the Phase 2 plan today from the five-box appendix in the playback deck, with James adding procurement-specific timetable from Mandie's planning doc.</p>
+
+    <p><strong>Major movement on the MoU front.</strong> The RDUH MoU is now at <strong>counter-signature pending with RDUH</strong>. Dean Freed (Head of NHSE Procurement) signed the NHSE side on 23 June. Richard Samuel sent to Sam Higginson (RDUH) for Trust counter-signature. Sam Higginson replied with two open points to resolve before fully executed: (a) timeline question (MoU is for FY26/27 but PSA testing may start 1 April 2027, does it need extending now or is clause 13.1 sufficient), and (b) a request to add a wearables clause or appendix to extend joint scope. The Mobilisation Plan v0.2 and Mobilisation Pack v0.2 were finalised on 24 June.</p>
+
+    <p><strong>LA Beta picture has shifted.</strong> East Sussex Beta is now proceeding via <strong>Kent Community Health NHS Foundation Trust (Leah Elliott) as service operator with PreventX</strong>. ESCC closed to Alpha only on 10 June (HOTE-678). East Sussex Beta MoU at v0.2 with IG amendments completed by Wendi Higgins and clinical safety annex baselined by Meera Parkash; Ronan O'Connor's review of page 19 technical items still open. Salford Beta MoU stays at v0.1 and follows once East Sussex is finalised. Independent CSO funding agreed in principle at 17 June TIG with <strong>execution deadline 30 June</strong>. DSA party architecture blocked on NHS Legal (Rahima). Salford Beta funding gap (exceeds NHSE expectations, no LA commitment this FY) escalating at Delivery Board on 25 June. Matt Thomas requested Rachel's bullets for the Board.</p>
+  </div>
+
+  <!-- ===================== AT A GLANCE ===================== -->
+  <h2 id="summary">At a glance</h2>
+
+  <div class="grid-2">
+
+    <div class="card summary">
+      <h4>RDUH Acute MoU</h4>
+      <span class="pill amber">Counter-signature pending</span>
+      <p><strong>Where it sits.</strong> NHSE side signed by Dean Freed (Head of NHSE Procurement) on 23 June after BC28661 funding approval. Richard Samuel forwarded to Sam Higginson (RDUH) the same day for Trust counter-signature.</p>
+      <p><strong>Two open points from Higginson</strong> (23 June reply): (a) the MoU is written for FY26/27 but PSA testing may not start until 1 April 2027 — extend now or rely on clause 13.1; (b) request to add a wearables clause or appendix extending joint scope.</p>
+      <p><strong>What's around it.</strong> Mobilisation Plan v0.2 and Mobilisation Pack v0.2 finalised 24 June. RDUH site visit held 23 June with deep-dive follow-ons to come. Funding routed direct as £198k mandate (COF reduced) rather than through ACE.</p>
+      <p><strong>Next milestone.</strong> Resolve Higginson's two points → RDUH counter-signature → fuller Mobilisation Plan build-out with named leads.</p>
+      <p><strong>Critical date.</strong> Counter-signature feeds the August Beta gate chain via the Mobilisation Plan; no fixed deadline on the MoU itself but slippage cascades.</p>
+      <p class="stat">Primary owner: Rachel Flower with Scott Eason · Cross-team: Richard Samuel, Sam Higginson (RDUH), Dean Freed (NHSE Procurement), Annie Wakefield, Pathway 2 · SLT sponsor: Shirley Gaynor-Ward (BC28661)</p>
+    </div>
+
+    <div class="card summary">
+      <h4>Private Beta LA MoUs</h4>
+      <span class="pill amber">Refresh in flight</span>
+      <p><strong>Where it sits.</strong> <strong>East Sussex Beta MoU at DRAFT v0.2.</strong> Wendi Higgins completed IG and data-protection amendments (Section 11 and Annex). Meera Parkash baselined the clinical safety annex (DCB0129 / DCB0160 requirements, page 14). Needs Ronan O'Connor review of page 19 technical items. <strong>Salford Beta MoU remains at v0.1</strong> and will be uplifted once East Sussex template is finalised.</p>
+      <p><strong>Counterparty restructure.</strong> ESCC confirmed Alpha-only at SLT 10 June (HOTE-678, closed). <strong>East Sussex Beta now proceeding via Kent Community Health NHS Foundation Trust (Leah Elliott) as service operator with PreventX.</strong> Current MoU draft names ESCC and may need restructuring to reflect Kent CHFT as counterparty.</p>
+      <p><strong>Live blockers.</strong> DSA party architecture <strong>blocked on NHS Legal (Rahima)</strong> — MoU assumes NHSE-to-supplier model but unconfirmed. Neither LA has a Clinical Safety Officer in post; central funding model for an independent CSO agreed in principle at the <strong>17 June TIG</strong> but not yet executed. Critical CSO execution deadline 30 June. <strong>Salford Beta funding significantly exceeds NHSE expectations</strong>; no LA funding committed this FY.</p>
+      <p><strong>What's around it.</strong> Rachel's 23 June email opened the formal refresh thread; Matt Thomas requested bullets from Rachel for Delivery Board (24 June). Position paper held: MoUs are Alpha and Beta only; wave entrants transition onto the standard NHS call-off.</p>
+      <p><strong>Next milestone.</strong> Ronan technical comments on page 19 → East Sussex MoU counterparty restructure to Kent CHFT → Salford pattern follows → independent CSO executed by 30 June → DSA architecture unblocked by Rahima.</p>
+      <p><strong>Critical date.</strong> Independent CSO 30 June. DPIA sign-off 31 July. Private Beta start 31 August.</p>
+      <p class="stat">Primary owner: Rachel Flower with Scott Eason · Cross-team: Ronan O'Connor, Wendi Higgins, Meera Parkash, Richard Samuel, Annie Wakefield · Service operator: Leah Elliott (Kent CHFT) with PreventX · NHS Legal: Rahima</p>
+    </div>
+
+    <div class="card summary">
+      <h4>IG Workstream</h4>
+      <span class="pill amber">In flight</span>
+      <p><strong>Where it sits.</strong> DPIA Beta v0.8 is the live working version, shared by Wendi Higgins with <strong>Lauren Latham (IAO)</strong> on 16 June at Chris Leary's request. The v0.5 CLEAN copy in the HomeTest IG SharePoint folder is the April baseline; v0.6, v0.7 and v0.8 sit on the PTT SharePoint area. Target DPIA sign-off 31 July 2026. Federated multi-controller framework held: NHSE controls platform, LAs control HIV testing purpose, suppliers as processors or controllers depending on arrangement.</p>
+      <p><strong>Held positions.</strong> Legal Directions confirmed not required for Private Beta (Wendi Higgins authored note circulated by Ethan 10 June, output of 26 May Delivery Board action). Public Beta still requires them. DCB0129 with NHSE, DCB0160 with LAs per CSU ruling. MHRA confirmed platform not a medical device.</p>
+      <p><strong>Live blockers.</strong> NHS-number data-sharing approach for participant lists not confirmed (sits on critical path for Private Beta recruitment). DCB0160 programme decision (full / light touch / in-between) pending. DSA template (PTT / NHS Legal) in flight; Annex 1 (controllers) template ruled not applicable by PTT — details to go into DSA instead. Annex 6 (Anon Process) template not yet provided.</p>
+      <p><strong>Next milestone.</strong> NHS-number data-sharing approach confirmed by Wendi → IAO walkthrough of v0.8 with Lauren Latham → DCB0160 programme call → DPIA Beta to RMIC.</p>
+      <p><strong>Critical date.</strong> DPIA sign-off 31 July. Any IG delay compresses August trail (PEN, CS case, Go/No-Go) and ripples to Public Beta start 30 November.</p>
+      <p class="stat">Primary owner: Wendi Higgins (NHSE IG) · Commercial design: Scott Eason · SLT point: Chris Leary · Watching brief on Wendi continuity</p>
+    </div>
+
+    <div class="card summary">
+      <h4>Future State Next Stages</h4>
+      <span class="pill green">Phase 1 closed</span>
+      <p><strong>Where it sits.</strong> Rec Paper v1.1 (Post Play Back) in SharePoint reflects the open-framework decision under PA23. The decision in principle is recorded in James Cowley's 22 June post-playback summary email: <em>"NHSE facilitated national marketplace... open framework as opposed to a dynamic market"</em>. Mandie Holt (NHS Commercial, James's line manager) sponsoring the sourcing strategy as the next-step ask.</p>
+      <p><strong>In flight today.</strong> Commercial Sourcing Strategy HomeTest HIV v0.1 draft in SharePoint, James holding the pen from the November NHSE template. Half-day workshop being scheduled this week. Scott building Phase 2 plan from the five-box appendix in the playback deck; James adding procurement timetable.</p>
+      <p><strong>Open items.</strong> Legal advice note from Hazel Randall (NHSE Head of Legal) on open framework under PA23 — James to progress. Hill Dickinson mitigations note still being chased. Health economist (Dr Simon Leigh, Roar Intelligence) engaged with Kainos but commercial requirements not yet in front of him. £50m award-value ceiling vs ~£250m envelope still live.</p>
+      <p><strong>Next milestone.</strong> Phase 2 plan v0.1 end of day 24 June → sourcing strategy workshop this week → HD mitigations note → Hazel Randall legal advice → HT045 Programme Board paper for 20 July.</p>
+      <p><strong>Critical date.</strong> Programme Board paper 20 July. Quarterly Planning Event 29-30 July, Belfast. 22 July Supplier Forum (HIV + acute).</p>
+      <p class="stat">Primary owner: Scott Eason &amp; Rachel Flower with James Cowley · NHS Commercial sponsor: Mandie Holt (James's line manager) · SLT sponsor: Shirley Gaynor-Ward</p>
+    </div>
+
+  </div>
+
+  <!-- ===================== MOU ===================== -->
+  <div class="ws" id="mou">
+    <div class="ws-head">
+      <h2>1 · MoUs (Private Beta and Acute)</h2>
+      <div class="status-row">
+        <span class="pill amber">In flight</span>
+        <span class="tag">Last meaningful update: 23 Jun 2026 evening</span>
+      </div>
+    </div>
+
+    <div class="ws-summary">
+      <p><strong>Scope.</strong> Three live MoUs into Private Beta and the acute use case: Royal Devon University Healthcare (RDUH) for the acute pathway; Salford City Council for HIV Private Beta community route; East Sussex Beta now proceeding via Kent Community Health NHS Foundation Trust (Leah Elliott) with PreventX as service operator. ESCC closed to Alpha only at SLT 10 June (HOTE-678).</p>
+      <p><strong>Position.</strong> MoUs are not the BAU contracting instrument. They served Alpha and Beta because no formal vehicle existed. Wave entrants from Beta-to-BAU transition onto the standard NHS call-off.</p>
+    </div>
+
+    <h3>Scope authorisation (audit trail)</h3>
+    <ul class="audit">
+      <li><strong>RDUH MoU tasked by Richard Samuel</strong> via SharePoint task assignments on v0.2: Chelwest deidentification (19 Jun); add wider self-health programme extension clause (19 Jun).</li>
+      <li><strong>Ronan O'Connor task</strong> on v0.2 (12 Jun): "I think we should leave out specific reference to ICE here".</li>
+      <li><strong>Funding approved</strong> by Shirley Gaynor-Ward under business case <strong>BC28661</strong>, confirmed in writing to Dean Freed on 16 June 2026.</li>
+      <li><strong>Procurement route change tasked</strong> by Shirley Gaynor-Ward 16 June 2026: COF reduced by £198k, mandate of £198k direct to RDUH (rationale: RDUH is an NHS trust, ACE COF arrangement makes no sense).</li>
+      <li><strong>Internally approved Execution version</strong> sent by Scott to Dean Freed 19 June.</li>
+      <li><strong>Dean Freed signed</strong> NHSE side on 23 June once contact points completed.</li>
+      <li><strong>Richard Samuel forwarded</strong> signed MoU to Sam Higginson (RDUH) on 23 June for Trust counter-signature.</li>
+      <li><strong>LA MoUs (Salford, East Sussex)</strong> drafted by Scott Eason, circulated to Wendi Higgins 30 April, then to Meera Parkash and Ronan O'Connor 28 May for clinical safety and architectural review. Explicitly not legally binding by design. IG framework via Annex B.</li>
+      <li><strong>East Sussex Beta MoU now at DRAFT v0.2</strong> (Rachel Flower bullets to Matt Thomas, 24 June, for Delivery Board). Wendi Higgins completed IG/data-protection amendments (Section 11 and Annex). Meera Parkash baselined clinical safety annex (DCB0129 / DCB0160 requirements, page 14). Page 19 technical items still need Ronan O'Connor review.</li>
+      <li><strong>East Sussex Beta counterparty change</strong>: now proceeding via <strong>Kent Community Health NHS Foundation Trust (Leah Elliott)</strong> as service operator with PreventX. Current MoU draft names ESCC; counterparty restructuring needed.</li>
+      <li><strong>Independent CSO funding model</strong> agreed in principle at <strong>17 June TIG</strong> (central funding). Not yet executed. <strong>Critical deadline 30 June</strong>. Triggered because neither LA holds a CSO and NHSE-internal CS team (Meera, Patrick, David) sit inside the manufacturer COI.</li>
+      <li><strong>Salford Beta MoU at v0.1</strong>; will be uplifted once East Sussex template finalised. Salford Beta funding <strong>significantly exceeds NHSE expectations</strong>; no LA funding committed this FY (flag to Delivery Board).</li>
+      <li><strong>DSA party architecture</strong> blocked on NHS Legal (Rahima). MoU assumes NHSE-to-supplier model but unconfirmed.</li>
+      <li><strong>Rachel Flower's 23 June email</strong> to Richard Samuel and Annie Wakefield opened the LA contract refresh thread for Private Beta go-live.</li>
+      <li><strong>Mobilisation Pack v0.2</strong> circulated by Annie Wakefield 18 June to Richard Samuel, Simone Bilton, Olivia Sharp, Scott, Rachel, Ronan, Will Tweddle, Karl Olsen. v0.2 finalised 24 June. Will Tweddle 22 June: fuller plan to follow the RDUH site visit (held 23 June). Scott returned RDUH Mobilisation Plan v0.2 with tracked-change mark-up to Rachel on 24 June.</li>
+    </ul>
+
+    <h3>Next actions</h3>
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Resolve Sam Higginson's two RDUH open points: (a) MoU term extension into 27/28 vs reliance on clause 13.1, (b) wearables scope clause/appendix request</td><td>Scott / Rachel / Richard Samuel with Martin O'Neil</td><td>This week</td><td>Cross-programme call on wearables scope</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>RDUH counter-signature returned by Sam Higginson</td><td>Sam Higginson (RDUH)</td><td>Once two open points resolved</td><td>Resolution of (a) and (b)</td><td><span class="pill amber">Pending</span></td></tr>
+        <tr><td>East Sussex Beta MoU v0.2 — Ronan O'Connor review of page 19 technical items</td><td>Ronan O'Connor</td><td>Pre-Beta gates start of August</td><td>None</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>East Sussex Beta MoU counterparty restructure to Kent Community Health NHS Foundation Trust (Leah Elliott) as service operator with PreventX</td><td>Rachel Flower with Richard Samuel</td><td>Pre-Beta gates</td><td>Confirmation of Kent CHFT operating model</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Execute independent CSO funding (model agreed in principle at 17 June TIG, central funding) — critical for LA-side DCB0160</td><td>Programme / NHSE Commercial</td><td>30 June 2026</td><td>Funding model execution</td><td><span class="pill red">Critical 30 Jun</span></td></tr>
+        <tr><td>DSA party architecture unblocked — confirm NHSE-to-supplier model assumed in MoU</td><td>Rahima (NHS Legal) via Wendi Higgins</td><td>Pre-Beta gates</td><td>NHS Legal response</td><td><span class="pill red">Blocked</span></td></tr>
+        <tr><td>Salford Beta MoU uplift to v0.2 pattern once East Sussex finalised</td><td>Rachel Flower with Richard Samuel</td><td>Pre-Beta gates start of August</td><td>East Sussex v0.2 close-out</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Salford Beta funding gap — exceeds NHSE expectations; no LA commitment this FY. Escalate at Delivery Board.</td><td>Rachel Flower with Shirley Gaynor-Ward</td><td>Delivery Board</td><td>Funding source decision</td><td><span class="pill red">Escalation</span></td></tr>
+        <tr><td>Confirm what has been discussed with PreventX and SH:24 on supplier contracts</td><td>Richard Samuel / Annie Wakefield</td><td>Pre-Beta gates</td><td>Supplier engagement</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>RDUH Mobilisation Plan v0.2 — fuller plan post-23 June site visit, deep-dive follow-on sessions, named leads filled</td><td>Annie Wakefield / Pathway 2</td><td>Post-site visit</td><td>Site-visit notes</td><td><span class="pill amber">In prep</span></td></tr>
+        <tr><td>RDUH MMH boundary declaration and governance pack (clause 7 binding separation, clause 11 confidentiality)</td><td>Acute / NHSE Commercial</td><td>Pre go-live</td><td>Operational, financial and governance separation requirement</td><td><span class="pill amber">Open</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dependencies and blockers</h3>
+    <table class="narrow">
+      <thead><tr><th>Dependency / blocker</th><th>Owner</th><th>Impact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>DCB0160 deployment safety case — neither LA holds one. Central funding model for independent CSO agreed in principle at 17 June TIG, deadline 30 June for execution.</td><td>Meera Parkash (CS); Programme funding execution</td><td>Annex B gate. Cannot enter live processing without it.</td><td><span class="pill red">Blocked / 30 Jun</span></td></tr>
+        <tr><td>DSA party architecture — MoU assumes NHSE-to-supplier model but unconfirmed by NHS Legal</td><td>Rahima (NHS Legal) via Wendi Higgins</td><td>Blocks signature of MoU and DSA chain</td><td><span class="pill red">Blocked</span></td></tr>
+        <tr><td>DSAs for supplier-to-NHSE Beta flows not yet in place. PTT template structure unconfirmed.</td><td>PTT / NHS Legal</td><td>Annex B gate</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Salford Beta funding gap — exceeds NHSE expectations; no LA funding committed this FY</td><td>Shirley Gaynor-Ward / Richard Samuel</td><td>Salford participation at risk without resolution</td><td><span class="pill red">Escalation needed</span></td></tr>
+        <tr><td>NHS-number data-sharing approach for private beta participant lists</td><td>Wendi Higgins</td><td>Critical path for private beta start at Salford and East Sussex</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Beta MOU legal basis gap (Alpha MoUs carry wrong NHSE address, no data sharing framework currently covers supplier-to-NHSE Beta flows)</td><td>Wendi / NHS Legal</td><td>Carried risk</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Wearables scope extension request from Sam Higginson — RDUH positioning across multiple programme strands beyond HomeTest PSA pilot</td><td>Martin O'Neil / Cross-programme</td><td>Could complicate MoU close or open cross-programme door</td><td><span class="pill amber">New (23 Jun)</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Critical path</h3>
+    <div class="callout">
+      <p><strong>Pre-beta gate chain.</strong> DPIA Beta sign-off <strong>31 July</strong> → PEN test <strong>1 August</strong> → Clinical Safety case submission <strong>3 August</strong> → Go / No-Go <strong>17 August</strong> → Private Beta start <strong>31 August 2026</strong>. Every gate is downstream of an MoU, DPIA or DCB0160 dependency.</p>
+    </div>
+  </div>
+
+  <!-- ===================== IG ===================== -->
+  <div class="ws" id="ig">
+    <div class="ws-head">
+      <h2>2 · IG Workstream</h2>
+      <div class="status-row">
+        <span class="pill amber">In flight</span>
+        <span class="tag">Last meaningful update: 16 Jun 2026 (DPIA folder)</span>
+      </div>
+    </div>
+
+    <div class="ws-summary">
+      <p><strong>Scope.</strong> DPIA Beta sign-off. Federated multi-controller framework. Legal Directions position. Supplier and commissioner DSAs. DCB0160 deployment accountability. IAO walkthrough and sign-off. EScAL compliance. Rachel and Scott carry commercial design input alongside Wendi as IG lead.</p>
+      <p><strong>Commercial design held.</strong> At scale the platform requires DCB0160 completion as joining precursor with NHSE supplying the home-test-specific risk delta as boilerplate. DCB0129 with NHSE, DCB0160 with LAs per CSU ruling.</p>
+    </div>
+
+    <h3>Scope authorisation (audit trail)</h3>
+    <ul class="audit">
+      <li><strong>Legal Directions Note</strong> authored by Wendi Higgins. Output of the <strong>26 May Delivery Board action</strong> to sense-check the legal-direction position. Circulated by Ethan Illingworth 10 June 2026.</li>
+      <li><strong>DPIA review workshops</strong> with Scott as commercial input: 20 April (Wendi, Gillette, Ronan, Simone, Ethan); 23 April afternoon IG Workshop (Chris Leary, Wendi, Rachel, Scott) — Per-API + per-test supplier onboarding model crystallised here.</li>
+      <li><strong>Chris Leary SLT point</strong> man for IG and Clinical Safety. Confirmed at 23 April IG Workshop: <em>"I am point man on SLT for IG and Clinical Safety now"</em>.</li>
+      <li><strong>HOTE-414</strong> (NHSE statutory powers risk) owners: Rachel Flower, Wendi Higgins.</li>
+      <li><strong>Latest DPIA Beta CLEAN</strong> v0.5 in SharePoint dated 12 June 2026 (E:\NHS / 06. HomeTest - IG / DPIA / Draft DPIA Beta). Verify with Wendi before quoting externally.</li>
+    </ul>
+
+    <h3>Next actions</h3>
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>NHS-number data-sharing approach confirmed before LAs are asked to supply participant lists</td><td>Wendi Higgins</td><td>Before private beta recruitment</td><td>Sits on critical path for private beta start</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>DPIA Beta through review chain (Rahima Oliver first-line, Dickie Langley second-line, RMIC approval)</td><td>Wendi / Rahima / Dickie / RMIC</td><td>Sign-off target 31 Jul</td><td>Review chain</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>DCB0160 programme decision (full DCB0160 by LAs / light touch / in-between)</td><td>Programme (Meera scoping)</td><td>Before LA onboarding runbook finalises</td><td>Knock-on to 30 Oct CS/IG approval milestone</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>IAO walkthrough of v0.8 DPIA with Lauren Latham — feedback into v0.9 before RMIC</td><td>Wendi Higgins with Lauren Latham; Chris Leary brokered</td><td>Pre 31 July sign-off</td><td>Lauren's review turnaround</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Sense-check Wendi Higgins' situation directly with her or Chris Leary</td><td>Scott / Rachel</td><td>This week</td><td>Conversation with Wendi or Chris Leary</td><td><span class="pill grey">Watching brief</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dependencies and blockers</h3>
+    <table class="narrow">
+      <thead><tr><th>Dependency / blocker</th><th>Owner</th><th>Impact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>IAO walkthrough and sign-off — Lauren Latham appointed; v0.8 with her since 16 June</td><td>Lauren Latham (IAO); Wendi Higgins</td><td>Sits on DPIA sign-off path</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>DSA template (PTT / NHS Legal)</td><td>PTT with NHS Legal</td><td>Annex B gate</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>EScAL compliance gap</td><td>Wendi / NHSE</td><td>Live carried risk</td><td><span class="pill amber">Carried</span></td></tr>
+        <tr><td>DHSC / NHSE merger brings template change to legal directions, DPIAs and IG documentation "towards the end of this year" (Chris Leary 23 Apr)</td><td>NHSE / DHSC</td><td>Re-do cost between merger and Public Beta start 30 Nov 26</td><td><span class="pill amber">Watching</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Critical path</h3>
+    <div class="callout">
+      <p><strong>DPIA sign-off target 31 July 2026.</strong> Per Alpha Service Assessment Master Draft slide 179. Any IG or clinical-safety delay between now and 31 July compresses the August trail (PEN, CS case, Go/No-Go) and knocks through to 30 October CS/IG approval and Public Beta start (30 Nov 2026).</p>
+    </div>
+  </div>
+
+  <!-- ===================== FSNS ===================== -->
+  <div class="ws" id="fsns">
+    <div class="ws-head">
+      <h2>3 · Future State Next Stages</h2>
+      <div class="status-row">
+        <span class="pill green">Phase 1 closed</span>
+        <span class="tag">Last meaningful update: 24 Jun 2026</span>
+      </div>
+    </div>
+
+    <div class="ws-summary">
+      <p><strong>Scope.</strong> Everything after the closed 12-week Discovery. Recommendation Paper v1.1 issued reflecting open framework decision. Sourcing strategy as Mandie Holt's (NHS Commercial) next-step ask, v0.1 in flight under James. Phase 2 plan being built today around the five-box delivery model from the playback deck appendix. Programme Board paper HT045 for 20 July. Operating model into Jira and into Matt Visser's 27/28 SoW. Position papers reconciliation against the open framework line.</p>
+      <p><strong>Decision landed.</strong> <em>"Headline 'commercial vehicle' recommendation in principle is to create an NHSE facilitated national marketplace. Such marketplace achieved through a procurement to create an 'open framework' as opposed to a dynamic market"</em> — James Cowley post-playback email 22 June.</p>
+    </div>
+
+    <h3>Scope authorisation (audit trail)</h3>
+    <ul class="audit">
+      <li><strong>James Cowley's 22 June post-playback email</strong> sets five named actions: legal note via Hazel Randall (NHSE Head of Legal); confirm if rate changes can be undertaken at framework opening intervals; sourcing strategy workshop; build out milestone plan; resource ask to SLT.</li>
+      <li><strong>Mandie Holt's 23 June reply</strong> (NHS Commercial, James Cowley's line manager): <em>"the procurement approvals timeline is hugely subject to our final value and the 3-4 months is 'NHS E' — there will be others that will need to be worked into the plan"</em>. Sets realistic timeline framing for Phase 2 work.</li>
+      <li><strong>Rec Paper v1.1 (Post Play Back)</strong> in SharePoint at <em>03. HomeTest - Commercials / Procurement Options and Planning</em>, replacing v1.0 with the open framework landing.</li>
+      <li><strong>Sourcing Strategy v0.1 draft</strong> in SharePoint at the same path (<em>Commercial Sourcing Strategy Home Test HIV - draft v0.1.docx</em>), held by James Cowley from the November NHSE template.</li>
+    </ul>
+
+    <h3>Next actions</h3>
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Phase 2 plan v0.1 — five-box delivery model with activities, owners, dependencies fleshed out</td><td>Scott Eason</td><td>End of day 24 Jun</td><td>None</td><td><span class="pill amber">In flight (today)</span></td></tr>
+        <tr><td>Add procurement-specific timetable to Phase 2 plan from Mandie's planning doc and SBS tabular timetable</td><td>James Cowley</td><td>Once Scott shares v0.1</td><td>v0.1 from Scott</td><td><span class="pill amber">Awaiting v0.1</span></td></tr>
+        <tr><td>Schedule half-day sourcing strategy workshop with the SLT and team — procurement process walkthrough plus key sourcing strategy tenets (pricing, assurance, supplier categories)</td><td>James Cowley</td><td>This week</td><td>Diary availability</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Recommendation Paper v1.1 reissue with audit-trail version note to confirm open framework landing</td><td>James Cowley</td><td>Today (was 23 Jun commitment)</td><td>v1.1 already in SharePoint; reissue note pending</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Sourcing Strategy HomeTest HIV v0.1 build-out from skeleton</td><td>James Cowley (lead) / Scott / Rachel</td><td>After workshop</td><td>Half-day workshop</td><td><span class="pill amber">v0.1 skeleton in SharePoint</span></td></tr>
+        <tr><td>Legal advice note from Hazel Randall (NHSE Head of Legal via Commercial) on open framework under PA23</td><td>James Cowley</td><td>To progress</td><td>NHS Commercial Legal</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Hill Dickinson follow-up — mitigations on dynamic market gaps (template call-off for commissioners, minimum standards e.g. minimum supplier discount)</td><td>James Cowley with Ruby Melling (HD)</td><td>Pre-Programme Board</td><td>Hill Dickinson</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Programme Board paper HT045 shaped from 22 June SLT steer, condensed from Rec Paper</td><td>Scott Eason / Rachel Flower / Matt Thomas</td><td>20 July 2026</td><td>SLT decision minute filed</td><td><span class="pill amber">Awaiting trigger</span></td></tr>
+        <tr><td>Commercial team requirements to Dr Simon Leigh (Roar Intelligence, simon@roarintel.com) — pathway economics, unit economics, cost-per-test, 2030 volume — before economics get built without commercial input</td><td>Scott / Rachel / James / Richard Samuel</td><td>This week</td><td>Make direct contact (we were not copied into the original Kainos intro)</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Reconcile matchmaker / curated-list language in the 28 May position papers against the open framework line in v1.1</td><td>Scott Eason</td><td>Before papers used externally</td><td>None</td><td><span class="pill amber">Carried (3 weeks)</span></td></tr>
+        <tr><td>Close or formally re-baseline RFI next-steps recommendation (7+ weeks open)</td><td>James Cowley / Deborah</td><td>Overdue</td><td>None</td><td><span class="pill red">Overdue</span></td></tr>
+        <tr><td>Supplier Forum — write up notes from 23 June Remote Sampling Industry Roundtable for Richard Samuel</td><td>Rachel Flower</td><td>This week</td><td>None</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Supplier Forum 22 July — prepare shape document for suppliers showing where the national solution is headed (so the room is not asked an unanswered question)</td><td>James Cowley / Rachel / Pathway 2</td><td>Pre 22 Jul</td><td>Phase 2 plan; sourcing strategy progress</td><td><span class="pill amber">In prep</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dependencies and blockers</h3>
+    <table class="narrow">
+      <thead><tr><th>Dependency / blocker</th><th>Owner</th><th>Impact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>22 June SLT decision minute filing</td><td>SLT secretariat</td><td>Until filed, design-position notes stay blocked</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Hill Dickinson written graded advice note with practical mitigations</td><td>Ruby Melling (HD) via James Cowley</td><td>Feeds open framework framing and NHS Commercial sign-off via Mandie Holt</td><td><span class="pill amber">Awaited</span></td></tr>
+        <tr><td>Simon Leigh substantive engagement on HomeTest economics. HOTE-1373 still names HE engagement as biggest blocker (per 19 June Jira comment).</td><td>Simon Leigh with Martin, Will, Simone, Karl, Rich Story, Alex Barker</td><td>WP3 / WP5 economics. Risk built without commercial input.</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>£50m award-value ceiling vs ~£250m envelope</td><td>SLT</td><td>Breaches Treasury / Cabinet Office assurance trigger; Mandie Holt's (NHS Commercial) 3-4 month framework approval is NHSE-only — others (Cabinet Office, Treasury) will add to plan</td><td><span class="pill amber">Carried</span></td></tr>
+        <tr><td>Volumes substantiation</td><td>James Cowley with Royal Mail and HE</td><td>Risk on board slide with ministerial visibility</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Adoption and marketing — no Kainos SoW line, no budget, no owner. Escalated to SLT.</td><td>SLT</td><td>Public Beta start dependency</td><td><span class="pill amber">Escalated</span></td></tr>
+        <tr><td>Kainos 26/27 SoW — restructure conversation signalled by Shirley. 27/28 SoW does not yet exist; Matt Thomas tasked to author.</td><td>Shirley / Martin / Mandie Holt (NHS Commercial)</td><td>Lever for Phase 2 resourcing</td><td><span class="pill amber">Strategic watching brief</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Critical path</h3>
+    <div class="callout">
+      <p><strong>The chain to 20 July Programme Board:</strong> Phase 2 plan v0.1 (today) → sourcing strategy half-day workshop (this week) → Hill Dickinson mitigations note → Hazel Randall legal advice note → Sourcing Strategy v0.2 → HT045 PB paper drafted w/c 13 July → Submitted 20 July.</p>
+      <p><strong>Watching brief beyond 20 July:</strong> 22 July Supplier Forum (HIV + acute). 31 July DPIA sign-off (IG critical path). 31 August Private Beta start. Quarterly Planning Event (29-30 July, Belfast) per 16 June invite.</p>
+    </div>
+  </div>
+
+  <!-- ===================== DEFENSIVE ===================== -->
+  <h2 id="defensive">Defensive posture</h2>
+
+  <div class="card">
+    <h4>Discipline of the week</h4>
+    <ul>
+      <li><strong>Audit trail.</strong> Anything new that lands on Scott or Rachel — task, ask, request — gets a line in this tracker the same day, with the source.</li>
+      <li><strong>In writing.</strong> Verbal asks from the Kainos / Pathway 2 orbit get confirmed by email or Teams message before any work starts.</li>
+      <li><strong>Routing.</strong> Where the work belongs to the operating model spine (Scott) it lands in the TOM and gets logged in this tracker. Where it belongs to commercial design (joint), it lands in the relevant SharePoint artefact and is reflected here.</li>
+      <li><strong>Cross-programme creep.</strong> Sam Higginson's 23 June wearables-scope request and Daniel Belostcinic's repeated DtX / HealthStore artefact asks are signs the workstream is being asked to spread. Hold the line: <em>"focused on closing HomeTest Phase 1 deliverables — happy to share once Phase 2 plan is signed off"</em>.</li>
+    </ul>
+  </div>
+
+  <!-- ===================== SOURCES ===================== -->
+  <h2 id="sources">Sources</h2>
+
+  <div class="card">
+    <h4>Emails</h4>
+    <ul>
+      <li>RDUH MoU "Substantive NHSE signatory" thread 12 Jun → 23 Jun (Flower / Freed / Gaynor-Ward / Eason / Samuel / Higginson). Counter-signature pending with two open points.</li>
+      <li>Ronan O'Connor SharePoint task on RDUH MoU v0.2 (12 Jun) — leave out specific ICE reference</li>
+      <li>Richard Samuel SharePoint tasks on RDUH MoU v0.2 (19 Jun) — Chelwest deidentification and wider self-health programme extension clause</li>
+      <li>Change of Procurement Route — Shirley Gaynor-Ward 16 Jun (RDUH funding mandate route)</li>
+      <li>Future State 12 Week Discovery Playback — Eason fwd 19 Jun with v1.0 pack to SLT</li>
+      <li>Recommendation Paper v1.0 share with Louise Bird — 23 Jun</li>
+      <li>Post-playback summary — James Cowley 22 Jun</li>
+      <li>Mandie Holt reply on playback summary — 23 Jun</li>
+      <li>Hill Dickinson "Workshop Follow Up" thread (Cowley, Melling, Probert) 12 Jun → 22 Jun</li>
+      <li>RDUH Mobilisation Plan — Annie Wakefield 18 Jun; Will Tweddle 22 Jun</li>
+      <li>Private Beta HIV contracts — Rachel Flower 23 Jun (East Sussex / Salford / PreventX / SH:24 refresh)</li>
+      <li>Re: Private Beta - HIV - contracts — Rachel Flower 24 Jun, bullets to Matt Thomas for Delivery Board: East Sussex Beta MoU at v0.2 (Wendi/Meera amendments, Ronan p19 outstanding); East Sussex Beta via Kent CHFT (Leah Elliott) with PreventX; independent CSO funding agreed in principle 17 Jun TIG, deadline 30 Jun; Salford funding gap; DSA architecture blocked on Rahima (NHS Legal)</li>
+      <li>RDUH Mobilisation — Scott Eason to Rachel Flower 24 Jun, returning Mobilisation Plan v0.2 with tracked-change mark-up and formatting</li>
+      <li>Health Economics Priorities — Martin O'Neil 9 Jun; fwd Chris Leary to Rachel 19 Jun (Dr Simon Leigh, Roar Intelligence)</li>
+      <li>HOTE-1373 Jira — Simon Leigh contracting blocker, Rachel Flower comment 19 Jun</li>
+      <li>HomeTest Delivery Board standing invite — 23 Jun</li>
+      <li>HomeTest Quarterly Planning Event — 16 Jun (29-30 July, Belfast)</li>
+      <li>Hold — HIV and acute use case Supplier Fora — Richard Samuel 22 Jun</li>
+      <li>GSTT pilot — Chris Spellman fwd via Richard Samuel 12 Jun</li>
+      <li>PaCTS / NHS Health Checks Online — Vandike (DHSC), Karen Perkins (Morecambe Bay) 12 Jun</li>
+      <li>COPD Business Case thread — Freed / Gaynor-Ward 23 Jun (BC28661 shared with RDUH funding mandate)</li>
+      <li>HealthStore NICE / MHRA Pipeline Operating Model — Rich Story 27 May, fwd Samuel 10 Jun</li>
+      <li>Daniel Belostcinic (DtX / HealthStore) chasing — multiple emails 12 → 23 Jun (Rachel responses confirming HomeTest 12-week wrap)</li>
+      <li>HOTE-678 — ESCC closed at SLT 10 Jun (Chris Leary, Alpha only)</li>
+    </ul>
+
+    <h4>SharePoint primary documents (E:\NHS DPSP / HomeTest)</h4>
+    <ul>
+      <li>17. Acute Use Case / MoU &amp; Mobilisation — MoU between NHSE and RDUH (Execution).docx (23 Jun); MoU v0.2 (19 Jun); Mobilisation Plan v0.2.docx (24 Jun); Mobilisation Pack v0.2.pptx (24 Jun)</li>
+      <li>17. Acute Use Case / RDUH / 23-June-26 site visit — RDUH Agenda.docx (22 Jun)</li>
+      <li>03. HomeTest - Commercials / Procurement Options and Planning — HomeTest Future State Discovery Recommendation Report v1.1 (Post Play Back).docx; v1.0; Commercial Sourcing Strategy Home Test HIV - draft v0.1.docx; HD NHSE Dynamic Markets and Open Frameworks - v1 180626.docx; HomeTest Recommendation Paper Slides (Final).pptx</li>
+      <li>03. HomeTest - Commercials / Procurement Options and Planning / Templates — Commercial Sourcing Strategy Template Procurement Rules — HomeTest Blood Test Kit exc main template.docx</li>
+      <li>06. HomeTest - IG / DPIA — DPIA Guidance Notes v2.2.docx (16 Jun); DPIA Version Tracker.xlsx (16 Jun, records Lauren Latham as IAO and v0.8 shared 16 Jun)</li>
+      <li>06. HomeTest - IG / DPIA / Draft DPIA Beta — NHSE Home Test Beta DPIA v0.5 CLEAN 14042026 (2).docx (April baseline; v0.6, v0.7, v0.8 on PTT SharePoint area)</li>
+      <li>05. HomeTest - Partnerships — Stakeholder Engagement and Communications Plan.xlsx (28 May)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
