@@ -28,59 +28,13 @@
   nav.toc { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; }
   nav.toc a { color: var(--nhs-blue); text-decoration: none; margin-right: 14px; font-weight: 600; }
   nav.toc a:hover { text-decoration: underline; }
-  h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
-  h3 { color: var(--nhs-blue); font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid var(--nhs-blue); padding-bottom: 4px; }
-  h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
-  .card h4 { margin: 0 0 8px; }
-  .card.summary { border-top: 4px solid var(--nhs-blue); }
-  .card.summary .stat { font-size: 12px; color: var(--muted); margin-top: 8px; }
-  .card.summary p { margin: 4px 0; font-size: 13px; }
-  .callout { background: var(--yellow); border-left: 4px solid var(--nhs-blue); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
-  .callout strong { color: var(--nhs-dark); }
-  .callout p { margin: 4px 0; font-size: 13px; }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
-  th { background: var(--nhs-blue); color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
-  td { background: var(--pale); padding: 8px 10px; border-bottom: 2px solid #fff; vertical-align: top; }
-  td.label { background: var(--nhs-blue); color: #fff; font-weight: 600; width: 180px; }
-  table.narrow td { font-size: 12.5px; }
-  table th.w-action { width: 36%; }
-  table th.w-owner { width: 14%; }
-  table th.w-due { width: 14%; }
-  table th.w-dep { width: 22%; }
-  table th.w-status { width: 14%; }
   .pill { display: inline-block; background: var(--nhs-blue); color: #fff; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-right: 4px; vertical-align: middle; }
   .pill.amber { background: #c27803; }
   .pill.red { background: #b00020; }
   .pill.green { background: #146c2e; }
   .pill.grey { background: #555; }
   .pill.dark { background: var(--nhs-dark); }
-  .tag { background: var(--pale); color: var(--nhs-dark); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 4px; display: inline-block; }
-  .source { font-size: 11.5px; color: var(--muted); font-style: italic; }
-  .ws { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 18px 22px; margin: 0 0 22px; }
-  .ws .ws-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 2px solid var(--nhs-blue); padding-bottom: 8px; margin-bottom: 14px; }
-  .ws .ws-head h2 { margin: 0; background: none; color: var(--nhs-dark); padding: 0; font-size: 20px; }
-  .ws .ws-head .status-row { font-size: 13px; }
-  .ws .ws-summary { background: var(--pale); padding: 12px 16px; border-radius: 4px; margin: 0 0 14px; font-size: 13px; }
-  .ws .ws-summary p { margin: 4px 0; }
-  ul.audit { margin: 4px 0 14px 22px; padding: 0; font-size: 13px; }
-  ul.audit li { margin-bottom: 5px; }
-  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
-  footer p { margin: 4px 0; }
-  ul.state { list-style: none; margin: 6px 0 14px; padding: 0; font-size: 13px; }
-  ul.state li { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 7px 2px; border-bottom: 1px solid var(--border); }
-  ul.state li:last-child { border-bottom: none; }
-  ul.state .pill { flex: 0 0 auto; min-width: 72px; text-align: center; }
-  ul.state .item { flex: 1 1 420px; }
-  ul.state .item strong { color: var(--nhs-dark); }
-  ul.state .who { flex: 0 0 auto; font-size: 11.5px; color: var(--muted); white-space: nowrap; margin-left: auto; }
-  .datebar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
-  .datebar .d { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--nhs-blue); border-radius: 4px; padding: 6px 10px; font-size: 12px; min-width: 110px; }
-  .datebar .d strong { display: block; color: var(--nhs-dark); }
-  .datebar .d.hot { border-left-color: #b00020; }
-  h3.cat { border-bottom: none; background: var(--pale); padding: 6px 12px; border-radius: 4px; color: var(--nhs-dark); margin: 18px 0 10px; }
+  h3.cat { background: var(--pale); padding: 6px 12px; border-radius: 4px; color: var(--nhs-dark); margin: 18px 0 10px; font-size: 15px; }
   .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 6px; }
   .tile { display: block; background: #fff; border: 1px solid var(--border); border-left: 4px solid #c27803; border-radius: 6px; padding: 12px 14px; text-decoration: none; color: var(--ink); }
   .tile:hover { border-color: var(--nhs-blue); box-shadow: 0 2px 8px rgba(0,48,135,0.18); }
@@ -91,10 +45,10 @@
   .tile.red { border-left-color: #b00020; }
   .tile.green { border-left-color: #146c2e; }
   .tile.grey { border-left-color: #555; }
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
+  footer p { margin: 4px 0; }
   @media (max-width: 900px) {
-    .grid-3 { grid-template-columns: 1fr; }
     .tiles { grid-template-columns: 1fr; }
-    .grid-2 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -113,44 +67,41 @@
   </header>
 
   <nav class="toc">
-    <a href="detail.html">Full detail</a>
-    <a href="detail.html#context">Context</a>
-    <a href="detail.html#summary">Summaries</a>
-    <a href="detail.html#mou">MoU detail</a>
-    <a href="detail.html#ig">IG</a>
-    <a href="detail.html#fsns">Future State &amp; Commercial</a>
-    <a href="detail.html#sources">Sources</a>
+    <a href="beta.html">HIV Private Beta</a>
+    <a href="acute.html">PSA Acute</a>
+    <a href="commercial.html">Future State &amp; Commercial</a>
+    <a href="sources.html">Sources &amp; posture</a>
   </nav>
 
 
   <h3 class="cat">HIV Private Beta</h3>
   <div class="tiles">
-    <a class="tile" href="detail.html#card-beta">
+    <a class="tile" href="beta.html#mou">
       <div class="t-top"><span class="pill amber">In flight</span><strong>East Sussex Beta MoU</strong></div>
       <p>v0.3 is the master; clause 11 IG reworked; SLT sign-off targeted w/e 4 Jul; Ronan's page 19 items open; Proom red-lines to reconcile.</p>
       <div class="t-meta">Scott · Next: SLT sign-off</div>
     </a>
-    <a class="tile grey" href="detail.html#card-beta">
+    <a class="tile grey" href="beta.html#mou">
       <div class="t-top"><span class="pill grey">Queued</span><strong>Salford Beta MoU</strong></div>
       <p>v0.1; uplifts once East Sussex is final. Recruits 20 via PaSH; PaSH £9k proposal redirected to public beta.</p>
       <div class="t-meta">Scott · Follows East Sussex</div>
     </a>
-    <a class="tile" href="detail.html#card-beta">
+    <a class="tile" href="beta.html#mou">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Clause 6 funding (commercial)</strong></div>
       <p>With Richard Samuel: skeleton and six steering questions (1 Jul), full thread handed over 3 Jul. Last substantive gap. Salford PaSH ask ~£58k + £10 pp vs smaller East Sussex shape.</p>
       <div class="t-meta">Richard Samuel · Next: steers back</div>
     </a>
-    <a class="tile" href="detail.html#card-beta">
+    <a class="tile" href="beta.html#mou">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Technical annex</strong></div>
       <p>Tom and Simone reviewing Annex A KPI and reporting sections; data requirements being settled; supplier-side API detail flagged for trim.</p>
       <div class="t-meta">Tom Rawlinson · Review live</div>
     </a>
-    <a class="tile red" href="detail.html#card-ig">
+    <a class="tile red" href="beta.html#ig">
       <div class="t-top"><span class="pill red">Critical path</span><strong>IG &amp; DPIA</strong></div>
       <p>DPIA v0.9.2, approval tracked mid-Aug; NHS-number approach unconfirmed; Lexi Moffatt testing MoU-replaces-DSA; HOTE-1714 resolution by 10 Jul.</p>
       <div class="t-meta">Wendi Higgins · PTT/IAO reviews from 8 Jul</div>
     </a>
-    <a class="tile red" href="detail.html#card-beta">
+    <a class="tile red" href="beta.html#ig">
       <div class="t-top"><span class="pill red">Blocked</span><strong>Clinical safety</strong></div>
       <p>No LA CSO and the independent route "not likely"; lower private beta requirements with Assurance Team Mon 6 Jul; sign-off estimated mid-Aug; DCB0160 statements outstanding.</p>
       <div class="t-meta">Meera Parkash · Assurance Team 6 Jul</div>
@@ -159,17 +110,17 @@
 
   <h3 class="cat">PSA Acute Use Case</h3>
   <div class="tiles">
-    <a class="tile" href="detail.html#card-rduh">
+    <a class="tile" href="acute.html#position">
       <div class="t-top"><span class="pill amber">In flight</span><strong>RDUH MoU &amp; counter-signature</strong></div>
       <p>Re-signed by Dean Freed 3 Jul; term to 30 Sep 2027; with Sam Higginson to counter-sign. Fix the "ten-month" context line before signing.</p>
       <div class="t-meta">Rachel / Scott · Next: RDUH counter-signature</div>
     </a>
-    <a class="tile" href="detail.html#card-rduh">
+    <a class="tile" href="acute.html#actions">
       <div class="t-top"><span class="pill amber">In flight</span><strong>£198k funding transfer</strong></div>
       <p>Routing via NHS Devon ICB (Ben Chilcott); NHSE Finance engaged (Georgina Dodsworth); BC28863 reduction thread with Finance.</p>
       <div class="t-meta">Shirley / Finance · Follows counter-signature</div>
     </a>
-    <a class="tile grey" href="detail.html#card-rduh">
+    <a class="tile grey" href="acute.html#pipeline">
       <div class="t-top"><span class="pill grey">Watch</span><strong>Mobilisation &amp; acute pipeline</strong></div>
       <p>Mobilisation Plan v0.2 ready for build-out after counter-signature. ChelWest instrument decision open. St James's and Lewisham at discovery; no commercial step.</p>
       <div class="t-meta">Rachel / Annie · Post counter-signature</div>
@@ -178,32 +129,32 @@
 
   <h3 class="cat">Future State &amp; Commercial</h3>
   <div class="tiles">
-    <a class="tile" href="detail.html#card-fs">
+    <a class="tile" href="commercial.html#actions">
       <div class="t-top"><span class="pill amber">Due Mon</span><strong>Programme Board paper</strong></div>
       <p>Commercial model paper due 16:00 Mon 6 Jul (Rec Paper exec summary plus the eight key principles); board 20 Jul, action HT045.</p>
       <div class="t-meta">Rachel / James · 16:00 Mon 6 Jul</div>
     </a>
-    <a class="tile green" href="detail.html#card-fs">
+    <a class="tile green" href="commercial.html#actions">
       <div class="t-top"><span class="pill green">Filed</span><strong>Phase 2 Plan</strong></div>
       <p>v0.1 filed 25 Jun: five-stage spine, Plan A Open Framework (Aug 2027) with Plan C interim protecting Apr 2027 Beta. Owners and sizing to populate; James adding the procurement timetable.</p>
       <div class="t-meta">Scott / James · Populate next two weeks</div>
     </a>
-    <a class="tile" href="detail.html#card-fs">
+    <a class="tile" href="commercial.html#actions">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Sourcing strategy</strong></div>
       <p>v0.1 draft, James holding the pen; outline direction of travel before 27 Jul; governance-ready version with KPIs, evaluation criteria and volumes to follow.</p>
       <div class="t-meta">James Cowley · Outline pre-27 Jul</div>
     </a>
-    <a class="tile" href="detail.html#card-fs">
+    <a class="tile" href="commercial.html#actions">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Leeds workshops</strong></div>
       <p>Wed 8 Jul: procurement planning and sourcing strategy (volume, framework structure, commercial models, interim routes), plus Future State learnings for HealthStore.</p>
       <div class="t-meta">James / Martin / Mandie · Wed 8 Jul</div>
     </a>
-    <a class="tile" href="detail.html#card-fs">
+    <a class="tile" href="commercial.html#actions">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Supplier Forum 3</strong></div>
       <p>22 Jul Manchester; agendas settled 3 Jul; draft decks due Fri 10 Jul; venue booking awaiting price sign-off; agenda note out early Mon.</p>
       <div class="t-meta">Annie + session leads · Decks Fri 10 Jul</div>
     </a>
-    <a class="tile" href="detail.html#card-fs">
+    <a class="tile" href="commercial.html#actions">
       <div class="t-top"><span class="pill amber">In flight</span><strong>Supplier cost discovery &amp; SOW09</strong></div>
       <p>Preventx returned its cost apportionment; SH:24 cannot provide short-term figures. SOW09 contract-gap review 10 Jul (Matt, Simone, Scott, Tom, Rachel).</p>
       <div class="t-meta">Rachel / Matt Thomas · Review 10 Jul</div>
@@ -212,7 +163,7 @@
 
 
   <footer>
-    <p>Maintained by Scott Eason &amp; Rachel Flower. Click any tile for the full position, or use the links above.</p>
+    <p>Maintained by Scott Eason &amp; Rachel Flower. Click any tile for the live position; each workstream page carries its full dated history and the Sources page holds the reference library.</p>
   </footer>
 
 </div>

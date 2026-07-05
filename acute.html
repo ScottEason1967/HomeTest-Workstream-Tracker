@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSA Acute Use Case — HomeTest Workstream Tracker</title>
+<style>
+  :root {
+    --nhs-dark: #003087;
+    --nhs-blue: #005EB8;
+    --nhs-light: #7EC8E3;
+    --pale: #D5E8F0;
+    --yellow: #FFF3CD;
+    --ink: #231F20;
+    --muted: #556;
+    --border: #dbe5ee;
+    --bg: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Abadi", "Segoe UI", Arial, sans-serif; color: var(--ink); margin: 0; padding: 0; background: var(--bg); line-height: 1.5; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+  header.banner { background: var(--nhs-dark); color: #fff; padding: 28px 32px; border-radius: 6px; margin-bottom: 20px; }
+  header.banner h1 { margin: 0 0 6px; font-size: 26px; font-weight: 700; }
+  header.banner p.lead { margin: 0; color: var(--nhs-light); font-size: 15px; }
+  header.banner .meta { margin-top: 14px; font-size: 12px; color: #cfe4f3; display: flex; flex-wrap: wrap; gap: 18px; }
+  header.banner .meta strong { color: #fff; margin-right: 6px; }
+  nav.toc { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; }
+  nav.toc a { color: var(--nhs-blue); text-decoration: none; margin-right: 14px; font-weight: 600; }
+  nav.toc a:hover { text-decoration: underline; }
+  nav.toc a.here { color: var(--nhs-dark); border-bottom: 2px solid var(--nhs-dark); }
+  h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
+  h3 { color: var(--nhs-blue); font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid var(--nhs-blue); padding-bottom: 4px; }
+  h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 8px; }
+  .callout { background: var(--yellow); border-left: 4px solid var(--nhs-blue); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .callout strong { color: var(--nhs-dark); }
+  .callout p { margin: 4px 0; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
+  th { background: var(--nhs-blue); color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
+  td { background: var(--pale); padding: 8px 10px; border-bottom: 2px solid #fff; vertical-align: top; }
+  table.narrow td { font-size: 12.5px; }
+  table th.w-action { width: 36%; }
+  table th.w-owner { width: 14%; }
+  table th.w-due { width: 14%; }
+  table th.w-dep { width: 22%; }
+  table th.w-status { width: 14%; }
+  .pill { display: inline-block; background: var(--nhs-blue); color: #fff; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-right: 4px; vertical-align: middle; }
+  .pill.amber { background: #c27803; }
+  .pill.red { background: #b00020; }
+  .pill.green { background: #146c2e; }
+  .pill.grey { background: #555; }
+  .pill.dark { background: var(--nhs-dark); }
+  .tag { background: var(--pale); color: var(--nhs-dark); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 4px; display: inline-block; }
+  .source { font-size: 11.5px; color: var(--muted); font-style: italic; }
+  .ws-summary { background: var(--pale); padding: 12px 16px; border-radius: 4px; margin: 0 0 14px; font-size: 13px; }
+  .ws-summary p { margin: 4px 0; }
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
+  footer p { margin: 4px 0; }
+  ul.state { list-style: none; margin: 6px 0 14px; padding: 0; font-size: 13px; }
+  ul.state li { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 7px 2px; border-bottom: 1px solid var(--border); }
+  ul.state li:last-child { border-bottom: none; }
+  ul.state .pill { flex: 0 0 auto; min-width: 72px; text-align: center; }
+  ul.state .item { flex: 1 1 420px; }
+  ul.state .item strong { color: var(--nhs-dark); }
+  ul.state .who { flex: 0 0 auto; font-size: 11.5px; color: var(--muted); white-space: nowrap; margin-left: auto; }
+  .datebar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+  .datebar .d { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--nhs-blue); border-radius: 4px; padding: 6px 10px; font-size: 12px; min-width: 110px; }
+  .datebar .d strong { display: block; color: var(--nhs-dark); }
+  .datebar .d.hot { border-left-color: #b00020; }
+  .log details { background: #fff; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 6px; }
+  .log summary { cursor: pointer; padding: 8px 12px; font-size: 13px; }
+  .log summary:hover { background: var(--pale); }
+  .log summary .d { color: var(--nhs-dark); font-weight: 700; margin-right: 8px; white-space: nowrap; }
+  .log details[open] summary { border-bottom: 1px solid var(--border); background: var(--pale); }
+  .log .body { padding: 8px 14px 10px; font-size: 12.5px; }
+  .log .body p { margin: 6px 0; }
+  @media (max-width: 900px) { .datebar .d { min-width: 45%; } }
+</style>
+</head>
+<body id="page-acute">
+<div class="wrap">
+
+  <header class="banner">
+    <h1>PSA Acute Use Case</h1>
+    <p class="lead">RDUH MoU, the £198k funding transfer, mobilisation, and the wider acute discovery pipeline. Live position on top; the full dated record underneath.</p>
+    <div class="meta">
+      <span><strong>Owners</strong> Scott Eason &amp; Rachel Flower</span>
+      <span><strong>Last updated</strong> 5 July 2026</span>
+      <span><strong>SLT sponsor</strong> Shirley Gaynor-Ward (BC28661)</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="index.html">&#8592; Home</a>
+    <a href="beta.html">HIV Private Beta</a>
+    <a href="acute.html" class="here">PSA Acute</a>
+    <a href="commercial.html">Future State &amp; Commercial</a>
+    <a href="sources.html">Sources</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#history">History</a>
+  </nav>
+
+  <h2 id="position">Position now</h2>
+  <div class="card">
+    <p><strong>The RDUH MoU is at counter-signature pending with the Trust.</strong> Dean Freed (Head of NHSE Procurement) signed the NHSE side on 23 June after BC28661 funding approval, and re-signed the extended execution copy at 07:37 on 3 July at Scott's request: term now 1 June 2026 to 30 September 2027 (sixteen-month engagement), dated milestone targets removed from Annex A on Richard Samuel's steer, execution settled by fresh signature rather than variation. Sam Higginson's two open points are both resolved (term extension with clause 13.1 as fallback; wearables covered by the MoU's existing extension-of-scope clause referencing NHSE's wider self-health programme). The re-signed copy goes back to Sam Higginson for Trust counter-signature. One cosmetic snag survives: the Annex A programme-context paragraph still reads ten-month in the re-signed copy. Note Dean Freed is on leave 12 to 21 July.</p>
+    <p><strong>The £198k transfer is in motion</strong> via NHS Devon ICB (Ben Chilcott, named by Sam Higginson on 1 July), Shirley Gaynor-Ward arranging, with NHSE Finance engaged (Georgina Dodsworth). RDUH confirmed it is budgeting the £198k in 26/27. Funding routes direct as a £198k mandate (COF reduced under BC28863) rather than through ACE.</p>
+    <p><strong>Positions held:</strong> MoUs are Alpha and Beta instruments only; wave entrants transition onto the standard NHS call-off. ChelWest still points to a separate NHSE-to-ChelWest instrument because Clause 14 binds only RDUH.</p>
+
+    <h4>Next dates</h4>
+    <div class="datebar">
+      <div class="d hot"><strong>This week</strong>RDUH counter-signature (Sam Higginson)</div>
+      <div class="d"><strong>Then</strong>£198k transfer via NHS Devon ICB</div>
+      <div class="d"><strong>12-21 Jul</strong>Dean Freed on leave</div>
+      <div class="d"><strong>Wed 22 Jul</strong>SF3 acute RFI afternoon session, Manchester</div>
+    </div>
+
+    <h4>Live state</h4>
+    <ul class="state">
+      <li><span class="pill amber">In flight</span><span class="item"><strong>RDUH MoU.</strong> Re-signed by Dean Freed 3 Jul (term to 30 Sep 2027, Annex A milestone dates removed). With Sam Higginson for Trust counter-signature. Fix the "ten-month" context line before signing.</span><span class="who">Rachel / Scott</span></li>
+      <li><span class="pill amber">In flight</span><span class="item"><strong>£198k RDUH transfer.</strong> Routing via NHS Devon ICB (Ben Chilcott); NHSE Finance engaged (Georgina Dodsworth); BC28863 reduction thread with Finance.</span><span class="who">Shirley / Finance</span></li>
+      <li><span class="pill grey">Watch</span><span class="item"><strong>Mobilisation &amp; acute pipeline.</strong> Mobilisation Plan v0.2 ready for build-out after counter-signature. ChelWest instrument decision open. St James's and Lewisham at discovery; no commercial step.</span><span class="who">Rachel / Annie</span></li>
+    </ul>
+  </div>
+
+  <h2 id="actions">Open actions</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>RDUH counter-signature returned by Sam Higginson on the re-signed extended copy. Tidy the residual ten-month wording in the Annex A context paragraph if a further pass happens; otherwise it goes as is</td><td>Sam Higginson (RDUH); Scott / Richard Samuel to send</td><td>This week</td><td>Re-signed copy issued to RDUH</td><td><span class="pill amber">Pending</span></td></tr>
+        <tr><td>£198k transfer: NHSE-to-ICB-to-Trust flow via Ben Chilcott (NHS Devon ICB), Shirley arranging, Georgina Dodsworth engaged in Finance; Scott separately chasing Shirley's Finance budget confirmation on the direct-mandate route</td><td>Shirley Gaynor-Ward / Finance with Scott</td><td>Follows counter-signature</td><td>Counter-signed MoU; Finance confirmation</td><td><span class="pill amber">In motion</span></td></tr>
+        <tr><td>RDUH Mobilisation Plan v0.2: fuller plan post-23 June site visit, deep-dive follow-on sessions, named leads filled</td><td>Annie Wakefield / Pathway 2</td><td>Post counter-signature</td><td>Site-visit notes (filed)</td><td><span class="pill amber">In prep</span></td></tr>
+        <tr><td>RDUH next-step workshop sequence from the 23 June visit: urology workshop (Rachel to connect once names provided), then pilot workshop, then Tasso-vs-Impress user research, then a wider-tests workshop</td><td>Olivia Sharp / Annie Wakefield with RDUH</td><td>Post-visit, sequenced</td><td>RDUH urology team availability</td><td><span class="pill amber">In prep</span></td></tr>
+        <tr><td>Confirm transdermal device route for the PSA pilot: Impress preferred (FDA-approved, awaiting UKCA, MHRA timing unclear, possibly end of year) with Tasso as fallback; RDUH to check Impress availability via Ronan/Nexus</td><td>Olivia Sharp / Simone Bilton with RDUH</td><td>Pre-pilot design</td><td>Impress UKCA/MHRA timeline</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>ChelWest engagement: decide whether a separate NHSE-to-ChelWest instrument is needed. Clause 14 Partner Trust mechanism binds only RDUH (Simone raised; Scott to Richard Samuel, 30 June). Cerner/Epic integration complexity flagged for any RDUH-to-NW London multi-trust pilot.</td><td>Scott / Richard Samuel</td><td>Watching</td><td>Richard Samuel steer; ChelWest and integration scoping</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>RDUH MMH boundary declaration and governance pack (clause 7 binding separation, clause 11 confidentiality)</td><td>Acute / NHSE Commercial</td><td>Pre go-live</td><td>Operational, financial and governance separation requirement</td><td><span class="pill amber">Open</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="pipeline">Acute discovery pipeline</h2>
+  <div class="card">
+    <div class="ws-summary">
+      <p>Discovery beyond RDUH, no MoU or commercial step at any of these sites. They join the commercial lane only if a discovery-to-pilot decision is made.</p>
+    </div>
+    <table>
+      <thead><tr><th class="w-action">Site / question</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>St James's (Leeds Teaching Hospitals): 25 June visit explored the pre-operative and MRSA screening pathway. Opportunities identified: second group-and-save sample (constrained by national blood transfusion policy requiring the operating trust's lab), MRSA clearance follow-up swabs for out-of-area patients (St James's takes tertiary referrals from as far as Devon and Northern Ireland), pre-urology urine dip, baseline bloods at GP referral. Decide whether any warrant a discovery-to-pilot step.</td><td>Pathway 2 / Acute with Scott / Rachel</td><td>Watching</td><td>Acute team capacity; GP / secondary-care commissioning for referral-point testing</td><td><span class="pill grey">Watching brief</span></td></tr>
+        <tr><td>Lewisham (LGT) pre-operative discovery: visit notes filed 2 July. Opportunities: triage-stage home testing ordered after the first Reg Nurse call, MRSA re-swab closer to surgery, ferritin screening into the anaemia pathway, possible Community Diabetic Service use. Constraints to respect: clinician concern about losing face-to-face judgement and observations, the admission-team versus pre-op-team divide, and no defined rule for who needs which test. Decide whether it joins St James's in a structured acute discovery pipeline.</td><td>Pathway 2 / Acute with Scott / Rachel</td><td>Watching</td><td>Acute team capacity; clinical-judgement safeguards in any home-test design</td><td><span class="pill grey">Watching brief</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="blockers">Dependencies and blockers</h2>
+  <div class="card">
+    <table class="narrow">
+      <thead><tr><th>Dependency / blocker</th><th>Owner</th><th>Impact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Wearables scope extension request from Sam Higginson: RDUH positioning across multiple programme strands beyond HomeTest PSA pilot. Covered for the MoU by the extension-of-scope clause (2 July), but the cross-programme interest stands.</td><td>Martin O'Neil / Cross-programme</td><td>Could open a cross-programme door beyond this MoU</td><td><span class="pill amber">Watching</span></td></tr>
+        <tr><td>Transdermal device regulatory timing: Impress (preferred) awaiting UKCA, MHRA timeline unclear; Tasso usable fallback (chunkier, slightly lower success rate, Royal Mail Track 24)</td><td>RDUH via Ronan/Nexus</td><td>Shapes PSA pilot design and timeline</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Cerner/Epic integration complexity for a multi-trust pilot spanning RDUH (Epic) and NW London/Chel West</td><td>Pathway 2 / RDUH pathology IT</td><td>Could complicate any cross-trust pilot build</td><td><span class="pill amber">Open</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="critical">Critical path</h2>
+  <div class="callout">
+    <p><strong>Counter-signature feeds the August Beta gate chain via the Mobilisation Plan.</strong> No fixed deadline on the MoU itself but slippage cascades: re-signed MoU back to Sam Higginson → RDUH counter-signature → £198k transfer via NHS Devon ICB → fuller Mobilisation Plan build-out with named leads. Dean Freed's leave (12 to 21 July) narrows the window for any further NHSE-side signature pass.</p>
+  </div>
+
+  <h2 id="history">History</h2>
+  <div class="log">
+    <details>
+      <summary><span class="d">3 Jul</span>Dean Freed re-signed the extended MoU at 07:37; execution settled by fresh signature</summary>
+      <div class="body"><p>Scott asked Dean Freed to re-sign at 06:49 on 3 July; Dean returned the signed version at 07:37. Term updated to 1 June 2026 to 30 September 2027 (sixteen-month engagement) and, on Richard Samuel's steer ("Im not sure the dated milestones add value - I would personally remove them"), the dated milestone targets were removed from Annex A. Execution settled by fresh signature rather than variation. Residual cosmetic snag: the Annex A programme-context paragraph still reads "ten-month" in the re-signed copy (verified against the execution document).</p><p class="source">Source: Substantive NHSE signatory thread, Scott Eason / Dean Freed, 3 July 2026; MoU between NHSE and RDUH (Execution).docx as revised 3 July.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">2 Jul</span>Richard Samuel resolves Sam Higginson's two open points</summary>
+      <div class="body"><p>On the term: "Re the length of the MOU - I propose we amend as the intention was that the money will flow in 26/27 but as long as you are content to use revenue received in 26/27 for residual activities in 27/28 we will be too... suggest we extend the contract duration through to September 2027 and we have clause 13/1 as a fall back". On wearables: the MoU's existing "Extension of scope" paragraph referencing development work in support of NHSE's wider self-health programme (which includes wearables) "hopefully covers this ask". Richard closed with "I will get Scott to make the change and we can sign". Higginson's original two points (raised on receipt of the 23 June copy): (a) the MoU was for FY26/27 but PSA testing may start 1 April 2027, does it need extending now or is clause 13.1 sufficient; (b) a request to add a wearables clause or appendix to extend joint scope.</p><p class="source">Source: Substantive NHSE signatory thread, Richard Samuel / Sam Higginson, 2 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">2 Jul</span>Royal Marsden EOI outcome confirmed in writing</summary>
+      <div class="body"><p>Annie Wakefield confirmed to Dr Robyn Shea (Consultant Clinical Biochemist and Director of Blood Sciences, The Royal Marsden) that RDUH was selected as the acute use case partner. Royal Marsden was unsuccessful at the 22 May outcome and is being kept warm for wider engagement. First written confirmation of the RDUH selection to an external trust.</p><p class="source">Source: Acute Use Case Partner EOI thread, Robyn Shea / Annie Wakefield, 2 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">2 Jul</span>Lewisham (LGT) pre-operative discovery opened; visit notes filed</summary>
+      <div class="body"><p>Third acute site conversation (Shelly Rose, Divisional Director of Nursing and Governance, Surgery). Notes cover the MRSA swabbing reduction plan, ferritin and the anaemia pathway, triage volumes, Hb1ac and group-and-save validity subsets as possible candidates, clinician concerns on clinical judgement and observations, and a video-over-live-support steer. Expanded notes 3 July with a photo record of the sampling steps and containers.</p><p class="source">Source: OS notes 2 July Lewisham Hospital.docx; Notes Lewisham Hospital pre-op.docx (3 Jul); pictures.pptx, 16. Pathway 2 Discovery Alpha / Lewisham Hospital LGT pre-operative.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>£198k routing named: NHS Devon ICB, with Finance engaged</summary>
+      <div class="body"><p>Sam Higginson named Ben Chilcott at NHS Devon ICB as the finance contact for the transfer; Shirley Gaynor-Ward is arranging the NHSE-to-ICB-to-Trust flow. Shirley's 16 June "Change of Procurement Route" request to DPSP Finance (reduce COF and PO by £198k under BC28863, mandate £198k direct to RDUH) had gone unanswered; on Scott's nudge James Cowley pointed to Georgina Dodsworth in Finance (1 July) and Scott made contact. Scott is separately chasing Shirley's Finance budget confirmation on the direct-mandate route (COPD Business Case thread, 1 July; Shirley 23 June: no separate BC, budget held, Finance confirmation sought).</p><p class="source">Source: Substantive NHSE signatory thread 1 July; Change of Procurement Route thread 16 June to 1 July; RE: COPD Business Case, 1 July.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">30 Jun</span>Scott's proposal to Richard Samuel on execution mechanics (superseded 2-3 Jul)</summary>
+      <div class="body"><p>Proposed holding the term and using the Variation route for a 1 April 2027 PSA start; wearables as a later variation or separate instrument; ChelWest likely needs its own NHSE instrument as Clause 14 binds only RDUH; RDUH budgeting the £198k transfer in 26/27. Richard's 2 July steer took the term-extension route instead, and the wearables ask landed on the existing extension-of-scope clause.</p><p class="source">Source: RDUH MoU email, Scott Eason to Richard Samuel, 30 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">29 Jun</span>RDUH site-visit notes filed: prior PSA pilot numbers and device direction</summary>
+      <div class="body"><p>The prior RDUH PSA pilot ran a post-radical-prostatectomy pathway on capillary sampling built on Epic, with 917 invited, 310 sign-ups and 218 completed, around 60 per cent wanting to continue. The learning: one-to-one support for the first test and urology-team buy-in drive uptake, while PSA itself lends well to capillary with a low failure rate. Next steps sequenced as urology workshop, then pilot workshop, then Tasso-versus-Impress user research, then a wider-tests workshop. The pathway leans on a transdermal device, Impress preferred (FDA-approved, awaiting UKCA, MHRA timeline unclear and possibly end of year) with Tasso as fallback. Cerner/Epic integration complexity flagged for any RDUH-to-NW London (Chel West) multi-trust pilot.</p><p class="source">Source: OS notes RDUH visit 23 June 2026.docx, Transcripts and meeting notes / Acute Initiated Discovery / RDUH.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">25 Jun</span>St James's (Leeds Teaching Hospitals) visited: pre-operative and MRSA screening use case</summary>
+      <div class="body"><p>Second acute trust explored alongside RDUH. The written visit summary identifies home-testing value in the second group-and-save sample, MRSA clearance follow-up swabs for out-of-area patients (tertiary referrals from as far as Devon and Northern Ireland), the pre-urology urine dip and baseline bloods at referral. Detail notes and quotes filed 1 July. Widens the acute pipeline beyond RDUH but sits at discovery.</p><p class="source">Source: LGI_Visit_Summary &amp; notes.docx (25 Jun); St James_Visit_ detail notes.docx and Quotes.docx (filed 1 Jul).</p></div>
+    </details>
+    <details>
+      <summary><span class="d">24 Jun</span>Mobilisation Plan v0.2 and Pack v0.2 finalised</summary>
+      <div class="body"><p>Mobilisation Pack v0.2 circulated by Annie Wakefield 18 June to Richard Samuel, Simone Bilton, Olivia Sharp, Scott, Rachel, Ronan, Will Tweddle, Karl Olsen; v0.2 finalised 24 June. Will Tweddle (22 June): fuller plan to follow the RDUH site visit. Scott returned the Mobilisation Plan v0.2 with tracked-change mark-up and formatting to Rachel on 24 June.</p><p class="source">Source: RDUH Mobilisation emails, 18-24 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">23 Jun</span>NHSE side signed; MoU to RDUH; site visit held; wearables ask raised</summary>
+      <div class="body"><p>Dean Freed signed the NHSE side once contact points completed; Richard Samuel forwarded the signed MoU to Sam Higginson (RDUH) the same day for Trust counter-signature. The 23 June RDUH site visit went ahead (written up 29 June). Sam Higginson raised the wearables scope extension interest, positioning RDUH across multiple programme strands beyond the HomeTest PSA pilot.</p><p class="source">Source: Substantive NHSE signatory thread, 23 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">16-19 Jun</span>Funding approved (BC28661), route change tasked, execution copy issued</summary>
+      <div class="body"><p>Funding approved by Shirley Gaynor-Ward under business case BC28661, confirmed in writing to Dean Freed on 16 June. Procurement route change tasked by Shirley the same day: COF reduced by £198k, mandate of £198k direct to RDUH (rationale: RDUH is an NHS trust, the ACE COF arrangement makes no sense). Internally approved Execution version sent by Scott to Dean Freed 19 June. Richard Samuel's SharePoint task assignments on v0.2 (19 June): Chelwest deidentification; add the wider self-health programme extension clause.</p><p class="source">Source: COPD Business Case thread 16 June; Change of Procurement Route 16 June; RDUH MoU v0.2 task assignments.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">12 Jun</span>Ronan O'Connor drafting task on v0.2</summary>
+      <div class="body"><p>"I think we should leave out specific reference to ICE here."</p><p class="source">Source: SharePoint task on RDUH MoU v0.2, 12 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">22 May</span>RDUH selected as acute use case partner at EOI outcome</summary>
+      <div class="body"><p>RDUH selected; Royal Marsden unsuccessful and kept warm for wider engagement (confirmed in writing to Royal Marsden on 2 July).</p><p class="source">Source: Acute Use Case Partner EOI record; confirmation thread 2 July 2026.</p></div>
+    </details>
+  </div>
+
+  <footer>
+    <p>Maintained by Scott Eason &amp; Rachel Flower. Live position above; every closed or historical item lives in History with its source.</p>
+  </footer>
+
+</div>
+</body>
+</html>

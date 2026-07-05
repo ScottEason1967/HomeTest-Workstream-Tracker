@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIV Private Beta — HomeTest Workstream Tracker</title>
+<style>
+  :root {
+    --nhs-dark: #003087;
+    --nhs-blue: #005EB8;
+    --nhs-light: #7EC8E3;
+    --pale: #D5E8F0;
+    --yellow: #FFF3CD;
+    --ink: #231F20;
+    --muted: #556;
+    --border: #dbe5ee;
+    --bg: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Abadi", "Segoe UI", Arial, sans-serif; color: var(--ink); margin: 0; padding: 0; background: var(--bg); line-height: 1.5; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+  header.banner { background: var(--nhs-dark); color: #fff; padding: 28px 32px; border-radius: 6px; margin-bottom: 20px; }
+  header.banner h1 { margin: 0 0 6px; font-size: 26px; font-weight: 700; }
+  header.banner p.lead { margin: 0; color: var(--nhs-light); font-size: 15px; }
+  header.banner .meta { margin-top: 14px; font-size: 12px; color: #cfe4f3; display: flex; flex-wrap: wrap; gap: 18px; }
+  header.banner .meta strong { color: #fff; margin-right: 6px; }
+  nav.toc { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; }
+  nav.toc a { color: var(--nhs-blue); text-decoration: none; margin-right: 14px; font-weight: 600; }
+  nav.toc a:hover { text-decoration: underline; }
+  nav.toc a.here { color: var(--nhs-dark); border-bottom: 2px solid var(--nhs-dark); }
+  h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
+  h3 { color: var(--nhs-blue); font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid var(--nhs-blue); padding-bottom: 4px; }
+  h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 8px; }
+  .callout { background: var(--yellow); border-left: 4px solid var(--nhs-blue); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .callout strong { color: var(--nhs-dark); }
+  .callout p { margin: 4px 0; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
+  th { background: var(--nhs-blue); color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
+  td { background: var(--pale); padding: 8px 10px; border-bottom: 2px solid #fff; vertical-align: top; }
+  table.narrow td { font-size: 12.5px; }
+  table th.w-action { width: 36%; }
+  table th.w-owner { width: 14%; }
+  table th.w-due { width: 14%; }
+  table th.w-dep { width: 22%; }
+  table th.w-status { width: 14%; }
+  .pill { display: inline-block; background: var(--nhs-blue); color: #fff; padding: 2px 9px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-right: 4px; vertical-align: middle; }
+  .pill.amber { background: #c27803; }
+  .pill.red { background: #b00020; }
+  .pill.green { background: #146c2e; }
+  .pill.grey { background: #555; }
+  .pill.dark { background: var(--nhs-dark); }
+  .tag { background: var(--pale); color: var(--nhs-dark); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 4px; display: inline-block; }
+  .source { font-size: 11.5px; color: var(--muted); font-style: italic; }
+  .ws-summary { background: var(--pale); padding: 12px 16px; border-radius: 4px; margin: 0 0 14px; font-size: 13px; }
+  .ws-summary p { margin: 4px 0; }
+  .held { background: var(--pale); padding: 10px 14px; border-radius: 4px; font-size: 12.5px; margin: 10px 0; }
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
+  footer p { margin: 4px 0; }
+  ul.state { list-style: none; margin: 6px 0 14px; padding: 0; font-size: 13px; }
+  ul.state li { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 7px 2px; border-bottom: 1px solid var(--border); }
+  ul.state li:last-child { border-bottom: none; }
+  ul.state .pill { flex: 0 0 auto; min-width: 72px; text-align: center; }
+  ul.state .item { flex: 1 1 420px; }
+  ul.state .item strong { color: var(--nhs-dark); }
+  ul.state .who { flex: 0 0 auto; font-size: 11.5px; color: var(--muted); white-space: nowrap; margin-left: auto; }
+  .datebar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+  .datebar .d { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--nhs-blue); border-radius: 4px; padding: 6px 10px; font-size: 12px; min-width: 110px; }
+  .datebar .d strong { display: block; color: var(--nhs-dark); }
+  .datebar .d.hot { border-left-color: #b00020; }
+  .log details { background: #fff; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 6px; }
+  .log summary { cursor: pointer; padding: 8px 12px; font-size: 13px; }
+  .log summary:hover { background: var(--pale); }
+  .log summary .d { color: var(--nhs-dark); font-weight: 700; margin-right: 8px; white-space: nowrap; }
+  .log details[open] summary { border-bottom: 1px solid var(--border); background: var(--pale); }
+  .log .body { padding: 8px 14px 10px; font-size: 12.5px; }
+  .log .body p { margin: 6px 0; }
+  @media (max-width: 900px) { .datebar .d { min-width: 45%; } }
+</style>
+</head>
+<body id="page-beta">
+<div class="wrap">
+
+  <header class="banner">
+    <h1>HIV Private Beta</h1>
+    <p class="lead">LA MoUs, funding, IG and clinical safety for the East Sussex and Salford private beta. Live position on top; the full dated record underneath.</p>
+    <div class="meta">
+      <span><strong>Owners</strong> Scott Eason &amp; Rachel Flower</span>
+      <span><strong>Last updated</strong> 5 July 2026</span>
+      <span><strong>Target</strong> Private Beta start 31 August 2026</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a href="index.html">&#8592; Home</a>
+    <a href="beta.html" class="here">HIV Private Beta</a>
+    <a href="acute.html">PSA Acute</a>
+    <a href="commercial.html">Future State &amp; Commercial</a>
+    <a href="sources.html">Sources</a>
+    <a href="#ig">IG &amp; clinical safety</a>
+    <a href="#history">History</a>
+  </nav>
+
+  <h2 id="position">Position now</h2>
+  <div class="card">
+    <p><strong>East Sussex Beta MoU is the master document, at DRAFT v0.3 (1 July).</strong> Clause 11 IG wording reworked: DPIA and DSA sequencing simplified, the LA existing-service DPIA uplift dropped from the pre-live IG approvals list, controller/processor summary no longer expressed as subject to confirmation in the executed DSA. Some wording is rough mid-edit (dropped words), so v0.3 is a working draft, not a settled text. Meera Parkash's clinical safety annex baselined at v0.2 carries through. Ronan O'Connor's page 19 technical items still need his review. <strong>Salford Beta MoU stays at v0.1</strong> and uplifts once the East Sussex template is finalised. Private beta scale is fixed at 40 full journey completions minimum, 20 per LA.</p>
+    <p><strong>SLT sign-off was targeted for w/e 4 July</strong> via four strands consolidated by Scott on 1 July: IG (Wendi Higgins), clinical safety (Meera Parkash), technical (Tom Rawlinson with Simone Bilton) and funding (Richard Samuel, who took the full Clause 6 thread on 3 July, the last substantive gap).</p>
+    <p><strong>Position held:</strong> MoUs are Alpha and Beta instruments only; wave entrants from Beta-to-BAU transition onto the standard NHS call-off.</p>
+
+    <h4>Next dates</h4>
+    <div class="datebar">
+      <div class="d hot"><strong>Mon 6 Jul</strong>Assurance Team on lower CS requirements</div>
+      <div class="d"><strong>Wed 8 Jul</strong>DPIA PTT + IAO reviews start</div>
+      <div class="d"><strong>Fri 10 Jul</strong>HOTE-1714 resolution · privacy policy uplift due</div>
+      <div class="d"><strong>Mid-Aug</strong>DPIA approval · CS sign-off (est.)</div>
+      <div class="d"><strong>Mon 31 Aug</strong>Private Beta start</div>
+      <div class="d"><strong>Mon 30 Nov</strong>Public Beta start</div>
+    </div>
+
+    <h4>LA state of play</h4>
+    <ul class="state">
+      <li><span class="pill green">Settled</span><span class="item"><strong>East Sussex counterparty.</strong> ESCC (Tony Proom) is commissioner and Beta MoU counterparty; delivery by KCHFT (Leah Elliott), East Sussex's sexual health provider; PreventX supplier.</span><span class="who">ESCC / KCHFT</span></li>
+      <li><span class="pill amber">In flight</span><span class="item"><strong>East Sussex MoU v0.3</strong> (1 Jul): clause 11 IG reworked; Ronan's page 19 technical items open. Journey mapped 1 Jul; Proom red-lines (pharmacy framing, target population) to reconcile. Recruits 5 staff then 15 citizens.</span><span class="who">Scott / Meera</span></li>
+      <li><span class="pill amber">In flight</span><span class="item"><strong>Salford MoU v0.1</strong> follows East Sussex. Journey mapped 29 Jun. Recruits 20 via PaSH; PaSH £9k proposal redirected to public beta pending sign-off.</span><span class="who">Scott / Meera</span></li>
+      <li><span class="pill red">Gap</span><span class="item"><strong>Salford funding</strong> exceeds NHSE expectations; none committed this FY. Clause 6 to settle: Salford PaSH ask ~£58k plus £10 per patient vs the smaller East Sussex shape; ACE envelope Preventx £100k, SH:24 £99.5k.</span><span class="who">Richard Samuel</span></li>
+      <li><span class="pill red">Overdue</span><span class="item"><strong>East Sussex IG statements</strong> still outstanding; Wendi escalating, raising with Tony Proom on his return.</span><span class="who">Wendi Higgins</span></li>
+      <li><span class="pill grey">Fixed</span><span class="item"><strong>Private beta scale.</strong> 40 full journey completions minimum, 20 per LA.</span><span class="who">Gary Birnie</span></li>
+    </ul>
+  </div>
+
+  <h2 id="mou">MoU, funding and technical — open actions</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Beta MoU SLT sign-off targeted this week (Scott's 1 July consolidation). Track whether it lands by close 4 July or rolls into next week with the Lexi Moffatt and Richard Samuel inputs outstanding</td><td>Scott with Chris Leary / SLT</td><td>w/e 4 Jul</td><td>Funding clause steer; Lexi Moffatt DSA ruling</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>East Sussex Beta MoU v0.3 (1 July): settle the reworked clause 11 wording (several dropped words mid-edit) and complete Ronan O'Connor review of page 19 technical items</td><td>Wendi Higgins / Ronan O'Connor</td><td>Pre-Beta gates start of August</td><td>Ronan's return</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Clause 6 (Funding Arrangements): skeleton drafted on the Wayfinder grant pattern; six steering questions with Richard Samuel since 1 July (commercial model, consideration statement, envelope versus ACE CTF spend, per-LA amounts and the Salford PaSH asymmetry (~£58k plus £10 per patient plus kit versus the East Sussex shape), tranche triggers, clawback). Scott turns the skeleton into final clauses once Richard steers.</td><td>Richard Samuel to steer; Scott to draft</td><td>SLT sign-off target w/e 4 Jul</td><td>Richard Samuel's answers to the six questions</td><td><span class="pill amber">Awaiting steer</span></td></tr>
+        <tr><td>Technical wording: review under way with Tom Rawlinson (from 2 July), focused on the Annex A KPI and reporting sections. Nothing to add for the LAs beyond possible data requirements (Tom and Simone Bilton specifying what data comes from NHSE, suppliers or LAs); supplier-side API and availability detail to be trimmed from the LA MoU, subject to a Richard/Chris steer on softening the document for the LAs.</td><td>Tom Rawlinson / Simone Bilton</td><td>SLT sign-off target w/e 4 Jul</td><td>Data requirements list; Richard/Chris trim decision</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Resolve the East Sussex contracting question: does NHSE contract ESCC, KCHFT, or both</td><td>Scott / Richard Samuel</td><td>Pre SLT sign-off</td><td>Lexi Moffatt DSA ruling; Clause 6 steer</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Salford Beta MoU uplift to the East Sussex pattern once finalised</td><td>Rachel Flower with Richard Samuel</td><td>Pre-Beta gates start of August</td><td>East Sussex close-out</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Salford Beta funding gap: exceeds NHSE expectations; no LA commitment this FY. Escalate at Delivery Board.</td><td>Rachel Flower with Shirley Gaynor-Ward</td><td>Delivery Board</td><td>Funding source decision</td><td><span class="pill red">Escalation</span></td></tr>
+        <tr><td>Supplier position partly documented: Preventx (£100k) and SH:24 (£99.5k) funded directly under ACE CTF (Scott's Clause 6 email, 1 July). Remaining: confirm the fuller contract picture with both suppliers for Beta and how LA-direct spend sits against the ACE pot.</td><td>Richard Samuel / Annie Wakefield</td><td>Pre-Beta gates</td><td>Richard's steer on envelope balance</td><td><span class="pill amber">Part-closed</span></td></tr>
+        <tr><td>LSHP (London) Beta participation: aiming January to March 2027 for London residents via the NHS App alongside SHL channels, funding likely routed via Preventx. No MoU or commercial instrument yet; if it firms up, a London instrument and the Preventx funding route both need commercial design. LSHP Digital Workshop 15 July is the next fixture.</td><td>Partnerships with Scott / Rachel (commercial design when it firms up)</td><td>Watching; workshop 15 Jul</td><td>LSHP KPIs and Preventx figures (LSHP actions); funding route confirmation</td><td><span class="pill grey">Watching brief</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="ig">IG &amp; clinical safety — open actions</h2>
+  <div class="card">
+    <div class="ws-summary">
+      <p><strong>Scope.</strong> DPIA Beta sign-off. Federated multi-controller framework. Legal Directions position. Supplier and commissioner DSAs. DCB0160 deployment accountability. IAO walkthrough and sign-off. Rachel and Scott carry commercial design input alongside Wendi as IG lead.</p>
+      <p><strong>Where it sits.</strong> DPIA Beta at <strong>v0.9.2</strong>: PTT completed first-line review (except the risk section) and the draft has been revised to incorporate the feedback, with PTT and IAO (Lauren Latham) reviews running from 8 July. Full approval is formally tracked to mid-August in the 7 July board pack, superseding the 31 July target. IG assurance for Beta landed on Option 3 (pragmatic Private Beta landing) per Chris Leary, 1 July; the strategic model for Public Beta and beyond stays open. Wendi has the draft MoU with Lexi Moffatt at NHS Legal testing whether its IG provisions replace separate LA DSAs. Clinical safety: no LA holds a CSO and the independent route is judged not likely; lower private beta requirements go to the Assurance Team on Monday 6 July, with sign-off estimated mid-August.</p>
+      <p class="held"><strong>Held positions.</strong> Legal Directions confirmed not required for Private Beta (Wendi Higgins authored note circulated by Ethan 10 June, output of 26 May Delivery Board action); Public Beta still requires them. DCB0129 with NHSE, DCB0160 with LAs per CSU ruling. MHRA confirmed the platform is not a medical device. Federated multi-controller framework: NHSE controls platform, LAs control HIV testing purpose, suppliers as processors or controllers depending on arrangement. Commercial design held: at scale the platform requires DCB0160 completion as joining precursor with NHSE supplying the home-test-specific risk delta as boilerplate.</p>
+    </div>
+    <table>
+      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
+      <tbody>
+        <tr><td>NHS-number data-sharing approach confirmed before LAs are asked to supply participant lists</td><td>Wendi Higgins</td><td>Before private beta recruitment</td><td>Sits on critical path for private beta start</td><td><span class="pill red">Blocked</span></td></tr>
+        <tr><td>DPIA Beta through review chain (Rahima Oliver first-line, Dickie Langley second-line, RMIC approval). Now at v0.9.2: PTT first-line review complete except the risk section, draft revised to incorporate feedback. PTT review of v0.9.2 plus the additionally requested documents (MoU, ACE docs, supplier privacy policies, LA DPIAs) and the IAO first review both run from 8 July.</td><td>Wendi / Rahima / Dickie / RMIC</td><td>Full approval tracked mid-Aug</td><td>Review-chain turnaround; additional documents collated</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Rebase the August gate chain (PEN, CS case, Go/No-Go) against the mid-August DPIA approval date and confirm what the 31 August Private Beta start can absorb</td><td>Wendi Higgins / Scott / Rachel with Matt Thomas</td><td>7 July Delivery Board</td><td>Board acceptance of the rebased chain</td><td><span class="pill red">Slipped to mid-Aug</span></td></tr>
+        <tr><td>Independent CSO route superseded: the 30 June execution deadline passed without execution and the 7 July board pack records CSO support for the LAs as not likely. Route now being worked is lower Assurance Team requirements for private beta (meeting 6 July, DCB0160 actions to close on their input). Track confirmation.</td><td>Meera Parkash with Assurance Team</td><td>6 July Assurance Team meeting</td><td>Assurance Team confirming lower requirements</td><td><span class="pill red">Route changed / unconfirmed</span></td></tr>
+        <tr><td>DCB0160 position statements still required from Salford LA and from KCHFT as deploying organisations (Leah Elliott actioning the KCHFT statement)</td><td>Meera / LAs</td><td>Pre-Beta gates</td><td>LA and KCHFT returns</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>Reconcile Tony Proom's red-line comments (pharmacy sensitive-conversation framing, target population) into the clinical safety record</td><td>Meera Parkash with Annie Wakefield</td><td>Pre-Beta gates</td><td>Comment reconciliation</td><td><span class="pill amber">Follow-through</span></td></tr>
+        <tr><td>Lexi Moffatt (NHS Legal) reviewing whether the MoU's IG provisions can replace separate Data Sharing Agreements with the LAs; draft sent 1 July after a positive call, urgency flagged; MoU wording tweaks may follow. Feeds the DSA party architecture question sitting with Rahima. If yes, the LA-side DSA question dissolves.</td><td>Lexi Moffatt (NHS Legal) via Wendi Higgins</td><td>SLT sign-off target w/e 4 Jul; pre-Beta gates</td><td>NHS Legal turnaround</td><td><span class="pill amber">In flight (1 Jul)</span></td></tr>
+        <tr><td>East Sussex IG statements outstanding; the 25 June Delivery Board agreed Wendi escalates the request and raises it with Tony Proom on his return. The DCB0160 patient-journey side has landed (Salford 29 June, East Sussex 1 July, written summaries filed).</td><td>Wendi Higgins / Annie Wakefield with Richard Samuel (Partnerships)</td><td>Pre-Beta gates</td><td>East Sussex responsiveness (Tony Proom's return)</td><td><span class="pill red">Overdue</span></td></tr>
+        <tr><td>HOTE-1714 (amber 16): PTT asking to assure the LAs' DPIA artefacts directly, which the programme holds unnecessary under the Option 3 self-certification landing; resolution targeted 10 July</td><td>Wendi Higgins</td><td>10 Jul</td><td>Agreement with first-line IG review on the review model</td><td><span class="pill amber">Option 3 interim (1 Jul)</span></td></tr>
+        <tr><td>DCB0160 programme decision (full DCB0160 by LAs / light touch / in-between)</td><td>Programme (Meera scoping)</td><td>Before LA onboarding runbook finalises</td><td>Knock-on to 30 Oct CS/IG approval milestone</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>IAO first review of DPIA v0.9.2 with Lauren Latham, feedback in before RMIC</td><td>Wendi Higgins with Lauren Latham; Chris Leary brokered</td><td>From 8 July</td><td>Lauren's review turnaround</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Compliance register: cyber security (Mark Simkin) signed off; DPIA sign-off the remaining requirement. RIMC to review the DPIA data retention section once the next iteration is ready.</td><td>Wendi Higgins / Abhishek Ranjan</td><td>With next DPIA iteration</td><td>DPIA rework post-PTT comments</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Sense-check Wendi Higgins' situation directly with her or Chris Leary</td><td>Scott / Rachel</td><td>This week</td><td>Conversation with Wendi or Chris Leary</td><td><span class="pill grey">Watching brief</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="blockers">Dependencies and blockers</h2>
+  <div class="card">
+    <table class="narrow">
+      <thead><tr><th>Dependency / blocker</th><th>Owner</th><th>Impact</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>DCB0160 deployment safety case: neither LA holds one. The independent CSO route (17 June TIG, execution deadline 30 June) did not execute; CSO support now judged not likely and lower Assurance Team requirements for private beta are being tested (meeting 6 July). Position statements required from Salford LA and KCHFT as deploying organisations.</td><td>Meera Parkash (CS) with Assurance Team</td><td>Annex B gate. Cannot enter live processing without it.</td><td><span class="pill red">Route changed / unconfirmed</span></td></tr>
+        <tr><td>DSA party architecture: MoU assumes NHSE-to-supplier model but unconfirmed by NHS Legal. Lexi Moffatt now reviewing whether the MoU's IG provisions remove the need for separate LA DSAs (1 July)</td><td>Rahima / Lexi Moffatt (NHS Legal) via Wendi Higgins</td><td>Blocks signature of MoU and DSA chain; Lexi's ruling could dissolve the LA side</td><td><span class="pill red">Blocked / in review</span></td></tr>
+        <tr><td>DSAs for supplier-to-NHSE Beta flows not yet in place. PTT template structure unconfirmed; Annex 6 (Anon Process) template not yet provided.</td><td>PTT / NHS Legal</td><td>Annex B gate</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>Salford Beta funding gap: exceeds NHSE expectations; no LA funding committed this FY</td><td>Shirley Gaynor-Ward / Richard Samuel</td><td>Salford participation at risk without resolution</td><td><span class="pill red">Escalation needed</span></td></tr>
+        <tr><td>NHS-number data-sharing approach for private beta participant lists</td><td>Wendi Higgins</td><td>Critical path for private beta start at Salford and East Sussex</td><td><span class="pill red">Blocked</span></td></tr>
+        <tr><td>Beta MoU legal basis gap (Alpha MoUs carry wrong NHSE address, no data sharing framework currently covers supplier-to-NHSE Beta flows)</td><td>Wendi / NHS Legal</td><td>Carried risk</td><td><span class="pill amber">Open</span></td></tr>
+        <tr><td>IAO walkthrough and sign-off: Lauren Latham appointed; v0.8 with her since 16 June, v0.9.2 review from 8 July</td><td>Lauren Latham (IAO); Wendi Higgins</td><td>Sits on DPIA sign-off path</td><td><span class="pill amber">In flight</span></td></tr>
+        <tr><td>DHSC / NHSE merger brings template change to legal directions, DPIAs and IG documentation "towards the end of this year" (Chris Leary 23 Apr)</td><td>NHSE / DHSC</td><td>Re-do cost between merger and Public Beta start 30 Nov 26</td><td><span class="pill amber">Watching</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="critical">Critical path</h2>
+  <div class="callout">
+    <p><strong>Pre-beta gate chain.</strong> Originally DPIA Beta sign-off <strong>31 July</strong> → PEN test <strong>1 August</strong> → Clinical Safety case submission <strong>3 August</strong> → Go / No-Go <strong>17 August</strong> → Private Beta start <strong>31 August 2026</strong>. The 7 July board pack now tracks DPIA full approval and clinical safety sign-off to <strong>mid-August</strong>, which breaks the original sequencing: the chain needs rebasing at the 7 July Delivery Board if the 31 August start is to hold. Every gate is downstream of an MoU, DPIA or DCB0160 dependency, and the slip knocks through to the 30 October CS/IG approval milestone and the Public Beta start (30 November 2026).</p>
+    <p><strong>Sequence to signature:</strong> Richard Samuel's steers on the six funding questions → Lexi Moffatt's DSA ruling → settle v0.3 wording (Ronan page 19 on return) → SLT sign-off → resolve the East Sussex contracting question → Salford pattern follows → Assurance Team confirms the lower clinical safety requirements.</p>
+  </div>
+
+  <h2 id="history">History</h2>
+  <div class="log">
+    <details>
+      <summary><span class="d">3 Jul</span>Gary Birnie shared the draft HIV private beta brief (not yet signed off)</summary>
+      <div class="body"><p>Sets out what is being asked of each LA and what NHSE handles, as context for the MoU financial commitments and technical sections.</p><p class="source">Source: Re: Beta MoU, Gary Birnie, 3 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">3 Jul</span>Clause 6 commercial thread handed over to Richard Samuel in full</summary>
+      <div class="body"><p>Scott forwarded the complete Private Beta MoU commercial thread to Richard Samuel, completing the handover started with the 1 July skeleton and steering questions. The commercial strand is the last substantive gap to SLT sign-off.</p><p class="source">Source: Private Beta MoU Outstanding Info thread, forward to Richard Samuel, 3 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">3 Jul</span>7 July board pack IG report drafted: DPIA v0.9.2, approval tracked mid-August, HOTE-1714 raised</summary>
+      <div class="body"><p>DPIA at v0.9.2 with PTT first-line review complete except the risk section; PTT and IAO reviews from 8 July; privacy policy and terms of service uplift due 10 July, guidance gone to suppliers, matching LA guidance a next-period priority; full approval formally tracked to mid-August. Directions position paper sent to Rahima Oliver as requested, no issues raised to date. NHS Legal reviewing the MoU IG terms and confirming whether separate DSAs with the LAs are required. New issue HOTE-1714 (16 amber): PTT asking to assure LA DPIA artefacts directly, which the programme believes unnecessary; a Pathway 2 DPIA is also now under scoping. Rahima Oliver confirmed as PTT lead for HomeTest, returned an extensive comments set on the DPIA, and asked to see the LAs' DPIAs and the suppliers' privacy policies. The pack also records CSO support for the LAs as not likely.</p><p class="source">Source: 260707 - HomeTest Delivery Board Highlight Report.pptx, Governance / Delivery Board / 26260707.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">2 Jul</span>HIV Beta planning update filed: 40-completion scale, LA funding figures, pre-live gaps</summary>
+      <div class="body"><p>Gary Birnie working draft (updated 2 July): private beta scale 40 full journey completions minimum, 20 per LA; East Sussex recruiting 5 staff then 15 citizens (aim 5 never-home-testers, no incentives, Health Advising team support); Salford 20 members of the public via PaSH, whose £9k proposal is redirected to public beta pending sign-off. LA funding documented from Richard Samuel's 23 June call: East Sussex £55k total including £20k for beta, Salford £40k, London £30k to £40k to be confirmed (kit costs not covered), NHSE covering public beta kit costs up to £10k across both LAs. DCB0160 position statements required from Salford LA and from KCHFT as deploying organisations (Leah Elliott actioning the KCHFT statement). Open pre-live gaps logged: P9 verification unconfirmed, silent API order failure with no owner, reactive-result clinical callback to confirm before go-live. Public beta commercial contracts placeholder 17 August to 9 October. The companion proposition paper (filed 1 July) frames the private beta as a controlled technical test with GDS to confirm the minimum completions.</p><p class="source">Source: 02 HomeTest_HIV_Beta_Planning_Update (INTERNAL USE ONLY).docx and 01 HomeTest_HIV_Beta_Proposition.docx, Business Cases / Beta - Private and Public Recruitment.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">2 Jul</span>Technical strand review under way with Tom Rawlinson and Simone Bilton</summary>
+      <div class="body"><p>Focus on the Annex A KPI and reporting sections (Live Service operation and KPI and reporting outcomes); nothing to add for the LAs in a technical sense beyond possibly some data requirements (Tom and Simone working through what data NHSE gets itself, from suppliers, or via the LAs); supplier-side API and availability detail can be trimmed from the LA MoU because it belongs in the supplier contracts. Scott's framing: soften and trim the LA MoU to make it more palatable while keeping LA accountabilities, subject to a Richard/Chris decision.</p><p class="source">Source: Re: Private Beta MoU Outstanding Info exchange, Tom Rawlinson / Scott Eason, 2 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>Private Beta MoU consolidated for SLT sign-off: four strands, East Sussex v0.3 as master</summary>
+      <div class="body"><p>Scott Eason to Wendi Higgins, Meera Parkash, Tom Rawlinson, Simone Bilton and Richard Samuel, cc Matt Thomas, Rachel, Annie, Gary Birnie, Shirley, Scott Baxter and Chris Leary: East Sussex v0.3 is the master, Salford uplifts once final; target SLT sign-off w/e 4 July. Four strands with owners: IG (Wendi, plus Lexi Moffatt review), clinical safety (Meera, Assurance Team Monday 6 July), technical (Tom Rawlinson with Simone Bilton), commercial (Richard Samuel).</p><p class="source">Source: Private Beta MoU Outstanding Info email, 1 July 2026, and replies.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>Clause 6 skeleton drafted on the Wayfinder pattern; six steering questions to Richard Samuel</summary>
+      <div class="body"><p>Skeleton mirrors the Wayfinder MoU pattern Chris Leary shared: purpose of award, tranched payment tied to milestones, evidence of completion, right to withhold/reduce/recover, reporting cadence, no future-year guarantee. Six questions: (1) grant versus commissioning payment versus revenue-tied model (Wayfinder is a straight grant, proposed default; drives VAT, accounting and PSR/PA23 treatment); (2) the consideration statement tying funding to defined LA deliverables; (3) envelope balance against ACE CTF spend (Preventx £100k, SH:24 £99.5k funded directly); (4) per-LA amounts and schedule (LAs told 1,000 tests each; Salford's PaSH ask of ~£58k plus £10 per patient plus kit costs is materially higher than the East Sussex shape); (5) tranche triggers (milestones only, or plus KPIs); (6) termination, pro-rating and clawback if Beta is curtailed or an LA drops out. Sent 1 July cc Annie Wakefield; forwarded to Chris Leary 2 July.</p><p class="source">Source: Private Beta MoU Commercial Model email, 1 July 2026; FW to Chris Leary 2 July.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>Chris Leary lands Option 3 for Beta IG assurance, backed by informal PTT steer</summary>
+      <div class="body"><p>Replying to Scott's 30 June three-options framing: <em>"In the meantime we go with Option 3"</em>, backed by an informal exchange with Dickie Langley: <em>"we don't go in-depth (if we did full assurance then we would take on liability - and be sticking our noses in where we're not welcome). Typically we ask for confirmation that local orgs have all the relevant IG stuff (transparency, sharing agreements, DPIAs, etc.) and rely on that self-assertion. We might do things like check an org's DSPT status."</em> The strategic model for Public Beta and beyond stays open, and Chris asked for the IG risk to be formally raised if not already logged. Bears directly on HOTE-1714. Chris also shared the Wayfinder MoUs as a finance/payment reference and confirmed Simone Bilton and Tom Rawlinson cover technical in Will and Ronan's absence.</p><p class="source">Source: Re: Beta MoU email, Chris Leary, 1 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>Wendi sends draft MoU to Lexi Moffatt (NHS Legal): can the MoU replace separate LA DSAs?</summary>
+      <div class="body"><p>After a positive call, Wendi sent the draft Beta MoU to Lexi Moffatt to review the IG provisions and advise whether the MoU can replace the need for a separate Data Sharing Agreement with the LAs; wording tweaks may follow, urgency flagged.</p><p class="source">Source: Re: Beta MoU email, Wendi Higgins, 1 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>East Sussex Beta MoU moved to DRAFT v0.3: clause 11 IG rework</summary>
+      <div class="body"><p>Controller/processor summary no longer subject to confirmation in the executed DSA; DPIA and DSA obligations restated; the pre-live IG approvals list trimmed, dropping the LA existing-service DPIA uplift step; Supplier singular throughout. Several sentences carry dropped words, so v0.3 reads as a working draft mid-edit rather than a settled text.</p><p class="source">Source: MoU between NHSE and East Sussex County Council - Beta - DRAFT v0.3.docx, Partnerships / LA / MoU and NDA / Beta, 1 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>East Sussex patient journey mapped; Tony Proom returns red-line comments same day</summary>
+      <div class="body"><p>East Sussex mapping (1 July, with Tony Proom's red-line reply cc Leah Elliott and Stephen Grice, KCHFT sexual health service leads): two GP practices plus two pharmacies with QR codes on prescription bags, reactive results drawn down by the specialist sexual health service via a Preventx portal (confirmed), and pushback on the pharmacy sensitive-conversation framing and on narrowing the target population.</p><p class="source">Source: Summary of points emails, filed in Clinical Safety / LA &amp; CS Meeting e-mails, 1 July 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">1 Jul</span>LSHP (London) Beta prospect opened</summary>
+      <div class="body"><p>Meeting record: potential London participation in Beta, HIV self-sampling via the NHS App front door alongside existing SHL ordering channels, SHL branding retained for trust, aiming for London residents between January and March 2027, funding likely routed via Preventx. Technical build largely done through East Sussex and Salford, so London work would centre on clinical safety and IG. LSHP Digital Workshop 15 July; NHSE actions include SHL-specific Figma screens, brokering Pete Ward (Referrals and Appointments), a standing working group and following up the Preventx funding route. No MoU or commercial step yet.</p><p class="source">Source: HomeTest LSHP Meeting Notes 1st July.docx, Partnerships / LSHP.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">30 Jun</span>Beta MoU threads consolidated to Chris Leary; IG assurance framed as three options</summary>
+      <div class="body"><p>Scott's consolidation email to Chris Leary (with a version for the LA group): clinical safety content (Meera Parkash), IG drafting being finalised (Wendi Higgins), and two open gaps, the LA pricing and financial commitment (not in the document or written down anywhere with visibility) and the post-go-live technical wording (Ronan O'Connor and Will Tweddle out; Tom helping).</p><p>The IG assurance question was framed as three explicit options: Option 1, NHSE as default reviewer (tight control, hard to scale, needs IG resource that does not exist); Option 2, self-certification with audit and spot-check (commissioners and suppliers self-certify their documentation is uplifted and consistent with the platform position, NHSE holds an audit trail and right of review, scales better, liability set in the MoU or contract); Option 3, pragmatic Private Beta landing (LAs and suppliers uplift existing documentation, Rahima Oliver reviews for errors and inconsistencies, the MoU carries self-certification wording as reinforcement, the DPIA continues in parallel, Public Beta and beyond parked for a future decision). Risk recorded that NHSE defaults into Option 1 and demand outstrips the team. Background (Rachel, 30 June): the quality of updating LA and supplier documents is not something NHSE will do in future state, so first-line IG findings need a remedial process rather than an automatic go-live stop; the intent is to replicate platform onboarding by self-certification against a minimum standard, with audit or spot checks and remedial steps if a standard is not met.</p><p class="source">Source: Beta MoU email, Scott Eason to Chris Leary, 30 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">29-30 Jun</span>Wendi Higgins IG revisions: self-certification hooks into the MoU</summary>
+      <div class="body"><p>A separate tracked-change Word doc adding self-certification hooks so additional IG assurance can be implemented in Beta without delaying signature, kept high level for flex; Tom asked to check the Annex B para 5 security and assurance wording (page 22) in Ronan's absence; Rachel Flower reviewed and content. In parallel, Scott, Rachel and Wendi consolidated outstanding Beta MoU items and owners in the Draft email re: Beta MoUs exchange, with the IG options to go to Chris Leary separately.</p><p class="source">Source: IG revisions to MoU email, Wendi Higgins, 29-30 June 2026; Draft email re: Beta MoUs exchange, 29-30 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">30 Jun</span>Meera Parkash content with clinical safety drafting; LA requirement may be lower</summary>
+      <div class="body"><p>Content with the draft and re-checking the LA requirements with the Assurance Team now there is more information; expects the requirement may be lower. Her reply also set out the CS outcome statement and required outputs.</p><p class="source">Source: Re: Beta MoU email, Meera Parkash, 30 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">29 Jun</span>Salford patient journey mapped</summary>
+      <div class="body"><p>Meera Parkash written summary to Olivia Hastie and Monica Saiz-Miranda covering PASH-led recruitment, a private beta scope still under discussion and possibly limited to around 20 individuals ordering via the NHS App, two GP practices with migrant and international-student populations, and reactive results handling.</p><p class="source">Source: Summary of points email, Meera Parkash, filed in Clinical Safety / LA &amp; CS Meeting e-mails.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">25 Jun</span>Clinical safety stakeholder calls requested by Chris Leary</summary>
+      <div class="body"><p>Meera Parkash needs patient-journey and hand-off calls with East Sussex and Salford (including hand-offs to NHS trusts), flagged as a risk to clinical safety go-live approval if not resolved. Annie Wakefield chasing LA contacts (one on leave until 29 June). Both calls subsequently landed (29 June and 1 July).</p><p class="source">Source: Help! Stakeholder meeting required for Private Beta Clinical Safety, Chris Leary, 25 June 2026, with Annie Wakefield and Richard Samuel replies.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">24 Jun</span>East Sussex Beta MoU at v0.2; position bullets to Delivery Board</summary>
+      <div class="body"><p>Rachel Flower bullets to Matt Thomas for Delivery Board: East Sussex Beta MoU at v0.2 with Wendi Higgins' IG/data-protection amendments (Section 11 and Annex) and Meera Parkash's baselined clinical safety annex (DCB0129 / DCB0160 requirements, page 14); page 19 technical items awaiting Ronan O'Connor; independent CSO funding agreed in principle 17 June TIG, deadline 30 June; Salford funding gap; DSA architecture blocked on Rahima (NHS Legal). KCHFT provides East Sussex's sexual health service (operational delivery); ESCC remains commissioner and counterparty.</p><p class="source">Source: Re: Private Beta - HIV - contracts, Rachel Flower, 24 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">23 Jun</span>LA contract refresh thread opened for Private Beta go-live</summary>
+      <div class="body"><p>Rachel Flower's email to Richard Samuel and Annie Wakefield opened the formal refresh thread covering East Sussex, Salford, PreventX and SH:24.</p><p class="source">Source: Private Beta HIV contracts email, Rachel Flower, 23 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">17 Jun</span>Independent CSO funding model agreed in principle at TIG (since superseded)</summary>
+      <div class="body"><p>Central funding agreed in principle at the 17 June TIG, triggered because neither LA holds a CSO and the NHSE-internal CS team (Meera, Patrick, David) sit inside the manufacturer conflict of interest. Critical deadline 30 June. The deadline passed without execution; the 7 July board pack records CSO support for the LAs as not likely, and the route being worked is now lower Assurance Team requirements for private beta.</p><p class="source">Source: 17 June TIG record; 260707 - HomeTest Delivery Board Highlight Report.pptx.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">16 Jun</span>DPIA v0.8 shared with Lauren Latham (IAO)</summary>
+      <div class="body"><p>Shared at Chris Leary's request. Version lineage: v0.5 CLEAN in the HomeTest IG SharePoint folder is the April baseline (dated 12 June); v0.6, v0.7 and v0.8 sit on the PTT SharePoint area. The DPIA Version Tracker records Lauren Latham as IAO.</p><p class="source">Source: DPIA Version Tracker.xlsx, 06. HomeTest - IG / DPIA, 16 June 2026.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">10 Jun</span>Legal Directions note circulated; ESCC closed to Alpha only at SLT</summary>
+      <div class="body"><p>Legal Directions confirmed not required for Private Beta: note authored by Wendi Higgins, output of the 26 May Delivery Board action to sense-check the legal-direction position, circulated by Ethan Illingworth. Public Beta still requires Directions. Same day, HOTE-678: ESCC closed at SLT as Alpha only (Chris Leary).</p><p class="source">Source: Legal Directions note circulation, 10 June 2026; HOTE-678.</p></div>
+    </details>
+    <details>
+      <summary><span class="d">Apr-May</span>Foundations: MoU drafting, DPIA workshops, framework positions</summary>
+      <div class="body"><p>LA MoUs (Salford, East Sussex) drafted by Scott Eason, circulated to Wendi Higgins 30 April, then to Meera Parkash and Ronan O'Connor 28 May for clinical safety and architectural review; explicitly not legally binding by design, IG framework via Annex B. DPIA review workshops with Scott as commercial input: 20 April (Wendi, Gillette, Ronan, Simone, Ethan) and the 23 April afternoon IG Workshop (Chris Leary, Wendi, Rachel, Scott), where the per-API plus per-test supplier onboarding model crystallised and Chris Leary confirmed himself as SLT point man for IG and Clinical Safety. HOTE-414 (NHSE statutory powers risk) owners: Rachel Flower, Wendi Higgins. East Sussex service provider confirmed as Kent Community Health NHS Foundation Trust in the LA Expression of Interest response (KCHFT contact Kazeem Aderogba); Leah Elliott (KCHFT) leads East Sussex sexual health and HIV clinical services, working alongside PreventX / SHUK, per the co-design workshop records.</p><p class="source">Source: MoU drafting record April-May 2026; DPIA workshop records; LA Expression of Interest Response (Alpha).xlsx; co-design workshop records.</p></div>
+    </details>
+  </div>
+
+  <footer>
+    <p>Maintained by Scott Eason &amp; Rachel Flower. Live position above; every closed or historical item lives in History with its source.</p>
+  </footer>
+
+</div>
+</body>
+</html>
