@@ -80,8 +80,20 @@
   .datebar .d { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--nhs-blue); border-radius: 4px; padding: 6px 10px; font-size: 12px; min-width: 110px; }
   .datebar .d strong { display: block; color: var(--nhs-dark); }
   .datebar .d.hot { border-left-color: #b00020; }
+  h3.cat { border-bottom: none; background: var(--pale); padding: 6px 12px; border-radius: 4px; color: var(--nhs-dark); margin: 18px 0 10px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 6px; }
+  .tile { display: block; background: #fff; border: 1px solid var(--border); border-left: 4px solid #c27803; border-radius: 6px; padding: 12px 14px; text-decoration: none; color: var(--ink); }
+  .tile:hover { border-color: var(--nhs-blue); box-shadow: 0 2px 8px rgba(0,48,135,0.18); }
+  .tile .t-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+  .tile .t-top strong { color: var(--nhs-dark); font-size: 13.5px; }
+  .tile p { margin: 0 0 8px; font-size: 12.5px; line-height: 1.45; }
+  .tile .t-meta { font-size: 11px; color: var(--muted); }
+  .tile.red { border-left-color: #b00020; }
+  .tile.green { border-left-color: #146c2e; }
+  .tile.grey { border-left-color: #555; }
   @media (max-width: 900px) {
     .grid-3 { grid-template-columns: 1fr; }
+    .tiles { grid-template-columns: 1fr; }
     .grid-2 { grid-template-columns: 1fr; }
   }
 </style>
@@ -101,8 +113,9 @@
   </header>
 
   <nav class="toc">
+    <a href="#door">Front door</a>
     <a href="#context">Context</a>
-    <a href="#summary">At a glance</a>
+    <a href="#summary">Summaries</a>
     <a href="#mou">MoUs (Private Beta + Acute)</a>
     <a href="#ig">IG</a>
     <a href="#fsns">Future State Next Stages</a>
@@ -152,12 +165,101 @@
   </div>
 
   <!-- ===================== AT A GLANCE ===================== -->
-  <h2 id="summary">At a glance</h2>
+  <h2 id="door">Front door — one tile per task, click through for detail</h2>
+
+  <h3 class="cat">HIV Private Beta</h3>
+  <div class="tiles">
+    <a class="tile" href="#card-beta">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>East Sussex Beta MoU</strong></div>
+      <p>v0.3 is the master; clause 11 IG reworked; SLT sign-off targeted w/e 4 Jul; Ronan's page 19 items open; Proom red-lines to reconcile.</p>
+      <div class="t-meta">Scott · Next: SLT sign-off</div>
+    </a>
+    <a class="tile grey" href="#card-beta">
+      <div class="t-top"><span class="pill grey">Queued</span><strong>Salford Beta MoU</strong></div>
+      <p>v0.1; uplifts once East Sussex is final. Recruits 20 via PaSH; PaSH £9k proposal redirected to public beta.</p>
+      <div class="t-meta">Scott · Follows East Sussex</div>
+    </a>
+    <a class="tile" href="#card-beta">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Clause 6 funding (commercial)</strong></div>
+      <p>With Richard Samuel: skeleton and six steering questions (1 Jul), full thread handed over 3 Jul. Last substantive gap. Salford PaSH ask ~£58k + £10 pp vs smaller East Sussex shape.</p>
+      <div class="t-meta">Richard Samuel · Next: steers back</div>
+    </a>
+    <a class="tile" href="#card-beta">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Technical annex</strong></div>
+      <p>Tom and Simone reviewing Annex A KPI and reporting sections; data requirements being settled; supplier-side API detail flagged for trim.</p>
+      <div class="t-meta">Tom Rawlinson · Review live</div>
+    </a>
+    <a class="tile red" href="#card-ig">
+      <div class="t-top"><span class="pill red">Critical path</span><strong>IG &amp; DPIA</strong></div>
+      <p>DPIA v0.9.2, approval tracked mid-Aug; NHS-number approach unconfirmed; Lexi Moffatt testing MoU-replaces-DSA; HOTE-1714 resolution by 10 Jul.</p>
+      <div class="t-meta">Wendi Higgins · PTT/IAO reviews from 8 Jul</div>
+    </a>
+    <a class="tile red" href="#card-beta">
+      <div class="t-top"><span class="pill red">Blocked</span><strong>Clinical safety</strong></div>
+      <p>No LA CSO and the independent route "not likely"; lower private beta requirements with Assurance Team Mon 6 Jul; sign-off estimated mid-Aug; DCB0160 statements outstanding.</p>
+      <div class="t-meta">Meera Parkash · Assurance Team 6 Jul</div>
+    </a>
+  </div>
+
+  <h3 class="cat">PSA Acute Use Case</h3>
+  <div class="tiles">
+    <a class="tile" href="#card-rduh">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>RDUH MoU &amp; counter-signature</strong></div>
+      <p>Re-signed by Dean Freed 3 Jul; term to 30 Sep 2027; with Sam Higginson to counter-sign. Fix the "ten-month" context line before signing.</p>
+      <div class="t-meta">Rachel / Scott · Next: RDUH counter-signature</div>
+    </a>
+    <a class="tile" href="#card-rduh">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>£198k funding transfer</strong></div>
+      <p>Routing via NHS Devon ICB (Ben Chilcott); NHSE Finance engaged (Georgina Dodsworth); BC28863 reduction thread with Finance.</p>
+      <div class="t-meta">Shirley / Finance · Follows counter-signature</div>
+    </a>
+    <a class="tile grey" href="#card-rduh">
+      <div class="t-top"><span class="pill grey">Watch</span><strong>Mobilisation &amp; acute pipeline</strong></div>
+      <p>Mobilisation Plan v0.2 ready for build-out after counter-signature. ChelWest instrument decision open. St James's and Lewisham at discovery; no commercial step.</p>
+      <div class="t-meta">Rachel / Annie · Post counter-signature</div>
+    </a>
+  </div>
+
+  <h3 class="cat">Future State &amp; Commercial</h3>
+  <div class="tiles">
+    <a class="tile" href="#card-fs">
+      <div class="t-top"><span class="pill amber">Due Mon</span><strong>Programme Board paper</strong></div>
+      <p>Commercial model paper due 16:00 Mon 6 Jul (Rec Paper exec summary plus the eight key principles); board 20 Jul, action HT045.</p>
+      <div class="t-meta">Rachel / James · 16:00 Mon 6 Jul</div>
+    </a>
+    <a class="tile green" href="#card-fs">
+      <div class="t-top"><span class="pill green">Filed</span><strong>Phase 2 Plan</strong></div>
+      <p>v0.1 filed 25 Jun: five-stage spine, Plan A Open Framework (Aug 2027) with Plan C interim protecting Apr 2027 Beta. Owners and sizing to populate; James adding the procurement timetable.</p>
+      <div class="t-meta">Scott / James · Populate next two weeks</div>
+    </a>
+    <a class="tile" href="#card-fs">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Sourcing strategy</strong></div>
+      <p>v0.1 draft, James holding the pen; outline direction of travel before 27 Jul; governance-ready version with KPIs, evaluation criteria and volumes to follow.</p>
+      <div class="t-meta">James Cowley · Outline pre-27 Jul</div>
+    </a>
+    <a class="tile" href="#card-fs">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Leeds workshops</strong></div>
+      <p>Wed 8 Jul: procurement planning and sourcing strategy (volume, framework structure, commercial models, interim routes), plus Future State learnings for HealthStore.</p>
+      <div class="t-meta">James / Martin / Mandie · Wed 8 Jul</div>
+    </a>
+    <a class="tile" href="#card-fs">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Supplier Forum 3</strong></div>
+      <p>22 Jul Manchester; agendas settled 3 Jul; draft decks due Fri 10 Jul; venue booking awaiting price sign-off; agenda note out early Mon.</p>
+      <div class="t-meta">Annie + session leads · Decks Fri 10 Jul</div>
+    </a>
+    <a class="tile" href="#card-fs">
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Supplier cost discovery &amp; SOW09</strong></div>
+      <p>Preventx returned its cost apportionment; SH:24 cannot provide short-term figures. SOW09 contract-gap review 10 Jul (Matt, Simone, Scott, Tom, Rachel).</p>
+      <div class="t-meta">Rachel / Matt Thomas · Review 10 Jul</div>
+    </a>
+  </div>
+
+  <h2 id="summary">Workstream summaries</h2>
 
   <div class="grid-2">
 
-    <div class="card summary">
-      <h4>RDUH Acute MoU</h4>
+    <div class="card summary" id="card-rduh">
+      <h4>PSA Acute Use Case · RDUH MoU</h4>
       <span class="pill amber">Counter-signature pending</span>
       <p><strong>Where it sits.</strong> NHSE side signed by Dean Freed (Head of NHSE Procurement) on 23 June after BC28661 funding approval. Richard Samuel forwarded to Sam Higginson (RDUH) the same day for Trust counter-signature.</p>
       <p><strong>Higginson's two open points are resolved</strong> (Richard Samuel reply, 2 July): (a) term extended to 30 September 2027, money flowing in 26/27 with residual activity into 27/28 and clause 13.1 as fallback; (b) the wearables ask is covered by the MoU's existing extension-of-scope clause, which references development work in support of NHSE's wider self-health programme (including wearables).</p>
@@ -168,8 +270,8 @@
       <p class="stat">Primary owner: Rachel Flower with Scott Eason · Cross-team: Richard Samuel, Sam Higginson (RDUH), Dean Freed (NHSE Procurement), Annie Wakefield, Pathway 2 · SLT sponsor: Shirley Gaynor-Ward (BC28661)</p>
     </div>
 
-    <div class="card summary">
-      <h4>Private Beta LA MoUs</h4>
+    <div class="card summary" id="card-beta">
+      <h4>HIV Private Beta · LA MoUs</h4>
       <span class="pill amber">Refresh in flight</span>
       <p><strong>Where it sits.</strong> <strong>East Sussex Beta MoU at DRAFT v0.3 (1 July).</strong> Clause 11 IG wording reworked: DPIA and DSA sequencing simplified, the LA existing-service DPIA uplift dropped from the pre-live IG approvals list, controller/processor summary no longer expressed as subject to confirmation in the executed DSA. Some wording is rough mid-edit (dropped words), so treat v0.3 as a working draft, not a settled text. Meera Parkash's clinical safety annex baselined at v0.2 carries through. Still needs Ronan O'Connor review of page 19 technical items. <strong>Salford Beta MoU remains at v0.1</strong> and will be uplifted once East Sussex template is finalised. Private beta scale is now firmed at 40 full journey completions minimum, 20 per LA (HIV Beta planning update, 2 July).</p>
       <p><strong>Four strands to SLT sign-off</strong> (consolidated 1 Jul, target w/e 4 Jul):</p>
@@ -193,8 +295,8 @@
       <p class="stat">Primary owner: Rachel Flower with Scott Eason · Cross-team: Ronan O'Connor, Wendi Higgins, Meera Parkash, Richard Samuel, Annie Wakefield · Operational delivery: Leah Elliott (KCHFT) with PreventX · Commissioner and MoU counterparty: Tony Proom (ESCC) · NHS Legal: Rahima</p>
     </div>
 
-    <div class="card summary">
-      <h4>IG Workstream</h4>
+    <div class="card summary" id="card-ig">
+      <h4>HIV Private Beta · IG &amp; Clinical Safety</h4>
       <span class="pill amber">In flight</span>
       <p><strong>Where it sits.</strong> DPIA Beta is now at <strong>v0.9.2</strong>: PTT completed first-line review (except the risk section) and the draft has been revised to incorporate the feedback, with PTT and IAO (Lauren Latham) reviews running from 8 July. v0.8 was shared with Lauren Latham on 16 June at Chris Leary's request. The v0.5 CLEAN copy in the HomeTest IG SharePoint folder is the April baseline; v0.6, v0.7 and v0.8 sit on the PTT SharePoint area. Rahima Oliver is confirmed as PTT lead for HomeTest and has returned an extensive comments set on the DPIA; she has also asked to see the LAs' DPIAs and the suppliers' privacy policies. The Directions position paper went to Rahima as requested, with no issues raised to date. The privacy policy and terms of service uplift is due 10 July, guidance has gone to suppliers to uplift their privacy policies, and matching guidance to the LAs on their DPIAs is a next-period priority. The future-state IG assurance question (three options put to Chris Leary on 30 June) has an interim answer: Chris Leary confirmed on 1 July that the programme goes with Option 3 for now, the pragmatic Private Beta landing, backed by an informal PTT steer from Dickie Langley that PTT does not go in-depth on local organisations' documents and relies on confirmation and self-assertion, with checks such as DSPT status. The strategic decision for Public Beta and beyond stays open. Separately, Wendi has the draft MoU with Lexi Moffatt at NHS Legal testing whether its IG provisions can replace separate LA DSAs. Full DPIA approval is now formally tracked to mid-August in the 7 July board pack, superseding the 31 July target; the August gate chain needs rebasing against it. Federated multi-controller framework held: NHSE controls platform, LAs control HIV testing purpose, suppliers as processors or controllers depending on arrangement.</p>
       <p><strong>Held positions.</strong> Legal Directions confirmed not required for Private Beta (Wendi Higgins authored note circulated by Ethan 10 June, output of 26 May Delivery Board action). Public Beta still requires them. DCB0129 with NHSE, DCB0160 with LAs per CSU ruling. MHRA confirmed platform not a medical device.</p>
@@ -211,8 +313,8 @@
       <p class="stat">Primary owner: Wendi Higgins (NHSE IG) · Commercial design: Scott Eason · SLT point: Chris Leary · Watching brief on Wendi continuity</p>
     </div>
 
-    <div class="card summary">
-      <h4>Future State Next Stages</h4>
+    <div class="card summary" id="card-fs">
+      <h4>Future State &amp; Commercial · Next Stages</h4>
       <span class="pill green">Phase 1 closed</span>
       <p><strong>Where it sits.</strong> Rec Paper v1.1 (Post Play Back) in SharePoint reflects the open-framework decision under PA23. The decision in principle is recorded in James Cowley's 22 June post-playback summary email: <em>"NHSE facilitated national marketplace... open framework as opposed to a dynamic market"</em>. Mandie Holt (NHS Commercial, James's line manager) sponsoring the sourcing strategy as the next-step ask.</p>
       <ul class="state">
@@ -234,7 +336,7 @@
   <!-- ===================== MOU ===================== -->
   <div class="ws" id="mou">
     <div class="ws-head">
-      <h2>1 · MoUs (Private Beta and Acute)</h2>
+      <h2>1 · MoU detail — HIV Private Beta (LA MoUs) &amp; PSA Acute (RDUH)</h2>
       <div class="status-row">
         <span class="pill amber">In flight</span>
         <span class="tag">Last meaningful update: 4 Jul 2026 (Dean Freed re-signed extended RDUH MoU 3 Jul, back to RDUH for counter-signature; Beta MoU SLT sign-off targeted w/e 4 Jul; commercial side with Richard Samuel (Clause 6 skeleton and thread handed over 3 Jul); technical review live with Tom Rawlinson; Lexi Moffatt testing MoU-replaces-DSA)</span>
@@ -336,7 +438,7 @@
   <!-- ===================== IG ===================== -->
   <div class="ws" id="ig">
     <div class="ws-head">
-      <h2>2 · IG Workstream</h2>
+      <h2>2 · IG detail — HIV Private Beta</h2>
       <div class="status-row">
         <span class="pill amber">In flight</span>
         <span class="tag">Last meaningful update: 4 Jul 2026 (Chris Leary lands Option 3 for Beta IG assurance with informal Dickie Langley steer; Lexi Moffatt at NHS Legal testing whether the MoU replaces separate LA DSAs; DPIA v0.9.2 position and mid-August approval tracking carried)</span>
@@ -396,7 +498,7 @@
   <!-- ===================== FSNS ===================== -->
   <div class="ws" id="fsns">
     <div class="ws-head">
-      <h2>3 · Future State Next Stages</h2>
+      <h2>3 · Future State &amp; Commercial detail</h2>
       <div class="status-row">
         <span class="pill green">Phase 1 closed</span>
         <span class="tag">Last meaningful update: 4 Jul 2026 (Programme Board papers due 16:00 Mon 6 Jul; Leeds workshops confirmed Wed 8 Jul incl. HealthStore learnings session; SOW09 contract-gap review due 10 Jul; Preventx cost apportionment received)</span>
