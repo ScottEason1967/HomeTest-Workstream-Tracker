@@ -25,10 +25,20 @@
   header.banner p.lead { margin: 0; color: var(--nhs-light); font-size: 15px; }
   header.banner .meta { margin-top: 14px; font-size: 12px; color: #cfe4f3; display: flex; flex-wrap: wrap; gap: 18px; }
   header.banner .meta strong { color: #fff; margin-right: 6px; }
-  nav.toc { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 22px; font-size: 13px; }
-  nav.toc a { color: var(--nhs-blue); text-decoration: none; margin-right: 14px; font-weight: 600; }
-  nav.toc a:hover { text-decoration: underline; }
-  nav.toc a.here { color: var(--nhs-dark); border-bottom: 2px solid var(--nhs-dark); }
+  nav.toc { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 7px; height: 54px; background: var(--nhs-dark); padding: 0 12px; margin: 0 0 22px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,48,135,.22); overflow-x: auto; white-space: nowrap; }
+  nav.toc::-webkit-scrollbar { height: 0; }
+  nav.toc a { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none; color: #dbe7f5; border: 1px solid transparent; transition: background .12s, color .12s, border-color .12s; }
+  nav.toc a svg { display: block; }
+  nav.toc a.nav-home { padding: 7px 12px; color: #fff; }
+  nav.toc a.nav-home:hover { background: rgba(255,255,255,.14); }
+  nav.toc a.nav-home.here { background: #fff; color: var(--nhs-dark); }
+  nav.toc a.ws { color: var(--acc); border-color: rgba(255,255,255,.16); }
+  nav.toc a.ws:hover { background: rgba(255,255,255,.10); border-color: var(--acc); }
+  nav.toc a.ws.here { background: var(--acc); color: var(--nhs-dark); border-color: var(--acc); font-weight: 700; box-shadow: 0 1px 5px rgba(0,0,0,.25); }
+  nav.toc a.nav-beta { --acc: #41B6E6; }
+  nav.toc a.nav-acute { --acc: #29B7A6; }
+  nav.toc a.nav-commercial { --acc: #F3C24D; }
+  nav.toc a.nav-sources { --acc: #AEBECE; }
   h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
   h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
   .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin-bottom: 16px; }
@@ -52,11 +62,11 @@
   </header>
 
   <nav class="toc">
-    <a href="index.html">&#8592; Home</a>
-    <a href="beta.html">HIV Private Beta</a>
-    <a href="acute.html">PSA Acute</a>
-    <a href="commercial.html">Future State &amp; Commercial</a>
-    <a href="sources.html" class="here">Sources</a>
+    <a class="nav-home" href="index.html"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 3.2 21 11h-2.6v9h-4.6v-5.6h-3.6V20H5.6v-9H3z"/></svg>Home</a>
+    <a class="ws nav-beta" href="beta.html">HIV Private Beta</a>
+    <a class="ws nav-acute" href="acute.html">PSA Acute</a>
+    <a class="ws nav-commercial" href="commercial.html">Future State &amp; Commercial</a>
+    <a class="ws nav-sources here" href="sources.html">Sources</a>
   </nav>
 
   <h2 id="sources">Sources</h2>
