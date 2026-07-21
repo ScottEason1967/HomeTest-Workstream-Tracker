@@ -92,6 +92,20 @@
   .execsum .estats .st.next { margin-left: auto; text-align: right; }
   .execsum .estats .st.next b { font-size: 13.5px; }
   @media (max-width: 700px) { .execsum .estats .st.next { margin-left: 0; text-align: left; } }
+
+  .execsum .ecols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 22px; border-top: 1px solid var(--border); padding-top: 12px; margin-bottom: 4px; }
+  .execsum .ecol .elabel { margin-bottom: 7px; }
+  .execsum ul { list-style: none; margin: 0 0 8px; padding: 0; font-size: 12.5px; line-height: 1.45; }
+  .execsum ul li { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .execsum ul li:last-child { border-bottom: 0; }
+  .execsum .datelist b, .execsum .risklist b { color: var(--nhs-dark); }
+  .execsum .datelist b { display: inline-block; min-width: 96px; }
+  .execsum .waitlist a { display: block; color: var(--ink); text-decoration: none; border-left: 3px solid var(--nhs-blue); padding: 2px 0 2px 9px; }
+  .execsum .waitlist a:hover { background: var(--pale); }
+  .execsum .waitlist a.hot { border-left-color: #b00020; }
+  .execsum .waitlist .w { font-weight: 700; color: var(--nhs-dark); display: block; }
+  .execsum .waitlist .who { color: var(--muted); font-size: 11.5px; }
+  @media (max-width: 900px) { .execsum .ecols { grid-template-columns: 1fr; gap: 0; } .execsum .ecol { border-top: 1px solid var(--border); padding-top: 10px; } .execsum .ecol:first-child { border-top: 0; padding-top: 0; } }
   /* --- item rail --- */
   .rail { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 10px 0 8px; margin: 0 0 4px; border-bottom: 1px solid var(--border); }
   .rail .rlabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
@@ -177,19 +191,45 @@
     <a href="acute.html" class="here">PSA Acute</a>
     <a href="commercial.html">Future State &amp; Commercial</a>
     <a href="sources.html">Sources</a>
+    <a href="#items">Items</a>
     <a href="#i-pipeline">Pipeline</a>
     <a href="#history">History</a>
   </nav>
 
   <div class="execsum">
     <p class="elabel">Where we are</p>
-    <p class="eline"><strong>The MoU is executed, so the money is now the constraint.</strong> The &#163;198k transfer is waiting on finance confirmation and nothing downstream of it moves until that lands. Pilot design is gated on the Impress-versus-Tasso device decision, and the Epic proof of concept sets the pace for the end-January 2027 pilot date.</p>
+    <p class="eline"><strong>The MoU is executed, so the money is now the constraint.</strong> The &#163;198k transfer is waiting on finance confirmation and nothing downstream of it moves until that lands. Pilot design is gated on the Impress-versus-Tasso device decision, and the Epic proof of concept sets the pace for the end-January 2027 pilot date. Discovery beyond RDUH is deliberately parked at watching brief.</p>
+    <div class="ecols">
+      <div class="ecol">
+        <p class="elabel">Waiting on someone</p>
+        <ul class="waitlist"></ul>
+      </div>
+      <div class="ecol">
+        <p class="elabel">Next dates</p>
+        <ul class="datelist">
+          <li><b>Wed 22 Jul</b>Supplier Forum 3 acute-initiated breakout, Manchester</li>
+          <li><b>Now</b>&#163;198k transfer via NHS Devon ICB</li>
+          <li><b>Post-signature</b>Mobilisation plan build-out with named leads</li>
+          <li><b>Next</b>Order API schemas to RDUH, then the PSA proof of concept starts</li>
+          <li><b>Mon 17 Aug</b>HT046 due at the Programme Board</li>
+          <li><b>End Jan 2027</b>Pilot day one, 50 to 100 patients per site</li>
+        </ul>
+      </div>
+      <div class="ecol">
+        <p class="elabel">Where the risk sits</p>
+        <ul class="risklist">
+          <li><b>Funding claw-back.</b> The board has named the acute use case as a candidate for reduction if it does not progress, with the work on time and materials.</li>
+          <li><b>Regulatory timing.</b> Impress UKCA and MHRA timing is outside our control and gates the pilot date.</li>
+          <li><b>Second site unresolved.</b> ChelWest urology judges active surveillance unsuitable, so a second site may mean a different use case.</li>
+        </ul>
+      </div>
+    </div>
     <div class="estats">
       <div class="st"><b class="c-green">&mdash;</b>settled</div>
       <div class="st"><b class="c-amber">&mdash;</b>in flight</div>
       <div class="st"><b class="c-grey">&mdash;</b>watching</div>
-      <div class="st hot"><b>&#163;198k</b>live dependency</div>
-      <div class="st next"><b>Wed 22 Jul</b>next date: SF3 acute breakout, Manchester</div>
+      <div class="st hot"><b class="c-wait">&mdash;</b>waiting on someone</div>
+      <div class="st next"><b>Wed 22 Jul</b>next date</div>
     </div>
   </div>
 
@@ -213,19 +253,6 @@
   <div class="focusbar">
     <span>Showing one item. <a href="#" class="showall">Show all items on this page</a></span>
     <span class="fnav"><a href="index.html">&#8592; Back to tiles</a></span>
-  </div>
-
-  <h2 id="position">Position now</h2>
-  <div class="card reference">
-    <p><strong>The RDUH MoU is fully executed and the chain has moved to funding and mobilisation.</strong> The £198k transfer via NHS Devon ICB is the live dependency; the MoU no longer gates the acute workstream.</p>
-    <h4>Next dates</h4>
-    <div class="datebar">
-      <div class="d hot"><strong>Now live</strong>£198k transfer via NHS Devon ICB</div>
-      <div class="d"><strong>Post-signature</strong>Mobilisation Plan build-out with named leads</div>
-      <div class="d"><strong>Wed 22 Jul</strong>SF3 acute-initiated journey breakout, Manchester</div>
-      <div class="d"><strong>Next</strong>Order API schemas to RDUH · PSA proof of concept starts</div>
-      <div class="d"><strong>Mon 17 Aug</strong>HT046 due: eligibility and funding variation</div>
-    </div>
   </div>
 
   <h2 id="items">Items</h2>
@@ -265,7 +292,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-198k" data-title="£198k funding transfer">
+    <section class="itemcard" id="i-198k" data-wait="Finance confirmation on the &#163;198k" data-waitwho="Shirley Gaynor-Ward / Finance" data-waitcls="hot" data-title="£198k funding transfer">
       <div class="ihead">
         <span class="pill amber">In flight</span>
         <h3 class="ititle">£198k funding transfer</h3>
@@ -359,7 +386,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-device" data-title="Transdermal device route">
+    <section class="itemcard" id="i-device" data-wait="Impress UKCA marking and MHRA timing" data-waitwho="Regulatory, outside our control" data-waitcls="" data-title="Transdermal device route">
       <div class="ihead">
         <span class="pill amber">Open</span>
         <h3 class="ititle">Transdermal device route</h3>
@@ -386,7 +413,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-chelwest" data-title="ChelWest instrument decision">
+    <section class="itemcard" id="i-chelwest" data-wait="Richard Samuel steer on the ChelWest instrument" data-waitwho="Scott / Richard Samuel" data-waitcls="" data-title="ChelWest instrument decision">
       <div class="ihead">
         <span class="pill amber">Open</span>
         <h3 class="ititle">ChelWest instrument decision</h3>
@@ -442,7 +469,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-ht046" data-title="HT046 eligibility and funding variation">
+    <section class="itemcard" id="i-ht046" data-wait="Richard Samuel on eligibility and funding variation" data-waitwho="Martin O&#39;Neil chasing" data-waitcls="" data-title="HT046 eligibility and funding variation">
       <div class="ihead">
         <span class="pill amber">Open</span>
         <h3 class="ititle">HT046 eligibility and funding variation</h3>
@@ -470,7 +497,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-bpt" data-title="PSA benefits / Best Practice Tariff case">
+    <section class="itemcard" id="i-bpt" data-wait="GIRFT data and a confirmed submission date" data-waitwho="Richard Samuel" data-waitcls="" data-title="PSA benefits / Best Practice Tariff case">
       <div class="ihead">
         <span class="pill amber">Scoping</span>
         <h3 class="ititle">PSA benefits / Best Practice Tariff case</h3>
@@ -692,7 +719,24 @@
           : p.classList.contains('grey')  ? 'grey' : 'amber';
     tally[k]++;
   }
+  // "waiting on someone" is built from the cards, so it cannot drift from them
+  var wl = document.querySelector('.waitlist'), waiting = 0;
+  for (var q = 0; q < cards.length; q++) {
+    var wtxt = cards[q].getAttribute('data-wait');
+    if (!wtxt) continue;
+    waiting++;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + cards[q].id;
+    a.className = cards[q].getAttribute('data-waitcls') || '';
+    a.innerHTML = '<span class="w"></span><span class="who"></span>';
+    a.querySelector('.w').textContent = wtxt;
+    a.querySelector('.who').textContent = cards[q].getAttribute('data-waitwho') || '';
+    li.appendChild(a); wl.appendChild(li);
+  }
+
   var setc = function (sel, n) { var e = document.querySelector(sel); if (e) e.textContent = n; };
+  setc('.c-wait', waiting);
   setc('.c-green', tally.green);
   setc('.c-amber', tally.amber + tally.red);
   setc('.c-grey', tally.grey);
