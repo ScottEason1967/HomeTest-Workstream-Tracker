@@ -114,11 +114,14 @@
   .rail a.chip:hover { border-color: var(--nhs-blue); background: var(--pale); }
   .rail a.chip .dot { width: 9px; height: 9px; border-radius: 50%; background: #c27803; flex: 0 0 auto; }
   .rail a.chip .dot.red { background: #b00020; } .rail a.chip .dot.green { background: #146c2e; } .rail a.chip .dot.grey { background: #777; }
+  .rail a.chip .dot.dark { background: var(--nhs-dark); }
+  .rail a.chip.chip-summary { margin-right: 12px; border-color: var(--nhs-dark); font-weight: 700; }
   .rail a.chip.on { background: var(--nhs-dark); border-color: var(--nhs-dark); color: #fff; }
   .rail a.chip.on .dot { box-shadow: 0 0 0 2px #fff; }
   /* --- item cards --- */
   h2[id], .log { scroll-margin-top: 92px; }
-  .itemcard { background: #fff; border: 1px solid var(--border); border-left: 5px solid #c27803; border-radius: 6px; padding: 0; margin: 0 0 12px; scroll-margin-top: 90px; }
+  #summary { scroll-margin-top: 12px; }
+  .itemcard { background: #fff; border: 1px solid var(--border); border-left: 5px solid #c27803; border-radius: 6px; padding: 0; margin: 0 0 12px; scroll-margin-top: 84px; }
   .itemcard.red { border-left-color: #b00020; } .itemcard.green { border-left-color: #146c2e; } .itemcard.grey { border-left-color: #777; }
   .itemcard > .ihead { padding: 14px 18px 10px; border-bottom: 1px solid var(--border); }
   .itemcard h3.ititle { margin: 6px 0 0; padding: 0; border: none; color: var(--nhs-dark); font-size: 19px; }
@@ -196,7 +199,7 @@
     <a href="#history">History</a>
   </nav>
 
-  <div class="execsum">
+  <div class="execsum" id="summary">
     <p class="elabel">Where we are</p>
     <p class="eline"><strong>The MoU is executed, so the money is now the constraint.</strong> The &#163;198k transfer is waiting on finance confirmation and nothing downstream of it moves until that lands. Pilot design is gated on the Impress-versus-Tasso device decision, and the Epic proof of concept sets the pace for the end-January 2027 pilot date. Discovery beyond RDUH is deliberately parked at watching brief.</p>
     <div class="ecols">
@@ -236,6 +239,7 @@
   <div class="rail">
     <p class="rlabel">Jump to an item</p>
     <div class="chips">
+      <a class="chip chip-summary on" href="#summary"><span class="dot dark"></span>Summary</a>
       <a class="chip" href="#i-mou"><span class="dot green"></span>RDUH MoU</a>
       <a class="chip" href="#i-198k"><span class="dot"></span>£198k funding transfer</a>
       <a class="chip" href="#i-mobilisation"><span class="dot"></span>Mobilisation plan</a>
@@ -790,8 +794,11 @@
     var chips = document.querySelectorAll('.rail a.chip');
     for (var c = 0; c < chips.length; c++)
       chips[c].classList.toggle('on', chips[c].getAttribute('href') === '#' + hash);
+    var sc = document.querySelector('.chip-summary');
+    if (sc) sc.classList.toggle('on', !isItem);
     if (isItem) {
-      window.scrollTo(0, 0);
+      var it = document.getElementById(hash);
+      if (it) setTimeout(function () { it.scrollIntoView(true); }, 0);
     } else if (hash) {
       // leaving focus mode changes the page height, so the browser's own
       // anchor jump lands in the wrong place. Re-scroll once layout settles.
@@ -809,8 +816,16 @@
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
     var id = a.getAttribute('href').slice(1);
-    if (ids.indexOf(id) < 0) return;            // not an item anchor
+    if (id !== 'summary' && ids.indexOf(id) < 0) return; // not an item/summary anchor
     e.preventDefault();
+    if (id === 'summary') {
+      try { history.replaceState(null, '', location.pathname); }
+      catch (err) { location.hash = ''; }
+      apply();
+      var sm = document.getElementById('summary');
+      if (sm) setTimeout(function () { sm.scrollIntoView(true); }, 0);
+      return;
+    }
     if (location.hash !== '#' + id) location.hash = id; // record it in the URL
     apply();                                            // and apply now, regardless
   });
