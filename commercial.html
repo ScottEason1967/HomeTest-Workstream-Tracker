@@ -172,7 +172,16 @@
   body.focused .reference { display: none; }
   body.focused .execsum { display: block; }
   body.focused .itemcard.target { border-left-width: 7px; }
-  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } }
+  /* --- history as its own tab --- */
+  body.js .log, body.js h2#history { display: none; }
+  body.js.historyview .execsum,
+  body.js.historyview #items,
+  body.js.historyview .itemcard,
+  body.js.historyview .reference,
+  body.js.historyview .focusbar { display: none; }
+  body.js.historyview .log,
+  body.js.historyview h2#history { display: block; }
+  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } body.js .log, body.js h2#history { display: block !important; } }
 </style>
 </head>
 <body id="page-commercial">
@@ -194,12 +203,11 @@
     <a href="acute.html">PSA Acute</a>
     <a href="commercial.html" class="here">Future State &amp; Commercial</a>
     <a href="sources.html">Sources</a>
-    <a href="#history">History</a>
   </nav>
 
     <div class="execsum" id="summary">
     <p class="elabel">Where we are</p>
-    <p class="eline"><strong>The recommendation is made; approval is now the constraint.</strong> The 20 July board received the Option B open-framework model but could not approve it, so the route runs through Rob McMillan, and that route turns on a framework value we cannot set until the volumes work lands. The open framework will not exist by April 2027, so an interim route has to carry beta and testing. Future State inputs are not yet in the programme sprints, which puts the 13 August workshop and the end-September strategy at risk.</p>
+    <p class="eline"><strong>The recommendation is made; approval is now the constraint.</strong> The 20 July board received the Option B open-framework model but could not approve it, so the route runs through Rob McMillan, and that route turns on a framework value we cannot set until the volumes work lands. The open framework will not exist by April 2027, so an interim route has to carry beta and testing. Future State inputs are not yet in the programme sprints, which puts the 13 August ownership sessions and the end-September strategy at risk; the plan has been turned into a five-stage roadmap and a finalised Jira import as the mitigation.</p>
     <div class="ecols">
       <div class="ecol">
         <p class="elabel">Waiting on someone</p>
@@ -210,8 +218,9 @@
         <ul class="datelist">
           <li><b>Wed 22 Jul</b>Supplier Forum 3, Manchester</li>
           <li><b>Sun 27 Jul</b>Sourcing strategy outline (direction of travel)</li>
-          <li><b>Wed 13 Aug</b>Sourcing cornerstones workshop</li>
+          <li><b>Wed 13 Aug</b>Ownership sessions and cornerstones workshop</li>
           <li><b>Sun 17 Aug</b>HT052 senior discussion with Rob McMillan due; next board</li>
+          <li><b>Tue 1 Sep</b>PIN issued (roadmap stage one)</li>
           <li><b>End Sep</b>Governance-ready sourcing strategy (working target)</li>
           <li><b>1 Aug 2027</b>Framework go-live (at risk)</li>
         </ul>
@@ -359,18 +368,20 @@
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">v0.1 skeleton, James holding the pen. Outline direction of travel before 27 July, then a governance-ready version with KPIs, evaluation criteria, volumes and value. End-September working target, with an end-October completion ambition also on record.</p>
+        <p class="ipos">v0.1 skeleton, James holding the pen. Outline direction of travel before 27 July, then a governance-ready version with KPIs, evaluation criteria, volumes and value. End-September working target, with an end-October completion ambition also on record. It is now sequenced inside the five-stage Phase 2 roadmap.</p>
         <div class="panes">
           <div class="ptlist">
             <button type="button" class="pt on" data-p="0">The cornerstones workshop</button>
             <button type="button" class="pt" data-p="1">James on leave</button>
             <button type="button" class="pt" data-p="2">Future-state framing</button>
+            <button type="button" class="pt" data-p="3">Inside the staged roadmap</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
             <div class="pd on" data-p="0"><h5>The cornerstones workshop</h5><p>The workshop covering go-live date, volume and value, lotting, framework structure, commercial models and interim routes to market has moved from 23 July to 13 August, agreed 20 July, so programme inputs and named owners can be prepared first. Finance, Legal and Commissioners are to be brought in, with Scott's assurance-model strawman as a starting point.</p></div>
             <div class="pd" data-p="1"><h5>James on leave</h5><p>James Cowley is on leave from 24 July and returns Monday 10 August, which is part of why the workshop moved past his return.</p></div>
             <div class="pd" data-p="2"><h5>Future-state framing</h5><p>A future-state discussion paper (v0.2, 13 July) frames the platform as national testing infrastructure, feeding the strategy's positioning.</p></div>
+            <div class="pd" data-p="3"><h5>Inside the staged roadmap</h5><p>The strategy is no longer a single document with one cornerstones workshop in front of it. It now sits inside the five-stage Phase 2 roadmap on a 20 July baseline, with the cornerstones work as the first of seventeen mapped workshops and the sourcing activities threaded through stages one and two. The Phase 2 item carries the full roadmap and the Jira uplift.</p></div>
           </div>
         </div>
       </div>
@@ -381,7 +392,7 @@
         <h3 class="ititle">Future State inputs into programme sprints</h3>
         <div class="imeta">
           <span><b>Owner</b>Rachel Flower / Scott Eason with Shirley Gaynor-Ward</span>
-          <span><b>Next</b>13 August workshop</span>
+          <span><b>Next</b>Ownership sessions, 13 Aug</span>
           <span><b>Depends on</b>Programme capacity, committed to Private Beta</span>
           <span><b>Reference</b>Delivery register risk, RAG 16, critical date 13 Aug</span>
         </div>
@@ -393,39 +404,46 @@
             <button type="button" class="pt on" data-p="0">What is missing</button>
             <button type="button" class="pt" data-p="1">Finding owners</button>
             <button type="button" class="pt" data-p="2">The risk narrative on the register</button>
+            <button type="button" class="pt" data-p="3">The Jira import is the mitigation</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
             <div class="pd on" data-p="0"><h5>What is missing</h5><p>Programme capacity is committed to Private Beta, the six cornerstone inputs have no named programme owners, and Future State is not yet an integrated programme workstream. Framework go-live of 1 August 2027 is at risk.</p></div>
             <div class="pd" data-p="1"><h5>Finding owners</h5><p>One-to-ones and small group sessions with the programme team over the fortnight from 20 July, with SLT support, to establish for each cornerstone whether the person approached can take it on. A no is recorded as an outcome in its own right.</p></div>
             <div class="pd" data-p="2"><h5>The risk narrative on the register</h5><p>Maintained with the full audit trail of what was sent to whom and when: first draft to Matt Thomas at the workshop, the session held with Martin O'Neil, and the product team approached in the week of 13 July and unable to engage. Directed by Shirley Gaynor-Ward for the 21 July Delivery Board and reflected on the board slides.</p></div>
+            <div class="pd" data-p="3"><h5>The Jira import is the mitigation</h5><p>The Future State work has been turned into a finalised Jira import (21 July) whose epic relates to this risk, HOTE-1915. Loading it onto the HOTE board is the agreed mitigation: it puts the fifty-four roadmap activities, seventeen workshops and their deliverables onto the programme's own board rather than a separate plan. It does not close the risk on its own, because the rows import unassigned and the six cornerstone owners are still named at the 13 August ownership sessions.</p></div>
           </div>
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-phase2" data-title="Phase 2 Plan">
+    <section class="itemcard" id="i-phase2" data-title="Phase 2 plan, roadmap &amp; Jira uplift">
       <div class="ihead">
         <span class="pill amber">In flight</span>
-        <h3 class="ititle">Phase 2 Plan</h3>
+        <h3 class="ititle">Phase 2 plan, roadmap &amp; Jira uplift</h3>
         <div class="imeta">
           <span><b>Owner</b>Scott Eason / James Cowley</span>
-          <span><b>Next</b>Load unified plan into Jira</span>
-          <span><b>Depends on</b>Operating model; procurement timetable</span>
+          <span><b>Next</b>Load the Jira import; assign owners at the 13 Aug sessions</span>
+          <span><b>Depends on</b>Jira admin to run the import; ownership sessions</span>
+          <span><b>Reference</b>Future State Jira import FINAL, 21 Jul 2026; milestone plan 20 Jul baseline</span>
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">v0.1 in SharePoint (25 June, updated 29 June) is a first-cut skeleton: five-stage spine, Plan A open framework (Aug 2027), Plan C interim protecting the April 2027 Beta. Substance, owners, dependencies and sizing still to populate.</p>
+        <p class="ipos">The Phase 2 plan is now a five-stage milestone roadmap on a 20 July baseline, and it has been turned into a finalised Jira import ready to load onto the HOTE board. Loading it is the agreed mitigation for the Future State inputs risk.</p>
         <div class="panes">
           <div class="ptlist">
-            <button type="button" class="pt on" data-p="0">Two plans aligned</button>
-            <button type="button" class="pt" data-p="1">Procurement timetable</button>
-            <button type="button" class="pt" data-p="2">Jira model</button>
+            <button type="button" class="pt on" data-p="0">The five-stage roadmap</button>
+            <button type="button" class="pt" data-p="1">The 17-workshop plan</button>
+            <button type="button" class="pt" data-p="2">The Jira import, finalised 21 July</button>
+            <button type="button" class="pt" data-p="3">What is imported and what is linked</button>
+            <button type="button" class="pt" data-p="4">The import is the mitigation</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
-            <div class="pd on" data-p="0"><h5>Two plans aligned</h5><p>On 9 July Scott and James aligned their two plans, the operating-model plan and the procurement plan, into one. Scott to fold in James's feedback and load the unified plan into Jira, Matt Visser's ask, so its dependencies plug into the overarching programme plan.</p></div>
-            <div class="pd" data-p="1"><h5>Procurement timetable</h5><p>James is adding a procurement-specific timetable from Mandie's planning doc and the SBS tabular timetable: PIN, ITT, statutory windows and evaluation mechanics into the skeleton.</p></div>
-            <div class="pd" data-p="2"><h5>Jira model</h5><p>Agreed 1 July: OBOs at Level 3, milestones as deliverables and epics, accountability at the deliverable layer, sequencing back from FY26/27, with a Critical Path component.</p></div>
+            <div class="pd on" data-p="0"><h5>The five-stage roadmap</h5><p>The plan runs across five stages, each closing at the end of its window: stage one to 31 October 2026 (mobilise and shape the strategy), stage two to 31 December, stage three to 28 February 2027, stage four to 30 June, stage five to 31 August 2027. Fifty-four roadmap activities sit across the five stages. Two dates are real rather than stage-end planning dates: the ownership sessions on 13 August and the PIN on 1 September.</p></div>
+            <div class="pd" data-p="1"><h5>The 17-workshop plan</h5><p>The single cornerstones workshop has become a plan of seventeen workshops mapped across the five stages. Seven fall in stage one: cornerstones foundation, volume and value, commercial models, lotting strategy, the interim Plan C design, the ITT specification kickoff and commissioner engagement design. Three sit in stage two (approvals sequencing, an IG and clinical safety deep-dive, evaluation criteria calibration), three in stage three, two in stage four and two in stage five.</p></div>
+            <div class="pd" data-p="2"><h5>The Jira import, finalised 21 July</h5><p>A ninety-four row import for the HOTE board. It creates one epic, Future State Sourcing Strategy (Phase 2), sitting alongside the five discovery work-package epics HOTE-1035 to HOTE-1039; seventy-one tasks, being the fifty-four roadmap activities plus the seventeen workshops; and twenty-two deliverable sub-tasks, each parented to the activity that produces it. Due dates are planning dates on the low scenario, carrying each stage-window end, and the import is additive, to be run once with a Jira admin.</p></div>
+            <div class="pd" data-p="3"><h5>What is imported and what is linked</h5><p>The import rests on a disposition of fifty deliverables checked against the live board of 646 issues: twenty-two are new and imported, twenty-three already exist on the board and are linked rather than duplicated, four are handed to the IG and Legal workstreams (public and scaled beta DPIA, the DPIA scope question, the Legal Direction change and the future-state IG assurance decision), and one confidential restructure decision is held off board. All the links point at real HOTE tickets.</p></div>
+            <div class="pd" data-p="4"><h5>The import is the mitigation</h5><p>The epic relates to risk HOTE-1915, Future State inputs not planned into programme sprints, and loading the import is precisely what closes that risk. Everything imports unassigned: owners are set at the ownership sessions on 13 August, where the rows still marked programme-owner or SLT-member TBC get named. Future State is accountable for the build of thirteen rows, each carrying the statement that direction and content come from the programme through the workshops.</p></div>
           </div>
         </div>
       </div>
@@ -728,6 +746,10 @@
 
 <h2 id="history">History</h2>
   <div class="log">
+    <details data-item="i-phase2 i-cornerstones i-sourcing">
+      <summary><span class="d">21 Jul</span>Phase 2 becomes a five-stage roadmap and a finalised Jira import; the epic mitigates the Future State inputs risk</summary>
+      <div class="body"><p>The Phase 2 plan was consolidated into a five-stage milestone roadmap on a 20 July baseline, the stages closing at 31 October and 31 December 2026 and 28 February, 30 June and 31 August 2027, with real anchors at the 13 August ownership sessions and the 1 September PIN. Fifty-four roadmap activities sit across the five stages, and the single cornerstones workshop has become a plan of seventeen workshops, seven of them in stage one.</p><p>On 21 July this was turned into a finalised Jira import for the HOTE board: ninety-four rows creating one epic, Future State Sourcing Strategy (Phase 2), alongside the five discovery epics HOTE-1035 to HOTE-1039, with seventy-one tasks (the fifty-four activities and seventeen workshops) and twenty-two deliverable sub-tasks. It rests on a disposition of fifty deliverables against the live board: twenty-two imported, twenty-three already on the board and linked rather than duplicated, four handed to the IG and Legal workstreams, and one confidential restructure decision held off board.</p><p>The epic relates to risk HOTE-1915, Future State inputs not planned into programme sprints, and loading the import is the agreed mitigation. Everything imports unassigned; owners are set at the 13 August ownership sessions. Source: HomeTest Future State Jira Import FINAL, 21 July 2026, with the import guide and deliverables disposition of the same date, on the milestone plan 20 July baseline.</p></div>
+    </details>
     <details data-item="i-sf3">
       <summary><span class="d">21 Jul</span>Both supplier forum decks reworked the afternoon before the forum; conditions long list and volumes now in the supplier-facing pack</summary>
       <div class="body"><p>Both Supplier Forum 3 packs were worked on through the afternoon of 21 July, the day before the forum. The afternoon RFI deck now stands at twenty-nine slides with the running order and named leads fixed: Richard Samuel on the programme introduction, ground rules and state of the nation; Simone Bilton on shortlisted conditions; Tom Rawlinson on the technology demonstration; James Cowley and Rachel Flower on Journey to Market; and Olivia Sharp running the acute-initiated service journey breakout.</p><p>The substantive change is the shortlisted-conditions section, which has moved from a placeholder to the priority-scored long list with addressable test volumes per annum against each pathway: HIV at 1.5 million, PSA active surveillance at 150,000, the STI T4 panel at 3 million, hepatitis C at 1 million, hip and knee MRSA screening at 250,000, raised PSA at 200,000 and ACL reconstruction at 30,000. The pack presents two conditions committed and twelve under evaluation, drawn from a March 2026 long list of five self-sample patterns across twenty tests. That matters beyond the forum: volumes have been the gating input for the sourcing strategy, and a supplier-facing number is now in circulation ahead of the cornerstones workshop on 13 August.</p><p>The Journey to Market timeline is unchanged: PPN issued 1 September, OBC and requirements complete 15 October, documents review and circulation through November, governance approvals 1 December and the ITT issued 5 January, all marked subject to change. Two gaps remain in the pack: the prioritisation framework slide is still an empty title, and the patient-preference evidence slide still carries a DRAFT mark.</p><p>The morning HIV cohort pack is at forty-three slides and complete: consolidated Alpha and co-design findings, the user research playback, the technology showcase covering the AWS serverless architecture and the supplier integration conformance toolkit, the seven user- and system-centric hypotheses with their Alpha confidence ratings, a service wrapper breakout on supplier and commissioner onboarding run by Gary Birnie, and an emerging use cases session testing how much of the HIV flow carries over to the T4 panel.</p><p class="source">Source: RFI Supplier Forum (Afternoon).pptx and HIV Supplier Forum Session 3 (Morning).pptx, SharePoint 05. HomeTest - Partnerships / Suppliers / Supplier Forum / Session 3, both updated 21 July 2026.</p></div>
@@ -990,11 +1012,15 @@
     var chips = document.querySelectorAll('.rail a.chip');
     for (var c = 0; c < chips.length; c++)
       chips[c].classList.toggle('on', chips[c].getAttribute('href') === '#' + hash);
+    var isHistory = (hash === 'history');
+    document.body.classList.toggle('historyview', isHistory);
     var sc = document.querySelector('.chip-summary');
-    if (sc) sc.classList.toggle('on', !isItem);
+    if (sc) sc.classList.toggle('on', !isItem && !isHistory);
     if (isItem) {
       var it = document.getElementById(hash);
       if (it) setTimeout(function () { it.scrollIntoView(true); }, 0);
+    } else if (isHistory) {
+      window.scrollTo(0, 0);
     } else if (hash) {
       // leaving focus mode changes the page height, so the browser's own
       // anchor jump lands in the wrong place. Re-scroll once layout settles.
@@ -1012,8 +1038,14 @@
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
     var id = a.getAttribute('href').slice(1);
-    if (id !== 'summary' && ids.indexOf(id) < 0) return; // not an item/summary anchor
+    if (id !== 'summary' && id !== 'history' && ids.indexOf(id) < 0) return; // not an item/summary/history anchor
     e.preventDefault();
+    if (id === 'history') {
+      if (location.hash !== '#history') location.hash = 'history';
+      apply();
+      window.scrollTo(0, 0);
+      return;
+    }
     if (id === 'summary') {
       try { history.replaceState(null, '', location.pathname); }
       catch (err) { location.hash = ''; }

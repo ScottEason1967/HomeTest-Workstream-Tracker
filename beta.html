@@ -172,7 +172,16 @@
   body.focused .reference { display: none; }
   body.focused .execsum { display: block; }
   body.focused .itemcard.target { border-left-width: 7px; }
-  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } }
+  /* --- history as its own tab --- */
+  body.js .log, body.js h2#history { display: none; }
+  body.js.historyview .execsum,
+  body.js.historyview #items,
+  body.js.historyview .itemcard,
+  body.js.historyview .reference,
+  body.js.historyview .focusbar { display: none; }
+  body.js.historyview .log,
+  body.js.historyview h2#history { display: block; }
+  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } body.js .log, body.js h2#history { display: block !important; } }
 </style>
 </head>
 <body id="page-beta">
@@ -194,8 +203,6 @@
     <a href="acute.html">PSA Acute</a>
     <a href="commercial.html">Future State &amp; Commercial</a>
     <a href="sources.html">Sources</a>
-    <a href="#i-dpia">IG &amp; clinical safety</a>
-    <a href="#history">History</a>
   </nav>
 
     <div class="execsum" id="summary">
@@ -905,11 +912,15 @@
     var chips = document.querySelectorAll('.rail a.chip');
     for (var c = 0; c < chips.length; c++)
       chips[c].classList.toggle('on', chips[c].getAttribute('href') === '#' + hash);
+    var isHistory = (hash === 'history');
+    document.body.classList.toggle('historyview', isHistory);
     var sc = document.querySelector('.chip-summary');
-    if (sc) sc.classList.toggle('on', !isItem);
+    if (sc) sc.classList.toggle('on', !isItem && !isHistory);
     if (isItem) {
       var it = document.getElementById(hash);
       if (it) setTimeout(function () { it.scrollIntoView(true); }, 0);
+    } else if (isHistory) {
+      window.scrollTo(0, 0);
     } else if (hash) {
       // leaving focus mode changes the page height, so the browser's own
       // anchor jump lands in the wrong place. Re-scroll once layout settles.
@@ -927,8 +938,14 @@
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if (!a) return;
     var id = a.getAttribute('href').slice(1);
-    if (id !== 'summary' && ids.indexOf(id) < 0) return; // not an item/summary anchor
+    if (id !== 'summary' && id !== 'history' && ids.indexOf(id) < 0) return; // not an item/summary/history anchor
     e.preventDefault();
+    if (id === 'history') {
+      if (location.hash !== '#history') location.hash = 'history';
+      apply();
+      window.scrollTo(0, 0);
+      return;
+    }
     if (id === 'summary') {
       try { history.replaceState(null, '', location.pathname); }
       catch (err) { location.hash = ''; }
