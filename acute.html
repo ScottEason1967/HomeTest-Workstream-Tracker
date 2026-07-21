@@ -801,12 +801,27 @@
   }
 
   window.addEventListener('hashchange', apply);
+
+  // Drive item navigation in script. A link whose target equals the current
+  // hash fires no hashchange, so the browser would do nothing; handle it here
+  // so every rail chip and waiting-on link always re-focuses and scrolls.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (ids.indexOf(id) < 0) return;            // not an item anchor
+    e.preventDefault();
+    if (location.hash !== '#' + id) location.hash = id; // record it in the URL
+    apply();                                            // and apply now, regardless
+  });
+
   apply();
 
   var sa = document.querySelector('.showall');
   if (sa) sa.addEventListener('click', function (e) {
     e.preventDefault();
-    history.replaceState(null, '', location.pathname);
+    try { history.replaceState(null, '', location.pathname); }
+    catch (err) { location.hash = ''; }
     apply();
   });
 })();
