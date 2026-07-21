@@ -77,6 +77,102 @@
   .log .body { padding: 8px 14px 10px; font-size: 12.5px; }
   .log .body p { margin: 6px 0; }
   @media (max-width: 900px) { .datebar .d { min-width: 45%; } }
+
+
+  /* --- exec summary strip --- */
+  .execsum { background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--nhs-dark); border-radius: 6px; padding: 14px 18px 0; margin: 0 0 14px; }
+  .execsum .elabel { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
+  .execsum p.eline { margin: 0 0 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+  .execsum p.eline strong { color: var(--nhs-dark); }
+  .execsum .estats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin: 0 -18px; padding: 0 4px; }
+  .execsum .estats .st { padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st:last-child { border-right: 0; }
+  .execsum .estats .st b { display: block; font-size: 17px; color: var(--nhs-dark); font-weight: 700; line-height: 1.25; }
+  .execsum .estats .st.hot b { color: #b00020; }
+  .execsum .estats .st.next { margin-left: auto; text-align: right; }
+  .execsum .estats .st.next b { font-size: 13.5px; }
+  @media (max-width: 700px) { .execsum .estats .st.next { margin-left: 0; text-align: left; } }
+
+  .execsum .ecols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 22px; border-top: 1px solid var(--border); padding-top: 12px; margin-bottom: 4px; }
+  .execsum .ecol .elabel { margin-bottom: 7px; }
+  .execsum ul { list-style: none; margin: 0 0 8px; padding: 0; font-size: 12.5px; line-height: 1.45; }
+  .execsum ul li { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .execsum ul li:last-child { border-bottom: 0; }
+  .execsum .datelist b, .execsum .risklist b { color: var(--nhs-dark); }
+  .execsum .datelist b { display: inline-block; min-width: 96px; }
+  .execsum .waitlist a { display: block; color: var(--ink); text-decoration: none; border-left: 3px solid var(--nhs-blue); padding: 2px 0 2px 9px; }
+  .execsum .waitlist a:hover { background: var(--pale); }
+  .execsum .waitlist a.hot { border-left-color: #b00020; }
+  .execsum .waitlist .w { font-weight: 700; color: var(--nhs-dark); display: block; }
+  .execsum .waitlist .who { color: var(--muted); font-size: 11.5px; }
+  @media (max-width: 900px) { .execsum .ecols { grid-template-columns: 1fr; gap: 0; } .execsum .ecol { border-top: 1px solid var(--border); padding-top: 10px; } .execsum .ecol:first-child { border-top: 0; padding-top: 0; } }
+  /* --- item rail --- */
+  .rail { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 10px 0 8px; margin: 0 0 4px; border-bottom: 1px solid var(--border); }
+  .rail .rlabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
+  .rail .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rail a.chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px 5px 8px; font-size: 12.5px; color: var(--ink); text-decoration: none; font-weight: 600; }
+  .rail a.chip:hover { border-color: var(--nhs-blue); background: var(--pale); }
+  .rail a.chip .dot { width: 9px; height: 9px; border-radius: 50%; background: #c27803; flex: 0 0 auto; }
+  .rail a.chip .dot.red { background: #b00020; } .rail a.chip .dot.green { background: #146c2e; } .rail a.chip .dot.grey { background: #777; }
+  .rail a.chip .dot.dark { background: var(--nhs-dark); }
+  .rail a.chip.chip-summary { margin-right: 12px; border-color: var(--nhs-dark); font-weight: 700; }
+  .rail a.chip.on { background: var(--nhs-dark); border-color: var(--nhs-dark); color: #fff; }
+  .rail a.chip.on .dot { box-shadow: 0 0 0 2px #fff; }
+  /* --- item cards --- */
+  h2[id], .log { scroll-margin-top: 92px; }
+  #summary { scroll-margin-top: 12px; }
+  .itemcard { background: #fff; border: 1px solid var(--border); border-left: 5px solid #c27803; border-radius: 6px; padding: 0; margin: 0 0 12px; scroll-margin-top: 84px; }
+  .itemcard.red { border-left-color: #b00020; } .itemcard.green { border-left-color: #146c2e; } .itemcard.grey { border-left-color: #777; }
+  .itemcard > .ihead { padding: 14px 18px 10px; border-bottom: 1px solid var(--border); }
+  .itemcard h3.ititle { margin: 6px 0 0; padding: 0; border: none; color: var(--nhs-dark); font-size: 19px; }
+  .itemcard .imeta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .itemcard .imeta b { display: block; color: var(--nhs-dark); font-size: 12.5px; font-weight: 700; }
+  .itemcard > .ibody { padding: 14px 18px 16px; }
+  .itemcard .ipos { font-size: 14.5px; line-height: 1.55; margin: 0 0 12px; }
+  .itemcard details.more { border-top: 1px solid var(--border); margin-top: 4px; }
+  .itemcard details.more > summary { cursor: pointer; padding: 9px 2px 4px; font-size: 12.5px; font-weight: 700; color: var(--nhs-blue); list-style: none; }
+  .itemcard details.more > summary::-webkit-details-marker { display: none; }
+  .itemcard details.more > summary:before { content: "\25B8 "; }
+  .itemcard details.more[open] > summary:before { content: "\25BE "; }
+  .itemcard details.more .mbody { font-size: 13px; padding: 2px 0 10px; }
+  .itemcard details.more .mbody p { margin: 6px 0; }
+  .itemcard .ihist details { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 5px; }
+  .itemcard .ihist summary { cursor: pointer; padding: 7px 11px; font-size: 12.5px; }
+  .itemcard .ihist summary .d { color: var(--nhs-dark); font-weight: 700; margin-right: 8px; white-space: nowrap; }
+  .itemcard .ihist .body { padding: 8px 12px 10px; font-size: 12.5px; }
+  .itemcard .ihist .body p { margin: 6px 0; }
+  .itemcard .ihist .none { font-size: 12.5px; color: var(--muted); font-style: italic; }
+
+  /* --- two-pane point view --- */
+  .panes { display: grid; grid-template-columns: minmax(200px, 33%) 1fr; border-top: 1px solid var(--border); margin-top: 14px; }
+  .ptlist { border-right: 1px solid var(--border); padding: 10px 10px 12px 0; }
+  .ptlist .pt { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 3px solid transparent; padding: 8px 10px; font: inherit; font-size: 12.5px; line-height: 1.35; color: var(--ink); cursor: pointer; border-radius: 0 4px 4px 0; }
+  .ptlist .pt:hover { background: var(--pale); }
+  .ptlist .pt.on { background: var(--pale); border-left-color: var(--nhs-blue); font-weight: 700; color: var(--nhs-dark); }
+  .ptlist .pt .dt { color: var(--muted); font-weight: 700; margin-right: 6px; white-space: nowrap; }
+  .ptlist .ptgroup { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 700; padding: 14px 10px 5px; margin-top: 8px; border-top: 1px solid var(--border); }
+  .ptdetail { padding: 12px 2px 14px 20px; font-size: 13.5px; line-height: 1.55; }
+  .ptdetail h5 { margin: 0 0 9px; font-size: 13.5px; color: var(--nhs-dark); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .ptdetail p { margin: 0 0 9px; }
+  .ptdetail table { margin-top: 4px; }
+  body.js .pd { display: none; }
+  body.js .pd.on { display: block; }
+  @media (max-width: 900px) {
+    .panes { grid-template-columns: 1fr; }
+    .ptlist { border-right: 0; border-bottom: 1px solid var(--border); padding: 8px 0 10px; }
+    .ptdetail { padding: 12px 0 4px; }
+  }
+  /* --- focus mode --- */
+  .focusbar { display: none; align-items: center; gap: 12px; background: var(--nhs-dark); color: #fff; border-radius: 6px; padding: 9px 14px; margin: 10px 0 12px; font-size: 12.5px; }
+  body.focused .focusbar { display: flex; }
+  .focusbar a { color: #fff; text-decoration: underline; font-weight: 700; }
+  .focusbar .fnav { margin-left: auto; display: flex; gap: 14px; }
+  body.focused .itemcard { display: none; }
+  body.focused .itemcard.target { display: block; }
+  body.focused .reference { display: none; }
+  body.focused .execsum { display: block; }
+  body.focused .itemcard.target { border-left-width: 7px; }
+  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } }
 </style>
 </head>
 <body id="page-commercial">
@@ -101,70 +197,508 @@
     <a href="#history">History</a>
   </nav>
 
-  <h2 id="position">Position now</h2>
-  <div class="card">
-    <p>The HomeTest Future State 12-week Discovery closed at the SLT playback on Monday 22 June 2026 in Leeds. Recommendation Paper v1.0 was issued by Scott to SLT on Friday 19 June and shared with Louise Bird (NHSE Finance) on 23 June. The decision in principle is an <strong>open framework under PA23</strong>, not a dynamic market, captured verbatim in James Cowley's 22 June post-playback email: <em>"Headline 'commercial vehicle' recommendation in principle is to create an NHSE facilitated national marketplace. Such marketplace achieved through a procurement to create an 'open framework' as opposed to a dynamic market."</em> The post-playback paper is in SharePoint as Rec Paper v1.1, and the 7 July board pack records the route as PA23 open framework with a 3+1 term. Mandie Holt (NHS Commercial, James's line manager) is sponsoring the sourcing strategy as the next-step ask; framework intent is circa ten use cases from the start, not HIV only.</p>
-
-    <h4>Next dates</h4>
-    <div class="datebar">
-      <div class="d hot"><strong>Wed 22 Jul</strong>Supplier Forum 3, Manchester</div>
-      <div class="d"><strong>Mon 27 Jul</strong>Outline sourcing strategy before this date</div>
-      <div class="d"><strong>29-30 Jul</strong>Quarterly Planning Event, Belfast</div>
-      <div class="d hot"><strong>Thu 13 Aug</strong>Sourcing cornerstones workshop (moved from 23 Jul)</div>
-      <div class="d hot"><strong>Mon 17 Aug</strong>Programme Board (HT052 senior route due)</div>
-      <div class="d"><strong>Tue 1 Sep</strong>PPN issued (indicative framework timeline)</div>
-      <div class="d"><strong>End Sep</strong>Sourcing strategy completion (working target)</div>
+    <div class="execsum" id="summary">
+    <p class="elabel">Where we are</p>
+    <p class="eline"><strong>The recommendation is made; approval is now the constraint.</strong> The 20 July board received the Option B open-framework model but could not approve it, so the route runs through Rob McMillan, and that route turns on a framework value we cannot set until the volumes work lands. The open framework will not exist by April 2027, so an interim route has to carry beta and testing. Future State inputs are not yet in the programme sprints, which puts the 13 August workshop and the end-September strategy at risk.</p>
+    <div class="ecols">
+      <div class="ecol">
+        <p class="elabel">Waiting on someone</p>
+        <ul class="waitlist"></ul>
+      </div>
+      <div class="ecol">
+        <p class="elabel">Next dates</p>
+        <ul class="datelist">
+          <li><b>Wed 22 Jul</b>Supplier Forum 3, Manchester</li>
+          <li><b>Sun 27 Jul</b>Sourcing strategy outline (direction of travel)</li>
+          <li><b>Wed 13 Aug</b>Sourcing cornerstones workshop</li>
+          <li><b>Sun 17 Aug</b>HT052 senior discussion with Rob McMillan due; next board</li>
+          <li><b>End Sep</b>Governance-ready sourcing strategy (working target)</li>
+          <li><b>1 Aug 2027</b>Framework go-live (at risk)</li>
+        </ul>
+      </div>
+      <div class="ecol">
+        <p class="elabel">Where the risk sits</p>
+        <ul class="risklist">
+          <li><b>Approval and volumes on one path.</b> The value estimate gates the route to Rob McMillan, and it depends on volumes that have not landed.</li>
+          <li><b>April 2027 gap.</b> No framework in time, so an untested interim route via pathology frameworks has to protect the Beta.</li>
+          <li><b>No driving lead.</b> The commercial and future-state side has no non-technical programme lead; ownership falls back on Scott and Rachel.</li>
+        </ul>
+      </div>
     </div>
-
-    <h4>Live state</h4>
-    <ul class="state">
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Commercial model: board taken, approval route still open.</strong> The 20 July Programme Board received the twelve weeks of commercial discovery and the Option B recommendation, NHS England operating the platform and the assurance standards and delivering a procurement vehicle through which commissioners buy from pre-assured suppliers connected to it, with an open framework as the procurement route. The board could not approve it: the item goes to Rob McMillan for a view on the approval route. Action HT052 sits with Rachel Flower and James Cowley to arrange a senior discussion with Rob McMillan, Polly Bishop and/or Emma McLachlan, due 17 August. HT045 is closed.</span><span class="who">Rachel / James</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Governance route follows the framework value.</strong> The spend in question is commissioner spend, not direct NHS England spend, so the route depends on the estimated value of the framework. Inside NHSE and DHSC governance the stakeholders are NHSE commercial, finance and legal colleagues plus the DHSC Commercial Assurance Board; above that, Treasury and Cabinet Office would need engaging early. The board also recorded that the framework will not be in place by April 2027, so tactical and interim arrangements are required to support beta and testing.</span><span class="who">James Cowley</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Phase 2 Plan.</strong> v0.1 in SharePoint (25 Jun, updated 29 Jun) is a first-cut skeleton by its own opening line: five-stage spine, Plan A Open Framework (Aug 2027), Plan C interim protecting Apr 2027 Beta. The substance, owners, dependencies and sizing, is still to populate; James adding the procurement timetable.</span><span class="who">Scott / James</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Sourcing strategy v0.1</strong>, James holding the pen; end-September working target carried forward at the 8 July workshop; outline direction of travel before 27 Jul; governance-ready version with KPIs, evaluation criteria and volumes to follow. The cornerstones workshop (go-live date, volume and value, lotting, framework structure, commercial models, interim routes to market) has moved from 23 July to <strong>13 August</strong>, agreed 20 July, so programme inputs and named owners can be prepared first. James Cowley is on leave from 24 July and returns Monday 10 August.</span><span class="who">James Cowley</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Supplier Forum 3</strong> (22 Jul, Citylabs 1.0, Manchester; morning HIV cohort 9:30 to 12:30, afternoon RFI cohort 13:15 to 16:15). Both decks were reworked through the afternoon of 21 July. The afternoon RFI pack now stands at twenty-nine slides with the running order and leads fixed, and its Journey to Market section keeps the indicative framework milestone timeline to the ITT on 5 January, marked subject to change. The shortlisted-conditions section is now populated with the priority-scored long list and test volumes per annum. The prioritisation framework slide is still empty and the patient-preference evidence slide still carries a DRAFT mark. The morning pack is at forty-three slides and complete.</span><span class="who">Annie + session leads</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Supplier cost discovery &amp; SOW09.</strong> Preventx returned its cost apportionment; SH:24 cannot provide short-term figures. SOW09 contract-gap homework due 10 Jul (Matt, Simone, Scott, Tom, Rachel).</span><span class="who">Rachel / Matt Thomas</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>SHL / London scale partner.</strong> Following the 15 July Sexual Health London digital board session, SHL is taken to be on board as a scaled-beta partner: launch HIV HomeTest across a minimum of four London boroughs, and where possible SHL's wider footprint, between now and March 2027. Scott to draft an MoU framing the relationship, revenue transfer and deliverables; a joint task group with Preventx to stand up (ToRs from Annie Wakefield); comms to be agreed with SHL.</span><span class="who">Richard Samuel / Scott</span></li>
-      <li><span class="pill red">Critical path</span><span class="item"><strong>Future State inputs not planned into programme sprints.</strong> Raised as a new risk on 20 July at SLT direction and tabled for the 21 July Delivery Board at RAG 16, critical date 13 August. The information the sourcing strategy needs from the programme is not in the sprints: programme capacity is committed to Private Beta, the six cornerstone inputs have no named programme owners, and Future State is not yet an integrated programme workstream. Without those inputs the 13 August workshop and the end-September sourcing strategy slip, and framework go-live of 1 August 2027 is at risk.</span><span class="who">Rachel Flower / Scott</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Framework operator appointment paper.</strong> James Cowley has drafted a separate paper on which framework operator to partner with and why the framework is not run by NHS England directly. The working position is that appointing an operator does not require a market exercise, because the candidates are public sector bodies, there is no charge to NHS England, and the decision can be made internally with NHSE approval. Mandie Holt asked for it to be pulled out of the sourcing strategy as a standalone approval; the approval route is being confirmed with her, and a recommendation is expected within a month.</span><span class="who">James Cowley with Mandie Holt</span></li>
-      <li><span class="pill amber">In flight</span><span class="item"><strong>Legal and procurement approval (HOTE-1890).</strong> Assigned to Scott on 15 July to co-ordinate. Underneath it, ACE contract variation notices C1002 and C1005 are in approval (Shirley Gaynor-Ward forwarded them on 10 July); Rachel Flower and Wendi Higgins are reviewing and adding IP addendums from Ethan Illingworth and Abhishek Ranjan before routing to Lexi Moffatt.</span><span class="who">Scott / Rachel</span></li>
-    </ul>
+    <div class="estats">
+      <div class="st"><b class="c-green">&mdash;</b>settled</div>
+      <div class="st"><b class="c-amber">&mdash;</b>in flight</div>
+      <div class="st"><b class="c-grey">&mdash;</b>watching</div>
+      <div class="st hot"><b class="c-wait">&mdash;</b>waiting on someone</div>
+      <div class="st next"><b>Wed 22 Jul</b>next date</div>
+    </div>
   </div>
 
-  <h2 id="actions">Open actions</h2>
-  <div class="card">
-    <table>
-      <thead><tr><th class="w-action">Action</th><th class="w-owner">Owner</th><th class="w-due">Due</th><th class="w-dep">Dependency</th><th class="w-status">Status</th></tr></thead>
-      <tbody>
-        <tr><td>HT052: arrange a senior discussion with Rob McMillan, and Polly Bishop and/or Emma McLachlan, to confirm the governance and approval route for the commercial framework proposal. Set by the 20 July Programme Board, which received the Option B recommendation and the open framework route but could not give full approval without further engagement with senior commercial stakeholders. Martin O&#39;Neil confirmed the paper was co-produced with the commercial team and that Rob McMillan is sighted ahead of his approval being sought; James Cowley noted any proposal remains subject to the full sourcing strategy. HT045, presenting the paper to the July board, is closed.</td><td>Rachel Flower / James Cowley</td><td>Due 17 Aug</td><td>Rob McMillan availability; framework value estimate</td><td><span class="pill amber">New (20 Jul)</span></td></tr>
-        <tr><td>Populate Phase 2 Plan v0.1 with owners, dependencies and sizing from the operating model. On 9 July Scott and James aligned their two plans (the operating-model plan and the procurement plan) into one; Scott to fold in James's feedback and load the unified plan into Jira (Matt Visser's ask) so its dependencies plug into the overarching programme plan.</td><td>Scott Eason</td><td>9 Jul aligned; Jira load next</td><td>Operating model; James's feedback</td><td><span class="pill amber">In flight</span></td></tr>
-        <tr><td>Add procurement-specific timetable to Phase 2 Plan from Mandie's planning doc and the SBS tabular timetable (PIN, ITT, statutory windows, evaluation mechanics in skeleton)</td><td>James Cowley</td><td>Now v0.1 shared</td><td>v0.1 from Scott (done)</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Sourcing Strategy build-out from skeleton on the two-phase approach: outline draft (direction of travel) before 27 July, then the governance-ready version (KPIs, evaluation criteria, volumes and value). End-of-October completion ambition recorded in the HIV Beta planning update; James set an end-September working target on 6 July, carried forward at the 8 July workshop. The cornerstones workshop (go-live date, volume and value, lotting, framework structure, commercial models, interim routes to market) has moved from 23 July to 13 August, agreed 20 July, to let programme inputs and owners be prepared; Finance, Legal and Commissioners are to be brought in, with Scott's assurance-model strawman as a starting point.</td><td>James Cowley (lead) / Scott / Rachel</td><td>Outline before 27 Jul; workshop 13 Aug</td><td>Phase Two workshop; volumes and value substantiation</td><td><span class="pill amber">Outline in progress</span></td></tr>
-        <tr><td>Find a named programme owner for each of the six sourcing cornerstones. One-to-ones and small group sessions with the programme team over the fortnight from 20 July, with SLT support, to establish for each cornerstone whether the person approached can take it on. A no is recorded as an outcome in its own right. Inputs need to be ready for the 13 August workshop to hold the end-September sourcing strategy target.</td><td>Rachel Flower / Scott Eason with Shirley Gaynor-Ward</td><td>Fortnight from 20 Jul</td><td>Programme availability while Private Beta absorbs capacity</td><td><span class="pill amber">New (20 Jul)</span></td></tr>
-        <tr><td>Raise and maintain the Future State inputs risk on the delivery register (RAG 16, critical date 13 August) with the full narrative of what was sent to whom and when: first draft to Matt Thomas at the workshop, the session held with Martin O'Neil, and the product team approached in the week of 13 July and unable to engage. Directed by Shirley Gaynor-Ward on 20 July for the 21 July Delivery Board, and to be reflected on the board slides.</td><td>Scott Eason with Rachel Flower</td><td>For 21 Jul Delivery Board</td><td>None</td><td><span class="pill amber">New (20 Jul)</span></td></tr>
-        <tr><td>Confirm the approval route for the framework operator appointment paper with Mandie Holt, and support it through governance while James Cowley is on leave. Position drafted: no market exercise required, appointment made internally with NHSE approval, recommendation expected within a month. Open points to work: how the contractual terms with an operator would run in practice, and how NHS England retains control of what the framework contains when it does not own it.</td><td>James Cowley with Mandie Holt; Rachel / Scott covering the leave period</td><td>Recommendation within a month</td><td>Mandie Holt on the governance route</td><td><span class="pill amber">New (20 Jul)</span></td></tr>
-        <tr><td>Explore charging a national access fee alongside the framework operator's levy, so the run and maintain costs of the national platform are covered rather than funded at cost: commissioners would pay the operator's levy and a further percentage to NHS England. Raised by Shirley Gaynor-Ward on 20 July as a principle to push for and to test against the operator route. To work: whether the mechanism can run through SBS, what a fair percentage would be, and whether it changes the case for an external operator.</td><td>Shirley Gaynor-Ward with Rachel / Scott / James</td><td>Alongside sourcing strategy</td><td>Operator route; tariff and volumes work</td><td><span class="pill amber">New (20 Jul)</span></td></tr>
-        <tr><td>Resolve the framework delivery model in the sourcing strategy: NHSE-administered vs framework provider partnership vs third-party managed. Self-delivery was the working assumption; NHS Commercial (Mandie Holt) is not convinced. NHS SBS and NHS Supply Chain are the partnership front-runners in Rec Paper v1.1 (1 to 2 per cent supplier levy, no charge to NHSE; LPP and NOE CPC looked at, not in depth). At the 8 July workshop James reported early administrator soundings: NHS SPS running at around two years and too slow, LPP at around thirteen months with discussions opened, and early, lukewarm conversations with the NHS supply chain team. NHS Supply Chain reached back out on 8 July confirming they plan a bespoke home-testing lot on their next Lab Diagnostics, POCT and MS framework and asked for a call; James has brought Martin O'Neil in to dissuade a competing framework or find a partnering route, and the outcome feeds the framework go-live date. James also opened an initial conversation with LPP (Mark Fox) on 6 July about NHSE running its own framework versus partnering. A call with SBS is being set up for the week of 13 July.</td><td>James Cowley / Rachel with Mandie Holt / Shirley Gaynor-Ward</td><td>Sourcing strategy</td><td>Rec Paper v1.1; framework-provider research</td><td><span class="pill amber">Open decision (30 Jun)</span></td></tr>
-        <tr><td>SOW09 contract-gap homework, set by Matt Thomas after the 1 July Jira workshop: Matt, Simone, Scott, Tom and Rachel each review the delivery plan against SOW09 and mark where ambition exceeds the original description of work and what additional resource is required. Individual reviews, not a session; due back 10 July. Jira format agreed 1 July (OBOs at Level 3, milestones as deliverables/epics, accountability at deliverable layer, sequencing back from FY26/27, Critical Path component).</td><td>Matt Thomas with Scott / Rachel / Simone / Tom</td><td>Due 10 Jul</td><td>Jira sessions; SOW09 text</td><td><span class="pill amber">In flight</span></td></tr>
-        <tr><td>Recommendation Paper v1.1 reissue with audit-trail version note to confirm the open framework landing; the 7 July board pack records the issue as still pending</td><td>James Cowley</td><td>Overdue (was 23 Jun commitment)</td><td>v1.1 already in SharePoint; reissue note pending</td><td><span class="pill red">Overdue</span></td></tr>
-        <tr><td>Legal advice note from Hazel Randall (NHSE Head of Legal via Commercial) on open framework under PA23</td><td>James Cowley</td><td>To progress</td><td>NHS Commercial Legal</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Hill Dickinson follow-up: mitigations on dynamic market gaps (template call-off for commissioners, minimum standards e.g. minimum supplier discount). Now also feeding Plan C.</td><td>James Cowley with Ruby Melling (HD)</td><td>Pre-Programme Board</td><td>Hill Dickinson</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Procurement-options research commissioned by Martin O'Neil (6 Jul): an additional piece examining alternative procurement options, effectively a Plan C on the recommendation, in two work packages (service design and commercial). Scott to produce an outline plan for James and Rachel to review within days.</td><td>Scott Eason / James Cowley / Rachel Flower</td><td>Outline within days</td><td>Martin O'Neil scope</td><td><span class="pill amber">New</span></td></tr>
-        <tr><td>Establish the framework value estimate that sets the approval route. The 20 July board recorded that the governance route depends on the estimated value of the framework, and that the value is commissioner spend rather than direct NHS England spend. Inside NHSE and DHSC governance the approvers are NHSE commercial, finance and legal plus the DHSC Commercial Assurance Board; a higher value or a different route pulls in Treasury and Cabinet Office, who need engaging early. This is the same pressure the tracker carries as the award-value ceiling against the wider envelope, now stated at board level, and it depends on the volumes work.</td><td>James Cowley with Scott / Rachel</td><td>Ahead of the HT052 senior discussion</td><td>Volumes and values substantiation</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Indicative volumes and values for the procurement framework: named at the 25 June Delivery Board as a critical dependency and restated for the 21 July board as the critical input, since it sets the governance route (possibly a full business case) as well as the go-live date. Without it the governance-ready sourcing strategy cannot be approved. Substantiation is to be built from the NHS Online pathways as the core, with sensitivity ranges.</td><td>Matt Thomas coordinating, with Scott / Rachel / James</td><td>Ahead of sourcing strategy build-out</td><td>Health economics input; volumes substantiation</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Commercial team requirements to Dr Simon Leigh (Roar Intelligence, simon@roarintel.com): pathway economics, unit economics, cost-per-test, 2030 volume, before economics get built without commercial input. We were not copied into the original Kainos intro.</td><td>Scott / Rachel / James / Richard Samuel</td><td>This week</td><td>Direct contact</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Stand up a tariff-model workstream under Richard Samuel with the health economist and workshop the payment flows (7 July board pack next-period priority). First real cost input has landed: Preventx's cost-per-test apportionment (29 June) with SH:24 unable to provide short-term figures. Links to the commercial requirements needed in front of Dr Simon Leigh.</td><td>Richard Samuel with Scott / Rachel / James</td><td>Next period</td><td>Health economist engagement</td><td><span class="pill amber">Input arriving</span></td></tr>
-        <tr><td>Framework delivery partner assessment (SBS / LPP / NHS Supply Chain / self-delivery), still undecided. Three sessions run or set: SBS catch-up 13 July; NHS Supply Chain met 17 July on its planned bespoke home-testing lot, with the aim of aligning rather than running competing frameworks; LPP discussion 21 July. The SBS process runs at around two years against around thirteen months elsewhere. Land the assessment off the back of the three meetings and escalate for senior alignment where needed.</td><td>James Cowley / Richard Samuel</td><td>After the 21 Jul LPP session</td><td>Senior alignment where framework routes compete</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Reconcile matchmaker / curated-list language in the 28 May position papers against the open framework line in v1.1</td><td>Scott Eason</td><td>Before papers used externally</td><td>None</td><td><span class="pill amber">Carried (3 weeks)</span></td></tr>
-        <tr><td>Close or formally re-baseline the RFI next-steps recommendation (7+ weeks open)</td><td>James Cowley / Deborah</td><td>Overdue</td><td>None</td><td><span class="pill red">Overdue</span></td></tr>
-        <tr><td>Supplier Forum 3 (Wednesday 22 July, Citylabs 1.0, Nelson St, Manchester M13 9NQ; morning HIV cohort 9:30 to 12:30, afternoon RFI cohort 13:15 to 16:15). Session leads assigned across both cohorts (Richard Samuel recap and ground rules; Simone Bilton and Will Twells consolidated findings; Ronan O&#39;Connor and Tom Rawlinson technology showcase; Gary Birnie service-wrapper breakout; Simone Bilton T4 discovery; Martin O&#39;Neil state of the nation; Rachel Flower and James Cowley journey to market; Olivia Sharp innovation breakout). Both decks are now built out in the Session 3 folder. The afternoon RFI pack runs to forty slides and the Journey to Market section carries an indicative framework milestone timeline: mobilise and shape strategy across July and August, PPN issued 1 September, outline business case and requirements complete 15 October, documents review and GAS and CEG preparation through November, governance approvals 1 December and the ITT issued 5 January. A revised afternoon briefing note is in draft against the 17 July Final Copy.</td><td>Annie Wakefield (logistics); Richard Samuel / Rachel / James / Scott (content)</td><td>Forum 22 Jul</td><td>Afternoon deck content; Journey to Market slide</td><td><span class="pill amber">Both decks built, forum tomorrow</span></td></tr>
-        <tr><td>Remote Sampling Industry Roundtable follow-up: supplier responses to the collaboration questions arriving (Inuvi/Timothy Woolley responded 27 June with laboratory and LabMed UK PaCTS papers). Collate against the national solution direction. Full roundtable transcript requested, to follow the RF notes already in SharePoint.</td><td>Rachel Flower / Richard Samuel</td><td>Responses requested COP 6 Jul</td><td>Supplier responses</td><td><span class="pill amber">Open</span></td></tr>
-        <tr><td>Draft an MoU to frame the SHL / London scale-partner relationship, including revenue transfer and deliverables, following the 15 July Sexual Health London digital board session. Alongside it a joint task group with Preventx stands up (ToRs from Annie Wakefield) and comms are to be agreed with SHL; scale aim is a minimum of four London boroughs, ideally SHL's wider footprint, to March 2027.</td><td>Scott Eason with Richard Samuel / Annie Wakefield</td><td>MoU to draft</td><td>SHL sign-off; Preventx</td><td><span class="pill amber">New</span></td></tr>
-        <tr><td>Co-ordinate legal and procurement approval (HOTE-1890, assigned to Scott 15 July). Current substance: ACE contract variation notices C1002 and C1005 in approval (forwarded by Shirley Gaynor-Ward 10 July); Rachel Flower and Wendi Higgins reviewing and pulling in IP addendums from Ethan Illingworth and Abhishek Ranjan before the pack goes to Lexi Moffatt.</td><td>Scott Eason with Rachel Flower / Wendi Higgins</td><td>In train</td><td>IP addendums; Lexi Moffatt review</td><td><span class="pill amber">In flight</span></td></tr>
-      </tbody>
-    </table>
+  <div class="rail">
+    <p class="rlabel">Jump to an item</p>
+    <div class="chips">
+      <a class="chip chip-summary on" href="#summary"><span class="dot dark"></span>Summary</a>
+      <a class="chip" href="#i-model"><span class="dot red"></span>Commercial model & approval route</a>
+      <a class="chip" href="#i-govroute"><span class="dot"></span>Governance route & framework value</a>
+      <a class="chip" href="#i-volumes"><span class="dot red"></span>Volumes and values substantiation</a>
+      <a class="chip" href="#i-sourcing"><span class="dot"></span>Sourcing strategy</a>
+      <a class="chip" href="#i-cornerstones"><span class="dot red"></span>Future State inputs into programme sprints</a>
+      <a class="chip" href="#i-phase2"><span class="dot"></span>Phase 2 Plan</a>
+      <a class="chip" href="#i-operator"><span class="dot"></span>Framework operator appointment & access fee</a>
+      <a class="chip" href="#i-delivery"><span class="dot"></span>Framework delivery partner</a>
+      <a class="chip" href="#i-interim"><span class="dot"></span>Interim route / Plan C</a>
+      <a class="chip" href="#i-tariff"><span class="dot"></span>Tariff model & health economics</a>
+      <a class="chip" href="#i-costs"><span class="dot"></span>Supplier cost discovery & SOW09</a>
+      <a class="chip" href="#i-sf3"><span class="dot"></span>Supplier Forum 3</a>
+      <a class="chip" href="#i-shl"><span class="dot"></span>SHL / London scale partner</a>
+      <a class="chip" href="#i-legal"><span class="dot"></span>Legal & procurement approval</a>
+      <a class="chip" href="#i-lead"><span class="dot grey"></span>Programme lead & resourcing gap</a>
+      <a class="chip" href="#i-housekeeping"><span class="dot grey"></span>Documentation & audit trail</a>
+      <a class="chip" href="#history"><span class="dot grey"></span>Full history</a>
+    </div>
   </div>
 
+  <div class="focusbar">
+    <span>Showing one item. <a href="#" class="showall">Show all items on this page</a></span>
+    <span class="fnav"><a href="index.html">&#8592; Back to tiles</a></span>
+  </div>
+
+  <h2 id="items">Items</h2>
+    <section class="itemcard red" id="i-model" data-title="Commercial model & approval route" data-wait="Rob McMillan on the approval route" data-waitwho="Rachel / James" data-waitcls="hot">
+      <div class="ihead">
+        <span class="pill red">Critical path</span>
+        <h3 class="ititle">Commercial model &amp; approval route</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Rachel Flower / James Cowley</span>
+          <span><b>Next</b>Senior discussion with Rob McMillan, due 17 Aug</span>
+          <span><b>Depends on</b>Framework value estimate; Rob McMillan availability</span>
+          <span><b>Reference</b>HomeTest Programme Board action HT052, raised 20 Jul 2026</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">The 20 July Programme Board received the twelve weeks of commercial discovery and the Option B recommendation, but <strong>could not approve it</strong>. The route now goes to Rob McMillan for a view on the approval route, under action HT052.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">What Option B is</button>
+            <button type="button" class="pt" data-p="1">Why the board could not approve it</button>
+            <button type="button" class="pt" data-p="2">HT052, and why it is the gate</button>
+            <button type="button" class="pt" data-p="3">Portfolio move</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>What Option B is</h5><p>NHS England operates the platform and the assurance standards, and delivers a procurement vehicle through which commissioners buy from pre-assured suppliers connected to it. The procurement route is an open framework, letting suppliers bid against a specification and commissioners direct award or run competitions.</p></div>
+            <div class="pd" data-p="1"><h5>Why the board could not approve it</h5><p>Polly Bishop reminded the board that some topics fall outside its decision-making because of who sits on it. Martin O'Neil confirmed the paper was co-produced with the commercial team and that Rob McMillan is sighted ahead of his approval being sought. James Cowley noted any proposal remains subject to the full sourcing strategy.</p></div>
+            <div class="pd" data-p="2"><h5>HT052, and why it is the gate</h5><p>HT052 sits with Rachel Flower and James Cowley: arrange a senior discussion with Rob McMillan, and Polly Bishop and/or Emma McLachlan, to confirm the governance and approval route. Due 17 August. HT045, which required the paper to be presented to the July board, is closed.</p><p>The load-bearing change is that board endorsement is no longer the gate. Rob McMillan is, and the route to him turns on a framework value estimate that does not yet exist because the volumes work has not landed.</p></div>
+            <div class="pd" data-p="3"><h5>Portfolio move</h5><p>The 20 July board was Polly Bishop's last. HomeTest is transitioning into the At Home and Community portfolio, with Emma McLachlan joining as part of that transition.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-govroute" data-title="Governance route & framework value">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Governance route &amp; framework value</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley with Scott / Rachel</span>
+          <span><b>Next</b>Framework value estimate ahead of HT052</span>
+          <span><b>Depends on</b>Volumes and values substantiation</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">The spend is commissioner spend, not direct NHS England spend, so the approval route depends on the estimated value of the framework. That value is not yet known.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Who approves, and when it widens</button>
+            <button type="button" class="pt" data-p="1">The value ceiling</button>
+            <button type="button" class="pt" data-p="2">Framework not in place by April 2027</button>
+            <button type="button" class="pt" data-p="3">Programme finance backdrop</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Who approves, and when it widens</h5><p>Inside NHSE and DHSC governance the approvers are NHSE commercial, finance and legal colleagues plus the DHSC Commercial Assurance Board. A higher value or a different route pulls in Treasury and Cabinet Office, who need engaging early.</p></div>
+            <div class="pd" data-p="1"><h5>The value ceiling</h5><p>The tracker carries this as an award-value ceiling of around &#163;50m against a wider envelope of roughly &#163;250m. Breaching the ceiling trips the Treasury and Cabinet Office assurance trigger. Mandie Holt's three-to-four month framework approval is NHSE-only; the wider approvers add to the plan.</p></div>
+            <div class="pd" data-p="2"><h5>Framework not in place by April 2027</h5><p>The board recorded that the framework will not be in place by April 2027, so tactical and interim arrangements are required to support beta and testing. That interim route is tracked as its own item.</p></div>
+            <div class="pd" data-p="3"><h5>Programme finance backdrop</h5><p>The programme has an &#163;8m budget, &#163;2m revenue and &#163;6m capital, covering suppliers, interim pay and wider DPSP costs. Forecast outturn is around &#163;200k under budget, with the interim pay split between HealthStore and HomeTest still to settle. Elements on time and materials leave scope to claw back funding if the third use case does not proceed.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard red" id="i-volumes" data-title="Volumes and values substantiation" data-wait="Volumes substantiation to set the value" data-waitwho="Matt Thomas with HE" data-waitcls="">
+      <div class="ihead">
+        <span class="pill red">Critical input</span>
+        <h3 class="ititle">Volumes and values substantiation</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Matt Thomas coordinating, with Scott / Rachel / James</span>
+          <span><b>Next</b>Ahead of sourcing strategy build-out</span>
+          <span><b>Depends on</b>Health economics input</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">Named at the 25 June Delivery Board as a critical dependency and restated for the 21 July board as <strong>the</strong> critical input. It sets the governance route, possibly a full business case, as well as the go-live date. Without it the governance-ready sourcing strategy cannot be approved.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Why it gates everything</button>
+            <button type="button" class="pt" data-p="1">How it will be built</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Why it gates everything</h5><p>The framework value estimate that decides the approval route depends on volumes. The go-live date depends on volumes. So the approval route and the volumes dependency sit on the same critical path rather than in parallel.</p></div>
+            <div class="pd" data-p="1"><h5>How it will be built</h5><p>Substantiation is to be built from the NHS Online pathways as the core, with sensitivity ranges. It carries ministerial visibility on the board risk slide. James Cowley is working it with Royal Mail and the health economist.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-sourcing" data-title="Sourcing strategy">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Sourcing strategy</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley (lead) / Scott / Rachel</span>
+          <span><b>Next</b>Outline before 27 Jul; workshop 13 Aug</span>
+          <span><b>Depends on</b>Volumes; programme inputs and named owners</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">v0.1 skeleton, James holding the pen. Outline direction of travel before 27 July, then a governance-ready version with KPIs, evaluation criteria, volumes and value. End-September working target, with an end-October completion ambition also on record.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">The cornerstones workshop</button>
+            <button type="button" class="pt" data-p="1">James on leave</button>
+            <button type="button" class="pt" data-p="2">Future-state framing</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>The cornerstones workshop</h5><p>The workshop covering go-live date, volume and value, lotting, framework structure, commercial models and interim routes to market has moved from 23 July to 13 August, agreed 20 July, so programme inputs and named owners can be prepared first. Finance, Legal and Commissioners are to be brought in, with Scott's assurance-model strawman as a starting point.</p></div>
+            <div class="pd" data-p="1"><h5>James on leave</h5><p>James Cowley is on leave from 24 July and returns Monday 10 August, which is part of why the workshop moved past his return.</p></div>
+            <div class="pd" data-p="2"><h5>Future-state framing</h5><p>A future-state discussion paper (v0.2, 13 July) frames the platform as national testing infrastructure, feeding the strategy's positioning.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard red" id="i-cornerstones" data-title="Future State inputs into programme sprints" data-wait="Named programme owners for the six cornerstones" data-waitwho="Programme team" data-waitcls="hot">
+      <div class="ihead">
+        <span class="pill red">Critical path</span>
+        <h3 class="ititle">Future State inputs into programme sprints</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Rachel Flower / Scott Eason with Shirley Gaynor-Ward</span>
+          <span><b>Next</b>13 August workshop</span>
+          <span><b>Depends on</b>Programme capacity, committed to Private Beta</span>
+          <span><b>Reference</b>Delivery register risk, RAG 16, critical date 13 Aug</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">Raised as a new risk on 20 July at SLT direction and tabled for the 21 July Delivery Board at RAG 16. The information the sourcing strategy needs from the programme is not in the sprints, and without it the workshop and the end-September strategy slip.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">What is missing</button>
+            <button type="button" class="pt" data-p="1">Finding owners</button>
+            <button type="button" class="pt" data-p="2">The risk narrative on the register</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>What is missing</h5><p>Programme capacity is committed to Private Beta, the six cornerstone inputs have no named programme owners, and Future State is not yet an integrated programme workstream. Framework go-live of 1 August 2027 is at risk.</p></div>
+            <div class="pd" data-p="1"><h5>Finding owners</h5><p>One-to-ones and small group sessions with the programme team over the fortnight from 20 July, with SLT support, to establish for each cornerstone whether the person approached can take it on. A no is recorded as an outcome in its own right.</p></div>
+            <div class="pd" data-p="2"><h5>The risk narrative on the register</h5><p>Maintained with the full audit trail of what was sent to whom and when: first draft to Matt Thomas at the workshop, the session held with Martin O'Neil, and the product team approached in the week of 13 July and unable to engage. Directed by Shirley Gaynor-Ward for the 21 July Delivery Board and reflected on the board slides.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-phase2" data-title="Phase 2 Plan">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Phase 2 Plan</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Scott Eason / James Cowley</span>
+          <span><b>Next</b>Load unified plan into Jira</span>
+          <span><b>Depends on</b>Operating model; procurement timetable</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">v0.1 in SharePoint (25 June, updated 29 June) is a first-cut skeleton: five-stage spine, Plan A open framework (Aug 2027), Plan C interim protecting the April 2027 Beta. Substance, owners, dependencies and sizing still to populate.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Two plans aligned</button>
+            <button type="button" class="pt" data-p="1">Procurement timetable</button>
+            <button type="button" class="pt" data-p="2">Jira model</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Two plans aligned</h5><p>On 9 July Scott and James aligned their two plans, the operating-model plan and the procurement plan, into one. Scott to fold in James's feedback and load the unified plan into Jira, Matt Visser's ask, so its dependencies plug into the overarching programme plan.</p></div>
+            <div class="pd" data-p="1"><h5>Procurement timetable</h5><p>James is adding a procurement-specific timetable from Mandie's planning doc and the SBS tabular timetable: PIN, ITT, statutory windows and evaluation mechanics into the skeleton.</p></div>
+            <div class="pd" data-p="2"><h5>Jira model</h5><p>Agreed 1 July: OBOs at Level 3, milestones as deliverables and epics, accountability at the deliverable layer, sequencing back from FY26/27, with a Critical Path component.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-operator" data-title="Framework operator appointment & access fee" data-wait="Mandie Holt on the operator approval route" data-waitwho="James Cowley" data-waitcls="">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Framework operator appointment &amp; access fee</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley with Mandie Holt</span>
+          <span><b>Next</b>Recommendation within a month</span>
+          <span><b>Depends on</b>Mandie Holt on the governance route</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">James Cowley has drafted a separate paper on which framework operator to partner with and why NHS England does not run the framework directly. Mandie Holt asked for it to be pulled out of the sourcing strategy as a standalone approval.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Why no market exercise</button>
+            <button type="button" class="pt" data-p="1">Open points</button>
+            <button type="button" class="pt" data-p="2">National access fee</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Why no market exercise</h5><p>The working position is that appointing an operator does not require a market exercise: the candidates are public sector bodies, there is no charge to NHS England, and the decision can be made internally with NHSE approval.</p></div>
+            <div class="pd" data-p="1"><h5>Open points</h5><p>How the contractual terms with an operator would run in practice, and how NHS England retains control of what the framework contains when it does not own it.</p></div>
+            <div class="pd" data-p="2"><h5>National access fee</h5><p>Shirley Gaynor-Ward raised, on 20 July, charging a national access fee alongside the operator's levy so the run-and-maintain costs of the national platform are covered rather than funded at cost: commissioners would pay the operator's levy and a further percentage to NHS England. To work: whether it can run through SBS, a fair percentage, and whether it changes the case for an external operator.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-delivery" data-title="Framework delivery partner">
+      <div class="ihead">
+        <span class="pill amber">Open decision</span>
+        <h3 class="ititle">Framework delivery partner</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley / Richard Samuel</span>
+          <span><b>Next</b>Land the assessment after the LPP session</span>
+          <span><b>Depends on</b>Senior alignment where framework routes compete</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">NHSE-administered versus framework provider partnership versus third-party managed, still undecided. Self-delivery was the working assumption; NHS Commercial (Mandie Holt) is not convinced.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">The front-runners</button>
+            <button type="button" class="pt" data-p="1">Three sessions</button>
+            <button type="button" class="pt" data-p="2">The Supply Chain complication</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>The front-runners</h5><p>NHS SBS and NHS Supply Chain are the partnership front-runners in Rec Paper v1.1, at a 1 to 2 per cent supplier levy with no charge to NHSE. LPP and NOE CPC were looked at, not in depth.</p></div>
+            <div class="pd" data-p="1"><h5>Three sessions</h5><p>SBS catch-up 13 July; NHS Supply Chain met 17 July on its planned bespoke home-testing lot, aiming to align rather than run competing frameworks; LPP (Mark Fox) discussion 21 July. The SBS process runs at around two years against around thirteen months elsewhere.</p></div>
+            <div class="pd" data-p="2"><h5>The Supply Chain complication</h5><p>NHS Supply Chain confirmed on 8 July it plans a bespoke home-testing lot on its next Lab Diagnostics, POCT and MS framework. James brought Martin O'Neil in to dissuade a competing framework or find a partnering route; the outcome feeds the framework go-live date.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-interim" data-title="Interim route / Plan C">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Interim route / Plan C</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley / Scott / Rachel</span>
+          <span><b>Next</b>Interim solution via existing frameworks</span>
+          <span><b>Depends on</b>Commercial advice; pathology frameworks</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">The 17 July risk update states plainly that the open framework will not be available by April 2027, because commercial advice puts the minimum lead time for a new framework at twelve months. An interim route is needed to protect the beta and testing phases.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">The interim direction</button>
+            <button type="button" class="pt" data-p="1">NHS Online cannot wait</button>
+            <button type="button" class="pt" data-p="2">Procurement-options research</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>The interim direction</h5><p>The mitigation on record is to work with Commercial colleagues to find an interim procurement solution delivering some of the intended framework benefits through existing pathology frameworks. That is a different bridge from the SBS Sexual Health Framework route carried in Phase 2 Plan v0.1.</p></div>
+            <div class="pd" data-p="1"><h5>NHS Online cannot wait</h5><p>NHS Online needs to procure technical integration by January and patient beta by March, ahead of the framework. It has been directed towards current procurement routes including the London Procurement Partnership, and is going to market for a venepuncture service as a complementary fallback. Martin O'Neil confirmed it is supportive in principle with open dialogue.</p></div>
+            <div class="pd" data-p="2"><h5>Procurement-options research</h5><p>Martin O'Neil commissioned an additional piece on 6 July examining alternative procurement options, effectively a Plan C, in two work packages, service design and commercial. Scott to produce an outline plan for James and Rachel.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-tariff" data-title="Tariff model & health economics" data-wait="Simon Leigh engagement on the economics" data-waitwho="Richard Samuel" data-waitcls="">
+      <div class="ihead">
+        <span class="pill amber">Input arriving</span>
+        <h3 class="ititle">Tariff model &amp; health economics</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Richard Samuel with Scott / Rachel / James</span>
+          <span><b>Next</b>Stand up the tariff-model workstream</span>
+          <span><b>Depends on</b>Health economist engagement</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">A tariff-model workstream is to stand up under Richard Samuel with the health economist, to workshop the payment flows. The first real cost input has landed.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">First cost input</button>
+            <button type="button" class="pt" data-p="1">Getting to Simon Leigh</button>
+            <button type="button" class="pt" data-p="2">The standing blocker</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>First cost input</h5><p>Preventx returned its cost-per-test apportionment on 29 June; SH:24 cannot provide short-term figures. This links to the commercial requirements needed in front of the health economist.</p></div>
+            <div class="pd" data-p="1"><h5>Getting to Simon Leigh</h5><p>Commercial team requirements go to Dr Simon Leigh (Roar Intelligence): pathway economics, unit economics, cost-per-test and 2030 volume, before economics get built without commercial input. The commercial side was not copied into the original Kainos introduction.</p></div>
+            <div class="pd" data-p="2"><h5>The standing blocker</h5><p>HOTE-1373 still names health-economics engagement as the biggest blocker, carried at 16 with SLT in the 7 July board pack. The 25 June Delivery Board names Simon Leigh's financial input as the outstanding dependency on the commercial recommendations paper.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-costs" data-title="Supplier cost discovery & SOW09">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Supplier cost discovery &amp; SOW09</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Matt Thomas with Scott / Rachel / Simone / Tom</span>
+          <span><b>Next</b>SOW09 homework due 10 Jul</span>
+          <span><b>Depends on</b>Jira sessions; SOW09 text</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">SOW09 contract-gap homework, set by Matt Thomas after the 1 July Jira workshop: each of Matt, Simone, Scott, Tom and Rachel reviews the delivery plan against SOW09 and marks where ambition exceeds the original description of work and what additional resource is required.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Format</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Format</h5><p>Individual reviews, not a session, due back 10 July. It sits alongside the supplier cost discovery that fed Preventx's apportionment into the tariff work.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-sf3" data-title="Supplier Forum 3">
+      <div class="ihead">
+        <span class="pill amber">Forum tomorrow</span>
+        <h3 class="ititle">Supplier Forum 3</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Annie Wakefield (logistics); content leads</span>
+          <span><b>Next</b>Forum Wed 22 Jul</span>
+          <span><b>Depends on</b>Afternoon deck content</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">Wednesday 22 July, Citylabs 1.0, Manchester: morning HIV cohort 9:30 to 12:30, afternoon RFI cohort 13:15 to 16:15. Both decks were reworked the afternoon before.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">The two packs</button>
+            <button type="button" class="pt" data-p="1">Journey to Market timeline</button>
+            <button type="button" class="pt" data-p="2">Leads</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>The two packs</h5><p>The afternoon RFI pack now stands at twenty-nine slides with the running order and leads fixed, its shortlisted-conditions section populated with the priority-scored long list and test volumes per annum. The prioritisation framework slide is still empty and the patient-preference slide still carries a DRAFT mark. The morning pack is at forty-three slides and complete.</p></div>
+            <div class="pd" data-p="1"><h5>Journey to Market timeline</h5><p>Led by Rachel Flower and James Cowley, carrying the indicative framework milestones: PPN 1 September, OBC and requirements 15 October, documents review through November, governance approvals 1 December, ITT issued 5 January, all subject to change.</p></div>
+            <div class="pd" data-p="2"><h5>Leads</h5><p>Richard Samuel on recap, ground rules and state of the nation; Simone Bilton and Will Twells on consolidated findings; Tom Rawlinson on technology; Gary Birnie on the service-wrapper breakout; Simone Bilton on T4 discovery; Olivia Sharp on the acute-initiated breakout.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-shl" data-title="SHL / London scale partner">
+      <div class="ihead">
+        <span class="pill amber">New</span>
+        <h3 class="ititle">SHL / London scale partner</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Richard Samuel / Scott</span>
+          <span><b>Next</b>MoU to draft</span>
+          <span><b>Depends on</b>SHL sign-off; Preventx</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">Following the 15 July Sexual Health London digital board session, SHL is taken to be on board as a scaled-beta partner: launch HIV HomeTest across a minimum of four London boroughs, ideally SHL's wider footprint, between now and March 2027.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Next steps</button>
+            <button type="button" class="pt" data-p="1">Board record</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Next steps</h5><p>Scott to draft an MoU framing the relationship, revenue transfer and deliverables. A joint task group with Preventx stands up, with terms of reference from Annie Wakefield, and comms are to be agreed with SHL.</p></div>
+            <div class="pd" data-p="1"><h5>Board record</h5><p>The 20 July Programme Board recorded London as brought into scope to support target numbers, alongside continued work with East Sussex and Salford, with MoUs being finalised for both private and public beta. That is the board-level statement of this arrangement.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard" id="i-legal" data-title="Legal & procurement approval" data-wait="Lexi Moffatt review; IP addendums" data-waitwho="Rachel / Wendi" data-waitcls="">
+      <div class="ihead">
+        <span class="pill amber">In flight</span>
+        <h3 class="ititle">Legal &amp; procurement approval</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Scott Eason with Rachel / Wendi Higgins</span>
+          <span><b>Next</b>Route pack to Lexi Moffatt</span>
+          <span><b>Depends on</b>IP addendums; Lexi Moffatt review</span>
+          <span><b>Reference</b>Jira HOTE-1890, assigned to Scott 15 Jul 2026</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">HOTE-1890, assigned to Scott on 15 July to co-ordinate legal and procurement approval.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">ACE contract variation notices</button>
+            <button type="button" class="pt" data-p="1">What is being added</button>
+            <button type="button" class="pt" data-p="2">Legal advice in train</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>ACE contract variation notices</h5><p>ACE is the PA Consulting-administered commercial arrangement holding the programme's substantive money and services, organised into numbered commissions each with a signed commission order form. Contract variation notices C1002 and C1005 are in approval, forwarded by Shirley Gaynor-Ward on 10 July.</p></div>
+            <div class="pd" data-p="1"><h5>What is being added</h5><p>Rachel Flower and Wendi Higgins are reviewing and pulling in IP addendums from Ethan Illingworth and Abhishek Ranjan before the pack goes to Lexi Moffatt.</p></div>
+            <div class="pd" data-p="2"><h5>Legal advice in train</h5><p>A legal advice note from Hazel Randall (NHSE Head of Legal via Commercial) on the open framework under the Procurement Act 2023 is to progress. Hill Dickinson (Ruby Melling) is providing a graded advice note with practical mitigations on dynamic-market gaps, such as a template call-off for commissioners and minimum standards, now also feeding Plan C.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard grey" id="i-lead" data-title="Programme lead & resourcing gap">
+      <div class="ihead">
+        <span class="pill grey">Watching brief</span>
+        <h3 class="ititle">Programme lead &amp; resourcing gap</h3>
+        <div class="imeta">
+          <span><b>Owner</b>Martin O'Neil / Shirley Gaynor-Ward with Mandie Holt</span>
+          <span><b>Next</b>Lever for Phase 2 resourcing</span>
+          <span><b>Depends on</b>Kainos SoW restructure</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">Product and technical delivery are led; the future state and commercial side is not. Cornerstone ownership and workshop preparation fall back on Scott and Rachel.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">The gaps</button>
+            <button type="button" class="pt" data-p="1">The lever</button>
+            <button type="button" class="pt" data-p="2">Adoption and marketing</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>The gaps</h5><p>The PMO gap Ethan Illingworth partly filled has moved to HealthStore. Rachel Flower is reducing her days. Wendi Higgins is expected to move off IG around end September or October, handing over to Hannah, who joined 20 July as backfill and additional capacity. James Cowley is discussing a recut of his statement of work with Mandie Holt, potentially bringing in support alongside him while keeping HomeTest as his primary delivery.</p></div>
+            <div class="pd" data-p="1"><h5>The lever</h5><p>The Kainos 26/27 SoW restructure conversation has been signalled by Shirley. The 27/28 SoW does not yet exist; Matt Thomas is tasked to author it. That is where Phase 2 resourcing gets set.</p></div>
+            <div class="pd" data-p="2"><h5>Adoption and marketing</h5><p>Separately, adoption and marketing has no Kainos SoW line, no budget and no owner, and has been escalated to SLT as a Public Beta start dependency.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="itemcard grey" id="i-housekeeping" data-title="Documentation & audit trail">
+      <div class="ihead">
+        <span class="pill grey">Carried</span>
+        <h3 class="ititle">Documentation &amp; audit trail</h3>
+        <div class="imeta">
+          <span><b>Owner</b>James Cowley / Scott</span>
+          <span><b>Next</b>Clear the carried items</span>
+          <span><b>Depends on</b>None</span>
+        </div>
+      </div>
+      <div class="ibody">
+        <p class="ipos">The paperwork that keeps the position defensible: version notes, reconciliations and filings, several carried or overdue.</p>
+        <div class="panes">
+          <div class="ptlist">
+            <button type="button" class="pt on" data-p="0">Rec Paper v1.1 reissue</button>
+            <button type="button" class="pt" data-p="1">Position-paper reconciliation</button>
+            <button type="button" class="pt" data-p="2">RFI close and SLT minute</button>
+            <button type="button" class="pt" data-p="3">Roundtable follow-up</button>
+            <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
+          </div>
+          <div class="ptdetail">
+            <div class="pd on" data-p="0"><h5>Rec Paper v1.1 reissue</h5><p>Overdue against a 23 June commitment. v1.1 is already in SharePoint; the reissue with an audit-trail version note, to confirm the open framework landing, is still pending per the 7 July board pack.</p></div>
+            <div class="pd" data-p="1"><h5>Position-paper reconciliation</h5><p>The matchmaker and curated-list language in the 28 May position papers needs reconciling against the open framework line in v1.1 before those papers are used externally. Carried three weeks.</p></div>
+            <div class="pd" data-p="2"><h5>RFI close and SLT minute</h5><p>The RFI next-steps recommendation needs closing or formally re-baselining, seven-plus weeks open. The 22 June SLT decision minute is still to be filed, and until it is, design-position notes stay blocked.</p></div>
+            <div class="pd" data-p="3"><h5>Roundtable follow-up</h5><p>Remote Sampling Industry Roundtable: supplier responses to the collaboration questions are arriving, with Inuvi (Timothy Woolley) responding on 27 June with laboratory and LabMed UK PaCTS papers, to collate against the national solution direction.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="reference">
   <h2 id="blockers">Dependencies and blockers</h2>
   <div class="card">
     <table class="narrow">
@@ -190,173 +724,175 @@
     <p><strong>Watching brief beyond 20 July:</strong> Supplier Forum 3 confirmed 22 July, Citylabs 1.0, Manchester, morning HIV cohort and afternoon RFI cohort, with the afternoon deck content still to build. DPIA full approval tracked mid-August (IG critical path). 31 August Private Beta start. Quarterly Planning Event 29-30 July, Belfast, per the 16 June invite.</p>
   </div>
 
-  <h2 id="history">History</h2>
+    </div>
+
+<h2 id="history">History</h2>
   <div class="log">
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">21 Jul</span>Both supplier forum decks reworked the afternoon before the forum; conditions long list and volumes now in the supplier-facing pack</summary>
       <div class="body"><p>Both Supplier Forum 3 packs were worked on through the afternoon of 21 July, the day before the forum. The afternoon RFI deck now stands at twenty-nine slides with the running order and named leads fixed: Richard Samuel on the programme introduction, ground rules and state of the nation; Simone Bilton on shortlisted conditions; Tom Rawlinson on the technology demonstration; James Cowley and Rachel Flower on Journey to Market; and Olivia Sharp running the acute-initiated service journey breakout.</p><p>The substantive change is the shortlisted-conditions section, which has moved from a placeholder to the priority-scored long list with addressable test volumes per annum against each pathway: HIV at 1.5 million, PSA active surveillance at 150,000, the STI T4 panel at 3 million, hepatitis C at 1 million, hip and knee MRSA screening at 250,000, raised PSA at 200,000 and ACL reconstruction at 30,000. The pack presents two conditions committed and twelve under evaluation, drawn from a March 2026 long list of five self-sample patterns across twenty tests. That matters beyond the forum: volumes have been the gating input for the sourcing strategy, and a supplier-facing number is now in circulation ahead of the cornerstones workshop on 13 August.</p><p>The Journey to Market timeline is unchanged: PPN issued 1 September, OBC and requirements complete 15 October, documents review and circulation through November, governance approvals 1 December and the ITT issued 5 January, all marked subject to change. Two gaps remain in the pack: the prioritisation framework slide is still an empty title, and the patient-preference evidence slide still carries a DRAFT mark.</p><p>The morning HIV cohort pack is at forty-three slides and complete: consolidated Alpha and co-design findings, the user research playback, the technology showcase covering the AWS serverless architecture and the supplier integration conformance toolkit, the seven user- and system-centric hypotheses with their Alpha confidence ratings, a service wrapper breakout on supplier and commissioner onboarding run by Gary Birnie, and an emerging use cases session testing how much of the HIV flow carries over to the T4 panel.</p><p class="source">Source: RFI Supplier Forum (Afternoon).pptx and HIV Supplier Forum Session 3 (Morning).pptx, SharePoint 05. HomeTest - Partnerships / Suppliers / Supplier Forum / Session 3, both updated 21 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">21 Jul</span>Afternoon supplier forum deck built out, carrying an indicative procurement timeline to the January ITT</summary>
       <div class="body"><p>The RFI cohort deck for Supplier Forum 3 has gone from section dividers to a built forty-slide pack in the day before the forum. The Journey to Market section that Rachel Flower and James Cowley lead now carries a HomeTest Framework indicative high-level milestone timeline, marked subject to change: mobilise and shape strategy across July and August, a Planned Procurement Notice issued <strong>1 September</strong>, outline business case and requirements complete <strong>15 October</strong> with scope, KPIs and the ITT pack, documents review and circulation through November with GAS and CEG preparation, governance approvals <strong>1 December</strong>, and the ITT issued <strong>5 January</strong>. The slide&#39;s own takeaway line reads that July to October sets up the procurement, November to December secures the approvals, and January launches the ITT.</p><p>This is the first time a dated procurement timetable has been put in front of suppliers, and it should be read against the sourcing strategy dates rather than instead of them: the end-September sourcing strategy target sits between the 1 September PPN and the 15 October requirements milestone, so any slip in the strategy moves the ITT. Several sections of the pack remain marked DRAFT or carry placeholder content, including the economic case, the visualisation slide and the four audience-impact slides, and the prioritisation framework slide is annotated for Will and Simone to update.</p><p class="source">Source: RFI Supplier Forum (Afternoon).pptx, Supplier Forum Session 3 folder, 21 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-cornerstones i-model">
       <summary><span class="d">21 Jul</span>Delivery Board carries the Future State risk at RAG 16; the commercial model risk updated to Phase Two mobilised</summary>
       <div class="body"><p>The 21 July Delivery Board highlight report carries the Future State inputs risk, HOTE-1915, at RAG 16, owned by Rachel Flower. Its update records that the risk was added on 20 July following the commercial check-in with SLT, that the cornerstones workshop has moved from 23 July to 13 August so programme inputs and owners can be prepared, and that current sprint capacity is committed. The risk is marked as not yet programme visible and not in Aspyre.</p><p>The longer-standing commercial model risk, HOTE-877, is carried at RAG 15 with a critical date of 31 March 2027 and an update dated 21 July recording Phase Two as mobilised, the 8 July planning workshops with SLT and NHS Commercial, the sourcing strategy confirmed as the gating artefact (NHS England Commercial owned, joint content), and draft v0.1 circulated. Its stated impacts are unchanged: scaled beta delayed pending implementation of the commercial model, and platform costs increased by rework to accommodate it.</p><p>Overall programme status on the report is amber, with internal integration interdependencies named as the biggest risk to private beta go-live.</p><p class="source">Source: 260721 - HomeTest Delivery Board Highlight Report.pptx, reporting period 21/07/26.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">20 Jul</span>Programme Board received the commercial recommendation but could not approve it; the route now runs through Rob McMillan</summary>
       <div class="body"><p>The HomeTest Programme Board met on Monday 20 July, 15:00 to 16:00, chaired by Polly Bishop. Rachel Flower and James Cowley presented the twelve weeks of commercial discovery undertaken with commercial, finance and legal colleagues, framed on the question of the best commercial and operating model to enable scalable, multi-condition home testing across the NHS in a way that is economically viable, operationally safe, and attractive to both commissioners and suppliers. The recommended direction was recorded as option B: NHS England operates the platform and the assurance standards while delivering a procurement vehicle through which commissioners purchase services from pre-assured suppliers connected to the platform. The proposed procurement route is an open framework, letting suppliers bid against a specification and enabling commissioners to direct award or run competitions as appropriate.</p><p>The board did not approve it. Polly Bishop reminded the board of its earlier decision that some topics fall outside its decision-making because of who sits on it, and said this item needs to go to Rob McMillan for discussion and a view on the approval route. Martin O&#39;Neil advised that the paper was co-produced with the commercial team and that Rob McMillan is sighted ahead of his approval being sought. James Cowley added that any proposal will be subject to a full sourcing strategy. The board concluded it could not give full approval without further engagement with senior commercial stakeholders, particularly Rob McMillan, and possibly wider senior governance depending on the scale and implications of the proposal.</p><p>The resulting action is <strong>HT052</strong>, on Rachel Flower and James Cowley: arrange a senior discussion with Rob McMillan, Polly Bishop and/or Emma McLachlan to confirm the appropriate governance and approval route for the commercial framework proposal, due 17 August. HT045, which required the commercial model paper to be presented to the July board, is now closed.</p><p>Two further points were recorded plainly. The proposed framework will not be in place by April 2027, so tactical and interim arrangements will be required to support the beta and testing phases. And the next step is the formal sourcing strategy, already commenced, taken forward through a series of workshops over the next two months to answer the commercial, operating model, assurance and delivery questions the strategy needs, before proceeding through the appropriate assurance and approval route. Procurement planning runs in parallel with the commercial team, alongside continued development of the target operating model and the financial modelling.</p><p class="source">Source: HomeTest Programme Board Minutes and Actions 20260720.docx, item 2.3; HomeTest Programme Board Action Tracker &amp; Decision Log.xlsx, updated 21 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-govroute">
       <summary><span class="d">20 Jul</span>The approval route turns on the framework value, and the stakeholder set widens with it</summary>
       <div class="body"><p>Polly Bishop asked who the key stakeholders affected by the proposed commercial route are, including whether any teams or senior stakeholders beyond those already engaged should be involved in shaping or approving the decision. James Cowley&#39;s answer sets the shape of the approval problem. The stakeholders to involve next are those who will ultimately need to sign off the proposed route, and the governance route depends on the estimated value of the framework, recognising that the value in question is commissioner spend rather than direct NHS England spend. If the proposal remains within NHS England and DHSC governance, the key stakeholders are expected to be NHS England commercial, finance and legal colleagues and the DHSC Commercial Assurance Board. If the value or the route requires wider approval, Treasury and Cabinet Office stakeholders may also need to be engaged early.</p><p>That is the same pressure point this tracker already carries as the award-value ceiling against the wider envelope, now stated at board level and tied directly to the approval route rather than sitting as a background constraint. It also means the volumes and values work is no longer only an input to the sourcing strategy; it is what determines who has to approve the thing.</p><p>James also named continued market engagement with suppliers and commissioner engagement as critical short and medium term dependencies, on the basis that the framework will only succeed if it is attractive to both. Richard Samuel is progressing commissioner engagement. On delivery partners, the board heard that the team is exploring partnership opportunities with organisations such as NHS Supply Chain, NHS SBS and the London Procurement Partnership, the rationale being their procurement expertise, capacity, capability and experience of framework management.</p><p class="source">Source: HomeTest Programme Board Minutes and Actions 20260720.docx, item 2.3.</p></div>
     </details>
-    <details>
+    <details data-item="i-interim">
       <summary><span class="d">20 Jul</span>NHS Online cannot wait for the framework: it needs its own procurement route by January</summary>
       <div class="body"><p>Polly Bishop asked how NHS Online has been involved in the commercial model work, given its dependency on HomeTest. Martin O&#39;Neil explained that the team is working closely with NHS Online on an interim solution because NHS Online needs to procure support for technical integration by January and patient beta by March. The proposed framework will not be in place in time to meet that near-term need, so NHS Online has been directed towards examples of current procurement routes, including work undertaken through the London Procurement Partnership. NHS Online is aware of the proposed HomeTest structure and of the interim solution being developed, but its immediate priority is getting its own procurement route off the ground.</p><p>Martin added that NHS Online is supportive in principle, that there is an open dialogue, and that nothing has been raised that would make the proposed approach out of bounds. NHS Online is also going to market for a venepuncture service, which gives a fallback route where a patient does not use HomeTest; the two services were described as complementary. Rachel Flower noted recent meetings with NHS Online, that James Cowley is linked with the NHS Online commercial counterpart to share learning, and that the programme will continue building the relationship.</p><p>The practical read for this workstream: the interim route is not a theoretical bridge to April 2027 any more. There is a named consumer with dates in January and March that the framework cannot serve, and the route being pointed at is LPP.</p><p class="source">Source: HomeTest Programme Board Minutes and Actions 20260720.docx, item 2.3.</p></div>
     </details>
-    <details>
+    <details data-item="i-govroute">
       <summary><span class="d">20 Jul</span>Programme finance: £8m budget, forecast around £200k under, with the interim pay split still to settle</summary>
       <div class="body"><p>Shirley Gaynor-Ward gave the board a finance position drawn from discussions with finance. The programme has an overall budget of <strong>£8 million</strong>, comprising £2 million revenue and £6 million capital, covering suppliers (Kainos and test suppliers), interim pay and wider DPSP costs.</p><p>Against the full-year budget the programme would initially have appeared around £200k over. Once committed spend and forecast outturn were reviewed the position reversed. For Kainos, the budget always allowed for the majority of revenue spend to fall in the first quarter given the nature of the work, with most other activity expected to be capitalised, and that remains the expected position with a year-to-date variance around £20k lower than anticipated. The forecast outturn still assumes the available funding is spent, taking account of the additional activities discussed by the programme. Because elements run on time and materials, the board noted there remains scope to claw funding back if the additional third use case work does not proceed or is later considered inappropriate to continue. On test suppliers, the forecast outturn is slightly lower than originally anticipated, identified as another area where funding may be clawed back.</p><p>The live pressure is interim pay. The programme originally operated under one cost code and has since moved across two, creating cross-charging complexity, and interim pay costs have been assumed to split between HealthStore and HomeTest. Shirley stated that if the costs cannot be split and are instead charged entirely to HomeTest, that creates a cost pressure that would need to be quantified. Taking everything together the current forecast outturn is around £200k under budget, which Polly Bishop asked to be recorded as the team&#39;s best current understanding. The board noted the position should be read in the context of the transition to the At Home and Community portfolio, the forthcoming DPSP strategic portfolio review, and Steven Dodd&#39;s work with Shirley Gaynor-Ward on the DPSP delivery transition plan.</p><p class="source">Source: HomeTest Programme Board Minutes and Actions 20260720.docx, item 2.2.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">20 Jul</span>HomeTest moves into the At Home and Community portfolio; Polly Bishop&#39;s last board</summary>
       <div class="body"><p>Polly Bishop opened the 20 July board by noting that HomeTest is in the process of transitioning into the <strong>At Home and Community portfolio</strong>. Emma McLachlan joined as part of that transition. Tom Clutterbuck introduced himself as the Department of Health and Social Care senior policy advisor taking over attendance from Olly Bates, and Karl Olsen introduced himself as lead user researcher for HomeTest. It was Polly Bishop&#39;s last meeting as chair and the board recorded its thanks.</p><p>Shirley Gaynor-Ward reported excellent progress over the previous month, with much of the reporting green but the overall programme rated amber because of the number of current risks. The board also noted there is no senior service owner for HomeTest given its cross-cutting nature, and that NHS Online may be where one is drawn from.</p><p>Three governance actions came out of the risks discussion, all due 17 August: close risk HOTE-886 and replace it with a risk about readiness for public beta (HT049); review programme risks and issues so items are classified appropriately, Polly Bishop having asked the team to consider whether some things recorded as risks are in fact issues where the matter is known and already presenting a problem (HT050); and confirm that NHS Online related risks are reflected consistently in NHS Online governance given the dependency between the two (HT051). A separate thirty-minute patient and public involvement session is to be scheduled by Karl Olsen within three weeks, with Innovation and Analysis and potentially NHS Online invited (HT053, due 7 August), the item having been squeezed out of the board by time.</p><p>The next Programme Board is <strong>Monday 17 August, 11:30 to 12:30</strong>, and the one after is Tuesday 15 September, 13:30 to 14:30.</p><p class="source">Source: HomeTest Programme Board Minutes and Actions 20260720.docx; HomeTest Programme Board Agenda 20260817.docx.</p></div>
     </details>
-    <details>
+    <details data-item="i-cornerstones i-sourcing">
       <summary><span class="d">20 Jul</span>Cornerstones workshop moved to 13 August; Future State inputs raised as a RAG 16 risk at SLT direction</summary>
       <div class="body"><p>The 23 July sourcing cornerstones workshop has been postponed to <strong>13 August</strong>. The decision was settled by email on the morning of 20 July: Martin O&#39;Neil raised whether to hold or drop the session against his own diary, James Cowley replied that he and Shirley Gaynor-Ward had been discussing postponing it to get working groups in place first, Martin agreed, and the placeholder has been reissued for 13 August. James Cowley is on leave from 24 July and returns Monday 10 August, so the new date sits three days after his return.</p><p>At the commercial check-in the same day, Shirley Gaynor-Ward directed that the position be put on the delivery register rather than carried in narrative: a risk stating that the information the sourcing strategy requires from the service delivery teams is not planned into the sprints because of Private Beta capacity, tabled at the top of the register for the 21 July Delivery Board and reflected on the board slides. That risk is now in the board pack at RAG 16 with a critical date of 13 August, owned by Rachel Flower. Its description records that the six cornerstone inputs have no named programme owners, that Future State is not yet an integrated programme workstream, and that without the inputs the workshop and the end-September sourcing strategy slip, putting the 1 August 2027 framework go-live at risk. The update text notes the milestone plan and Jira import as the immediate next step and owner sessions for each cornerstone being arranged over the following fortnight.</p><p>The context behind the risk was set out plainly. The programme team was approached in the week of 13 July and both Will Twells and Scott Baxter said they could not engage until the back end of the following week because Private Beta has their full attention; Matt Thomas is on leave until mid-week. Scott Baxter has been walked through the plan at a high level and has taken on the planning side. James Cowley&#39;s position going into his leave was that he needs to see the programme treating this as its own work rather than a commercial exercise running in a vacuum, and that the follow-on sessions cannot depend on him alone. The plan for the two weeks he is away is to run one-to-ones and small group sessions to establish, cornerstone by cornerstone, who can own the work; a clear no is treated as a useful outcome, because it evidences the gap rather than leaving it implied. Scott is also revising the tone of the milestone plan so that the inputs read as programme requirements rather than as a Future State ask.</p><p class="source">Source: 260721 - HomeTest Delivery Board Highlight Report.pptx, Future State workstream slide and Jira key issues slide, reporting period 21/07/26 (updated 20 July 2026); email exchange on the 23 July session, 20 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-operator">
       <summary><span class="d">20 Jul</span>Framework operator to be appointed internally without a market exercise; national access fee raised as a principle to test</summary>
       <div class="body"><p>Two commercial positions firmed up at the 20 July check-in, ahead of the Programme Board the same afternoon where the commercial recommendation was on the agenda.</p><p>The first is the framework operator. James Cowley&#39;s position is that going to market to select a framework operator is not required and that this is a decision NHS England can take internally: the realistic candidates are public sector bodies rather than private providers, there would be no charge to NHS England, and nothing in the work so far points outside the public sector. The comparison raised against it, private operators of the kind behind the ACE framework, was set aside on the basis that those run a materially different sort of vehicle from a public sector framework. What is still required is a written rationale for which operator and why, and Mandie Holt has asked for that to be pulled out of the sourcing strategy as a standalone approval paper rather than carried inside it. James has drafted the paper; the governance route, including whether it needs a board, is being confirmed with Mandie. A recommendation is expected within a month, and the timing of the decision then depends on the route. Two open points sit against it: how the contractual terms with an operator would work in practice, which nobody has yet seen, and how NHS England keeps control of what the framework contains when it does not own it, given an operator with other customers has its own reasons to broaden scope.</p><p>The second is a national access fee. Shirley Gaynor-Ward raised the principle that alongside the operator&#39;s levy of around one per cent, commissioners buying through the framework could pay a further percentage to NHS England, so the national run and maintain costs of the platform are covered rather than the service being funded at cost after the development work has been paid for once. The stated attraction is that it removes the self-funding objection to running the framework in house, which is the reason for preferring an external operator in the first place. To be worked: whether the mechanism can run through SBS, what percentage would be fair, and whether it materially changes the case for an external operator. Her longer-term view remains that HomeTest and HealthStore should sit on a single framework, with the current split driven by present constraints rather than design.</p><p class="source">Source: NHS Commercial weekly check-in, 20 July 2026; 260721 - HomeTest Delivery Board Highlight Report.pptx, Future State workstream slide, reporting period 21/07/26.</p></div>
     </details>
-    <details>
+    <details data-item="i-lead">
       <summary><span class="d">20 Jul</span>Programme resourcing: no non-technical programme lead, and three of the people carrying this work are reducing their time</summary>
       <div class="body"><p>The resourcing position around the Future State workstream was set out at the 20 July check-in and is worth recording because it bears directly on whether the cornerstone owners can be found.</p><p>The gap identified is a non-technical programme lead. Product and technical delivery are led; the commercial and operating-model side is not, and the argument made is that the programme needs a second lead driving that side and reporting back to Martin O&#39;Neil and Shirley Gaynor-Ward, rather than the work depending on the people who supply the subject matter expertise. The PMO gap that Ethan Illingworth partly filled is not available going forward, as his time moves to HealthStore. Rachel Flower&#39;s position is that these activities need to appear in the programme plan as sprint activities and dependencies feeding the sourcing strategy, with a product lead designated to future state on an ongoing basis, in the way private beta and the acute pathway each have one.</p><p>Against that, three changes are in train. Hannah joined on 20 July as backfill and additional capacity, working across the wider team, and is to take a handover on IG from Wendi Higgins, who is expected to move off around the end of September or October. Rachel Flower is reducing her days. James Cowley is discussing a recut of his statement of work with Mandie Holt, having taken on wider responsibilities following Colette&#39;s departure, and is exploring bringing someone in alongside him who could carry a programme coordination role; his stated intention is to retain HomeTest as his primary delivery.</p><p>On where the work belongs, the position held is that the future state and operating model work sits with service design and product as a principle, with the service owner expected to have someone in their squad accountable for it even where the RACI has no slot for it today. The target operating model deliverable in the statement of work is not currently owned, and the draft the workstream put forward was not taken up. The point pressed on 20 July is that this is a gap for the programme to fill rather than one for the workstream to keep absorbing.</p><p class="source">Source: NHS Commercial weekly check-in, 20 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">20 Jul</span>Supplier Forum 3 two days out: afternoon deck unbuilt, afternoon briefing note reopened, attendance confirmed across both cohorts</summary>
       <div class="body"><p>The Session 3 folder was worked on through the morning of 20 July, two days before the forum. Both decks are now in place and the gap between them is stark. The morning HIV-cohort deck runs to nineteen slides with the substance built out: the consolidated findings section carries the UCD numbers (ten rounds of research and iteration, fifty-seven user research sessions, seven supplier and commissioner workshops, thirteen staff and professional sessions), the priority-user rationale built on the SELPHI trial and inexperienced testers, the research methods across community outreach and the NHSE citizens panel, and the key learning by user group including financial hardship and migrants, no fixed address, and language and reading difficulty. The afternoon RFI-cohort deck runs to twelve slides and is section dividers only. Every content section behind the dividers is empty, including <strong>Journey to Market</strong>, which is ours (Rachel Flower and James Cowley) and is the slide on which how NHS England intends to bring suppliers onto the platform gets said out loud to the broader market for the first time.</p><p>The afternoon briefing note has also been reopened. A working draft dated 20 July now sits alongside the 17 July Final Copy and changes three things. The attendance route moves off Atamis correspondence to direct confirmation with Deborah Osinaike, with Annie Wakefield as the alternate contact. The marketplace guardrail is tightened, from suppliers being invited to participate at a later stage to suppliers being invited to participate, with the requirement to submit bids and meet published criteria stated as a flat consequence rather than a condition of that later stage. The technology demonstration lead reduces from Ronan O&#39;Connor and Tom Rawlinson to Tom Rawlinson alone. The rest of the working draft is mid-edit and unpolished, so it is not yet a replacement for the Final Copy.</p><p>Attendance is now recorded rather than forming. The morning HIV cohort has confirmations from SH:24, Preventx, Randox, Better2know, Newfoundland, The Doctors Laboratory and Monitor My Health. The afternoon list is the more significant one for the future state: alongside Thriva, Preventx, Randox and Newfoundland invited to both, the afternoon draws in Sussex Pathology, Synnovis, Health Services Laboratories, Rempath Health, Barts Health, Pharmacy2U, Latcham Direct, GXO Logistics, Chronomics and Royal Devon University Hospitals. That is pathology networks, an acute provider already in our PSA pipeline, logistics and fulfilment, and pharmacy, not a home-testing supplier list. The room on 22 July is a materially broader market than the one the framework thinking has been shaped around, which is worth taking into the cornerstones work on lotting and framework structure.</p><p>The morning session purpose has also firmed up in the planning note: to test whether the onboarding model generalises to a wider supplier base. Five breakout topics run one to a table (setting up in a new area, reactive results handling, help desk design split between NHSE pre-order and supplier post-order, notifications as supplier SMS versus app alerts, and offboarding and exit), each on the same full grid of customer, NHSE and supplier across seven stages, with three roughly ten-minute activities mapping dependencies, finding where the topic breaks, and narrating the strongest reaction minute by minute, then a report-back on a shared board.</p><p class="source">Source: HIV Supplier Forum Session 3 (Morning).pptx and RFI Supplier Forum (Afternoon).pptx; SF3 Afternoon Briefing Note - 22 July - DRAFT.docx against SF3 Afternoon Briefing Note - 22 July - Final Copy.docx; July supplier forum attendees.docx, 05. HomeTest - Partnerships / Suppliers / Supplier Forum / Session 3, 20 July 2026; Supplier forum 22 July - what we need.docx, 16. Pathway 2 Discovery Alpha, 20 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-interim">
       <summary><span class="d">17 Jul</span>Open Framework will not be available by April 2027; interim route sought through existing pathology frameworks</summary>
       <div class="body"><p>The commercial model risk (HOTE-877) carries a new dated update in the Programme Board pack for 20 July. It records that the proposed Home Testing Open Framework will not be available by April 2027, because commercial advice indicates that developing, approving and publishing a new framework requires a minimum lead time of twelve months. The stated mitigation is that the HomeTest team is working closely with Commercial colleagues to identify an interim procurement solution that could realise some of the intended benefits of a Home Testing Framework through <strong>existing pathology frameworks</strong>.</p><p>Two things follow. First, this is the clearest written statement so far that Plan A cannot carry the April 2027 Beta and that the interim route is load-bearing rather than a hedge. Second, the named interim vehicle has moved: the Phase 2 Plan v0.1 bridge was the SBS Sexual Health Framework plus an NHS Online direct route, and the route now being explored is the pathology frameworks. Both may run, but the difference matters for who administers the interim and which supplier population it reaches, and it is not yet reconciled in the plan.</p><p>The same entry keeps the earlier position visible: route agreed in principle at the 22 June SLT playback (PA23, open framework, 3+1 term), Phase Two now mobilised with the sourcing strategy as the gating artefact, and the framework delivery partner still open.</p><p class="source">Source: Item 2.2 - Programme Update.pptx, HomeTest Programme Board 20 July 2026, Aspyre risk HOTE-877, update dated 17/07/26 (filed 17 July).</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing i-volumes">
       <summary><span class="d">17 Jul</span>Future State report to the 21 July board: sourcing strategy to end September, volumes still the gating input</summary>
       <div class="body"><p>The Future State workstream report prepared for the 21 July Delivery Board is the fullest written statement of the Phase 2 position to date, and it is candid about what is not yet fixed.</p><p>On timetable: Phase Two is mobilised, planning workshops were held on 8 July with SLT and NHS Commercial, and a weekly progress cadence is being stood up. The sourcing strategy is confirmed as the gating artefact, owned by NHSE Commercial with joint programme content; draft v0.1 on the NHS template was circulated 9 July and the outline direction of travel is on track for 27 July. The working target for completing the strategy is <strong>end September</strong>, and the report flags that as at risk if the cornerstones workshop slips past James Cowley's leave, from which he returns in early August.</p><p>On the framework: indicative go-live is 1 August 2027, described as indicative and subject to volume and value (which drives the governance route), the delivery partner decision and the pace of key decisions. A deliberate delay is under review.</p><p>On the gaps, in the report's own terms: indicative volumes and value remain unsubstantiated, and this is the critical input because it sets the governance route, possibly a full business case, and the governance-ready sourcing strategy cannot be approved without it. The health economist's first work package is scoped but not delivered, so the financial case stays caveated, and the tariff and payment-flow options (the CDC fifteen pound draw rate, and BPT timing) are unresolved. The escalation slide carries HOTE-877 at 15, the undefined future state procurement regime (1231) at 8 with a critical date of 31 July, and the health economist delays blocking the finance workstream (1373) at 16 with SLT as owner.</p><p>Next period priorities are to run the cornerstones workshop on 23 July or reset it after NHS Commercial leave, substantiate volumes and value, land the delivery partner assessment, draft the sourcing strategy content (requirements and ITT specification, framework structure, commercial model including the supplier onboarding incentive decision, evaluation criteria), and deliver the PSA benefits case. A dependency is logged for PTT engagement so that the sourcing strategy can carry an assured IG position. Phase 2 dependencies and risks are to be baselined at the cornerstones workshop and tracked in Jira.</p><p class="source">Source: 260721 - HomeTest Delivery Board Highlight Report.pptx, Future State workstream slide, reporting period 21/07/26 (filed 17 July).</p></div>
     </details>
-    <details>
+    <details data-item="i-delivery">
       <summary><span class="d">13-21 Jul</span>Framework administrator sessions: SBS 13 July, NHS Supply Chain 17 July, LPP 21 July</summary>
       <div class="body"><p>The three administrator conversations behind the delivery partner decision are now sequenced and dated. The SBS catch-up was held on 13 July. NHS Supply Chain was met on 17 July to discuss its planned bespoke home-testing lot, with the stated aim of aligning rather than allowing competing frameworks to run. The LPP discussion is set for 21 July.</p><p>The comparison being carried into the decision is that the SBS process runs at around two years against around thirteen months elsewhere, and that NHS Supply Chain's planned home-testing lot creates a competing framework risk which is being managed directly with them. The decision itself, across SBS, LPP, NHS Supply Chain and self-delivery, remains open, with the assessment to be landed off the back of the three meetings and escalated for senior alignment where needed.</p><p class="source">Source: 260721 - HomeTest Delivery Board Highlight Report.pptx, Future State workstream slide, reporting period 21/07/26 (filed 17 July).</p></div>
     </details>
-    <details>
+    <details data-item="i-shl">
       <summary><span class="d">15 Jul</span>Sexual Health London taken on board as a scaled-beta partner; MoU to draft</summary>
       <div class="body"><p>Richard Samuel confirmed in writing on 15 July, following a Sexual Health London (SHL) digital board session the same day at which the HIV HomeTest programme was presented, that SHL is now assumed to be on board as a scaled-beta partner. SHL is a long-established London online sexual health service that currently routes through the Preventx testing portal. The working basis is to launch HIV HomeTest across a minimum of four London boroughs, and where possible SHL's wider footprint, between now and March 2027. Next steps recorded by Richard: Scott to work up an MoU to frame the relationship, including confirmation of revenue transfer and deliverables; SHL to stand up a programme group of clinical, commissioning and technical leads, matched by HomeTest with Preventx represented, with Annie Wakefield drafting terms of reference and scheduling an inaugural meeting; and light-touch comms to frame the collaboration, Annie working with SHL. SHL confirmed it was content to proceed on the basis of the session. This advances the London-Beta participation prospect first minuted in the 1 July LSHP meeting notes.</p><p class="source">Source: Follow up actions HIV London, Richard Samuel, 15 July 2026; HomeTest LSHP Meeting Notes 1 July 2026, 05. HomeTest - Partnerships / LSHP.</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing">
       <summary><span class="d">15 Jul</span>James Cowley proposes deferring the 23 July sourcing cornerstones workshop past his leave</summary>
       <div class="body"><p>James Cowley set out the proposed content for the 23 July sourcing workshop as six cornerstones: the go-live date (most likely date following procurement execution and first consumption, how it sits against NHS planning, funding and tariff-setting cycles, soft launch versus big bang, and comms lead time); volume and value (estimated volumes and modelled value by use case and year across the 3+1+1 term, part-service commissioners, and how to get volume estimates from commissioners); lotting strategy (by use case, commissioner type or supply-chain component, joint private and NHS bids, and future use cases from year two); framework structure (framework agreement plus call-off, or a catalogue and assurance layer on top, and what sits in each part); commercial models (attractive pricing to buyers and sellers, a ceiling price, cost-per-test versus per-activity, volume bandings, supplier guarantees, an app-integration payment, and a framework levy); and interim routes to market (who has a need, whether existing routes such as the NHS SBS Sexual Health Framework can satisfy them, and direct-award options). On reflection he proposed deferring the session until after his leave (he is away from 24 July for two weeks) to give the teams time to prepare inputs, and flagged bringing in Finance, Legal and Commissioners; he noted Scott's assurance-model strawman as a starting point. Whether to hold or defer the 23 July session is pending.</p><p class="source">Source: HomeTest Workshop (23rd July) Agenda Content, James Cowley, 15 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-legal">
       <summary><span class="d">10-15 Jul</span>Legal and procurement approval assigned to Scott (HOTE-1890); ACE CVNs C1002 and C1005 in approval</summary>
       <div class="body"><p>HOTE-1890, Co-ordinate Legal/Procurement Approval, was assigned to Scott on 15 July (status Proposed in Jira). The live substance underneath it is a pair of ACE contract variation notices, C1002 and C1005, which Shirley Gaynor-Ward forwarded for approval on 10 July. Rachel Flower and Wendi Higgins are running a quick review and pulling in IP addendums from Ethan Illingworth and Abhishek Ranjan before sending the pack across to Lexi Moffatt. The ACE contracts these vary are the instruments with SH:24 and Preventx, dated 19 March 2026, that govern Alpha and Private Beta and run through to March 2027, sitting alongside the NHSE-to-LA operational MoU.</p><p class="source">Source: HOTE-1890 assignment (Jira), 15 July 2026; ACE CVNs for Approval - C1002 and C1005, Shirley Gaynor-Ward 10 July and Rachel Flower 13 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">14 Jul</span>Supplier Forum 3 morning briefing note finalised; both SF3 briefing notes now Final Copy</summary>
       <div class="body"><p>The SF3 morning HIV-cohort briefing note reached Final Copy on 14 July, following the afternoon note on 13 July, so both briefing notes for the 22 July Manchester session are now final. The morning pack restates the standing forum terms (non-evaluative, non-decision-making, not a procurement route), a programme recap covering Forum 2 in March 2026, the 30 April GDS Alpha pass, the move to Private Beta with SH:24 and Preventx and the Salford and East Sussex commissioners, the March to June commercial discovery, the April Preliminary Market Engagement notice on Find a Tender ref 032748-2026 with eighteen RFI responses, and PSA emerging as the likely next use case, and it carries the provisional 22 July agenda. The agenda is still to issue and the afternoon participant list is still forming with Deborah Osinaike.</p><p class="source">Source: SF3 Morning Briefing Note - 22 July - Final copy.docx, 05. HomeTest - Partnerships / Suppliers / Supplier Forum / Session 3, 14 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing">
       <summary><span class="d">13 Jul</span>Future-state discussion paper drafted (v0.2): platform framed as national testing infrastructure</summary>
       <div class="body"><p>The 8 July future-state workshop has been written up as a discussion paper for programme alignment (v0.2), circulated for comment rather than as a recommendation on final commercial structure. It reframes the Home Test Platform as national testing infrastructure rather than a procurement for home-testing suppliers: the NHS App as the single patient front door, an NHS-controlled orchestration layer behind it, and multiple interoperable delivery models across NHS, independent and mixed provision. The central argument is to separate fair procurement for current services from active market shaping, aggregating fragmented demand and lowering shared fixed costs rather than predetermining who wins work or disguising a policy preference for NHS delivery, while recognising the pathology market is already mixed across roughly 28 networks. On framework breadth it proposes three distinct approvals, onboarding an organisation for capability, approving a test for clinical and laboratory suitability, and activating a pathway only when the end-to-end home-testing service is ready, held together by a standing supplier and catalogue management function so new tests can be admitted without reopening the vehicle. It argues the value should be built bottom-up test by test and pathway by pathway with low, central and high scenarios, on the view that the reasonably foreseeable opportunity could approach several hundred million pounds and should not be procured as if the first tranche were the whole ambition. It also sets minimum terms for tactical interim solutions (data portability, interoperability, exit and migration, non-exclusivity, IP, open-book), a reverse-plan from a defined operational need date and drop-dead date, and emergency and pandemic reuse to explore with UKHSA. The paper is explicit that the next several weeks are commercial and operating-model design, not a procurement-writing exercise, feeding the sourcing strategy.</p><p class="source">Source: HT Future State Workshop 080726 v.0.2.docx, 03. HomeTest - Commercials / Future State workstream 2026 / Phase 2 Future State, 13 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">10-13 Jul</span>Supplier Forum 3 pre-read split into morning and afternoon briefing notes; venue named</summary>
       <div class="body"><p>The 6 July SF3 pre-read has been developed into separate morning and afternoon briefing notes for the 22 July session. The venue is named as Citylabs 1.0, Nelson St, Manchester M13 9NQ, 9:30 to 12:30, and session leads are assigned: Richard Samuel on the recap and ground rules; Simone Bilton and Will Tweddle on consolidated Alpha and co-design findings; Ronan O&#39;Connor and Tom Rawlinson on the technology showcase; Gary Birnie leading the service-wrapper breakout across new-area set-up, reactive results, help desk, notifications and offboarding; and Simone Bilton framing the T4 panel as an emerging-use-case discovery conversation. Both cohorts remain non-evaluative and non-decision-making. The agenda is to issue shortly; the morning attendee list is known and the afternoon list is still forming with Deborah Osinaike.</p><p class="source">Source: SF3 Morning Briefing Note - 22 July - DRAFT.docx and SF3 Afternoon Briefing Note - 22 July - DRAFT.docx, 05. HomeTest - Partnerships / Suppliers / Supplier Forum / Session 3, 10-13 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-delivery">
       <summary><span class="d">6-8 Jul</span>Framework-administrator soundings firm up: LPP initial conversation, NHS Supply Chain home-testing lot</summary>
       <div class="body"><p>The framework-administration soundings behind the sourcing strategy firmed up in writing. On 6 July James Cowley opened an initial conversation with Mark Fox at LPP (introduced via Richard Slater), setting out the working hypothesis of an open framework covering several home-testing use cases and asking whether NHSE should build and run its own framework or partner with a body such as LPP. On 8 July NHS Supply Chain reached back out to confirm they plan to create a bespoke home-testing lot on their next Lab Diagnostics, POCT and MS framework and asked for a call; James flagged it to Martin O'Neil to join, on the view that the programme does not want competing frameworks springing up and that the call is a chance either to dissuade them or to explore how they could partner. Both feed the framework-provider-versus-self-delivery decision the sourcing strategy has to land.</p><p class="source">Source: Initial Conversation - NHSE HomeTest Framework email, James Cowley, 6 July 2026; Fw: Home Testing Services - NHSE email, James Cowley, 8 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-phase2 i-delivery">
       <summary><span class="d">9 Jul</span>Commercial planning session: plans aligned for Jira, workshop set for 23 July, NHS Supply Chain frameworks approach</summary>
       <div class="body"><p>Scott, James Cowley and Rachel Flower worked through the plan on 9 July. Scott's all-encompassing operating-model plan and James's procurement-focused plan were walked through and largely aligned; the agreed step is for Scott to fold in James's feedback and load the unified plan into Jira so its dependencies plug into the overarching programme plan, which is what Matt Visser wants. The period from now to the end of October was set as where the hard yards sit: sourcing strategy creation and approval, the ITT specification and packs, evaluation and performance criteria, with a possible split into a July-to-August and a September-to-October stage. The analytical spine was reframed around a small set of interlinked cornerstone questions, volumes, clinical proportion, lotting structure and buyer identification, sitting under the ITT specification, all of which move together and drive the framework value (a working figure around £250m needs volume-by-use-case substantiation and health-economist input). Two procurement tracks were confirmed as Plan A (the open framework, still to be designed) and Plan C (the interim commercial approach), with the route locked for each. James flagged that NHS Supply Chain had proactively approached the programme to include home testing in its next framework; he has brought Martin O'Neil in because competing frameworks against the SBS or partner route would need senior resolution, and the outcome bears on whether go-live stays August or moves to September or later. The PA23 versus Provider Selection Regime question was noted as turning on clinical proportion (SBS have used PSR for sexual health), likely needing legal-to-legal conversations and health-economist comfort to hold the PA23 position. Rachel argued Future State should be set up as a programme workstream accountability in its own right rather than a siloed group answering hard questions from the side, to be pushed with SLT as the governance cadence is established. Delivery steps agreed: a structured workshop on 23 July (the day after Supplier Forum 3), two-hour follow-on sessions from 27 July, a weekly governance touchpoint to be stood up, and the existing stand-ups kept. Scott is on leave the week of 13 July and James from 24 July for two weeks.</p><p class="source">Source: HomeTest commercial planning session, 9 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing">
       <summary><span class="d">8 Jul</span>Procurement planning and sourcing strategy workshop, Leeds</summary>
       <div class="body"><p>The procurement planning and sourcing strategy workshop ran in Leeds on 8 July, following on from the future-state recommendations session two weeks earlier. James Cowley set out the base-case procurement approach as a single-stage open procedure: an open framework any supplier can bid for, with one compliant bid accepted, and commissioners able to direct-award off it once it is live. The alternative on the table is a competitive flexible procedure, adding stages such as conditions of participation and a negotiation round to sharpen pricing, at the cost of a longer timeline. On who administers the framework, James reported early soundings: NHS SPS is running at around two years for a process and is too slow; LPP is at around thirteen months with discussions opened; and early conversations with the NHS supply chain team were lukewarm. Richard Samuel steered the framework go-live from August to September. To bridge the gap before the framework is live, the group discussed a tactical interim using the existing CDC fifteen-pound blood-draw tariff for 2026/27, on the view that several kits could be delivered for less than that rate. Proper engagement with the pathology networks was deliberately sequenced to September so their route into the market can be set out first. The end-September working target for the sourcing strategy was carried forward, and the afternoon covered future-state lessons for HealthStore.</p><p class="source">Source: HomeTest procurement planning and sourcing strategy workshop, Leeds, 8 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-interim">
       <summary><span class="d">6 Jul</span>Martin commissions procurement-options research (Plan C)</summary>
       <div class="body"><p>Martin O'Neil asked the commercial team on 6 July to run a piece of research into alternative procurement options, sitting alongside the recommended open-framework route as effectively a Plan C. It splits into two work packages: a service-design package and a commercial package. Scott offered to produce an outline plan for the commercial package for James Cowley and Rachel Flower to review within a couple of days. The ask connects to the Hill Dickinson mitigations work already feeding Plan C.</p><p class="source">Source: Martin O'Neil email requesting procurement-options research, 6 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-phase2">
       <summary><span class="d">6 Jul</span>Commercial weekly: plan on a page for the 8 July workshop, Jira population and standing cadence</summary>
       <div class="body"><p>At the Monday commercial weekly the group agreed to run as one team on a single plan, with the session as the standing weekly progress and deep-dive with James Cowley as commercial business partner and SLT support from Chris Leary, Matt Visser and Shirley Gaynor-Ward. James is combining his commercial procurement-plan template with Scott's planning slides into a single plan on a page for playback at the Wednesday 8 July workshop, showing the journey from now to go-live, the key activities, the leads and the timeframes. James's current working target is the sourcing strategy complete by end September, to be tested at the workshop. The workstream plan and its dependencies, around a hundred line items, are to be built into Jira so programme dependencies are visible and delays sit with the right owner; Scott to own the team's Jira board, with a planning workshop to be commissioned at Wednesday's session to populate it. The Wednesday afternoon session covers Future State lessons learned for HealthStore.</p><p class="source">Source: HomeTest commercial weekly session, 6 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">6 Jul</span>Programme Board papers filed for the 20 July board</summary>
       <div class="body"><p>The papers for the 20 July HomeTest Programme Board were drafted and filed into the board Papers folder on Monday 6 July, against the 16:00 deadline Rachel Bevan set for HomeTest SLT review before onward submission to Polly Bishop. The commercial item is Item 2.3, Future State Commercial Recommendation June26 v1.0, an endorsement paper: it asks the board to endorse Option B as the preferred strategic model (a market nationally governed by NHSE, locally commissioned and delivered through a competitive supplier market); endorse the operating-model direction under which NHSE retains market ownership, governance, standards, oversight and accountability while procuring a specialist delivery partner to establish, operate and administer the framework and market infrastructure on its behalf; endorse development of a Sourcing Strategy and Target Operating Model as the next step, including validation of an NHSE-governed open framework as the preferred commercial vehicle; and endorse the interim commissioner-led approach subject to common standards and transition requirements. Final decisions on procurement route, operator scope, platform ownership and operation, payment architecture, funding model, target operating model and delivery timetable are noted as remaining subject to further Phase 2 work and approvals. The pack also carries the programme update (Item 2.2), the 9 June board minutes and actions (Item 2.1a) and the NHSE senior declaration of interest form (Item 1.3).</p><p class="source">Source: Item 2.3 Future State - Commercial Recommendation June26 v1.0.docx, with Items 1.3, 2.1a and 2.2, 20260720 HomeTest Programme Board / Papers, 6 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">6 Jul</span>Supplier Forum 3 briefing pack and a standing Terms of Reference drafted</summary>
       <div class="body"><p>A draft SF3 briefing pack and pre-read for the 22 July Manchester session was drafted, ahead of the Friday 10 July deck deadline. It carries the forum terms, a programme recap (Forum 2 in March 2026, the 30 April GDS Alpha assessment pass, the move to Private Beta with SH:24 and Preventx and the Salford and East Sussex commissioners, the March to June commercial discovery, the April Preliminary Market Engagement notice on Find a Tender ref 032748-2026 with eighteen RFI responses, and PSA emerging as the likely next use case), and a provisional two-session agenda: a morning HIV supplier cohort and an afternoon broader use-case and market-engagement cohort, with a listen-only Teams link as a last resort. A standing Supplier Forum Terms of Reference was also drafted, restating the forum as non-evaluative, non-decision-making and not a procurement route, chaired by Richard Samuel and running since February 2026.</p><p class="source">Source: SF3 Briefing Pack - 22 July 2026 - DRAFT.docx and Supplier Forum - Terms of Reference.docx, 05. HomeTest - Partnerships / Suppliers / Supplier Forum, 6 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-sf3">
       <summary><span class="d">3 Jul</span>Supplier Forum 3 structure and objectives agreed; content forming, decks due 10 July</summary>
       <div class="body"><p>The two-cohort shape was agreed on 3 July with content proposed as follows, open items still marked in the planning note. Morning, HIV cohort: recap and ToR reissue, consolidated findings, technology showcase, service-wrapper breakouts (new-supplier set-up, reactive-result handoff, help desk split, notifications, off-boarding), possible T4 discovery strand. Afternoon, acute RFI cohort: programme introduction, state of the nation, the 26/27/28 test shortlist, technology demo, journey to market (Rachel and James), innovation-and-constraints breakout. Draft decks due Friday 10 July; venue identified, booking awaiting internal price sign-off; consolidated agenda note out by early Monday, Scott applying the final pass; participant lists being reconciled across cohorts (Annie Wakefield, Deborah Osinaike). Session leads assigned; commercials eased off in the HIV session; no supplier guaranteed a framework place. The planning note also covers HIV supplier on/off-boarding co-design including the help desk split, notification join-up and the missing off-boarding/exit process, plus integrations, sample escalation and reorder, priority acute tests, and transdermal versus finger-prick evidence.</p><p class="source">Source: Supplier forum 22 July - what we need.docx (updated 3 July 2026), 16. Pathway 2 Discovery Alpha.</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing">
       <summary><span class="d">3 Jul</span>7 July board pack Future State report drafted</summary>
       <div class="body"><p>Route on record as PA23 open framework with a 3+1 term; Rec Paper v1.1 drafted to capture the 22 June agreement but not yet issued. Two-phase sourcing strategy approach agreed: an outline draft (direction of travel) ahead of 27 July, then a governance-ready version with KPIs, evaluation criteria and volumes and value. Next period: Phase Two planning workshop w/c 6 July; framework-provider research (SBS / LPP vs self-delivery); a tariff-model workstream to stand up under Richard Samuel with the health economist and a payment-flows workshop; next-year deliverables aligned with the service blueprint. HOTE-1373 (health economist delays) carried at 16 with SLT; indicative volumes and values remain the input without which the governance-ready sourcing strategy cannot be approved.</p><p class="source">Source: 260707 - HomeTest Delivery Board Highlight Report.pptx, Governance / Delivery Board / 26260707.</p></div>
     </details>
-    <details>
+    <details data-item="i-sourcing">
       <summary><span class="d">2 Jul</span>Leeds commercial workshops confirmed for Wednesday 8 July</summary>
       <div class="body"><p>James Cowley suggested agendas to Martin O'Neil and Mandie Holt. Workshop 1, Procurement Planning and Sourcing Strategy: typical public-sector procurement process, key programme input areas, and sourcing strategy areas to address (volume and value, framework structure, commercial models, interim routes to market, framework administration, next steps). Workshop 2: HomeTest Future State implications and learnings for HealthStore (similarities, opportunities, impacts). James also listed the programme-input areas the procurement will need: context and constraints, budget and funding information, assurance model creation and resourcing, KPI creation, technical evaluation criteria, sourcing strategy and tender pack review and approval, and evaluation training attendance.</p><p class="source">Source: FOR REVIEW: HomeTest Commercial Workshops (8th July) email, James Cowley, 2 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-housekeeping">
       <summary><span class="d">2 Jul</span>Commercial catchups consolidated into the Monday team session</summary>
       <div class="body"><p>Shirley Gaynor-Ward: consolidate the commercial weekly catchups into the Monday team session; Matt Visser and Chris Leary optional.</p><p class="source">Source: Re: Commercial - weekly catchup, Shirley Gaynor-Ward, 2 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">1 Jul</span>Programme Board papers commissioned: draft due 16:00 Monday 6 July</summary>
       <div class="body"><p>Rachel Bevan (CSU Portfolio Manager): draft papers due in the board Papers folder by 16:00 on Monday 6 July for HomeTest SLT review before onward submission to Polly Bishop. Required: programme update (PMO, from the 7 July delivery board pack), commercial model and recommendations (Rachel Flower / James Cowley), patient and public involvement (Will Twells, Olivia Sharp covering leave). Meeting time changing, date stays 20 July. James Cowley proposes building the commercial paper from the Rec Paper v1.1 exec summary plus the eight key principles. The 20 July agenda (updated 1 July) lists item 2.3 Commercial model and recommendations, purpose to discuss, Rachel Flower &amp; James Cowley; next board 17 August.</p><p class="source">Source: For action by 16:00 Monday 6th email, Rachel Bevan, 1 July 2026, forwarded by James Cowley; HomeTest Programme Board Agenda 20260720.docx.</p></div>
     </details>
-    <details>
+    <details data-item="i-costs">
       <summary><span class="d">1 Jul</span>SOW09 contract-gap homework set; Jira delivery model agreed</summary>
       <div class="body"><p>Matt Thomas, as homework following the 1 July Jira workshop: Matt, Simone, Scott, Tom and Rachel each to review the delivery plan against SOW09 and mark where ambition exceeded the original description of the work and what additional resource is required, deadline 10 July. Jira session format agreed the same day: OBOs in at Level 3, milestones as deliverables/epics, accountability at deliverable layer, sequencing back from FY26/27, Critical Path component.</p><p class="source">Source: Jira Delivery Model feedback and ESOR email, Matt Thomas, 1 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-costs i-tariff">
       <summary><span class="d">1 Jul</span>Supplier cost discovery passed to commercial: Preventx apportionment in, SH:24 unable short-term</summary>
       <div class="body"><p>Preventx (Paul Gray, 29 June, via Abhishek Ranjan): indicative cost-per-test apportionment for the HIV pathway; with clinical services included: integration 1%, logistics 43%, kit purchase 9%, lab processing 8%, onward care 39%; without clinical services: integration 2%, logistics 71%, kit 15%, lab 13%, onward care nil, with total cost around 38% lower. SH:24 (Will Howells, 25 June): unable to provide figures short-term; flags that lab costs vary with the tests run per sample and that unreturned kits carry no lab cost, so return rates (better for swab/urine than bloods) must be averaged in. Ethan Illingworth reframed the SH:24 ask (29 June) to an indicative HIV-only median price as a benchmark for the future commercial model. Rachel passed both to Scott on 1 July. Feeds the tariff-model workstream and the volumes-and-value input to the sourcing strategy.</p><p class="source">Source: Preventx / SH:24 Commercial Discovery Question threads, forwarded 1 July 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-housekeeping">
       <summary><span class="d">1 Jul</span>25 June Delivery Board record filed</summary>
       <div class="body"><p>Rachel Flower presented the commercial recommendations paper; the health economist's financial input (recorded as Dr Simon Lee, per the intro thread Dr Simon Leigh) remains the outstanding dependency. The formal approval route for the paper is to be confirmed, including whether programme boards need a paper (Chris Leary and Shirley Gaynor-Ward action). Accountability for procurement planning sits within the programme, Matt Thomas coordinating inputs; indicative volumes and values named as a critical procurement dependency with a workshop to clarify ownership. Programme status to be reported amber. August confirmed for HIV private beta and November for public beta. Supplier forum 22 July confirmed with separate sexual health and PSA sessions; supplier-engagement resource constraints to be added to the RAID log. A commercial risk rephrasing action was raised with no owner recorded.</p><p class="source">Source: 260625 - HomeTest Delivery Board notes.docx, Governance / Delivery Board / 26260707.</p></div>
     </details>
-    <details>
+    <details data-item="i-phase2">
       <summary><span class="d">29 Jun</span>Phase 2 commercial deliverables mapped to OBOs and the Sourcing Strategy</summary>
       <div class="body"><p>First pass by Scott Eason and Rachel Flower, sent to Matt Thomas as a straw man for the 30 June deliverables session. Maps the workstream deliverables to the OBOs and to the Sourcing Strategy (named as the key artefact driving approvals for the Open Framework). Dates and dependencies to follow on a next pass. Deliverables to go into Jira with owners at epic level; HIV Private Beta LA and supplier contracts assigned to commercial (Rachel). Working sessions started with Matt Thomas's 25 June session, repurposed as the South Deliverables Working Session on 26 June (Jira flows up to the OBOs).</p><p class="source">Source: Future State - commercials mapping email, Rachel Flower to Matt Thomas, 29 June 2026; Deliverables &amp; Milestone Mapping emails, 25-26 June 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-housekeeping">
       <summary><span class="d">27 Jun</span>Roundtable follow-up: Inuvi responds with laboratory and PaCTS papers</summary>
       <div class="body"><p>Timothy Woolley (Inuvi, Chief Scientific Officer) supplied laboratory and LabMed UK PaCTS papers in response to the Remote Sampling Industry Roundtable collaboration questions; responses from suppliers requested by COP 6 July. The 23 June roundtable itself (Richard Samuel, Matt Visser, Rachel Flower attending; chaired by David Wells) is written up as RF notes in SharePoint; full transcript requested, to follow.</p><p class="source">Source: RE: Remote Sampling Industry Roundtable follow-up, 27 June 2026; Industry Roundtable 230626.docx, Pathway 2 Programme alignment.</p></div>
     </details>
-    <details>
+    <details data-item="i-phase2">
       <summary><span class="d">25 Jun</span>Phase 2 Plan v0.1 drafted and filed</summary>
       <div class="body"><p>Drafted by Scott Eason (SharePoint: Commercials / Discovery March 2026 / Programme Management, HomeTest Future State Phase Two Plan v0.1.docx, filed 25 June, updated 29 June; working drafts in the Commercial Model folder). First-cut working draft built on slide 16 of the playback deck: procurement spine across five stages (Procurement Planning Aug-Oct 26; Pre-Procurement Governance Nov-Dec 26; Procurement Process Jan-Feb 27; Evaluation and Award Mar-Apr 27; Post-Procurement Governance May 27 on). Two-track design: Plan A (NHSE Open Framework, live August 2027) and Plan C (commissioner-led interim via the SBS Sexual Health Framework bridge and an NHS Online direct route, protecting the April 2027 HIV Beta go-live). Owners, dependencies and sizing to be populated from the operating model ahead of the workshop.</p><p class="source">Source: HomeTest Future State Phase Two Plan v0.1.docx.</p></div>
     </details>
-    <details>
+    <details data-item="i-model i-delivery">
       <summary><span class="d">23-24 Jun</span>Rec Paper v1.1 lands in SharePoint; framework delivery model options documented</summary>
       <div class="body"><p>Rec Paper v1.1 (Post Play Back) at 03. HomeTest - Commercials / Procurement Options and Planning replaces v1.0 with the open framework landing. It documents the framework delivery model options: NHSE Administered (NHS England runs and administers the framework, NHS Commercial oversight, day-to-day by the HomeTest programme); Framework Provider Partnership (partner with a framework provider, typically a public-sector body, funded by a 1 to 2 per cent levy on supplier revenue rather than a charge to NHSE, with NHS SBS and NHS Supply Chain the front-runners discussed and LPP and NOE CPC investigated but not in depth); and third-party managed. The sourcing strategy has to land which one. The Sourcing Strategy v0.1 draft (Commercial Sourcing Strategy Home Test HIV - draft v0.1.docx) sits at the same path, held by James Cowley from the November NHSE template. Rec Paper v1.0 was shared with Louise Bird (NHSE Finance) 23 June.</p><p class="source">Source: HomeTest Future State Discovery Recommendation Report v1.1, Procurement Options and Planning.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">22-23 Jun</span>Playback decision and the five named actions; Mandie Holt's timeline framing</summary>
       <div class="body"><p>James Cowley's 22 June post-playback email records the decision in principle (<em>"NHSE facilitated national marketplace... open framework as opposed to a dynamic market"</em>) and sets five named actions: legal note via Hazel Randall (NHSE Head of Legal); confirm if rate changes can be undertaken at framework opening intervals; sourcing strategy workshop; build out milestone plan; resource ask to SLT. Mandie Holt's 23 June reply (NHS Commercial, James Cowley's line manager): <em>"the procurement approvals timeline is hugely subject to our final value and the 3-4 months is 'NHS E' — there will be others that will need to be worked into the plan"</em>. Sets realistic timeline framing for Phase 2 work.</p><p class="source">Source: Post-playback summary email, James Cowley, 22 June 2026; Mandie Holt reply, 23 June 2026.</p></div>
     </details>
-    <details>
+    <details data-item="i-model">
       <summary><span class="d">19 Jun</span>Recommendation Paper v1.0 issued to SLT; discovery playback held 22 Jun</summary>
       <div class="body"><p>Rec Paper v1.0 issued by Scott to SLT on Friday 19 June ahead of the Monday 22 June Leeds SLT playback that closed the 12-week Discovery. Health economics context: Dr Simon Leigh (Roar Intelligence) engaged with Kainos (Martin O'Neil's 9 June Health Economics Priorities email, forwarded to Rachel 19 June); HOTE-1373 records Simon Leigh contracting as a blocker (Rachel Flower comment, 19 June).</p><p class="source">Source: Future State 12 Week Discovery Playback email 19 June; Health Economics Priorities thread; HOTE-1373.</p></div>
     </details>
@@ -367,5 +903,138 @@
   </footer>
 
 </div>
-</body>
-</html>
+<script>
+(function () {
+  var ids = [], cards = document.querySelectorAll('.itemcard');
+  for (var i = 0; i < cards.length; i++) ids.push(cards[i].id);
+
+  document.body.classList.add('js');
+
+  // exec summary counts are derived from the cards, never hand-maintained
+  var tally = { green: 0, amber: 0, grey: 0, red: 0 };
+  for (var t = 0; t < cards.length; t++) {
+    var p = cards[t].querySelector('.ihead .pill');
+    var k = p.classList.contains('green') ? 'green'
+          : p.classList.contains('red')   ? 'red'
+          : p.classList.contains('grey')  ? 'grey' : 'amber';
+    tally[k]++;
+  }
+  // "waiting on someone" is built from the cards, so it cannot drift from them
+  var wl = document.querySelector('.waitlist'), waiting = 0;
+  for (var q = 0; q < cards.length; q++) {
+    var wtxt = cards[q].getAttribute('data-wait');
+    if (!wtxt) continue;
+    waiting++;
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.href = '#' + cards[q].id;
+    a.className = cards[q].getAttribute('data-waitcls') || '';
+    a.innerHTML = '<span class="w"></span><span class="who"></span>';
+    a.querySelector('.w').textContent = wtxt;
+    a.querySelector('.who').textContent = cards[q].getAttribute('data-waitwho') || '';
+    li.appendChild(a); wl.appendChild(li);
+  }
+
+  var setc = function (sel, n) { var e = document.querySelector(sel); if (e) e.textContent = n; };
+  setc('.c-wait', waiting);
+  setc('.c-green', tally.green);
+  setc('.c-amber', tally.amber + tally.red);
+  setc('.c-grey', tally.grey);
+
+
+  // append each item's dated entries to its own point list
+  for (var ci = 0; ci < cards.length; ci++) {
+    var card = cards[ci];
+    var list = card.querySelector('.ptlist'), pane = card.querySelector('.ptdetail');
+    var grp  = card.querySelector('.ptgroup-hist');
+    var hits = document.querySelectorAll('.log details[data-item~="' + card.id + '"]');
+    if (!hits.length) continue;
+    grp.hidden = false;
+    var n = card.querySelectorAll('.pt').length;
+    for (var h = 0; h < hits.length; h++, n++) {
+      var sum = hits[h].querySelector('summary');
+      var dEl = sum.querySelector('.d');
+      var date = dEl ? dEl.textContent : '';
+      var text = sum.textContent.replace(date, '').trim();
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pt'; b.setAttribute('data-p', n);
+      b.innerHTML = '<span class="dt"></span>';
+      b.firstChild.textContent = date;
+      b.appendChild(document.createTextNode(text));
+      list.appendChild(b);
+      var d = document.createElement('div');
+      d.className = 'pd'; d.setAttribute('data-p', n);
+      var h5 = document.createElement('h5');
+      h5.textContent = date + '  ' + text;
+      d.appendChild(h5);
+      d.innerHTML += hits[h].querySelector('.body').innerHTML;
+      pane.appendChild(d);
+    }
+  }
+
+  // point selection
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.pt') : null;
+    if (!btn) return;
+    var card = btn.closest('.itemcard'), p = btn.getAttribute('data-p');
+    var bs = card.querySelectorAll('.pt'), ps = card.querySelectorAll('.pd');
+    for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', bs[i] === btn);
+    for (var j = 0; j < ps.length; j++) ps[j].classList.toggle('on', ps[j].getAttribute('data-p') === p);
+  });
+
+  function apply() {
+    var hash = (location.hash || '').replace('#', '');
+    var isItem = ids.indexOf(hash) > -1;
+    document.body.classList.toggle('focused', isItem);
+    for (var i = 0; i < cards.length; i++) cards[i].classList.toggle('target', cards[i].id === hash);
+    var chips = document.querySelectorAll('.rail a.chip');
+    for (var c = 0; c < chips.length; c++)
+      chips[c].classList.toggle('on', chips[c].getAttribute('href') === '#' + hash);
+    var sc = document.querySelector('.chip-summary');
+    if (sc) sc.classList.toggle('on', !isItem);
+    if (isItem) {
+      var it = document.getElementById(hash);
+      if (it) setTimeout(function () { it.scrollIntoView(true); }, 0);
+    } else if (hash) {
+      // leaving focus mode changes the page height, so the browser's own
+      // anchor jump lands in the wrong place. Re-scroll once layout settles.
+      var el = document.getElementById(hash);
+      if (el) setTimeout(function () { el.scrollIntoView(true); }, 0);
+    }
+  }
+
+  window.addEventListener('hashchange', apply);
+
+  // Drive item navigation in script. A link whose target equals the current
+  // hash fires no hashchange, so the browser would do nothing; handle it here
+  // so every rail chip and waiting-on link always re-focuses and scrolls.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (id !== 'summary' && ids.indexOf(id) < 0) return; // not an item/summary anchor
+    e.preventDefault();
+    if (id === 'summary') {
+      try { history.replaceState(null, '', location.pathname); }
+      catch (err) { location.hash = ''; }
+      apply();
+      var sm = document.getElementById('summary');
+      if (sm) setTimeout(function () { sm.scrollIntoView(true); }, 0);
+      return;
+    }
+    if (location.hash !== '#' + id) location.hash = id; // record it in the URL
+    apply();                                            // and apply now, regardless
+  });
+
+  apply();
+
+  var sa = document.querySelector('.showall');
+  if (sa) sa.addEventListener('click', function (e) {
+    e.preventDefault();
+    try { history.replaceState(null, '', location.pathname); }
+    catch (err) { location.hash = ''; }
+    apply();
+  });
+})();
+</script>
+</body></html>
