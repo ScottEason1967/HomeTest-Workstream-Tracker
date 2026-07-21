@@ -96,9 +96,11 @@
   .execsum p.eline { margin: 0 0 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); }
   .execsum p.eline strong { color: var(--nhs-dark); }
   .execsum .estats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin: 0 -18px; padding: 0 4px; }
-  .execsum .estats .st { padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st { display: flex; align-items: center; gap: 6px; padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st .sw { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+  .execsum .estats .sw.green { background: #146c2e; } .execsum .estats .sw.amber { background: #c27803; } .execsum .estats .sw.red { background: #b00020; } .execsum .estats .sw.grey { background: #777; }
   .execsum .estats .st:last-child { border-right: 0; }
-  .execsum .estats .st b { display: block; font-size: 17px; color: var(--nhs-dark); font-weight: 700; line-height: 1.25; }
+  .execsum .estats .st b { font-size: 16px; color: var(--nhs-dark); font-weight: 700; line-height: 1.2; }
   .execsum .estats .st.hot b { color: #b00020; }
   .execsum .estats .st.next { margin-left: auto; text-align: right; }
   .execsum .estats .st.next b { font-size: 13.5px; }
@@ -127,6 +129,7 @@
   .rail a.chip .dot.red { background: #b00020; } .rail a.chip .dot.green { background: #146c2e; } .rail a.chip .dot.grey { background: #777; }
   .rail a.chip .dot.dark { background: var(--nhs-dark); }
   .rail a.chip.chip-summary { margin-right: 12px; border-color: var(--nhs-dark); font-weight: 700; }
+  .rail a.chip.chip-history { margin-left: auto; border-color: var(--nhs-dark); font-weight: 700; }
   .rail a.chip.on { background: var(--nhs-dark); border-color: var(--nhs-dark); color: #fff; }
   .rail a.chip.on .dot { box-shadow: 0 0 0 2px #fff; }
   /* --- item cards --- */
@@ -246,10 +249,11 @@
       </div>
     </div>
     <div class="estats">
-      <div class="st"><b class="c-green">&mdash;</b>settled</div>
-      <div class="st"><b class="c-amber">&mdash;</b>in flight</div>
-      <div class="st"><b class="c-grey">&mdash;</b>watching</div>
-      <div class="st hot"><b class="c-wait">&mdash;</b>waiting on someone</div>
+      <div class="st"><span class="sw green"></span><b class="c-green">&mdash;</b>Done</div>
+      <div class="st"><span class="sw amber"></span><b class="c-amber">&mdash;</b>In flight</div>
+      <div class="st"><span class="sw red"></span><b class="c-red">&mdash;</b>Needs attention</div>
+      <div class="st"><span class="sw grey"></span><b class="c-grey">&mdash;</b>Watching</div>
+      <div class="st hot"><b class="c-wait">&mdash;</b>Waiting on someone</div>
       <div class="st next"><b>Wed 22 Jul</b>next date</div>
     </div>
   </div>
@@ -274,7 +278,7 @@
       <a class="chip" href="#i-legal"><span class="dot"></span>Legal & procurement approval</a>
       <a class="chip" href="#i-lead"><span class="dot grey"></span>Programme lead & resourcing gap</a>
       <a class="chip" href="#i-housekeeping"><span class="dot grey"></span>Documentation & audit trail</a>
-      <a class="chip" href="#history"><span class="dot grey"></span>Full history</a>
+      <a class="chip chip-history" href="#history"><span class="dot dark"></span>Full history</a>
     </div>
   </div>
 
@@ -345,7 +349,7 @@
     </section>
     <section class="itemcard red" id="i-volumes" data-title="Volumes and values substantiation" data-wait="Volumes substantiation to set the value" data-waitwho="Matt Thomas with HE" data-waitcls="">
       <div class="ihead">
-        <span class="pill red">Critical input</span>
+        <span class="pill red">Critical path</span>
         <h3 class="ititle">Volumes and values substantiation</h3>
         <div class="imeta">
           <span><b>Owner</b>Matt Thomas coordinating, with Scott / Rachel / James</span>
@@ -488,7 +492,7 @@
     </section>
     <section class="itemcard" id="i-delivery" data-title="Framework delivery partner">
       <div class="ihead">
-        <span class="pill amber">Open decision</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">Framework delivery partner</h3>
         <div class="imeta">
           <span><b>Owner</b>James Cowley / Richard Samuel</span>
@@ -542,7 +546,7 @@
     </section>
     <section class="itemcard" id="i-tariff" data-title="Tariff model & health economics" data-wait="Simon Leigh engagement on the economics" data-waitwho="Richard Samuel" data-waitcls="">
       <div class="ihead">
-        <span class="pill amber">Input arriving</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">Tariff model &amp; health economics</h3>
         <div class="imeta">
           <span><b>Owner</b>Richard Samuel with Scott / Rachel / James</span>
@@ -592,7 +596,7 @@
     </section>
     <section class="itemcard" id="i-sf3" data-title="Supplier Forum 3">
       <div class="ihead">
-        <span class="pill amber">Forum tomorrow</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">Supplier Forum 3</h3>
         <div class="imeta">
           <span><b>Owner</b>Annie Wakefield (logistics); content leads</span>
@@ -619,7 +623,7 @@
     </section>
     <section class="itemcard" id="i-shl" data-title="SHL / London scale partner">
       <div class="ihead">
-        <span class="pill amber">New</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">SHL / London scale partner</h3>
         <div class="imeta">
           <span><b>Owner</b>Richard Samuel / Scott</span>
@@ -672,7 +676,7 @@
     </section>
     <section class="itemcard grey" id="i-lead" data-title="Programme lead & resourcing gap">
       <div class="ihead">
-        <span class="pill grey">Watching brief</span>
+        <span class="pill grey">Watching</span>
         <h3 class="ititle">Programme lead &amp; resourcing gap</h3>
         <div class="imeta">
           <span><b>Owner</b>Martin O'Neil / Shirley Gaynor-Ward with Mandie Holt</span>
@@ -699,7 +703,7 @@
     </section>
     <section class="itemcard grey" id="i-housekeeping" data-title="Documentation & audit trail">
       <div class="ihead">
-        <span class="pill grey">Carried</span>
+        <span class="pill grey">Watching</span>
         <h3 class="ititle">Documentation &amp; audit trail</h3>
         <div class="imeta">
           <span><b>Owner</b>James Cowley / Scott</span>
@@ -971,7 +975,8 @@
   var setc = function (sel, n) { var e = document.querySelector(sel); if (e) e.textContent = n; };
   setc('.c-wait', waiting);
   setc('.c-green', tally.green);
-  setc('.c-amber', tally.amber + tally.red);
+  setc('.c-amber', tally.amber);
+  setc('.c-red', tally.red);
   setc('.c-grey', tally.grey);
 
 

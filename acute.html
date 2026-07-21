@@ -96,9 +96,11 @@
   .execsum p.eline { margin: 0 0 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); }
   .execsum p.eline strong { color: var(--nhs-dark); }
   .execsum .estats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin: 0 -18px; padding: 0 4px; }
-  .execsum .estats .st { padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st { display: flex; align-items: center; gap: 6px; padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st .sw { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+  .execsum .estats .sw.green { background: #146c2e; } .execsum .estats .sw.amber { background: #c27803; } .execsum .estats .sw.red { background: #b00020; } .execsum .estats .sw.grey { background: #777; }
   .execsum .estats .st:last-child { border-right: 0; }
-  .execsum .estats .st b { display: block; font-size: 17px; color: var(--nhs-dark); font-weight: 700; line-height: 1.25; }
+  .execsum .estats .st b { font-size: 16px; color: var(--nhs-dark); font-weight: 700; line-height: 1.2; }
   .execsum .estats .st.hot b { color: #b00020; }
   .execsum .estats .st.next { margin-left: auto; text-align: right; }
   .execsum .estats .st.next b { font-size: 13.5px; }
@@ -127,6 +129,7 @@
   .rail a.chip .dot.red { background: #b00020; } .rail a.chip .dot.green { background: #146c2e; } .rail a.chip .dot.grey { background: #777; }
   .rail a.chip .dot.dark { background: var(--nhs-dark); }
   .rail a.chip.chip-summary { margin-right: 12px; border-color: var(--nhs-dark); font-weight: 700; }
+  .rail a.chip.chip-history { margin-left: auto; border-color: var(--nhs-dark); font-weight: 700; }
   .rail a.chip.on { background: var(--nhs-dark); border-color: var(--nhs-dark); color: #fff; }
   .rail a.chip.on .dot { box-shadow: 0 0 0 2px #fff; }
   /* --- item cards --- */
@@ -245,10 +248,11 @@
       </div>
     </div>
     <div class="estats">
-      <div class="st"><b class="c-green">&mdash;</b>settled</div>
-      <div class="st"><b class="c-amber">&mdash;</b>in flight</div>
-      <div class="st"><b class="c-grey">&mdash;</b>watching</div>
-      <div class="st hot"><b class="c-wait">&mdash;</b>waiting on someone</div>
+      <div class="st"><span class="sw green"></span><b class="c-green">&mdash;</b>Done</div>
+      <div class="st"><span class="sw amber"></span><b class="c-amber">&mdash;</b>In flight</div>
+      <div class="st"><span class="sw red"></span><b class="c-red">&mdash;</b>Needs attention</div>
+      <div class="st"><span class="sw grey"></span><b class="c-grey">&mdash;</b>Watching</div>
+      <div class="st hot"><b class="c-wait">&mdash;</b>Waiting on someone</div>
       <div class="st next"><b>Wed 22 Jul</b>next date</div>
     </div>
   </div>
@@ -267,7 +271,7 @@
       <a class="chip" href="#i-ht046"><span class="dot"></span>HT046 eligibility and funding variation</a>
       <a class="chip" href="#i-bpt"><span class="dot"></span>PSA benefits / Best Practice Tariff case</a>
       <a class="chip" href="#i-pipeline"><span class="dot grey"></span>Acute discovery pipeline</a>
-      <a class="chip" href="#history"><span class="dot grey"></span>Full history</a>
+      <a class="chip chip-history" href="#history"><span class="dot dark"></span>Full history</a>
     </div>
   </div>
 
@@ -349,7 +353,7 @@
     </section>
     <section class="itemcard" id="i-mobilisation" data-title="Mobilisation plan">
       <div class="ihead">
-        <span class="pill amber">In prep</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">Mobilisation plan</h3>
         <div class="imeta">
           <span><b>Owner</b>Annie Wakefield / Pathway 2</span>
@@ -378,7 +382,7 @@
     </section>
     <section class="itemcard" id="i-workshops" data-title="RDUH workshop sequence">
       <div class="ihead">
-        <span class="pill amber">In train</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">RDUH workshop sequence</h3>
         <div class="imeta">
           <span><b>Owner</b>Olivia Sharp / Annie Wakefield with RDUH</span>
@@ -409,7 +413,7 @@
     </section>
     <section class="itemcard" id="i-device" data-wait="Impress UKCA marking and MHRA timing" data-waitwho="Regulatory, outside our control" data-waitcls="" data-title="Transdermal device route">
       <div class="ihead">
-        <span class="pill amber">Open</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">Transdermal device route</h3>
         <div class="imeta">
           <span><b>Owner</b>Olivia Sharp / Simone Bilton with RDUH</span>
@@ -434,9 +438,9 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-chelwest" data-wait="Richard Samuel steer on the ChelWest instrument" data-waitwho="Scott / Richard Samuel" data-waitcls="" data-title="ChelWest instrument decision">
+    <section class="itemcard grey" id="i-chelwest" data-wait="Richard Samuel steer on the ChelWest instrument" data-waitwho="Scott / Richard Samuel" data-waitcls="" data-title="ChelWest instrument decision">
       <div class="ihead">
-        <span class="pill amber">Open</span>
+        <span class="pill grey">Watching</span>
         <h3 class="ititle">ChelWest instrument decision</h3>
         <div class="imeta">
           <span><b>Owner</b>Scott Eason / Richard Samuel</span>
@@ -465,9 +469,9 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-mmh" data-title="MMH boundary declaration">
+    <section class="itemcard grey" id="i-mmh" data-title="MMH boundary declaration">
       <div class="ihead">
-        <span class="pill amber">Open</span>
+        <span class="pill grey">Queued</span>
         <h3 class="ititle">MMH boundary declaration</h3>
         <div class="imeta">
           <span><b>Owner</b>Acute / NHSE Commercial</span>
@@ -492,7 +496,7 @@
     </section>
     <section class="itemcard" id="i-ht046" data-wait="Richard Samuel on eligibility and funding variation" data-waitwho="Martin O&#39;Neil chasing" data-waitcls="" data-title="HT046 eligibility and funding variation">
       <div class="ihead">
-        <span class="pill amber">Open</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">HT046 eligibility and funding variation</h3>
         <div class="imeta">
           <span><b>Owner</b>Richard Samuel with Martin O'Neil</span>
@@ -520,7 +524,7 @@
     </section>
     <section class="itemcard" id="i-bpt" data-wait="GIRFT data and a confirmed submission date" data-waitwho="Richard Samuel" data-waitcls="" data-title="PSA benefits / Best Practice Tariff case">
       <div class="ihead">
-        <span class="pill amber">Scoping</span>
+        <span class="pill amber">In flight</span>
         <h3 class="ititle">PSA benefits / Best Practice Tariff case</h3>
         <div class="imeta">
           <span><b>Owner</b>Rachel Flower with Simon Leigh / Richard Samuel</span>
@@ -549,7 +553,7 @@
     </section>
     <section class="itemcard grey" id="i-pipeline" data-title="Acute discovery pipeline">
       <div class="ihead">
-        <span class="pill grey">Watch</span>
+        <span class="pill grey">Watching</span>
         <h3 class="ititle">Acute discovery pipeline</h3>
         <div class="imeta">
           <span><b>Owner</b>Rachel Flower / Annie Wakefield</span>
@@ -763,7 +767,8 @@
   var setc = function (sel, n) { var e = document.querySelector(sel); if (e) e.textContent = n; };
   setc('.c-wait', waiting);
   setc('.c-green', tally.green);
-  setc('.c-amber', tally.amber + tally.red);
+  setc('.c-amber', tally.amber);
+  setc('.c-red', tally.red);
   setc('.c-grey', tally.grey);
 
 

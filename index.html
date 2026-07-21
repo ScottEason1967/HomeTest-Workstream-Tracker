@@ -46,6 +46,11 @@
   .pill.green { background: #146c2e; }
   .pill.grey { background: #555; }
   .pill.dark { background: var(--nhs-dark); }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 0 0 20px; font-size: 12.5px; color: var(--muted); }
+  .legend .lg { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .lg .sw { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .legend .sw.green { background: #146c2e; } .legend .sw.amber { background: #c27803; } .legend .sw.red { background: #b00020; } .legend .sw.grey { background: #777; }
+  .legend .lgt { color: var(--nhs-dark); font-weight: 700; margin-right: 2px; }
   h3.cat { background: var(--pale); padding: 6px 12px; border-radius: 4px; color: var(--nhs-dark); margin: 18px 0 10px; font-size: 15px; }
   .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 6px; }
   .tile { display: block; background: #fff; border: 1px solid var(--border); border-left: 4px solid #c27803; border-radius: 6px; padding: 12px 14px; text-decoration: none; color: var(--ink); }
@@ -86,6 +91,13 @@
     <a class="ws nav-sources" href="sources.html">Sources</a>
   </nav>
 
+  <div class="legend">
+    <span class="lgt">Status key</span>
+    <span class="lg"><span class="sw green"></span>Done</span>
+    <span class="lg"><span class="sw amber"></span>In flight</span>
+    <span class="lg"><span class="sw red"></span>Needs attention</span>
+    <span class="lg"><span class="sw grey"></span>Watching / queued</span>
+  </div>
 
   <h3 class="cat">HIV Private Beta</h3>
   <div class="tiles">
@@ -110,12 +122,12 @@
       <div class="t-meta">Tom Rawlinson · Review live</div>
     </a>
     <a class="tile red" href="beta.html#i-dpia">
-      <div class="t-top"><span class="pill red">Critical path</span><strong>IG &amp; DPIA</strong></div>
+      <div class="t-top"><span class="pill amber">In flight</span><strong>IG &amp; DPIA</strong></div>
       <p>DPIA now v0.9.3, back to PTT w/c 20 Jul; IAO review returned with no issues. Data Sharing Agreements are the constraint: NHS Legal is not progressing them until the contracting trail is reconciled, which holds the DPIA. Approval still tracked mid-Aug.</p>
       <div class="t-meta">Wendi Higgins · PTT review w/c 20 Jul</div>
     </a>
     <a class="tile red" href="beta.html#i-clinicalsafety">
-      <div class="t-top"><span class="pill red">Blocked</span><strong>Clinical safety</strong></div>
+      <div class="t-top"><span class="pill amber">In flight</span><strong>Clinical safety</strong></div>
       <p>Lower private beta requirements agreed with the Assurance Team; the two LA DCB0160 risks are now proposed for closure. Sign-off estimated mid-Aug; artefact uplift tracked to 31 Aug. LAs still to join witness testing and sign a risk-acceptance statement.</p>
       <div class="t-meta">Meera Parkash · Risks proposed for closure</div>
     </a>
@@ -134,7 +146,7 @@
       <div class="t-meta">Shirley / Finance · Now MoU executed</div>
     </a>
     <a class="tile grey" href="acute.html#i-pipeline">
-      <div class="t-top"><span class="pill grey">Watch</span><strong>Mobilisation &amp; acute pipeline</strong></div>
+      <div class="t-top"><span class="pill grey">Watching</span><strong>Mobilisation &amp; acute pipeline</strong></div>
       <p>15 Jul SLT checkpoint scopes the RDUH pilot around PSA active surveillance: two EPR sites, 50-100 per site, day one end-Jan 2027, Epic-to-HomeTest PoC first. ChelWest still an open decision, its oncologists judged active surveillance unsuitable there.</p>
       <div class="t-meta">Rachel / Annie · PoC architecture with RDUH</div>
     </a>
@@ -158,7 +170,7 @@
       <div class="t-meta">Richard Samuel / Scott &middot; MoU to draft</div>
     </a>
     <a class="tile" href="commercial.html#i-model">
-      <div class="t-top"><span class="pill amber">In flight</span><strong>Commercial model approval route</strong></div>
+      <div class="t-top"><span class="pill red">Critical path</span><strong>Commercial model approval route</strong></div>
       <p>The 20 Jul board received the Option B open-framework recommendation but could not approve it. The route now runs through Rob McMillan; action HT052 on Rachel and James to arrange the senior discussion, due 17 Aug.</p>
       <div class="t-meta">Rachel / James · HT052 due 17 Aug</div>
     </a>
