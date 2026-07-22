@@ -503,7 +503,7 @@
         </div>
       </div>
     </section>
-    <section class="itemcard" id="i-dsa" data-title="Data Sharing Agreements & NHS Legal" data-wait="DSA template from Lexi, then LA sign-up" data-waitwho="Wendi Higgins / LAs" data-waitcls="">
+    <section class="itemcard" id="i-dsa" data-title="Data Sharing Agreements & NHS Legal" data-wait="Lexi's DSA template, then draft with the LA data controllers" data-waitwho="Wendi Higgins / LAs" data-waitcls="">
       <div class="ihead">
         <span class="pill amber">In flight</span>
         <h3 class="ititle">Data Sharing Agreements &amp; NHS Legal</h3>
@@ -524,8 +524,8 @@
           </div>
           <div class="ptdetail">
             <div class="pd on" data-p="0"><h5>The route changed on 21 July</h5><p>Earlier, Lexi Moffatt's questions (raised 8 July) had widened beyond IG into the commercials and the basis of the MoUs, and she paused her DSA advice, which held things up. At the 21 July Delivery Board the team took the front foot: Wendi Higgins to ask Lexi for the template and the team to complete the DSA themselves, decoupled from the MoU, and agree it with the LAs. PTT's core requirement is a documented legal basis for processing, which the DSA provides.</p></div>
-            <div class="pd" data-p="1"><h5>The party architecture</h5><p>The underlying question is which party NHS England enters the data-sharing arrangement with for the beta flows. The MoU assumes an NHSE-to-supplier model, unconfirmed by NHS Legal, and it feeds the DSA party architecture sitting with Rahima. The commissioning structure itself is settled: ESCC commissions, KCHFT delivers the service, PreventX supplies.</p></div>
-            <div class="pd" data-p="2"><h5>Where it stands</h5><p>DSAs are now accepted as required rather than something the MoU might dissolve, and the team is proceeding to draft them. Rachel Flower and Wendi Higgins are carrying it, with the DPIA dependent on the DSA position settling. Shirley Gaynor-Ward was asked to help unblock the earlier delay.</p></div>
+            <div class="pd" data-p="1"><h5>The party architecture</h5><p>Wendi Higgins set the proposed model out to Lexi on 21 July: put separate Data Sharing Agreements in place with the commissioned Trust that acts as data controller for the existing home-testing service, rather than relying on IG terms in the MoU, because the two private beta LAs run slightly different IG models. For Salford the data controller is Salford CC; for East Sussex it is KCHFT (Kent Community Health NHS Foundation Trust); the supplier Preventx may also be a data controller, being clarified with them. The MoU stays between NHSE and the LA as high-level Beta scope, and its clause 11 IG terms are simplified accordingly. The commissioning structure itself is settled: ESCC commissions, KCHFT delivers the service, PreventX supplies.</p></div>
+            <div class="pd" data-p="2"><h5>Where it stands</h5><p>DSAs are now accepted as required rather than something the MoU might dissolve. On 21 July Wendi asked Lexi for a template DSA for independent data controllers, and the linked Jira action HOTE-1926, to remove the IG element from the MoU and move it into the DSAs, was assigned to Scott. Rachel Flower and Wendi Higgins are carrying it, with the DPIA dependent on the DSA position settling.</p></div>
           </div>
         </div>
       </div>
@@ -619,16 +619,16 @@
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">PTT had been asking to assure the LAs' DPIA artefacts directly, which the programme holds unnecessary under the Option 3 self-certification landing. At the 21 July Delivery Board this was downgraded: Rahima Oliver narrowed the ask to checking the legal basis, and it "doesn't feel so much like a sixteen anymore."</p>
+        <p class="ipos">PTT had been asking to assure the LAs' DPIA artefacts directly, which the programme holds unnecessary under the Option 3 self-certification landing. At the 21 July Delivery Board it was talked down: Rahima Oliver narrowed the ask to checking the legal basis, and Chris Leary said it "doesn't feel so much like a sixteen anymore", though the risk register still carries it at RAG 16.</p>
         <div class="panes">
           <div class="ptlist">
             <button type="button" class="pt on" data-p="0">The Option 3 landing</button>
-            <button type="button" class="pt" data-p="1">Downgraded on 21 July</button>
+            <button type="button" class="pt" data-p="1">Being talked down, and the DSA resolution</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
             <div class="pd on" data-p="0"><h5>The Option 3 landing</h5><p>Chris Leary landed Option 3 for Beta IG assurance on 1 July, backed by an informal PTT steer and Wendi's self-certification hooks into the MoU. HOTE-1714 was the residual disagreement about whether PTT also assures the LA artefacts directly.</p></div>
-            <div class="pd" data-p="1"><h5>Downgraded on 21 July</h5><p>At the 21 July Delivery Board the risk was talked down. Rahima Oliver had, at a call the previous week, moved the ask to just checking the legal basis for processing, and Chris Leary said it no longer feels like a score of sixteen. The open question that remains is how much is needed to get the DPIA approved, which is tracked on the DPIA item.</p></div>
+            <div class="pd" data-p="1"><h5>Being talked down, and the DSA resolution</h5><p>At the 21 July Delivery Board the risk was talked down: Rahima Oliver had, at a call the previous week, moved the ask to just checking the legal basis for processing, and Chris Leary said it no longer feels like a score of sixteen. The formal position lags the discussion: the Delivery Board Highlight Report still lists HOTE-1714 at RAG 16, owned by Wendi Higgins. The resolution route is the DSA approach, moving the IG element out of the MoU and into the Data Sharing Agreements (HOTE-1926), which gives PTT the documented legal basis it wants; what remains is how much is needed to get the DPIA approved, tracked on the DPIA item.</p></div>
           </div>
         </div>
       </div>
@@ -691,6 +691,10 @@
 
 <h2 id="history">History</h2>
   <div class="log">
+    <details data-item="i-dsa i-hote1714">
+      <summary><span class="d">21 Jul</span>DSA model firmed up: separate DSAs with each LA's data-controller Trust, IG moved out of the MoU (HOTE-1926)</summary>
+      <div class="body"><p>Wendi Higgins proposed to Lexi Moffatt on 21 July that separate Data Sharing Agreements govern the data transfer for beta, rather than relying on IG terms in the MoU, because the two private beta local authorities run slightly different IG models. The DSA would be with the commissioned Trust that acts as data controller for the existing home-testing service: Salford CC for Salford, and Kent Community Health NHS Foundation Trust (KCHFT) for East Sussex, with the supplier Preventx potentially a data controller too, being clarified. The MoU stays between NHSE and the LA as high-level Beta scope, with its clause 11 IG terms simplified and the key requirements captured in the DSAs. Wendi asked Lexi for a template DSA for independent data controllers.</p><p>The linked Jira action HOTE-1926, remove the IG element from the MoU and move it into the Data Sharing Agreements, was assigned to Scott the same day. This also gives PTT the documented legal basis it wants, which is why the related PTT LA-DPIA risk (HOTE-1714) was talked down at the Delivery Board even though the register still carries it at RAG 16. Source: Data Sharing Agreements for Home Test proposed way forward, Wendi Higgins to Lexi Moffatt, 21 July 2026; Jira HOTE-1926, 21 July 2026.</p></div>
+    </details>
     <details data-item="i-signoff">
       <summary><span class="d">21 Jul</span>New signature risk: will Dean Freed sign an MoU that moves money, given the Alpha instrument was nil-value?</summary>
       <div class="body"><p>Rachel Flower raised on 21 July that the Beta MoU is now the instrument for the funds, and asked whether that creates a problem for signature. The point: the Alpha MoU was light-touch, covering only principles and scope, with any money passing via the supplier rather than under the MoU, so nothing of value moved under it (Wendi Higgins confirmed the Alpha instrument was principles and scope only). The Beta MoU uses the same clause wording, which Dean Freed approved in principle, but clause 6 is the funding route to the local authorities and is exactly what has been with Richard Samuel to settle: how much money, what it buys and the commercial model.</p><p>Scott noted that no number was specified but the flow is covered by clause 6, and that Dean is aware the document is not in final form and has said he will review the final version, so all the team currently holds is an in-principle acceptance. Whether Dean will sign an MoU that is not nil-value, once actual money changes hands, is not something the team can yet answer. It is a risk to the signature itself, on top of the timing risk. Separately, Dean has provided a cover contact for approval and signature during his leave. Source: MoU funding and signature exchange, Rachel Flower / Scott Eason / Wendi Higgins, 21 July 2026.</p></div>
