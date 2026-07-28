@@ -231,6 +231,12 @@
   body#page-standup .watch .watchintro{margin:0 0 11px;color:var(--muted);font-size:12px;}
   body#page-standup .watchgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
   @media(max-width:820px){body#page-standup .pcols{grid-template-columns:1fr;}body#page-standup .watchgrid{grid-template-columns:1fr;}}
+  body#page-standup .empty{color:var(--muted);font-size:12px;padding:4px 2px;margin:0;}
+  body#page-standup .changelog{margin:22px 0 0;border-top:1px solid var(--border);padding-top:14px;}
+  body#page-standup .changelog>h3{margin:0 0 9px;font-size:12.5px;color:var(--nhs-dark);text-transform:uppercase;letter-spacing:.04em;}
+  body#page-standup .cllist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;}
+  body#page-standup .cllist li{font-size:12.5px;color:var(--ink);line-height:1.45;}
+  body#page-standup .cllist .cld{display:inline-block;min-width:76px;font-weight:700;color:var(--nhs-dark);}
 </style>
 </head>
 <body id="page-standup">
@@ -238,11 +244,11 @@
 
   <header class="banner">
     <h1>This Week</h1>
-    <p class="lead">The commercial standup: who is doing what, by when. Drawn from the live workstream items; click any task to open its detail. Switch the view below.</p>
+    <p class="lead">The commercial standup board: who is doing what, by when. Maintained from the NHS Trio Standup transcript; click any task to open its detail. Switch the view below.</p>
     <div class="meta">
       <span><strong>Team</strong> Scott, Rachel, Hannah</span>
-      <span><strong>Last updated</strong> 27 July 2026</span>
-      <span><strong>Use</strong> Daily standup</span>
+      <span><strong>Last standup</strong> <span id="lastup">&mdash;</span></span>
+      <span><strong>Use</strong> Daily standup working board</span>
     </div>
   </header>
 
@@ -279,59 +285,77 @@
     <div class="watchgrid" id="watchgrid"></div>
   </section>
 
+  <section class="changelog" id="changelog"></section>
+
   <footer style="margin-top:26px;border-top:1px solid var(--border);padding-top:14px;color:var(--muted);font-size:12px;">
-    Standup view. The detailed record for every item lives on the workstream pages linked above; nothing here replaces that detail.
+    Standup working board for Scott, Rachel and Hannah. Updated from the NHS Trio Standup transcript; the detailed record for every item lives on the workstream pages linked above.
   </footer>
 
 </div>
+
+<script type="application/json" id="standup-data">
+{
+  "updated": "2026-07-27",
+  "changelog": [
+    {"date": "2026-07-27", "note": "Board set up and seeded from the 27 July commercial strategy discussion. No Trio Standup held yet, so this is the starting position; future updates come from the NHS Trio Standup transcript."}
+  ],
+  "tasks": [
+    {"id":"t-scott-onepager","who":"Scott","ws":"Commercial","task":"Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).","item":"Interim route","href":"commercial.html#i-interim","due":"2026-08-12","dueLabel":"~12 Aug, next playback","status":"active","since":"2026-07-27"},
+    {"id":"t-scott-ht052","who":"Scott","ws":"Commercial","task":"Dig out the exact HT052 / Rob McMillan action wording from the Programme Board minutes.","item":"Commercial model","href":"commercial.html#i-model","due":"2026-07-31","dueLabel":"This week","status":"todo","since":"2026-07-27"},
+    {"id":"t-scott-lpp","who":"Scott","ws":"Commercial","task":"Get the LPP timeline: what they will come back with on partnering, and when.","item":"Framework delivery partner","href":"commercial.html#i-delivery","due":"2026-07-31","dueLabel":"This week","status":"todo","since":"2026-07-27"},
+    {"id":"t-scott-btl","who":"Scott","ws":"Commercial","task":"Set up the bring-to-life follow-up with the NHSE frameworks team, and build the master decks (battle cards) from the TOM.","item":"Framework delivery partner","href":"commercial.html#i-delivery","due":"2026-08-07","dueLabel":"Early Aug","status":"todo","since":"2026-07-27"},
+    {"id":"t-scott-mou","who":"Scott","ws":"Beta","task":"Continue the Beta MoU drafting with Richard Samuel and IG.","item":"MoU sign-off","href":"beta.html#i-signoff","due":"9999-12-31","dueLabel":"Ongoing","status":"active","since":"2026-07-27"},
+    {"id":"t-rachel-dig","who":"Rachel","ws":"Commercial","task":"Support the framework-approvals dig and join the Phil Clow / frameworks meetings.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-07-31","dueLabel":"This week","status":"active","since":"2026-07-27"},
+    {"id":"t-rachel-lexi","who":"Rachel","ws":"Beta","task":"Box away the Lexi Moffatt IG and DSA documents.","item":"Data Sharing Agreements","href":"beta.html#i-dsa","due":"2026-07-31","dueLabel":"This week","status":"active","since":"2026-07-27"},
+    {"id":"t-rachel-wendi","who":"Rachel","ws":"Commercial","task":"Set Wendi Higgins onto future-world T&Cs and legal crib sheets once the HIV DPIA is signed off.","item":"Legal & procurement approval","href":"commercial.html#i-legal","due":"9999-12-31","dueLabel":"Ongoing","status":"todo","since":"2026-07-27"},
+    {"id":"t-rachel-belfast","who":"Rachel","ws":"Commercial","task":"Attend or dial into the quarterly planning in Belfast if needed.","item":"Phase 2 plan","href":"commercial.html#i-phase2","due":"2026-07-29","dueLabel":"29-30 Jul","status":"todo","since":"2026-07-27"},
+    {"id":"t-hannah-dig","who":"Hannah","ws":"Commercial","task":"Lead the framework-approvals dig: contact Phil Clow (NHSE frameworks / CCF), establish who signs off a new framework, the process, and what they need.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-07-31","dueLabel":"This week","status":"active","since":"2026-07-27"},
+    {"id":"t-hannah-slides","who":"Hannah","ws":"Commercial","task":"Pull the framework-approval findings into a short slide set for the next playback.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-08-12","dueLabel":"~12 Aug, next playback","status":"todo","since":"2026-07-27"},
+    {"id":"t-hannah-sf3","who":"Hannah","ws":"Commercial","task":"Take the Supplier Forum 3 outputs off Annie: supplier thank-you note and the internal Q&A list; Richard to sanity-check the slides.","item":"Supplier Forum 3","href":"commercial.html#i-sf3","due":"2026-07-29","dueLabel":"Mid-week","status":"active","since":"2026-07-27"}
+  ],
+  "watch": [
+    {"task":"Beta MoU sign-off and signatory cover","who":"Dean Freed / NHS Legal","href":"beta.html#i-signoff","pill":"red","plabel":"At risk"},
+    {"task":"£198k funding transfer confirmation","who":"Shirley / Finance","href":"acute.html#i-198k","pill":"red","plabel":"Waiting"},
+    {"task":"NHS-number data-sharing approach","who":"Wendi Higgins","href":"beta.html#i-nhsnumber","pill":"red","plabel":"Blocked"},
+    {"task":"East Sussex IG statements","who":"Tony Proom / ESCC","href":"beta.html#i-igstatements","pill":"red","plabel":"Overdue"}
+  ]
+}
+</script>
 <script>
 (function(){
- var TASKS=[
-  {who:'Scott',ws:'Commercial',task:'Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).',item:'Interim route',href:'commercial.html#i-interim',due:'2026-08-12',dueLabel:'~12 Aug, next playback',status:'active'},
-  {who:'Scott',ws:'Commercial',task:'Dig out the exact HT052 / Rob McMillan action wording from the Programme Board minutes.',item:'Commercial model',href:'commercial.html#i-model',due:'2026-07-31',dueLabel:'This week',status:'todo'},
-  {who:'Scott',ws:'Commercial',task:'Get the LPP timeline: what they will come back with on partnering, and when.',item:'Framework delivery partner',href:'commercial.html#i-delivery',due:'2026-07-31',dueLabel:'This week',status:'todo'},
-  {who:'Scott',ws:'Commercial',task:'Set up the bring-to-life follow-up with the NHSE frameworks team, and build the master decks (battle cards) from the TOM.',item:'Framework delivery partner',href:'commercial.html#i-delivery',due:'2026-08-07',dueLabel:'Early Aug',status:'todo'},
-  {who:'Scott',ws:'Beta',task:'Continue the Beta MoU drafting with Richard Samuel and IG.',item:'MoU sign-off',href:'beta.html#i-signoff',due:'9999-12-31',dueLabel:'Ongoing',status:'active'},
-  {who:'Rachel',ws:'Commercial',task:'Support the framework-approvals dig and join the Phil Clow / frameworks meetings.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-07-31',dueLabel:'This week',status:'active'},
-  {who:'Rachel',ws:'Beta',task:'Box away the Lexi Moffatt IG and DSA documents.',item:'Data Sharing Agreements',href:'beta.html#i-dsa',due:'2026-07-31',dueLabel:'This week',status:'active'},
-  {who:'Rachel',ws:'Commercial',task:'Set Wendi Higgins onto future-world T&Cs and legal crib sheets once the HIV DPIA is signed off.',item:'Legal & procurement approval',href:'commercial.html#i-legal',due:'9999-12-31',dueLabel:'Ongoing',status:'todo'},
-  {who:'Rachel',ws:'Commercial',task:'Attend or dial into the quarterly planning in Belfast if needed.',item:'Phase 2 plan',href:'commercial.html#i-phase2',due:'2026-07-29',dueLabel:'29-30 Jul',status:'todo'},
-  {who:'Hannah',ws:'Commercial',task:'Lead the framework-approvals dig: contact Phil Clow (NHSE frameworks / CCF), establish who signs off a new framework, the process, and what they need.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-07-31',dueLabel:'This week',status:'active'},
-  {who:'Hannah',ws:'Commercial',task:'Pull the framework-approval findings into a short slide set for the next playback.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-08-12',dueLabel:'~12 Aug, next playback',status:'todo'},
-  {who:'Hannah',ws:'Commercial',task:'Take the Supplier Forum 3 outputs off Annie: supplier thank-you note and the internal Q&A list; Richard to sanity-check the slides.',item:'Supplier Forum 3',href:'commercial.html#i-sf3',due:'2026-07-29',dueLabel:'Mid-week',status:'active'}
- ];
- var WATCH=[
-  {task:'Beta MoU sign-off and signatory cover',who:'Dean Freed / NHS Legal',href:'beta.html#i-signoff',pill:'red',plabel:'At risk'},
-  {task:'£198k funding transfer confirmation',who:'Shirley / Finance',href:'acute.html#i-198k',pill:'red',plabel:'Waiting'},
-  {task:'NHS-number data-sharing approach',who:'Wendi Higgins',href:'beta.html#i-nhsnumber',pill:'red',plabel:'Blocked'},
-  {task:'East Sussex IG statements',who:'Tony Proom / ESCC',href:'beta.html#i-igstatements',pill:'red',plabel:'Overdue'}
- ];
+ var DATA={};
+ try{ DATA=JSON.parse(document.getElementById('standup-data').textContent); }catch(e){ DATA={tasks:[],watch:[],changelog:[]}; }
+ var TASKS=DATA.tasks||[], WATCH=DATA.watch||[], CL=DATA.changelog||[];
  var STATUS={active:{c:'amber',l:'In progress'},todo:{c:'grey',l:'To do'},wait:{c:'red',l:'Waiting'},done:{c:'green',l:'Done'}};
  var PEOPLE=['Scott','Rachel','Hannah'];
  var WSORDER=['Commercial','Beta','Acute'];
+ var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function fmtDate(iso){if(!iso)return '&mdash;';var p=String(iso).split('-');if(p.length!==3)return esc(iso);var d=parseInt(p[2],10),mi=parseInt(p[1],10)-1;if(mi<0||mi>11)return esc(iso);return d+' '+MON[mi]+' '+p[0];}
  function taskHTML(t,showOwner){
-   var st=STATUS[t.status];
+   var st=STATUS[t.status]||STATUS.todo;
    var owner=showOwner?'<span class="towner">'+esc(t.who)+'</span>':'';
-   return '<a class="task s-'+t.status+'" href="'+t.href+'">'
+   return '<a class="task s-'+(t.status||'todo')+'" href="'+t.href+'">'
      +'<div class="ttext">'+esc(t.task)+'</div>'
      +'<div class="tmeta"><span class="pill '+st.c+'">'+st.l+'</span>'
      +'<span class="titem">'+esc(t.item)+'</span>'
      +'<span class="tdue"><b>'+esc(t.dueLabel)+'</b></span>'+owner+'</div></a>';
  }
+ function active(list){return list.filter(function(t){return t.status!=='done';});}
  function byPerson(){
    var h='<div class="pcols">';
    for(var i=0;i<PEOPLE.length;i++){
-     var p=PEOPLE[i];var mine=TASKS.filter(function(t){return t.who===p;});
+     var p=PEOPLE[i];var mine=active(TASKS).filter(function(t){return t.who===p;});
      mine.sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
      h+='<div class="pcol"><h3>'+p+'<span class="n">'+mine.length+' task'+(mine.length===1?'':'s')+'</span></h3><div class="plist">';
      for(var j=0;j<mine.length;j++){h+=taskHTML(mine[j],false);}
+     if(!mine.length)h+='<p class="empty">Nothing open.</p>';
      h+='</div></div>';
    }
    return h+'</div>';
  }
  function byDue(){
-   var s=TASKS.slice().sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
+   var s=active(TASKS).slice().sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
    var buckets=[['This week',function(d){return d<='2026-08-02';}],['Coming up',function(d){return d<'9999-12-31';}],['Ongoing',function(d){return true;}]];
    var used={},h='';
    for(var b=0;b<buckets.length;b++){
@@ -344,7 +368,7 @@
  function byWs(){
    var h='';
    for(var i=0;i<WSORDER.length;i++){
-     var w=WSORDER[i];var mine=TASKS.filter(function(t){return t.ws===w;});
+     var w=WSORDER[i];var mine=active(TASKS).filter(function(t){return t.ws===w;});
      if(!mine.length)continue;
      mine.sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
      h+='<div class="grp"><h3>'+w+'</h3><div class="duelist">';
@@ -353,24 +377,28 @@
    }
    return h;
  }
- function render(v){
-   document.getElementById('board').innerHTML = v==='due'?byDue():(v==='ws'?byWs():byPerson());
- }
+ function render(v){document.getElementById('board').innerHTML=v==='due'?byDue():(v==='ws'?byWs():byPerson());}
  function renderWatch(){
-   var h='';
-   for(var i=0;i<WATCH.length;i++){var w=WATCH[i];
+   var h='';for(var i=0;i<WATCH.length;i++){var w=WATCH[i];
      h+='<a class="task s-wait" href="'+w.href+'"><div class="ttext">'+esc(w.task)+'</div>'
-       +'<div class="tmeta"><span class="pill '+w.pill+'">'+w.plabel+'</span><span class="towner">'+esc(w.who)+'</span></div></a>';
-   }
+       +'<div class="tmeta"><span class="pill '+w.pill+'">'+esc(w.plabel)+'</span><span class="towner">'+esc(w.who)+'</span></div></a>';}
    document.getElementById('watchgrid').innerHTML=h;
  }
+ function renderCL(){
+   var el=document.getElementById('changelog');if(!el)return;
+   if(!CL.length){el.style.display='none';return;}
+   var h='<h3>What changed</h3><ul class="cllist">';
+   for(var i=0;i<CL.length;i++){h+='<li><span class="cld">'+fmtDate(CL[i].date)+'</span> '+esc(CL[i].note)+'</li>';}
+   el.innerHTML=h+'</ul>';
+ }
+ var lu=document.getElementById('lastup');if(lu)lu.innerHTML=fmtDate(DATA.updated);
+ var opencount=active(TASKS).length;
+ document.getElementById('vcount').textContent=opencount+' open task'+(opencount===1?'':'s')+' · '+PEOPLE.length+' people';
  var btns=document.querySelectorAll('.vbtn');
  for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){
    for(var k=0;k<btns.length;k++)btns[k].classList.remove('on');
-   this.classList.add('on');render(this.getAttribute('data-view'));
- });}
- document.getElementById('vcount').textContent=TASKS.length+' tasks · '+PEOPLE.length+' people';
- render('person');renderWatch();
+   this.classList.add('on');render(this.getAttribute('data-view'));});}
+ render('person');renderWatch();renderCL();
 })();
 </script>
 </body>
