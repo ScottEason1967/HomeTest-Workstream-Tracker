@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This Week — HomeTest Workstream Tracker</title>
+<style>
+  :root {
+    --nhs-dark: #003087;
+    --nhs-blue: #005EB8;
+    --nhs-light: #7EC8E3;
+    --pale: #D5E8F0;
+    --yellow: #FFF3CD;
+    --ink: #231F20;
+    --muted: #556;
+    --border: #dbe5ee;
+    --bg: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Abadi", "Segoe UI", Arial, sans-serif; color: var(--ink); margin: 0; padding: 0; background: var(--bg); line-height: 1.5; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 28px; }
+  header.banner { background: var(--nhs-dark); color: #fff; padding: 28px 32px; border-radius: 6px; margin-bottom: 20px; }
+  header.banner h1 { margin: 0 0 6px; font-size: 26px; font-weight: 700; }
+  header.banner p.lead { margin: 0; color: var(--nhs-light); font-size: 15px; }
+  header.banner .meta { margin-top: 14px; font-size: 12px; color: #cfe4f3; display: flex; flex-wrap: wrap; gap: 18px; }
+  header.banner .meta strong { color: #fff; margin-right: 6px; }
+  nav.toc { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 7px; height: 54px; background: var(--nhs-dark); padding: 0 12px; margin: 0 0 22px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,48,135,.22); overflow-x: auto; white-space: nowrap; }
+  nav.toc::-webkit-scrollbar { height: 0; }
+  nav.toc a { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 600; text-decoration: none; color: #dbe7f5; border: 1px solid transparent; transition: background .12s, color .12s, border-color .12s; }
+  nav.toc a svg { display: block; }
+  nav.toc a.nav-home { padding: 7px 12px; color: #fff; }
+  nav.toc a.nav-home:hover { background: rgba(255,255,255,.14); }
+  nav.toc a.nav-home.here { background: #fff; color: var(--nhs-dark); }
+  nav.toc a.ws { color: var(--acc); border-color: rgba(255,255,255,.16); }
+  nav.toc a.ws:hover { background: rgba(255,255,255,.10); border-color: var(--acc); }
+  nav.toc a.ws.here { background: var(--acc); color: var(--nhs-dark); border-color: var(--acc); font-weight: 700; box-shadow: 0 1px 5px rgba(0,0,0,.25); }
+  nav.toc a.nav-beta { --acc: #41B6E6; }
+  nav.toc a.nav-acute { --acc: #29B7A6; }
+  nav.toc a.nav-commercial { --acc: #F3C24D; }
+  nav.toc a.nav-sources { --acc: #AEBECE; }
+  nav.toc a.nav-standup { --acc: #C7A9E9; }
+  h2 { background: var(--nhs-blue); color: #fff; padding: 10px 14px; font-size: 17px; margin: 28px 0 14px; border-radius: 4px; }
+  h3 { color: var(--nhs-blue); font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid var(--nhs-blue); padding-bottom: 4px; }
+  h4 { color: var(--nhs-blue); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 6px; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+  .card h4 { margin: 0 0 8px; }
+  .callout { background: var(--yellow); border-left: 4px solid var(--nhs-blue); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .callout strong { color: var(--nhs-dark); }
+  .callout p { margin: 4px 0; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 13px; }
+  th { background: var(--nhs-blue); color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
+  td { background: var(--pale); padding: 8px 10px; border-bottom: 2px solid #fff; vertical-align: top; }
+  table.narrow td { font-size: 12.5px; }
+  table th.w-action { width: 36%; }
+  table th.w-owner { width: 14%; }
+  table th.w-due { width: 14%; }
+  table th.w-dep { width: 22%; }
+  table th.w-status { width: 14%; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; background: var(--nhs-blue); color: #fff; padding: 3px 11px 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .2px; line-height: 1.45; margin-right: 4px; vertical-align: middle; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: .85; flex: 0 0 auto; }
+  .pill.amber { background: #c27803; }
+  .pill.red { background: #b00020; }
+  .pill.green { background: #146c2e; }
+  .pill.grey { background: #555; }
+  .pill.dark { background: var(--nhs-dark); }
+  .tag { background: var(--pale); color: var(--nhs-dark); padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 4px; display: inline-block; }
+  .source { font-size: 11.5px; color: var(--muted); font-style: italic; }
+  .ws-summary { background: var(--pale); padding: 12px 16px; border-radius: 4px; margin: 0 0 14px; font-size: 13px; }
+  .ws-summary p { margin: 4px 0; }
+  footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #ccd; font-size: 12px; color: var(--muted); }
+  footer p { margin: 4px 0; }
+  ul.state { list-style: none; margin: 6px 0 14px; padding: 0; font-size: 13px; }
+  ul.state li { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; padding: 7px 2px; border-bottom: 1px solid var(--border); }
+  ul.state li:last-child { border-bottom: none; }
+  ul.state .pill { flex: 0 0 auto; min-width: 72px; text-align: center; }
+  ul.state .item { flex: 1 1 420px; }
+  ul.state .item strong { color: var(--nhs-dark); }
+  ul.state .who { flex: 0 0 auto; font-size: 11.5px; color: var(--muted); white-space: nowrap; margin-left: auto; }
+  .datebar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+  .datebar .d { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--nhs-blue); border-radius: 4px; padding: 6px 10px; font-size: 12px; min-width: 110px; }
+  .datebar .d strong { display: block; color: var(--nhs-dark); }
+  .datebar .d.hot { border-left-color: #b00020; }
+  .log details { background: #fff; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 6px; }
+  .log summary { cursor: pointer; padding: 8px 12px; font-size: 13px; }
+  .log summary:hover { background: var(--pale); }
+  .log summary .d { color: var(--nhs-dark); font-weight: 700; margin-right: 8px; white-space: nowrap; }
+  .log details[open] summary { border-bottom: 1px solid var(--border); background: var(--pale); }
+  .log .body { padding: 8px 14px 10px; font-size: 12.5px; }
+  .log .body p { margin: 6px 0; }
+  @media (max-width: 900px) { .datebar .d { min-width: 45%; } }
+
+
+  /* --- exec summary strip --- */
+  .execsum { background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--nhs-dark); border-radius: 6px; padding: 14px 18px 0; margin: 0 0 14px; }
+  .execsum .elabel { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
+  .execsum p.eline { margin: 0 0 12px; font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+  .execsum p.eline strong { color: var(--nhs-dark); }
+  .execsum .estats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin: 0 -18px; padding: 0 4px; }
+  .execsum .estats .st { display: flex; align-items: center; gap: 6px; padding: 9px 14px; font-size: 12px; color: var(--muted); border-right: 1px solid var(--border); }
+  .execsum .estats .st .sw { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+  .execsum .estats .sw.green { background: #146c2e; } .execsum .estats .sw.amber { background: #c27803; } .execsum .estats .sw.red { background: #b00020; } .execsum .estats .sw.grey { background: #777; }
+  .execsum .estats .st:last-child { border-right: 0; }
+  .execsum .estats .st b { font-size: 16px; color: var(--nhs-dark); font-weight: 700; line-height: 1.2; }
+  .execsum .estats .st.hot b { color: #b00020; }
+  .execsum .estats .st.next { margin-left: auto; text-align: right; }
+  .execsum .estats .st.next b { font-size: 13.5px; }
+  @media (max-width: 700px) { .execsum .estats .st.next { margin-left: 0; text-align: left; } }
+
+  .execsum .ecols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 22px; border-top: 1px solid var(--border); padding-top: 12px; margin-bottom: 4px; }
+  .execsum .ecol .elabel { margin-bottom: 7px; }
+  .execsum ul { list-style: none; margin: 0 0 8px; padding: 0; font-size: 12.5px; line-height: 1.45; }
+  .execsum ul li { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .execsum ul li:last-child { border-bottom: 0; }
+  .execsum .datelist b, .execsum .risklist b { color: var(--nhs-dark); }
+  .execsum .datelist b { display: inline-block; min-width: 96px; }
+  .execsum .waitlist a { display: block; color: var(--ink); text-decoration: none; border-left: 3px solid var(--nhs-blue); padding: 2px 0 2px 9px; }
+  .execsum .waitlist a:hover { background: var(--pale); }
+  .execsum .waitlist a.hot { border-left-color: #b00020; }
+  .execsum .waitlist .w { font-weight: 700; color: var(--nhs-dark); display: block; }
+  .execsum .waitlist .who { color: var(--muted); font-size: 11.5px; }
+  @media (max-width: 900px) { .execsum .ecols { grid-template-columns: 1fr; gap: 0; } .execsum .ecol { border-top: 1px solid var(--border); padding-top: 10px; } .execsum .ecol:first-child { border-top: 0; padding-top: 0; } }
+  /* --- item rail --- */
+  .rail { position: sticky; top: 54px; z-index: 20; background: var(--bg); padding: 10px 0 8px; margin: 0 0 4px; border-bottom: 1px solid var(--border); }
+  .rail .rlabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
+  .rail .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .rail a.chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px 5px 8px; font-size: 12.5px; color: var(--ink); text-decoration: none; font-weight: 600; }
+  .rail a.chip:hover { border-color: var(--nhs-blue); background: var(--pale); }
+  .rail a.chip .dot { width: 9px; height: 9px; border-radius: 50%; background: #c27803; flex: 0 0 auto; }
+  .rail a.chip .dot.red { background: #b00020; } .rail a.chip .dot.green { background: #146c2e; } .rail a.chip .dot.grey { background: #777; }
+  .rail a.chip .dot.dark { background: var(--nhs-dark); }
+  .rail a.chip.chip-summary { margin-right: 12px; border-color: var(--nhs-dark); font-weight: 700; }
+  .rail a.chip.chip-history { margin-left: auto; border-color: var(--nhs-dark); font-weight: 700; }
+  .rail a.chip.on { background: var(--nhs-dark); border-color: var(--nhs-dark); color: #fff; }
+  .rail a.chip.on .dot { box-shadow: 0 0 0 2px #fff; }
+  /* --- item cards --- */
+  h2[id], .log { scroll-margin-top: 124px; }
+  #summary { scroll-margin-top: 60px; }
+  .itemcard { background: #fff; border: 1px solid var(--border); border-left: 5px solid #c27803; border-radius: 6px; padding: 0; margin: 0 0 12px; scroll-margin-top: 124px; }
+  .itemcard.red { border-left-color: #b00020; } .itemcard.green { border-left-color: #146c2e; } .itemcard.grey { border-left-color: #777; }
+  .itemcard > .ihead { padding: 14px 18px 10px; border-bottom: 1px solid var(--border); }
+  .itemcard h3.ititle { margin: 6px 0 0; padding: 0; border: none; color: var(--nhs-dark); font-size: 19px; }
+  .itemcard .imeta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .itemcard .imeta b { display: block; color: var(--nhs-dark); font-size: 12.5px; font-weight: 700; }
+  .itemcard > .ibody { padding: 14px 18px 16px; }
+  .itemcard .ipos { font-size: 14.5px; line-height: 1.55; margin: 0 0 12px; }
+  .itemcard details.more { border-top: 1px solid var(--border); margin-top: 4px; }
+  .itemcard details.more > summary { cursor: pointer; padding: 9px 2px 4px; font-size: 12.5px; font-weight: 700; color: var(--nhs-blue); list-style: none; }
+  .itemcard details.more > summary::-webkit-details-marker { display: none; }
+  .itemcard details.more > summary:before { content: "\25B8 "; }
+  .itemcard details.more[open] > summary:before { content: "\25BE "; }
+  .itemcard details.more .mbody { font-size: 13px; padding: 2px 0 10px; }
+  .itemcard details.more .mbody p { margin: 6px 0; }
+  .itemcard .ihist details { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 5px; }
+  .itemcard .ihist summary { cursor: pointer; padding: 7px 11px; font-size: 12.5px; }
+  .itemcard .ihist summary .d { color: var(--nhs-dark); font-weight: 700; margin-right: 8px; white-space: nowrap; }
+  .itemcard .ihist .body { padding: 8px 12px 10px; font-size: 12.5px; }
+  .itemcard .ihist .body p { margin: 6px 0; }
+  .itemcard .ihist .none { font-size: 12.5px; color: var(--muted); font-style: italic; }
+
+  /* --- two-pane point view --- */
+  .panes { display: grid; grid-template-columns: minmax(200px, 33%) 1fr; border-top: 1px solid var(--border); margin-top: 14px; }
+  .ptlist { border-right: 1px solid var(--border); padding: 10px 10px 12px 0; }
+  .ptlist .pt { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 3px solid transparent; padding: 8px 10px; font: inherit; font-size: 12.5px; line-height: 1.35; color: var(--ink); cursor: pointer; border-radius: 0 4px 4px 0; }
+  .ptlist .pt:hover { background: var(--pale); }
+  .ptlist .pt.on { background: var(--pale); border-left-color: var(--nhs-blue); font-weight: 700; color: var(--nhs-dark); }
+  .ptlist .pt .dt { color: var(--muted); font-weight: 700; margin-right: 6px; white-space: nowrap; }
+  .ptlist .ptgroup { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 700; padding: 14px 10px 5px; margin-top: 8px; border-top: 1px solid var(--border); }
+  .ptdetail { padding: 12px 2px 14px 20px; font-size: 13.5px; line-height: 1.55; }
+  .ptdetail h5 { margin: 0 0 9px; font-size: 13.5px; color: var(--nhs-dark); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .ptdetail p { margin: 0 0 9px; }
+  .ptdetail table { margin-top: 4px; }
+  body.js .pd { display: none; }
+  body.js .pd.on { display: block; }
+  @media (max-width: 900px) {
+    .panes { grid-template-columns: 1fr; }
+    .ptlist { border-right: 0; border-bottom: 1px solid var(--border); padding: 8px 0 10px; }
+    .ptdetail { padding: 12px 0 4px; }
+  }
+  /* --- focus mode --- */
+  .focusbar { display: none; align-items: center; gap: 12px; background: var(--nhs-dark); color: #fff; border-radius: 6px; padding: 9px 14px; margin: 10px 0 12px; font-size: 12.5px; }
+  body.focused .focusbar { display: flex; }
+  .focusbar a { color: #fff; text-decoration: underline; font-weight: 700; }
+  .focusbar .fnav { margin-left: auto; display: flex; gap: 14px; }
+  body.focused .itemcard { display: none; }
+  body.focused .itemcard.target { display: block; }
+  body.focused .reference { display: none; }
+  body.focused .execsum { display: block; }
+  body.focused .itemcard.target { border-left-width: 7px; }
+  /* --- history as its own tab --- */
+  body.js .log, body.js h2#history { display: none; }
+  body.js.historyview .execsum,
+  body.js.historyview #items,
+  body.js.historyview .itemcard,
+  body.js.historyview .reference,
+  body.js.historyview .focusbar { display: none; }
+  body.js.historyview .log,
+  body.js.historyview h2#history { display: block; }
+  @media print { .rail, .focusbar { display: none !important; } body.focused .itemcard { display: block !important; } body.js .log, body.js h2#history { display: block !important; } }
+  /* ---- standup (This week) view ---- */
+  body#page-standup .daterail{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;background:var(--pale);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin:0 0 16px;font-size:12.5px;color:var(--muted);}
+  body#page-standup .daterail .drlabel{font-weight:700;color:var(--nhs-dark);text-transform:uppercase;letter-spacing:.04em;font-size:11px;margin-right:2px;}
+  body#page-standup .daterail b{color:var(--nhs-dark);}
+  body#page-standup .viewsel{display:flex;align-items:center;gap:8px;margin:0 0 16px;flex-wrap:wrap;}
+  body#page-standup .viewsel .vlabel{font-weight:700;color:var(--nhs-dark);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-right:2px;}
+  body#page-standup .vbtn{cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink);border-radius:999px;padding:7px 15px;font-size:13px;font-weight:600;font-family:inherit;transition:background .12s,border-color .12s,color .12s;}
+  body#page-standup .vbtn:hover{background:var(--pale);border-color:var(--nhs-blue);}
+  body#page-standup .vbtn.on{background:var(--nhs-blue);color:#fff;border-color:var(--nhs-blue);}
+  body#page-standup .vcount{margin-left:auto;color:var(--muted);font-size:12px;}
+  body#page-standup .pcols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  body#page-standup .pcol{border:1px solid var(--border);border-radius:12px;background:#fff;overflow:hidden;}
+  body#page-standup .pcol>h3{margin:0;padding:11px 15px;background:var(--nhs-dark);color:#fff;font-size:14px;display:flex;justify-content:space-between;align-items:center;}
+  body#page-standup .pcol>h3 .n{font-weight:600;font-size:11.5px;color:#cdd8ea;}
+  body#page-standup .pcol .plist{padding:8px;display:flex;flex-direction:column;gap:8px;}
+  body#page-standup .grp{margin:0 0 18px;}
+  body#page-standup .grp>h3{margin:0 0 9px;font-size:12.5px;color:var(--nhs-dark);text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border);padding-bottom:5px;}
+  body#page-standup .duelist{display:flex;flex-direction:column;gap:8px;}
+  body#page-standup .task{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--border);border-left:3px solid var(--nhs-blue);border-radius:8px;padding:9px 11px;background:#fff;transition:background .12s,box-shadow .12s;}
+  body#page-standup .task:hover{background:var(--pale);box-shadow:0 1px 6px rgba(0,48,135,.10);}
+  body#page-standup .task.s-active{border-left-color:#c27803;}
+  body#page-standup .task.s-todo{border-left-color:#777;}
+  body#page-standup .task.s-wait{border-left-color:#b00020;}
+  body#page-standup .task.s-done{border-left-color:#146c2e;}
+  body#page-standup .task .ttext{font-size:13.5px;line-height:1.4;font-weight:600;color:var(--nhs-dark);margin:0 0 6px;}
+  body#page-standup .task .tmeta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:11.5px;color:var(--muted);}
+  body#page-standup .task .titem{color:var(--nhs-blue);font-weight:600;}
+  body#page-standup .task .tdue b{color:var(--nhs-dark);font-weight:700;}
+  body#page-standup .task .towner{background:var(--pale);border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-weight:600;color:var(--nhs-dark);}
+  body#page-standup .watch{margin:22px 0 0;border-top:1px solid var(--border);padding-top:16px;}
+  body#page-standup .watch>h3{margin:0 0 3px;font-size:14px;color:var(--nhs-dark);}
+  body#page-standup .watch .watchintro{margin:0 0 11px;color:var(--muted);font-size:12px;}
+  body#page-standup .watchgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+  @media(max-width:820px){body#page-standup .pcols{grid-template-columns:1fr;}body#page-standup .watchgrid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body id="page-standup">
+<div class="wrap">
+
+  <header class="banner">
+    <h1>This Week</h1>
+    <p class="lead">The commercial standup: who is doing what, by when. Drawn from the live workstream items; click any task to open its detail. Switch the view below.</p>
+    <div class="meta">
+      <span><strong>Team</strong> Scott, Rachel, Hannah</span>
+      <span><strong>Last updated</strong> 27 July 2026</span>
+      <span><strong>Use</strong> Daily standup</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <a class="nav-home" href="index.html"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 3.2 21 11h-2.6v9h-4.6v-5.6h-3.6V20H5.6v-9H3z"/></svg>Home</a>
+    <a class="ws nav-standup here" href="standup.html">This week</a>
+    <a class="ws nav-beta" href="beta.html">HIV Private Beta</a>
+    <a class="ws nav-acute" href="acute.html">PSA Acute</a>
+    <a class="ws nav-commercial" href="commercial.html">Future State &amp; Commercial</a>
+    <a class="ws nav-sources" href="sources.html">Sources</a>
+  </nav>
+
+  <div class="daterail">
+    <span class="drlabel">Key dates</span>
+    <span><b>29-30 Jul</b> Quarterly planning, Belfast</span>
+    <span><b>Mon 3 Aug</b> Commercial update</span>
+    <span><b>Wed 13 Aug</b> Cornerstones workshop</span>
+    <span><b>Sun 17 Aug</b> HT052 with Rob McMillan</span>
+  </div>
+
+  <div class="viewsel">
+    <span class="vlabel">View</span>
+    <button type="button" class="vbtn on" data-view="person">By person</button>
+    <button type="button" class="vbtn" data-view="due">By due date</button>
+    <button type="button" class="vbtn" data-view="ws">By workstream</button>
+    <span class="vcount" id="vcount"></span>
+  </div>
+
+  <div id="board"></div>
+
+  <section class="watch">
+    <h3>Watching &mdash; other workstreams</h3>
+    <p class="watchintro">Items the team keeps an eye on but does not own the next action for. Click through for detail.</p>
+    <div class="watchgrid" id="watchgrid"></div>
+  </section>
+
+  <footer style="margin-top:26px;border-top:1px solid var(--border);padding-top:14px;color:var(--muted);font-size:12px;">
+    Standup view. The detailed record for every item lives on the workstream pages linked above; nothing here replaces that detail.
+  </footer>
+
+</div>
+<script>
+(function(){
+ var TASKS=[
+  {who:'Scott',ws:'Commercial',task:'Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).',item:'Interim route',href:'commercial.html#i-interim',due:'2026-08-12',dueLabel:'~12 Aug, next playback',status:'active'},
+  {who:'Scott',ws:'Commercial',task:'Dig out the exact HT052 / Rob McMillan action wording from the Programme Board minutes.',item:'Commercial model',href:'commercial.html#i-model',due:'2026-07-31',dueLabel:'This week',status:'todo'},
+  {who:'Scott',ws:'Commercial',task:'Get the LPP timeline: what they will come back with on partnering, and when.',item:'Framework delivery partner',href:'commercial.html#i-delivery',due:'2026-07-31',dueLabel:'This week',status:'todo'},
+  {who:'Scott',ws:'Commercial',task:'Set up the bring-to-life follow-up with the NHSE frameworks team, and build the master decks (battle cards) from the TOM.',item:'Framework delivery partner',href:'commercial.html#i-delivery',due:'2026-08-07',dueLabel:'Early Aug',status:'todo'},
+  {who:'Scott',ws:'Beta',task:'Continue the Beta MoU drafting with Richard Samuel and IG.',item:'MoU sign-off',href:'beta.html#i-signoff',due:'9999-12-31',dueLabel:'Ongoing',status:'active'},
+  {who:'Rachel',ws:'Commercial',task:'Support the framework-approvals dig and join the Phil Clow / frameworks meetings.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-07-31',dueLabel:'This week',status:'active'},
+  {who:'Rachel',ws:'Beta',task:'Box away the Lexi Moffatt IG and DSA documents.',item:'Data Sharing Agreements',href:'beta.html#i-dsa',due:'2026-07-31',dueLabel:'This week',status:'active'},
+  {who:'Rachel',ws:'Commercial',task:'Set Wendi Higgins onto future-world T&Cs and legal crib sheets once the HIV DPIA is signed off.',item:'Legal & procurement approval',href:'commercial.html#i-legal',due:'9999-12-31',dueLabel:'Ongoing',status:'todo'},
+  {who:'Rachel',ws:'Commercial',task:'Attend or dial into the quarterly planning in Belfast if needed.',item:'Phase 2 plan',href:'commercial.html#i-phase2',due:'2026-07-29',dueLabel:'29-30 Jul',status:'todo'},
+  {who:'Hannah',ws:'Commercial',task:'Lead the framework-approvals dig: contact Phil Clow (NHSE frameworks / CCF), establish who signs off a new framework, the process, and what they need.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-07-31',dueLabel:'This week',status:'active'},
+  {who:'Hannah',ws:'Commercial',task:'Pull the framework-approval findings into a short slide set for the next playback.',item:'Governance route',href:'commercial.html#i-govroute',due:'2026-08-12',dueLabel:'~12 Aug, next playback',status:'todo'},
+  {who:'Hannah',ws:'Commercial',task:'Take the Supplier Forum 3 outputs off Annie: supplier thank-you note and the internal Q&A list; Richard to sanity-check the slides.',item:'Supplier Forum 3',href:'commercial.html#i-sf3',due:'2026-07-29',dueLabel:'Mid-week',status:'active'}
+ ];
+ var WATCH=[
+  {task:'Beta MoU sign-off and signatory cover',who:'Dean Freed / NHS Legal',href:'beta.html#i-signoff',pill:'red',plabel:'At risk'},
+  {task:'£198k funding transfer confirmation',who:'Shirley / Finance',href:'acute.html#i-198k',pill:'red',plabel:'Waiting'},
+  {task:'NHS-number data-sharing approach',who:'Wendi Higgins',href:'beta.html#i-nhsnumber',pill:'red',plabel:'Blocked'},
+  {task:'East Sussex IG statements',who:'Tony Proom / ESCC',href:'beta.html#i-igstatements',pill:'red',plabel:'Overdue'}
+ ];
+ var STATUS={active:{c:'amber',l:'In progress'},todo:{c:'grey',l:'To do'},wait:{c:'red',l:'Waiting'},done:{c:'green',l:'Done'}};
+ var PEOPLE=['Scott','Rachel','Hannah'];
+ var WSORDER=['Commercial','Beta','Acute'];
+ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function taskHTML(t,showOwner){
+   var st=STATUS[t.status];
+   var owner=showOwner?'<span class="towner">'+esc(t.who)+'</span>':'';
+   return '<a class="task s-'+t.status+'" href="'+t.href+'">'
+     +'<div class="ttext">'+esc(t.task)+'</div>'
+     +'<div class="tmeta"><span class="pill '+st.c+'">'+st.l+'</span>'
+     +'<span class="titem">'+esc(t.item)+'</span>'
+     +'<span class="tdue"><b>'+esc(t.dueLabel)+'</b></span>'+owner+'</div></a>';
+ }
+ function byPerson(){
+   var h='<div class="pcols">';
+   for(var i=0;i<PEOPLE.length;i++){
+     var p=PEOPLE[i];var mine=TASKS.filter(function(t){return t.who===p;});
+     mine.sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
+     h+='<div class="pcol"><h3>'+p+'<span class="n">'+mine.length+' task'+(mine.length===1?'':'s')+'</span></h3><div class="plist">';
+     for(var j=0;j<mine.length;j++){h+=taskHTML(mine[j],false);}
+     h+='</div></div>';
+   }
+   return h+'</div>';
+ }
+ function byDue(){
+   var s=TASKS.slice().sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
+   var buckets=[['This week',function(d){return d<='2026-08-02';}],['Coming up',function(d){return d<'9999-12-31';}],['Ongoing',function(d){return true;}]];
+   var used={},h='';
+   for(var b=0;b<buckets.length;b++){
+     var test=buckets[b][1],rows='';
+     for(var i=0;i<s.length;i++){if(!used[i]&&test(s[i].due)){used[i]=1;rows+=taskHTML(s[i],true);}}
+     if(rows)h+='<div class="grp"><h3>'+buckets[b][0]+'</h3><div class="duelist">'+rows+'</div></div>';
+   }
+   return h;
+ }
+ function byWs(){
+   var h='';
+   for(var i=0;i<WSORDER.length;i++){
+     var w=WSORDER[i];var mine=TASKS.filter(function(t){return t.ws===w;});
+     if(!mine.length)continue;
+     mine.sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
+     h+='<div class="grp"><h3>'+w+'</h3><div class="duelist">';
+     for(var j=0;j<mine.length;j++){h+=taskHTML(mine[j],true);}
+     h+='</div></div>';
+   }
+   return h;
+ }
+ function render(v){
+   document.getElementById('board').innerHTML = v==='due'?byDue():(v==='ws'?byWs():byPerson());
+ }
+ function renderWatch(){
+   var h='';
+   for(var i=0;i<WATCH.length;i++){var w=WATCH[i];
+     h+='<a class="task s-wait" href="'+w.href+'"><div class="ttext">'+esc(w.task)+'</div>'
+       +'<div class="tmeta"><span class="pill '+w.pill+'">'+w.plabel+'</span><span class="towner">'+esc(w.who)+'</span></div></a>';
+   }
+   document.getElementById('watchgrid').innerHTML=h;
+ }
+ var btns=document.querySelectorAll('.vbtn');
+ for(var i=0;i<btns.length;i++){btns[i].addEventListener('click',function(){
+   for(var k=0;k<btns.length;k++)btns[k].classList.remove('on');
+   this.classList.add('on');render(this.getAttribute('data-view'));
+ });}
+ document.getElementById('vcount').textContent=TASKS.length+' tasks · '+PEOPLE.length+' people';
+ render('person');renderWatch();
+})();
+</script>
+</body>
+</html>
