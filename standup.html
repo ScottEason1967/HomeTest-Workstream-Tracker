@@ -263,7 +263,7 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Wed 13 Aug</b> Cornerstones / sourcing workshop</span>
+    <span><b>Thu 13 Aug</b> Cornerstones / sourcing workshop</span>
     <span><b>Mon 17 Aug</b> HT052 with Rob McMillan</span>
     <span><b>Wed 19 Aug</b> SHL London inaugural board</span>
     <span><b>Mon 24 Aug</b> Lotting strategy workshop</span>
@@ -320,7 +320,7 @@
     {"id":"t-scott-londonmou","who":"Scott","ws":"Beta","task":"Work up a London MoU with SHL / City of London (Mona Hayat) to frame the Beta-scale partnership: revenue transfer and deliverables, launching HIV HomeTest across a minimum of four London boroughs (ideally the whole SHL footprint) between now and March 2027. Action from Richard's 15 Jul London session.","item":"London / SHL participation","href":"beta.html#i-london","due":"2026-08-31","dueLabel":"New, from 15 Jul","status":"todo","since":"2026-07-30"},
     {"id":"t-scott-idaproc","who":"Scott","ws":"Commercial","task":"Come up with the recommendation for a tactical procurement of IDA (iron deficiency anaemia) Home Testing. The HomeTest commercial framework will not be ready for the IDA pathway launch in April, so NHSO has to procure via an existing framework or another route. Establish what an open tender for IDA would need as a process, and what to include in the tender specification. Answers part two of Martin's 6 Jul email; he wants the process in draft by end July.","item":"NHS Online IDA tactical procurement","href":"commercial.html#i-idaprocurement","due":"2026-07-31","dueLabel":"Drafted, v0.1 filed 31 Jul","status":"done","done":"2026-07-31","since":"2026-07-30"},
     {"id":"t-rachel-dig","who":"Rachel","ws":"Commercial","task":"Supported the framework-approvals dig; the Phil Clow / frameworks meeting on 24 July has happened and returned a provisional yes to a new open framework. Hannah now owns confirming the approval route with Phil.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-07-31","dueLabel":"Done \u2014 24 Jul meeting","status":"done","done":"2026-07-30","since":"2026-07-27"},
-    {"id":"t-rachel-lexi","who":"Rachel","ws":"Beta","task":"Box away the Lexi Moffatt IG and DSA documents; template confirmed, Wendi populating the schedules.","item":"Data Sharing Agreements","href":"beta.html#i-dsa","due":"2026-07-31","dueLabel":"Ongoing \u2014 DSA schedules drafting","status":"active","since":"2026-07-27"},
+    {"id":"t-rachel-lexi","who":"Rachel","ws":"Beta","task":"Box away the Lexi Moffatt IG and DSA documents; template confirmed, Wendi populating the schedules.","item":"Data Sharing Agreements","href":"beta.html#i-dsa","due":"9999-12-31","dueLabel":"Ongoing \u2014 DSA schedules drafting","status":"active","since":"2026-07-27"},
     {"id":"t-rachel-wendi","who":"Rachel","ws":"Commercial","task":"Set Wendi Higgins onto future-world T&Cs and legal crib sheets once the HIV DPIA is signed off.","item":"Legal & procurement approval","href":"commercial.html#i-legal","due":"9999-12-31","dueLabel":"Ongoing","status":"todo","since":"2026-07-27"},
     {"id":"t-rachel-belfast","who":"Rachel","ws":"Commercial","task":"Attended the quarterly planning in Belfast (29-30 Jul).","item":"Phase 2 plan","href":"commercial.html#i-phase2","due":"2026-07-30","dueLabel":"Done, at Belfast","status":"done","done":"2026-07-30","since":"2026-07-27"},
     {"id":"t-hannah-dig","who":"Hannah","ws":"Commercial","task":"Framework-approvals dig with Phil Clow (CCF): Dan's note of the 24 Jul meeting received; the Frameworks Programme agrees in principle the categories are new, a provisional yes to a new open framework, with NHS Supply Chain the likely lead for clinical. Confirming the approval route and sign-off with Phil.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-07-31","dueLabel":"Confirming with Phil","status":"active","since":"2026-07-27"},
@@ -328,8 +328,8 @@
     {"id":"t-hannah-sf3","who":"Hannah","ws":"Commercial","task":"Supplier Forum 3 debriefs produced (supplier debrief and RFI debrief) and approved by Richard.","item":"Supplier Forum 3","href":"commercial.html#i-sf3","due":"2026-07-30","dueLabel":"Done 30 Jul","status":"done","done":"2026-07-30","since":"2026-07-27"}
   ],
   "watch": [
-    {"task":"Beta MoU sign-off and signatory cover","who":"Dean Freed / NHS Legal","href":"beta.html#i-signoff","pill":"red","plabel":"At risk"},
-    {"task":"£198k funding transfer confirmation","who":"Shirley / Finance","href":"acute.html#i-198k","pill":"red","plabel":"Waiting"},
+    {"task":"Beta MoU sign-off","who":"Dean Freed / NHS Legal","href":"beta.html#i-signoff","pill":"red","plabel":"At risk"},
+    {"task":"£198k funding transfer confirmation","who":"Shirley / Finance","href":"acute.html#i-198k","pill":"amber","plabel":"In flight"},
     {"task":"NHS-number data-sharing approach (unblocked 6 Aug: LA sense-check control in the hazard log and recruitment guide)","who":"Wendi Higgins / LAs","href":"beta.html#i-nhsnumber","pill":"amber","plabel":"In flight"},
     {"task":"East Sussex IG detail folding into the DSA (IG statements superseded)","who":"Wendi Higgins","href":"beta.html#i-igstatements","pill":"amber","plabel":"In flight"}
   ]
@@ -385,7 +385,10 @@
  }
  function byDue(){
    var s=active(TASKS).slice().sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
-   var buckets=[['This week',function(d){return d<='2026-08-02';}],['Coming up',function(d){return d<'9999-12-31';}],['Ongoing',function(d){return true;}]];
+   var _today=(DATA.updated||'2026-08-12');
+   var _wd=new Date(_today+'T00:00:00'); _wd.setDate(_wd.getDate()+((7-_wd.getDay())%7));
+   var _WKEND=_wd.getFullYear()+'-'+('0'+(_wd.getMonth()+1)).slice(-2)+'-'+('0'+_wd.getDate()).slice(-2);
+   var buckets=[['Overdue',function(d){return d<_today;}],['This week',function(d){return d<=_WKEND;}],['Coming up',function(d){return d<'9999-12-31';}],['Ongoing',function(d){return true;}]];
    var used={},h='';
    for(var b=0;b<buckets.length;b++){
      var test=buckets[b][1],rows='';
