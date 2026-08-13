@@ -297,8 +297,9 @@
 
 <script type="application/json" id="standup-data">
 {
-  "updated": "2026-08-12",
+  "updated": "2026-08-13",
   "changelog": [
+    {"date": "2026-08-13", "note": "Twice-daily refresh, 13 August. No primary source (email, transcript or SharePoint artefact) post-dates the 12 August pass, so live positions and all red items carry forward unchanged; see the run summary for items not refreshed. Date hygiene: dropped the now-past 12 August AOS demo from the Beta next-dates and moved the Beta soonest-date chip to 17 August; relabelled the two ~12 August playback tasks (one-pager and framework-findings slide) so a past date is no longer shown as upcoming, pending confirmation the playback ran."},
     {"date": "2026-08-12", "note": "Board dates and statuses refreshed to 12 August. Rachel\u2019s framework-approvals task is closed: the 24 July Phil Clow / frameworks meeting has happened and returned a provisional yes to a new open framework, with Hannah now owning the confirmation. Stale \u201cthis week\u201d labels carried over from late July have been retired, and the bring-to-life task flagged overdue. On the workstream pages the obsolete \u201cSalford gap\u201d framing was dropped from the now-settled clause 6 funding card, and several rail-chip status dots were corrected to match their cards."},
     {"date": "2026-08-11", "note": "Beta MoUs moved on: at the 6 Aug sign-off both the East Sussex and Salford MoUs were finalised, budgets reconciled and confirmed with Tony Proom and Olivia and the documents made consistent, internally cleared by Wendi, Meera and Will, and issued to the local authorities for comment; in parallel Scott put the money versions to NHS Legal (Dean Freed) to save a second round. NHS Legal clearance of the money version and LA signature are the two gates left."},
     {"date": "2026-08-11", "note": "IDA route paper drafted: Scott's IDA Tactical Procurement Route Paper (v0.1, to Martin O'Neil and SLT, filed 31 Jul) sets the route decision as the critical path for NHS Online's April launch, a call-off from an existing framework (NHS Supply Chain pathology, SBS or LPP) versus a PA23 open tender, and recommends planning on a call-off with the open tender held as a documented fallback, kept separate from the enduring host choice. The end-July drafting task is closed."},
@@ -312,7 +313,7 @@
     {"date": "2026-07-27", "note": "Board set up and seeded from the 27 July commercial strategy discussion. No Trio Standup held yet, so this is the starting position; future updates come from the NHS Trio Standup transcript."}
   ],
   "tasks": [
-    {"id":"t-scott-onepager","who":"Scott","ws":"Commercial","task":"Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).","item":"Interim route","href":"commercial.html#i-interim","due":"2026-08-12","dueLabel":"~12 Aug, next playback","status":"active","since":"2026-07-27"},
+    {"id":"t-scott-onepager","who":"Scott","ws":"Commercial","task":"Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).","item":"Interim route","href":"commercial.html#i-interim","due":"9999-12-31","dueLabel":"~12 Aug playback passed; carrying forward","status":"active","since":"2026-07-27"},
     {"id":"t-scott-ht052","who":"Scott","ws":"Commercial","task":"Dig out the exact HT052 / Rob McMillan action wording from the Programme Board minutes.","item":"Commercial model","href":"commercial.html#i-model","due":"2026-07-31","dueLabel":"This week","status":"done","done":"2026-08-03","since":"2026-07-27"},
     {"id":"t-scott-lpp","who":"Scott","ws":"Commercial","task":"Partner timeline set out (email to Daniel and Shirley, 29 Jul): SBS, LPP and NHS Supply Chain taken through the same material; proposals assessed by 7 Aug, recommendation by end Aug, informed by the 13 Aug foundations sessions.","item":"Framework delivery partner","href":"commercial.html#i-delivery","due":"2026-08-07","dueLabel":"Proposals by 7 Aug","status":"done","done":"2026-07-29","since":"2026-07-27"},
     {"id":"t-scott-btl","who":"Scott","ws":"Commercial","task":"Set up the bring-to-life follow-up with the NHSE frameworks team, and build the master decks (battle cards) from the TOM.","item":"Framework delivery partner","href":"commercial.html#i-delivery","due":"2026-08-07","dueLabel":"Overdue (was early Aug)","status":"todo","since":"2026-07-27"},
@@ -324,7 +325,7 @@
     {"id":"t-rachel-wendi","who":"Rachel","ws":"Commercial","task":"Set Wendi Higgins onto future-world T&Cs and legal crib sheets once the HIV DPIA is signed off.","item":"Legal & procurement approval","href":"commercial.html#i-legal","due":"9999-12-31","dueLabel":"Ongoing","status":"todo","since":"2026-07-27"},
     {"id":"t-rachel-belfast","who":"Rachel","ws":"Commercial","task":"Attended the quarterly planning in Belfast (29-30 Jul).","item":"Phase 2 plan","href":"commercial.html#i-phase2","due":"2026-07-30","dueLabel":"Done, at Belfast","status":"done","done":"2026-07-30","since":"2026-07-27"},
     {"id":"t-hannah-dig","who":"Hannah","ws":"Commercial","task":"Framework-approvals dig with Phil Clow (CCF): Dan's note of the 24 Jul meeting received; the Frameworks Programme agrees in principle the categories are new, a provisional yes to a new open framework, with NHS Supply Chain the likely lead for clinical. Confirming the approval route and sign-off with Phil.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-07-31","dueLabel":"Confirming with Phil","status":"active","since":"2026-07-27"},
-    {"id":"t-hannah-slides","who":"Hannah","ws":"Commercial","task":"Pull the framework-approval findings into a short slide for the next playback, drawing on the desk research and Phil Clow correspondence now in hand. Ongoing.","item":"Governance route","href":"commercial.html#i-govroute","due":"2026-08-12","dueLabel":"~12 Aug, next playback","status":"active","since":"2026-07-27"},
+    {"id":"t-hannah-slides","who":"Hannah","ws":"Commercial","task":"Pull the framework-approval findings into a short slide for the next playback, drawing on the desk research and Phil Clow correspondence now in hand. Ongoing.","item":"Governance route","href":"commercial.html#i-govroute","due":"9999-12-31","dueLabel":"~12 Aug playback passed; carrying forward","status":"active","since":"2026-07-27"},
     {"id":"t-hannah-sf3","who":"Hannah","ws":"Commercial","task":"Supplier Forum 3 debriefs produced (supplier debrief and RFI debrief) and approved by Richard.","item":"Supplier Forum 3","href":"commercial.html#i-sf3","due":"2026-07-30","dueLabel":"Done 30 Jul","status":"done","done":"2026-07-30","since":"2026-07-27"}
   ],
   "watch": [
@@ -385,7 +386,7 @@
  }
  function byDue(){
    var s=active(TASKS).slice().sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:0);});
-   var _today=(DATA.updated||'2026-08-12');
+   var _today=(DATA.updated||'2026-08-13');
    var _wd=new Date(_today+'T00:00:00'); _wd.setDate(_wd.getDate()+((7-_wd.getDay())%7));
    var _WKEND=_wd.getFullYear()+'-'+('0'+(_wd.getMonth()+1)).slice(-2)+'-'+('0'+_wd.getDate()).slice(-2);
    var buckets=[['Overdue',function(d){return d<_today;}],['This week',function(d){return d<=_WKEND;}],['Coming up',function(d){return d<'9999-12-31';}],['Ongoing',function(d){return true;}]];
