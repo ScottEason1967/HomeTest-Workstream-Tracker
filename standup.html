@@ -263,10 +263,11 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Mon 24 Aug</b> Lotting strategy workshop</span>
+    <span><b>Mon 24 Aug</b> NHS App UAT (to Wed 26); lotting workshop</span>
     <span><b>Wed 26 Aug</b> LPP &amp; NHS SBS framework responses due</span>
-    <span><b>Fri 28 Aug</b> NHS App + NHS Notify live (beta)</span>
-    <span><b>Mon 31 Aug</b> Beta LA MoU signing target</span>
+    <span><b>Fri 28 Aug</b> Beta witness testing</span>
+    <span><b>Mon 31 Aug</b> Beta LA MoU signing target (at risk)</span>
+    <span><b>Tue 1 Sep</b> HomeTest Delivery Board</span>
     <span><b>Tue 15 Sep</b> Programme Board (17 Aug cancelled)</span>
   </div>
 
@@ -297,8 +298,12 @@
 
 <script type="application/json" id="standup-data">
 {
-  "updated": "2026-08-20",
+  "updated": "2026-08-21",
   "changelog": [
+    {
+      "date": "2026-08-21",
+      "note": "Close-of-play pass, 21 August, picking up the 20 August afternoon and evening sources the lunchtime run missed. Beta: MoU sign-off goes back to At risk (red). NHS Legal (Dean Freed) cleared the wording on 19 August, but Gary Birnie reported the 31 August signing target is now unlikely for both local authorities, East Sussex only just with its legal team (school holidays) and disputing the shared 20k test-kit budget, and Salford wanting an IG meeting before it goes to legal; the Salford CSO is resolving to an external appointment. DSA advanced: Wendi Higgins and Lexi Moffatt agreed the Salford DSA this week, Lexi on leave from 21 August, then circulate. DPIA completion targeted for the first week of September; the LA DPIA artefact risk (HOTE-1714) was cut from 16 to 12. Clinical safety RAG moved green to amber on tight timelines (testing outcomes report 4 September against a CSG sign-off sought for 9 September), with no change to the approach. Gate chain: the pen test completed 17-19 August with no significant issues, NHS App UAT runs 24-26 August, and Chris Leary is standing up the go/no-go call ahead of mid-September go-live. Commercial: framework go-live refined to circa 1 December 2027, the KEG then DHSC CAB route mapped (sourcing strategy KEG 10 November, CAB 1 December), NHS England added as a candidate operator with selection criteria filed at v0.1, and IDA deprioritised into the interim commercial plan with effort moved to the NHS Online RFI. Team change: Matt Thomas is leaving to lead NHS England data platforms, with Paul Keeley taking over on a four-week handover to the end of private beta. Date structures swept to 21 August: Key dates, task data and the exec-summary strips are all today or later, weekdays reverified. Not refreshed for want of a fresh source and carried: the 198k RDUH transfer, the SHL London board outcome (19 August) and the SOW09 gap review."
+    },
     {
       "date": "2026-08-20",
       "note": "Lunchtime pass, 20 August. The overnight pass had reported no source post-dating the 18 August Delivery Board; that was wrong, a batch of 18 and 19 August email traffic had not synced in time and is now captured, and it moves several cards. Beta MoU sign-off comes off red: on 18 August Richard Samuel set 31 August as the signing date for both local-authority MoUs and the Jira record (HOTE-2003) shows them circulated to the LAs' lawyers with no negative feedback, and on 19 August Dean Freed confirmed NHS Legal had no concerns with the wording changes, clearing the gate that had held sign-off at risk; the pill moves to In flight with signature targeted for 31 August, and the East Sussex, Salford and DSA cards and the index tiles are reconciled to match. The KPI-wording ticket (HOTE-2004) closed. Commercial: back from leave James Cowley issued clarification questions to both live framework bidders, LPP and NHS SBS, with updated proposals due close of Wednesday 26 August, narrowing the field to those two while NHS Supply Chain stays unresponsive; the operator card, tile and next-dates move off the 21 August review line to the 26 August responses. The 13 August workshop was written up as an Actions and Decisions note (v0.2) for SLT with a four-week plan, the volumes reissued as v12, and NHS Online's Home Testing Provider RFI questions came in with a route-to-publication action; the sourcing, cornerstones and IDA cards pick these up. Reds re-checked: the pre-beta gate chain (go-live 16 September) and the commercial model (HT052 to Rob McMillan) stay on the critical path. Not refreshed for want of a fresh source and carried: the pen test results (window closed 19 August), the SHL London inaugural board outcome (19 August) and the HT052 Rob McMillan approval-route discussion (was due 17 August). Date structures swept to 20 August: 26 August (Wednesday) and 31 August (Monday) added to Key dates, task data and the exec-summary strips; weekdays reverified."
@@ -393,11 +398,11 @@
       "id": "t-scott-onepager",
       "who": "Scott",
       "ws": "Commercial",
-      "task": "Produce the plain-language one-page interim-state view (retire the Plan A / Plan C labels).",
+      "task": "HomeTest Interim Commercial Plan filed at v0.1 on 20 Aug, a reframe of the deprioritised IDA tactical procurement paper into a straw man for the interim provider; James Cowley has worked through it and raised questions, so a working session with him is needed to settle the direction.",
       "item": "Interim route",
       "href": "commercial.html#i-interim",
       "due": "9999-12-31",
-      "dueLabel": "~12 Aug playback passed; carrying forward",
+      "dueLabel": "v0.1 filed 20 Aug; session with James Cowley next",
       "status": "active",
       "since": "2026-07-27"
     },
@@ -443,12 +448,12 @@
       "id": "t-scott-mou",
       "who": "Scott",
       "ws": "Beta",
-      "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug (East Sussex and Salford), budgets reconciled with Tony Proom and Olivia and internally cleared by Wendi, Meera and Will; money versions put to NHS Legal (Dean Freed) in parallel. On 19 Aug Dean Freed confirmed NHS Legal had no concerns with the wording changes and Richard Samuel set 31 Aug as the signing date; signature by the two local authorities is what remains.",
+      "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug; NHS Legal (Dean Freed) cleared the wording on 19 Aug. On 20 Aug Gary Birnie reported the 31 Aug signing target is at risk for both LAs: East Sussex only just with legal (school holidays) and disputing the shared 20k test budget, Salford wanting an IG meeting before legal. Signature may slip or become a go-live condition; the DPIA can proceed on the drafts with PTT.",
       "item": "MoU sign-off",
       "href": "beta.html#i-signoff",
       "due": "9999-12-31",
-      "dueLabel": "NHS Legal cleared 19 Aug; signing target 31 Aug",
-      "status": "active",
+      "dueLabel": "NHS Legal cleared; 31 Aug LA signature now at risk",
+      "status": "wait",
       "since": "2026-07-27"
     },
     {
@@ -493,11 +498,11 @@
       "id": "t-rachel-lexi",
       "who": "Rachel",
       "ws": "Beta",
-      "task": "Box away the Lexi Moffatt IG and DSA documents; template confirmed, Wendi populating the schedules.",
+      "task": "Data Sharing Agreements: Wendi Higgins and Lexi Moffatt agreed the Salford DSA this week (Preventx the other party) and are transposing a Preventx version; Lexi is on leave from 21 Aug, so her final sign-off is needed before then, then the agreements circulate. The DSA sits alongside the MoU, not superseding it.",
       "item": "Data Sharing Agreements",
       "href": "beta.html#i-dsa",
       "due": "9999-12-31",
-      "dueLabel": "Ongoing — DSA schedules drafting",
+      "dueLabel": "Salford DSA agreed with Lexi; circulating after her sign-off",
       "status": "active",
       "since": "2026-07-27"
     },
@@ -578,11 +583,11 @@
   ],
   "watch": [
     {
-      "task": "Beta MoU sign-off (NHS Legal cleared the wording 19 Aug; signing target 31 Aug)",
+      "task": "Beta MoU sign-off (NHS Legal cleared 19 Aug; 31 Aug LA signature now at risk)",
       "who": "Salford & East Sussex LAs, via Gary Birnie",
       "href": "beta.html#i-signoff",
-      "pill": "amber",
-      "plabel": "In flight"
+      "pill": "red",
+      "plabel": "At risk"
     },
     {
       "task": "£198k funding transfer confirmation",
