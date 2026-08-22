@@ -263,12 +263,12 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Mon 24 Aug</b> NHS App UAT (to Wed 26); lotting workshop</span>
+    <span><b>Mon 24 Aug</b> NHS App UAT (to Wed 26)</span>
     <span><b>Wed 26 Aug</b> LPP &amp; NHS SBS framework responses due</span>
     <span><b>Fri 28 Aug</b> Beta witness testing</span>
     <span><b>Mon 31 Aug</b> Beta LA MoU signing target (at risk)</span>
     <span><b>Tue 1 Sep</b> HomeTest Delivery Board</span>
-    <span><b>Tue 15 Sep</b> Programme Board (17 Aug cancelled)</span>
+    <span><b>Tue 15 Sep</b> Programme Board (17 Aug cancelled)</span><span><b>Thu 17 Sep</b> Private beta go-live (target)</span>
   </div>
 
   <div class="viewsel">
@@ -298,8 +298,12 @@
 
 <script type="application/json" id="standup-data">
 {
-  "updated": "2026-08-21",
+  "updated": "2026-08-23",
   "changelog": [
+    {
+      "date": "2026-08-23",
+      "note": "Weekend pass, 23 August. Two 21 August sources move the commercial cards and the beta gate chain: the Week 22 future-state update to SLT and the weekly commercial meeting. Framework host selection is flagged at risk and its card moves to red: LPP and NHS SBS clarification responses are due 26 August, then scoring; NHS England is now scored as a third operator option on Shirley Gaynor-Ward's steer; and James Cowley and Mandie Holt are escalating inside NHS Supply Chain over its potentially competing framework, with a recommendation targeted by 31 August. NHS Finance is reviewing the roughly £250m; lotting is reopened for a follow-up deep-dive, with Scott preparing an option A against option B one-pager; and market engagement is opening with RDI alongside a September commercial-only supplier forum. On beta, the go/no-go readiness tracker anchors private beta go-live at 17 September and the go/no-go pack is drafted, with Scott Baxter chairing and Martin O'Neil the decision-maker. The 24 August lotting workshop is removed from Key dates: the 21 August meeting shows the deep-dive is still being scheduled. The NHS email store (PST) was locked by Outlook and could not be read this pass; the reds and waiting-on items were re-checked against the 18 to 21 August boards, transcripts and SharePoint artefacts and otherwise carried forward."
+    },
     {
       "date": "2026-08-21",
       "note": "Close-of-play pass, 21 August, picking up the 20 August afternoon and evening sources the lunchtime run missed. Beta: MoU sign-off goes back to At risk (red). NHS Legal (Dean Freed) cleared the wording on 19 August, but Gary Birnie reported the 31 August signing target is now unlikely for both local authorities, East Sussex only just with its legal team (school holidays) and disputing the shared 20k test-kit budget, and Salford wanting an IG meeting before it goes to legal; the Salford CSO is resolving to an external appointment. DSA advanced: Wendi Higgins and Lexi Moffatt agreed the Salford DSA this week, Lexi on leave from 21 August, then circulate. DPIA completion targeted for the first week of September; the LA DPIA artefact risk (HOTE-1714) was cut from 16 to 12. Clinical safety RAG moved green to amber on tight timelines (testing outcomes report 4 September against a CSG sign-off sought for 9 September), with no change to the approach. Gate chain: the pen test completed 17-19 August with no significant issues, NHS App UAT runs 24-26 August, and Chris Leary is standing up the go/no-go call ahead of mid-September go-live. Commercial: framework go-live refined to circa 1 December 2027, the KEG then DHSC CAB route mapped (sourcing strategy KEG 10 November, CAB 1 December), NHS England added as a candidate operator with selection criteria filed at v0.1, and IDA deprioritised into the interim commercial plan with effort moved to the NHS Online RFI. Team change: Matt Thomas is leaving to lead NHS England data platforms, with Paul Keeley taking over on a four-week handover to the end of private beta. Date structures swept to 21 August: Key dates, task data and the exec-summary strips are all today or later, weekdays reverified. Not refreshed for want of a fresh source and carried: the 198k RDUH transfer, the SHL London board outcome (19 August) and the SOW09 gap review."
@@ -394,6 +398,18 @@
     }
   ],
   "tasks": [
+    {
+      "id": "t-scott-lotting",
+      "who": "Scott",
+      "ws": "Commercial",
+      "task": "Prepare the lotting option A against option B one-pager through the stakeholder lenses for the follow-up lotting deep-dive, with Martin O'Neil, Shirley Gaynor-Ward and Mandie Holt in the room. Started 21 Aug, to finish in the next couple of days.",
+      "item": "Sourcing strategy",
+      "href": "commercial.html#i-sourcing",
+      "due": "9999-12-31",
+      "dueLabel": "Started 21 Aug; deep-dive being scheduled",
+      "status": "active",
+      "since": "2026-08-21"
+    },
     {
       "id": "t-scott-onepager",
       "who": "Scott",
@@ -582,6 +598,13 @@
     }
   ],
   "watch": [
+    {
+      "task": "Framework host selection at risk (LPP & NHS SBS responses due 26 Aug, then scoring; recommendation by 31 Aug; NHS Supply Chain competing-framework escalation)",
+      "who": "James Cowley / Mandie Holt; LPP & NHS SBS",
+      "href": "commercial.html#i-operator",
+      "pill": "red",
+      "plabel": "At risk"
+    },
     {
       "task": "Beta MoU sign-off (NHS Legal cleared 19 Aug; 31 Aug LA signature now at risk)",
       "who": "Salford & East Sussex LAs, via Gary Birnie",
