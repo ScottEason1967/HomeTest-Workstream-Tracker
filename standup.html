@@ -263,14 +263,13 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Wed 26 Aug</b> NHS App UAT ends</span>
-    <span><b>Wed 26 Aug</b> SLT session (UAT/pen test, hypercare, Core STI decision)</span>
-    <span><b>Wed 26 Aug</b> LPP &amp; NHS SBS framework responses due</span>
     <span><b>Thu 27 Aug</b> DSA chase (Salford sign-off)</span>
-    <span><b>Fri 28 Aug</b> Beta witness testing</span>
-    <span><b>Mon 31 Aug</b> Beta LA MoU signing target (now unlikely)</span>
+    <span><b>Fri 28 Aug</b> Beta witness testing (both LAs)</span>
+    <span><b>Mon 31 Aug</b> August bank holiday</span>
     <span><b>Tue 1 Sep</b> HomeTest Delivery Board</span>
-    <span><b>Tue 15 Sep</b> Programme Board (17 Aug cancelled)</span><span><b>Thu 17 Sep</b> Private beta go-live (target)</span>
+    <span><b>Fri 4 Sep</b> DPIA completion target; governance clarity (Mandie Holt/DHSC)</span>
+    <span><b>Wed 9 Sep</b> Framework host decision to KEG; CSG CATR date</span>
+    <span><b>Tue 15 Sep</b> Programme Board</span><span><b>Thu 17 Sep</b> Private beta go-live (target)</span>
   </div>
 
   <div class="viewsel">
@@ -300,8 +299,12 @@
 
 <script type="application/json" id="standup-data">
 {
-  "updated": "2026-08-26",
+  "updated": "2026-08-27",
   "changelog": [
+    {
+      "date": "2026-08-27",
+      "note": "Close-of-play pass, 27 August, working three new HomeTest transcripts created on 26 August (a 24 August commercial meeting, a 25 August weekly and the 26 August NHS App UAT session) plus 26 August SharePoint artefacts (the go/no-go readiness tracker at Draft V3, the LA readiness update, the 26 August playback and the sourcing action log as at 26.08); the email store still holds nothing later than 20 August. Beta: Salford's clinical-safety-officer question has reopened, Olivia Hastie's 26 August line-manager meeting did not settle it and it was escalated to a 4pm call, so Salford's MoU legal review cannot start until it is resolved, and the Salford card moves to At risk. East Sussex is held in by Tony Proom's written interim commitment and needs no separate local-authority Data Sharing Agreement, as Preventx acts as its data controller and enters the DSA directly with NHSE; the live DSA action is Salford's alone, chased by Thursday 27 August. NHS App UAT exited into the 26 August SLT and the readiness tracker refreshed to V3 (61 items, 9 red); go-live holds at 17 September. Commercial: framework host clarification responses from LPP and NHS SBS are in, with consensus scoring in early September feeding a host decision to KEG around 9 September and NHS Supply Chain escalated to Fiona Hilton and Sarah Ford; the commercial-model approval route's live wait moved from Rob McMillan to Mandie Holt and DHSC (dispensation and five-case-model questions, clarity targeted 4 September); and the supplier specification is set at a 15 October deadline, blocked with no owner. The four red items (beta MoU sign-off and gate chain, commercial model and framework operator) were re-checked and carried forward red, with Salford Beta MoU added to red. Date structures swept to 27 August; weekdays reverified. Not refreshed for want of a fresh source: the £198k RDUH transfer, the SHL London board outcome, and the wider acute pipeline."
+    },
     {
       "date": "2026-08-26",
       "note": "Close-of-play pass, 26 August, picking up two 25 August HomeTest SharePoint artefacts (the go/no-go readiness tracker and the 25 August playback pack); the email store (PST) still holds nothing later than 20 August and the newest transcript week (commencing 17 August) was already worked in. Beta: the penetration test report was received on 25 August with no high, critical or medium findings and six low defects now in remediation with the cyber consultant, expected to close as part of scaled private beta, and DOSM does not need sight of the report itself, only the cyber team's satisfaction with the outcome; NHS App user acceptance testing exits into the 26 August SLT session, which also reviews the hypercare plan and the go/no-go readiness. MoU sign-off: East Sussex gave written confirmation it will remain in the beta as an interim position while its solicitor completes the legal review, and Salford's decision now hangs on Olivia Hastie's meeting with her line manager and DPO from 26 August; the 31 August signing target is effectively gone and signature is most likely to become a go-live condition. Witness testing on 28 August now has Tony Proom confirmed attending in person for East Sussex, so the KCHFT clinical safety officer substitute is no longer required, with Salford confirmed. Commercial: the sourcing-strategy action log was reissued with formal RAG statuses, flagging the supplier specification blocked with no owner against the 30 September strategy deadline. The four red items (beta MoU sign-off and pre-beta gate chain, commercial model and framework operator) were re-checked and carried forward red. Date structures swept to 26 August; weekdays reverified. Not refreshed for want of a fresh source: the £198k RDUH transfer and the SHL London board outcome."
@@ -420,7 +423,7 @@
       "item": "Sourcing strategy",
       "href": "commercial.html#i-sourcing",
       "due": "9999-12-31",
-      "dueLabel": "Started 21 Aug; deep-dive being scheduled",
+      "dueLabel": "Materials due 18 Sep; RDI market input; deep-dive being scheduled",
       "status": "active",
       "since": "2026-08-21"
     },
@@ -478,11 +481,11 @@
       "id": "t-scott-mou",
       "who": "Scott",
       "ws": "Beta",
-      "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug; NHS Legal (Dean Freed) cleared the wording on 19 Aug. On 25 Aug a call with Tony Proom and Anna Merla confirmed East Sussex will remain in the beta as an interim position while its solicitor completes the legal review, and Salford's decision hangs on Olivia Hastie's line-manager and DPO meeting from 26 Aug. The 31 Aug signing target is effectively gone; signature is most likely to become a go-live condition, and the DPIA can proceed on the drafts with PTT.",
+      "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug; NHS Legal (Dean Freed) cleared the wording on 19 Aug. On 26 Aug Olivia Hastie's line-manager meeting did not settle Salford's clinical-safety-officer question, so it was escalated to a 4pm call; Salford's MoU legal review cannot begin until the CSO is resolved. East Sussex is held in by Tony Proom's written interim commitment while its solicitor reviews. The 31 Aug target is gone; signature is most likely to become a go-live condition, and the DPIA can proceed on the drafts with PTT.",
       "item": "MoU sign-off",
       "href": "beta.html#i-signoff",
       "due": "9999-12-31",
-      "dueLabel": "31 Aug gone; East Sussex interim commitment given, Salford decides after Olivia's 26 Aug meeting",
+      "dueLabel": "Salford blocked on the CSO decision (26 Aug escalation); East Sussex interim commitment given",
       "status": "wait",
       "since": "2026-07-27"
     },
@@ -528,11 +531,11 @@
       "id": "t-rachel-lexi",
       "who": "Rachel",
       "ws": "Beta",
-      "task": "Data Sharing Agreements: Wendi Higgins and Lexi Moffatt agreed the Salford DSA this week (Preventx the other party) and are transposing a Preventx version; Lexi is on leave from 21 Aug, so her final sign-off is needed before then, then the agreements circulate. The DSA sits alongside the MoU, not superseding it.",
+      "task": "Data Sharing Agreements: with Lexi Moffatt's input in, the Salford DSA (Preventx the other party) went to Olivia Hastie for review and sign-off on 24 Aug; chase due Thu 27 Aug, then the transposed Preventx version. East Sussex needs no separate LA DSA — Preventx is its data controller and enters the DSA directly with NHSE. The DSA sits alongside the MoU, not superseding it.",
       "item": "Data Sharing Agreements",
       "href": "beta.html#i-dsa",
       "due": "9999-12-31",
-      "dueLabel": "DSA sent to Olivia for sign-off 24 Aug; chase by Thu 27 Aug",
+      "dueLabel": "Salford DSA with Olivia, chase due Thu 27 Aug; East Sussex needs no LA DSA (Preventx direct)",
       "status": "active",
       "since": "2026-07-27"
     },
@@ -606,21 +609,21 @@
       "item": "Governance route & framework value",
       "href": "commercial.html#i-govroute",
       "due": "9999-12-31",
-      "dueLabel": "Clarification questions to LPP & SBS out 19 Aug; responses due 26 Aug",
+      "dueLabel": "Responses in (due 26 Aug); consensus scoring early Sep, host decision to KEG ~9 Sep",
       "status": "active",
       "since": "2026-08-13"
     }
   ],
   "watch": [
     {
-      "task": "Framework host selection at risk (LPP & NHS SBS responses due 26 Aug, then scoring; recommendation by 31 Aug; NHS Supply Chain competing-framework escalation)",
-      "who": "James Cowley / Mandie Holt; LPP & NHS SBS",
+      "task": "Framework host selection at risk (LPP & NHS SBS responses in; consensus scoring early Sep, decision to KEG ~9 Sep; NHS Supply Chain escalated to Fiona Hilton and Sarah Ford)",
+      "who": "James Cowley / evaluation team; NHS Supply Chain",
       "href": "commercial.html#i-operator",
       "pill": "red",
       "plabel": "At risk"
     },
     {
-      "task": "Beta MoU sign-off (NHS Legal cleared 19 Aug; 31 Aug LA signature now at risk)",
+      "task": "Beta MoU sign-off (Salford blocked on its CSO decision, 26 Aug escalation; East Sussex interim commitment given; 31 Aug target gone)",
       "who": "Salford & East Sussex LAs, via Gary Birnie",
       "href": "beta.html#i-signoff",
       "pill": "red",
