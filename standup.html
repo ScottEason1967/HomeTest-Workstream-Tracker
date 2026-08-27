@@ -263,13 +263,14 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Thu 27 Aug</b> DSA chase (Salford sign-off)</span>
-    <span><b>Fri 28 Aug</b> Beta witness testing (both LAs)</span>
+    <span><b>Fri 28 Aug</b> Beta witness testing (both LAs); UAT closes</span>
     <span><b>Mon 31 Aug</b> August bank holiday</span>
-    <span><b>Tue 1 Sep</b> HomeTest Delivery Board</span>
+    <span><b>Tue 1 Sep</b> HomeTest Delivery Board; CSG documents submitted</span>
     <span><b>Fri 4 Sep</b> DPIA completion target; governance clarity (Mandie Holt/DHSC)</span>
-    <span><b>Wed 9 Sep</b> Framework host decision to KEG; CSG CATR date</span>
-    <span><b>Tue 15 Sep</b> Programme Board</span><span><b>Thu 17 Sep</b> Private beta go-live (target)</span>
+    <span><b>Wed 9 Sep</b> CSG review; framework host recommendation to KEG</span>
+    <span><b>Tue 15 Sep</b> Programme Board</span>
+    <span><b>Wed 16 Sep</b> CSG clinical authority to release</span>
+    <span><b>Thu 17 Sep</b> Private beta login go-live (business go-live 20 Sep)</span>
   </div>
 
   <div class="viewsel">
@@ -299,8 +300,12 @@
 
 <script type="application/json" id="standup-data">
 {
-  "updated": "2026-08-27",
+  "updated": "2026-08-28",
   "changelog": [
+    {
+      "date": "2026-08-28",
+      "note": "Close-of-play pass, 28 August. Two new HomeTest transcripts landed since the last run, both created on 27 August: the 26 August playback (go-live readiness, local-authority readiness, PSA and Core STI) and a 27 August engagement session with the framework host LPP. The email store (PST) still holds nothing later than 20 August and there are no loose message files, so there is no new email. Beta: the 26 August playback firmed the route into go-live, CSG documents submitted on 1 September, CSG review on 9 September, clinical authority to release on 16 September, then a phased technical go-live from login on 17 September, then app, then Notify, with an indicative business go-live on 20 September subject to local-authority readiness; witness testing runs on 28 August and UAT closes the same day. Salford's clinical-safety-officer question remains unresolved on the go/no-go readiness tracker (still Draft V3, 61 items, 9 red); no primary source records the outcome of the 26 August 4pm escalation call, so the Salford Beta MoU is carried forward At risk and flagged. Commercial: a first draft London MoU (v0.1, 27 August) is now written between NHS England and the City of London Corporation as host and lead commissioner for Sexual Health London, framing the London NHS App Sexual Health Collaboration in three phases to pan-London scale from April 2027, with the 20,000-pound discretionary beta kit provision now pooled across East Sussex, Salford and London. The 27 August LPP engagement keeps the host field at LPP, NHS SBS and NHS Supply Chain under a common evaluation framework with Health Store, moves the recommendation in principle to about mid-September, confirms the five-year value just under 250 million pounds (about 243 million) with Finance's provisional look done, has James Cowley writing the OBC, and flags the earliest realistic framework engagement as around October. Acute: the PSA proof-of-concept is kicking off, an RDUH end-to-end order POC (Epic to HomeTest to Epic via HL7) with the order API extended for acute use. The red items (beta MoU sign-off, Salford Beta MoU and gate chain; commercial model and framework operator) were re-checked against the 26 to 27 August sources and carried forward red. Date structures swept to 28 August, with the 31 August bank holiday; weekdays reverified. Not refreshed for want of a fresh source: the 198,000-pound RDUH transfer, the outcome of the 26 August Salford CSO 4pm call, the Salford DSA chase, and the wider acute discovery pipeline."
+    },
     {
       "date": "2026-08-27",
       "note": "Close-of-play pass, 27 August, working three new HomeTest transcripts created on 26 August (a 24 August commercial meeting, a 25 August weekly and the 26 August NHS App UAT session) plus 26 August SharePoint artefacts (the go/no-go readiness tracker at Draft V3, the LA readiness update, the 26 August playback and the sourcing action log as at 26.08); the email store still holds nothing later than 20 August. Beta: Salford's clinical-safety-officer question has reopened, Olivia Hastie's 26 August line-manager meeting did not settle it and it was escalated to a 4pm call, so Salford's MoU legal review cannot start until it is resolved, and the Salford card moves to At risk. East Sussex is held in by Tony Proom's written interim commitment and needs no separate local-authority Data Sharing Agreement, as Preventx acts as its data controller and enters the DSA directly with NHSE; the live DSA action is Salford's alone, chased by Thursday 27 August. NHS App UAT exited into the 26 August SLT and the readiness tracker refreshed to V3 (61 items, 9 red); go-live holds at 17 September. Commercial: framework host clarification responses from LPP and NHS SBS are in, with consensus scoring in early September feeding a host decision to KEG around 9 September and NHS Supply Chain escalated to Fiona Hilton and Sarah Ford; the commercial-model approval route's live wait moved from Rob McMillan to Mandie Holt and DHSC (dispensation and five-case-model questions, clarity targeted 4 September); and the supplier specification is set at a 15 October deadline, blocked with no owner. The four red items (beta MoU sign-off and gate chain, commercial model and framework operator) were re-checked and carried forward red, with Salford Beta MoU added to red. Date structures swept to 27 August; weekdays reverified. Not refreshed for want of a fresh source: the £198k RDUH transfer, the SHL London board outcome, and the wider acute pipeline."
@@ -493,12 +498,12 @@
       "id": "t-scott-londonmou",
       "who": "Scott",
       "ws": "Beta",
-      "task": "Work up a London MoU with SHL / City of London (Mona Hayat) to frame the Beta-scale partnership: revenue transfer and deliverables, launching HIV HomeTest across a minimum of four London boroughs (ideally the whole SHL footprint) between now and March 2027. Action from Richard's 15 Jul London session.",
+      "task": "First draft London MoU written: v0.1 dated 27 Aug between NHSE and the City of London Corporation (host and lead commissioner for Sexual Health London), framing the London NHS App Sexual Health Collaboration in three phases to pan-London scale from April 2027, initial focus patient-initiated HIV via HomeTest. Non-binding draft; funding still to confirm. Next: agree phasing, footprint and funding.",
       "item": "London / SHL participation",
       "href": "beta.html#i-london",
-      "due": "2026-08-31",
-      "dueLabel": "New, from 15 Jul",
-      "status": "todo",
+      "due": "9999-12-31",
+      "dueLabel": "Draft MoU v0.1 written 27 Aug (City of London / SHL)",
+      "status": "active",
       "since": "2026-07-30"
     },
     {
@@ -535,7 +540,7 @@
       "item": "Data Sharing Agreements",
       "href": "beta.html#i-dsa",
       "due": "9999-12-31",
-      "dueLabel": "Salford DSA with Olivia, chase due Thu 27 Aug; East Sussex needs no LA DSA (Preventx direct)",
+      "dueLabel": "Salford DSA with Olivia (chase outstanding, was due 27 Aug); East Sussex needs no LA DSA (Preventx direct)",
       "status": "active",
       "since": "2026-07-27"
     },
@@ -609,14 +614,14 @@
       "item": "Governance route & framework value",
       "href": "commercial.html#i-govroute",
       "due": "9999-12-31",
-      "dueLabel": "Responses in (due 26 Aug); consensus scoring early Sep, host decision to KEG ~9 Sep",
+      "dueLabel": "Responses in; 27 Aug LPP engagement held; recommendation in principle ~mid-Sep, host decision to KEG ~9 Sep",
       "status": "active",
       "since": "2026-08-13"
     }
   ],
   "watch": [
     {
-      "task": "Framework host selection at risk (LPP & NHS SBS responses in; consensus scoring early Sep, decision to KEG ~9 Sep; NHS Supply Chain escalated to Fiona Hilton and Sarah Ford)",
+      "task": "Framework host selection at risk (27 Aug LPP engagement held; consensus scoring early Sep, recommendation in principle ~mid-Sep to KEG ~9 Sep; NHS Supply Chain escalated to Fiona Hilton and Sarah Ford)",
       "who": "James Cowley / evaluation team; NHS Supply Chain",
       "href": "commercial.html#i-operator",
       "pill": "red",

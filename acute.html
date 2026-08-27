@@ -207,7 +207,7 @@
     <p class="lead">RDUH MoU, the £198k funding transfer, mobilisation, and the wider acute discovery pipeline. Live position on top; the full dated record underneath.</p>
     <div class="meta">
       <span><strong>Owners</strong> Scott Eason &amp; Rachel Flower</span>
-      <span><strong>Last updated</strong> 24 August 2026</span>
+      <span><strong>Last updated</strong> 28 August 2026</span>
       <span><strong>SLT sponsor</strong> Shirley Gaynor-Ward (BC28661)</span>
     </div>
   </header>
@@ -234,7 +234,7 @@
         <ul class="datelist">
           <li><b>Now</b>&#163;198k transfer via NHS Devon ICB</li>
           <li><b>Underway</b>Mobilisation build-out; PSA moving into a value-stream model over the next four weeks</li>
-          <li><b>Next</b>RDUH schema integration workshop to kick off the PSA proof of concept</li>
+          <li><b>Underway</b>PSA proof-of-concept kicking off (RDUH end-to-end order journey, Epic to HomeTest to Epic)</li>
           <li><b>Tue 15 Sep</b>HT046 eligibility and funding review, moved from the cancelled 17 Aug Programme Board to the 15 Sep board</li>
           <li><b>~1 Feb 2027</b>Pilot day one, 50 to 100 patients per site</li>
         </ul>
@@ -407,6 +407,7 @@
             <button type="button" class="pt" data-p="3">Technical: architecture and Order API schemas</button>
             <button type="button" class="pt" data-p="4">Beyond RDUH: Supplier Forum 3</button>
             <button type="button" class="pt" data-p="5">20 Aug: POC and pilot-planning workshop</button>
+            <button type="button" class="pt" data-p="6">26 Aug: PSA POC kicking off</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
@@ -415,7 +416,7 @@
             <div class="pd" data-p="2"><h5>What they were positive and concerned about</h5><p>The team was positive off the back of their earlier PSA pilot, where patients liked the service and some were disappointed when it ended. They saw younger and working-age patients as the most likely adopters.</p><p>Their primary concern was not patient acceptance but that results return reliably into Epic and existing clinical workflows.</p></div>
             <div class="pd" data-p="3"><h5>Technical: architecture and Order API schemas</h5><p>A first draft of the proof-of-concept architecture has been shared with RDUH.</p><p>The next priority is a first draft of the Order API schemas for the acute-initiated pathway, covering both consumer and supplier sides, so the proof of concept can start. A pilot planning workshop with RDUH and Chelsea and Westminster is also named, to define the clinical study approach, timescales and the PSA proof of concept.</p></div>
             <div class="pd" data-p="4"><h5>Beyond RDUH: Supplier Forum 3</h5><p>The acute-initiated journey goes to the wider supplier market at Supplier Forum 3 on 22 July as a one-hour breakout led by Olivia Sharp.</p><p>This is the first time the pattern has been tested outside bilateral conversations with RDUH.</p></div>
-            <div class="pd" data-p="5"><h5>20 Aug: POC and pilot-planning workshop</h5><p>The proof-of-concept and pilot-planning workshop has been held and landed on a pilot approach, with the RDUH review process worked through to feed the pilot and the blueprint. An RDUH schema integration workshop is to kick off the proof-of-concept work, with Abhishek Ranjan or Ethan Illingworth played in to perform a similar supplier-integration role to the one they run for the HIV suppliers. Self-sample collection was discussed and the options defined for a transdermal-versus-venepuncture comparison study.</p></div>
+            <div class="pd" data-p="5"><h5>20 Aug: POC and pilot-planning workshop</h5><p>The proof-of-concept and pilot-planning workshop has been held and landed on a pilot approach, with the RDUH review process worked through to feed the pilot and the blueprint. An RDUH schema integration workshop is to kick off the proof-of-concept work, with Abhishek Ranjan or Ethan Illingworth played in to perform a similar supplier-integration role to the one they run for the HIV suppliers. Self-sample collection was discussed and the options defined for a transdermal-versus-venepuncture comparison study.</p></div><div class="pd" data-p="6"><h5>26 Aug: PSA POC kicking off</h5><p>The 26 August playback reported the PSA proof-of-concept work now kicking off, with two POCs starting in parallel. The first is an end-to-end order POC with Royal Devon: an order is placed in Epic, where PSA becomes a new orderable, and tracked through to the lab (Beaker) and back, using HL7 messaging. The order-API spec is being extended for acute use, adding the patient&#39;s gender and date of birth so the lab can calculate PSA reference ranges, with the patient contact details and the supplier communication node made optional because the acute lab does not contact the patient directly. The changes are handled through per-test-type rules in the integration framework rather than the schema, and are designed to be extensible to later use cases.</p></div>
           </div>
         </div>
       </div>
@@ -629,6 +630,10 @@
 
   <h2 id="history">History</h2>
   <div class="log">
+    <details data-item="i-workshops i-mobilisation">
+      <summary><span class="d">28 Aug</span>PSA proof-of-concept kicking off: RDUH end-to-end order POC (Epic to HomeTest to Epic via HL7), with the order API extended for acute use</summary>
+      <div class="body"><p>The 26 August playback reported the PSA proof-of-concept work now kicking off, with two POCs starting in parallel. The first is an end-to-end order POC with Royal Devon: an order is placed in Epic, where PSA becomes a new orderable, tracked through to the lab (Beaker) and back, using HL7 messaging. The order API is being extended for acute use, adding the patient&#39;s gender and date of birth so the lab can calculate PSA reference ranges, and making the patient contact details and the supplier communication node optional because the acute lab does not contact the patient directly. The changes are handled through per-test-type rules in the integration framework rather than the schema, and are designed to extend to later use cases. This carries forward the schema-integration work that the 20 August POC and pilot-planning workshop set up.</p></div>
+    </details>
     <details data-item="i-mobilisation i-workshops i-device i-bpt">
       <summary><span class="d">20 Aug</span>PSA pilot penciled for ~1 Feb 2027; POC and pilot-planning workshop held; RDUH schema integration workshop to kick off; work moving into a value-stream model; pathology API route firming up</summary>
       <div class="body"><p>The 18 August Delivery Board and the 20 August commercial standup move the acute cards on. The PSA pilot is now penciled for around 1 February 2027 (from end January). A workshop was held with RDUH on the review process to feed the pilot and blueprint, and the proof-of-concept and pilot-planning workshop landed on a pilot approach; an RDUH schema integration workshop is to kick off the proof-of-concept work, with Abhishek Ranjan or Ethan Illingworth played in on supplier integration. Self-sample collection was discussed and the transdermal-versus-venepuncture comparison study options defined. PSA user stories are being developed and the work moves into a value-stream model (a dedicated PSA arm on the critical path) over the next four weeks. On integration, the direction is for acute partners to pick up results from the national Pathology API, with HomeTest the front door in the interim and RDUH's endpoint switched once proven; a Programme Board paper on the NDS and pathology approach is in progress. Simon Leigh's health-economics input on the PSA benefits paper is still to land, having been pulled onto HealthStore. HT046 remains expected at the 15 September Programme Board.</p></div>
