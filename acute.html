@@ -207,7 +207,7 @@
     <p class="lead">RDUH MoU, the £198k funding transfer, mobilisation, and the wider acute discovery pipeline. Live position on top; the full dated record underneath.</p>
     <div class="meta">
       <span><strong>Owners</strong> Scott Eason &amp; Rachel Flower</span>
-      <span><strong>Last updated</strong> 3 September 2026</span>
+      <span><strong>Last updated</strong> 4 September 2026</span>
       <span><strong>SLT sponsor</strong> Shirley Gaynor-Ward (BC28661)</span>
     </div>
   </header>
@@ -393,12 +393,12 @@
         <h3 class="ititle">RDUH workshop sequence</h3>
         <div class="imeta">
           <span><b>Owner</b>Olivia Sharp / Annie Wakefield with RDUH</span>
-          <span><b>Next</b>Karl Olson to draft the pilot design and protocol</span>
+          <span><b>Next</b>RDUH phase-one POC session 4 Sep to set milestones; ChelWest front-end POC to follow</span>
           <span><b>Depends on</b>RDUH urology team availability</span>
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">The urology session has been held and written up (17 July). A 27 July session with Royal Devon's Professor Tim McDonald, framed as user research, turned out to be mostly about pilot design, with more of the design and protocol falling to NHS England than expected. Karl Olson is taking a first draft of the pilot design and protocol as a clinical service improvement, ahead of the Tasso versus Impress user research and a wider-tests workshop. At the 1 September Delivery Board the RDUH schema and integration workshop was reviewed and the schemas for PSA results agreed, workshops with RDUH are under way, and the next-period priority is to begin development work on the RDUH proof of concept and a Pathology API proof of concept. The pilot is now agreed to include both transdermal and self-sample collection.</p>
+        <p class="ipos">The urology session has been held and written up (17 July). A 27 July session with Royal Devon's Professor Tim McDonald, framed as user research, turned out to be mostly about pilot design, with more of the design and protocol falling to NHS England than expected. Karl Olson is taking a first draft of the pilot design and protocol as a clinical service improvement, ahead of the Tasso versus Impress user research and a wider-tests workshop. At the 1 September Delivery Board the RDUH schema and integration workshop was reviewed and the schemas for PSA results agreed, workshops with RDUH are under way, and the next-period priority is to begin development work on the RDUH proof of concept and a Pathology API proof of concept. The pilot is now agreed to include both transdermal and self-sample collection. On 3 September a phase-one proof-of-concept session with RDUH was set for 4 September to lock milestones for the next fortnight, on a roughly 70/30 development split weighted to RDUH, with some concern about RDUH&#39;s capacity coming out of the summer that Martin O&#39;Neil plans to raise with Sam Higginson.</p>
         <div class="panes">
           <div class="ptlist">
             <button type="button" class="pt on" data-p="0">The urology session, 17 July</button>
@@ -409,6 +409,7 @@
             <button type="button" class="pt" data-p="5">20 Aug: POC and pilot-planning workshop</button>
             <button type="button" class="pt" data-p="6">26 Aug: PSA POC kicking off</button>
             <button type="button" class="pt" data-p="7">1 Sep DB: schemas agreed, POC build starting</button>
+            <button type="button" class="pt" data-p="8">3 Sep: RDUH POC session and milestones</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
@@ -418,6 +419,7 @@
             <div class="pd" data-p="3"><h5>Technical: architecture and Order API schemas</h5><p>A first draft of the proof-of-concept architecture has been shared with RDUH.</p><p>The next priority is a first draft of the Order API schemas for the acute-initiated pathway, covering both consumer and supplier sides, so the proof of concept can start. A pilot planning workshop with RDUH and Chelsea and Westminster is also named, to define the clinical study approach, timescales and the PSA proof of concept.</p></div>
             <div class="pd" data-p="4"><h5>Beyond RDUH: Supplier Forum 3</h5><p>The acute-initiated journey goes to the wider supplier market at Supplier Forum 3 on 22 July as a one-hour breakout led by Olivia Sharp.</p><p>This is the first time the pattern has been tested outside bilateral conversations with RDUH.</p></div>
             <div class="pd" data-p="5"><h5>20 Aug: POC and pilot-planning workshop</h5><p>The proof-of-concept and pilot-planning workshop has been held and landed on a pilot approach, with the RDUH review process worked through to feed the pilot and the blueprint. An RDUH schema integration workshop is to kick off the proof-of-concept work, with Abhishek Ranjan or Ethan Illingworth played in to perform a similar supplier-integration role to the one they run for the HIV suppliers. Self-sample collection was discussed and the options defined for a transdermal-versus-venepuncture comparison study.</p></div><div class="pd" data-p="6"><h5>26 Aug: PSA POC kicking off</h5><p>The 26 August playback reported the PSA proof-of-concept work now kicking off, with two POCs starting in parallel. The first is an end-to-end order POC with Royal Devon: an order is placed in Epic, where PSA becomes a new orderable, and tracked through to the lab (Beaker) and back, using HL7 messaging. The order-API spec is being extended for acute use, adding the patient&#39;s gender and date of birth so the lab can calculate PSA reference ranges, with the patient contact details and the supplier communication node made optional because the acute lab does not contact the patient directly. The changes are handled through per-test-type rules in the integration framework rather than the schema, and are designed to be extensible to later use cases.</p></div><div class="pd" data-p="7"><h5>1 Sep DB: schemas agreed, POC build starting</h5><p>The 1 September Delivery Board records the RDUH schema and integration workshop reviewed and the schemas for PSA results agreed, with workshops with RDUH now under way. Development work on the RDUH proof of concept and on a Pathology API proof of concept is a next-period priority. The pilot is agreed to include both transdermal and self-sample collection.</p></div>
+            <div class="pd" data-p="8"><h5>3 Sep: RDUH POC session and milestones</h5><p>The phase-one proof-of-concept session with RDUH (Chris, Tom and Adrian) plus Ethan and Abishek is on 4 September to set milestones for the next fortnight, on a roughly 70/30 development split weighted to RDUH. There is some concern about RDUH&#39;s capacity coming out of the summer break, which Martin O&#39;Neil plans to raise with Sam Higginson, and a note of what is needed and by when is to feed that. A parallel front-end proof of concept with Chelsea and Westminster follows, re-engaged through Richard Samuel and Bruno once the RDUH results are in.</p></div>
           </div>
         </div>
       </div>
@@ -428,12 +430,12 @@
         <h3 class="ititle">Transdermal device route</h3>
         <div class="imeta">
           <span><b>Owner</b>Olivia Sharp / Simone Bilton with RDUH</span>
-          <span><b>Next</b>Pre-pilot design</span>
+          <span><b>Next</b>Equivalency study (transdermal vs venous, ~40 patients) this autumn; Impress accreditation go/no-go around November, Tasso the fallback</span>
           <span><b>Depends on</b>Impress UKCA / MHRA timeline</span>
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">Impress is preferred: FDA-approved, awaiting UKCA, with MHRA timing unclear and possibly end of year. Tasso is the fallback. RDUH is checking Impress availability via Ronan and Nexus. As at the 1 September Delivery Board, 300 Impress devices have been secured for the RDUH work, and the pilot is agreed to include both transdermal and self-sample collection, with a 50/50 randomisation between the two methods at each site (RDUH and ChelWest).</p>
+        <p class="ipos">Impress is preferred: FDA-approved, awaiting UKCA, with MHRA timing unclear and possibly end of year. Tasso is the fallback. RDUH is checking Impress availability via Ronan and Nexus. As at the 1 September Delivery Board, 300 Impress devices have been secured for the RDUH work, and the pilot is agreed to include both transdermal and self-sample collection, with a 50/50 randomisation between the two methods at each site (RDUH and ChelWest). On 3 September RDUH set the equivalency study as transdermal versus venous over a minimum of forty matched patients using Impress, this autumn, with finger-prick dropped as already proven against venous; the 300 devices secured cover this research, not the January pilot. Impress is still not accredited, hoped for October or November but possibly slipping to December or January, so a go/no-go on Impress against a Tasso fallback is needed around November, since the pilot proper cannot run on a non-medical device.</p>
         <div class="panes">
           <div class="ptlist">
             <button type="button" class="pt on" data-p="0">Impress preferred, Tasso the fallback</button>
@@ -441,6 +443,7 @@
             <button type="button" class="pt" data-p="2">Why this is a scheduling dependency</button>
             <button type="button" class="pt" data-p="3">20 Aug: study options and pathology route</button>
             <button type="button" class="pt" data-p="4">1 Sep DB: 300 Impress devices secured</button>
+            <button type="button" class="pt" data-p="5">3 Sep: equivalency study scoped; accreditation go/no-go</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
@@ -448,6 +451,7 @@
             <div class="pd" data-p="1"><h5>The evidence capillary works for PSA</h5><p>RDUH's prior PSA pilot ran a post-radical-prostatectomy pathway on capillary sampling built on Epic: 917 invited, 310 sign-ups, 218 completed, and around 60 per cent wanting to continue.</p><p>The learning was that one-to-one support for the first test and urology-team buy-in drive uptake, and that PSA itself lends well to capillary with a low failure rate.</p></div>
             <div class="pd" data-p="2"><h5>Why this is a scheduling dependency</h5><p>The 15 July senior leadership team (SLT) checkpoint puts the device decision ahead of the pilot as a pre-requisite, so regulatory timing on Impress feeds directly into whether the early-2027 day-one date (now around 1 February 2027) holds.</p><p>Tasso-versus-Impress user research sits in the RDUH workshop sequence for exactly this reason.</p></div>
             <div class="pd" data-p="3"><h5>20 Aug: study options and pathology route</h5><p>At the 18 August Delivery Board the self-sample collection method was discussed and the options defined to run a transdermal-versus-venepuncture comparison study, which sits alongside the Tasso-versus-Impress user research. On integration, the direction is for acute partners to pick up results from the national Pathology API, with HomeTest acting as the front door in the interim and RDUH's endpoint switched to the pathology route once proven; the pathology API team is technically ready and NDS is aligning on what a result needs to contain.</p></div><div class="pd" data-p="4"><h5>1 Sep DB: 300 Impress devices secured</h5><p>The 1 September Delivery Board records 300 Impress devices secured for the RDUH work, and the pilot agreed to include both transdermal and self-sample collection, split 50/50 between the two methods at each site, running alongside the Tasso versus Impress and transdermal versus venepuncture comparison studies. Impress remains preferred, with its UKCA and MHRA timing still the scheduling dependency.</p></div>
+            <div class="pd" data-p="5"><h5>3 Sep: equivalency study scoped; accreditation go/no-go</h5><p>RDUH&#39;s equivalency study is now transdermal versus venous, a minimum of forty matched patients using Impress, this autumn; finger-prick is dropped as already proven against venous, and a lightweight user-experience capture (pain and ease-of-use scoring) is being pushed into it. Impress can be used for this research now with the RDUH medical director&#39;s sign-off, but it is still not accredited: approval is hoped for October or November and could slip to December or January. A go/no-go on sticking with Impress or falling back to Tasso for the pilot is therefore needed around November, since the pilot proper cannot use a non-medical device. The 300 devices already secured cover the research, not the January pilot, for which RDUH may need more.</p></div>
           </div>
         </div>
       </div>
@@ -458,12 +462,12 @@
         <h3 class="ititle">ChelWest instrument decision</h3>
         <div class="imeta">
           <span><b>Owner</b>Scott Eason / Richard Samuel</span>
-          <span><b>Next</b>Richard Samuel steer</span>
+          <span><b>Next</b>Re-engage ChelWest via Richard Samuel in 2 to 3 weeks once RDUH POC results land; active surveillance pathway now live</span>
           <span><b>Depends on</b>ChelWest and integration scoping</span>
         </div>
       </div>
       <div class="ibody">
-        <p class="ipos">Whether a separate NHSE-to-ChelWest instrument is needed is still open: the clause 4.6 Partner Trust mechanism binds only RDUH. As at 23 July ChelWest is expected to continue as the PSA pilot site, running alongside RDUH and tied to an FDP national-centre business case for PSA active surveillance; the instrument route is still to be settled. The 1 September Delivery Board records the first ChelWest active surveillance patients mobilised, though the separate instrument route remains open.</p>
+        <p class="ipos">Whether a separate NHSE-to-ChelWest instrument is needed is still open: the clause 4.6 Partner Trust mechanism binds only RDUH. As at 23 July ChelWest is expected to continue as the PSA pilot site, running alongside RDUH and tied to an FDP national-centre business case for PSA active surveillance; the instrument route is still to be settled. The 1 September Delivery Board records the first ChelWest active surveillance patients mobilised, though the separate instrument route remains open. On 3 September RDUH confirmed ChelWest&#39;s active-surveillance pathway is now launched, so that is no longer a risk; the plan is two pilots from January, RDUH and ChelWest in parallel if the integration effort allows and staggered if not, built to an EPR trigger rather than waiting on Iola, with ChelWest re-engaged via Richard Samuel and Bruno once the RDUH proof-of-concept results are in.</p>
         <div class="panes">
           <div class="ptlist">
             <button type="button" class="pt on" data-p="0">Clause 4.6 binds only RDUH</button>
@@ -472,6 +476,7 @@
             <button type="button" class="pt" data-p="3">Engagement, and renewed pilot direction</button>
             <button type="button" class="pt" data-p="4">Cerner and Epic integration complexity</button>
             <button type="button" class="pt" data-p="5">1 Sep DB: first ChelWest patients mobilised</button>
+            <button type="button" class="pt" data-p="6">3 Sep: active surveillance live; re-engagement planned</button>
             <div class="ptgroup ptgroup-hist" hidden>Dated record</div>
           </div>
           <div class="ptdetail">
@@ -480,6 +485,7 @@
             <div class="pd" data-p="2"><h5>Urology view: unsuitable for active surveillance</h5><p>The ChelWest urology clinical lead recorded that oncologists from the cancer alliance judge the digital pilot unsuitable for active surveillance, given the automated cohorting of results, the added MRI complexity and the fact that the active surveillance process is not uniform between patients.</p><p>Any ChelWest pathway therefore leans towards post-treatment monitoring rather than active surveillance, which is a different use case from the RDUH pilot.</p></div>
             <div class="pd" data-p="3"><h5>Engagement, and renewed pilot direction</h5><p>ChelWest has been engaged through an in-person workshop on 16 June plus ad-hoc sessions covering the digital PSA journeys, the Cerner architecture and possible HomeTest involvement, with pilot planning to run jointly with RDUH.</p><p>At the 21 July Delivery Board the ChelWest proof-of-concept chase (the 7 July action for Annie Wakefield to Matthew Kybert) was parked to focus on RDUH until the order proof of concept progresses. As at 23 July the direction has firmed back up: ChelWest is expected to continue as the PSA pilot site alongside RDUH, linked to a business case to make FDP the national centre for PSA active surveillance with ChelWest named as the pilot site. Expectations on the degree of direct working are to be set with the ChelWest lead next week. The instrument route remains open pending the order proof of concept.</p></div>
             <div class="pd" data-p="4"><h5>Cerner and Epic integration complexity</h5><p>Flagged for any RDUH-to-NW London multi-trust pilot. That is a build risk sitting on top of the instrument question.</p></div><div class="pd" data-p="5"><h5>1 Sep DB: first ChelWest patients mobilised</h5><p>The 1 September Delivery Board records the first ChelWest active surveillance patients mobilised under the acute use case. The separate question of whether a distinct NHSE-to-ChelWest instrument is needed, given clause 4.6 binds only RDUH, remains open pending the order proof of concept.</p></div>
+            <div class="pd" data-p="6"><h5>3 Sep: active surveillance live; re-engagement planned</h5><p>Chelsea and Westminster&#39;s active-surveillance pathway is now launched, so that is no longer a risk. The plan is two pilots from January, RDUH and ChelWest in parallel if the integration effort allows and staggered if not, built to an EPR trigger rather than waiting on Iola. ChelWest is to be re-engaged in two to three weeks, via Richard Samuel and Bruno, once the RDUH proof-of-concept results are in, with a similar front-end-only proof of concept to run there.</p></div>
           </div>
         </div>
       </div>
@@ -634,6 +640,10 @@
 
   <h2 id="history">History</h2>
   <div class="log">
+    <details data-item="i-device i-workshops i-chelwest">
+      <summary><span class="d">3 Sep</span>RDUH catch-up: equivalency study scoped, POC session 4 Sep, ChelWest re-engagement planned</summary>
+      <div class="body"><p>A 3 September RDUH catch-up set the near-term acute plan. The equivalency study is transdermal versus venous over a minimum of forty matched patients using Impress this autumn, with finger-prick dropped as already proven and a lightweight user-experience capture folded in; the 300 Impress devices cover this research rather than the January pilot. Impress is still not accredited, hoped for October or November but possibly December or January, so a go/no-go on Impress against a Tasso fallback is needed around November, since the pilot cannot run on a non-medical device. A phase-one proof-of-concept session with RDUH is set for 4 September to lock milestones on a roughly 70/30 split weighted to RDUH, with some concern about RDUH capacity that Martin O&#39;Neil will raise with Sam Higginson. Chelsea and Westminster&#39;s active-surveillance pathway is now live, so that risk is closed; the aim is two pilots from January, RDUH and ChelWest in parallel if the integration allows, built to an EPR trigger rather than Iola, with ChelWest re-engaged in two to three weeks via Richard Samuel and Bruno once the RDUH results are in. PSA scope is confirmed as active surveillance only.</p></div>
+    </details>
     <details data-item="i-device i-mobilisation i-workshops i-chelwest">
       <summary><span class="d">2 Sep</span>Close-of-play: 1 September Delivery Board confirms 50/50 transdermal / self-sample split at each pilot site</summary>
       <div class="body"><p>The 1 September Delivery Board meeting record confirms the acute-initiated PSA pilot with RDUH and ChelWest will include both transdermal and self-sample collection, with a 50/50 randomisation between the two methods at each site, feeding pilot design and requirements. The indicative pilot go-live remains 1 February 2027. Source: HomeTest Delivery Board, 1 September 2026.</p></div>
