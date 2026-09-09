@@ -263,15 +263,16 @@
 
   <div class="daterail">
     <span class="drlabel">Key dates</span>
-    <span><b>Wed 9 Sep</b> Commercial playback, Leeds</span>
     <span><b>Thu 10 / Fri 11 Sep</b> Values and volumes with Louise Bird (model, &#163;15 test price, levy return)</span>
-    <span><b>Mon 14 Sep</b> UAT defects resolved; CSG Part 2 submitted</span>
+    <span><b>Mon 14 Sep</b> CSG defect evidence and final test plan submitted; UAT defects resolved</span>
     <span><b>Mon 14 Sep</b> NHS Supply Chain follow-up meeting (brought forward from 23 Sep)</span>
-    <span><b>Tue 15 Sep</b> Programme Board</span>
-    <span><b>Wed 16 Sep</b> CSG clinical authority to release</span>
-    <span><b>Mon 21 Sep</b> IG documentation agreed</span>
+    <span><b>Tue 15 Sep</b> Programme Board and Delivery Board</span>
+    <span><b>Wed 16 Sep</b> CSG sign-off (clinical authority to release)</span>
+    <span><b>Thu 17 Sep</b> NHS login technical go-live and smoke test</span>
+    <span><b>Mon 21 Sep</b> NHS App go-live and smoke test; IG documentation agreed</span>
     <span><b>w/c 21 Sep</b> Targeted supplier conversations (TDL, RDI, Randox) and commissioner engagement</span>
-    <span><b>Tue 22 Sep</b> Private beta technical go-live; Expert Reference Panel</span>
+    <span><b>Tue 22 Sep</b> Expert Reference Panel</span>
+    <span><b>Wed 23 Sep</b> Live end-to-end supplier verification</span>
     <span><b>Mon 28 Sep</b> Private beta business go-live</span>
     <span><b>Wed 30 Sep</b> Sourcing draft; supplementary RFI window; host recommendation</span>
   </div>
@@ -303,8 +304,12 @@
 
 <script type="application/json" id="standup-data">
 {
- "updated": "2026-09-09",
+ "updated": "2026-09-10",
  "changelog": [
+  {
+   "date": "2026-09-10",
+   "note": "Close-of-play pass, 10 September. New primary sources since the 9 September run: the 9 September go-live readiness playback and the 9 September private beta LA readiness update, plus the 8 September supply-chain scoring session. The playback set the private beta business go-live to Monday 28 September (East Sussex and Salford soft launch), with the critical path CSG submission 14 Sep, CSG sign-off 16 Sep, NHS login technical go-live 17 Sep, NHS App go-live 21 Sep and live end-to-end supplier verification 23 Sep; on the readiness snapshot integrations, technical readiness and clinical safety were green and information governance the single red, with DPIA sign-off the go/no-go dependency (DPIA moved to Critical path). Salford's clinical-safety-officer deadlock was resolved in principle at the 7 September escalation call (no council officer; SH:24 uplifts its DCB0160 documents and Salford signs a risk-acceptance statement); both beta MoUs remain unsigned with the authorities' solicitors. The Outlook mailbox could not be read this run (the PST is locked by Outlook), so email traffic since 5 September is not reflected."
+  },
   {
    "date": "2026-09-09",
    "note": "Close-of-play pass, 9 September. No new meeting transcript or email has landed since the 7 September run (newest transcript is the two 7 September commercial sessions, already captured; the mailbox has not synced past 4 September). The 8 September SharePoint activity is working documents rather than new decisions: the Delivery Board highlight report prepared for the 15 September board still reports the 1 September position, the Programme Board action tracker is unchanged since 1 September, and the private beta go-live plan confirms the tracked beta dates (CSG Part 1 meeting 9 September, corrected-defects evidence 14 September, clinical authority to release 16 September, then Login 17, App 21 and Notify 24 September). Net-new from the sourcing-strategy action log: the next supplier forum is now pencilled for 15 October in London, and Scott regroups with Richard Samuel on 10 September on the supplier and commissioner sessions; the governance and go-live timeline may shift depending on the 14 September NHS Supply Chain follow-up. Reds re-checked against the newest sources and all carry unchanged: framework operator At risk, commercial model on the critical path, MoU sign-off Overdue, Salford Beta MoU At risk, and the pre-beta gate chain on the critical path (technical go-live 22 September, business 28 September). Date structures swept to 9 September: the past 8 September ‘NHS Supply Chain specification chased’ item removed from Key dates; all remaining rail, task and next-dates entries are today or later and weekdays reverified. Not refreshed for want of a fresh source: the 198,000 pound RDUH transfer and the acute PSA pilot items."
@@ -549,11 +554,11 @@
    "id": "t-scott-mou",
    "who": "Scott",
    "ws": "Beta",
-   "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug; NHS Legal (Dean Freed) cleared the wording on 19 Aug. On 26 Aug Olivia Hastie's line-manager meeting did not settle Salford's clinical-safety-officer question, so it was escalated to a 4pm call; Salford's MoU legal review cannot begin until the CSO is resolved. East Sussex is held in by Tony Proom's written interim commitment while its solicitor reviews. The 31 Aug target is gone; signature is most likely to become a go-live condition, and the DPIA can proceed on the drafts with PTT.",
+   "task": "Beta MoUs finalised and issued to the local authorities on 6 Aug; NHS Legal (Dean Freed) cleared the wording on 19 Aug. As at the 9 Sep LA readiness update both MoUs are unsigned on both sides: Salford's clinical-safety-officer and deploying-organisation blocker was agreed in principle at the 7 Sep escalation call (no council officer; SH:24 uplifts its DCB0160 docs, Salford signs a risk-acceptance statement), so its legal review can now proceed; East Sussex is with the council's solicitor on Tony Proom's written intent to proceed on an interim basis. The DCB0160 position statements are due to be signed next week; signature stays a condition of the 28 Sep go-live.",
    "item": "MoU sign-off",
    "href": "beta.html#i-signoff",
    "due": "9999-12-31",
-   "dueLabel": "Salford CSO route confirmed (SH24 does the assurance, Salford reviews); ISA data scope and a PaSH NHS-number transfer against the DPIA now the block; MoUs with LAs’ lawyers, no negative feedback; 31 Aug deadline passed with MoUs unsigned",
+   "dueLabel": "CSO deadlock resolved in principle at the 7 Sep escalation call so Salford's legal review can proceed; both MoUs unsigned with the authorities' solicitors; DCB0160 position statements due next week; signature a go-live condition for 28 Sep",
    "status": "wait",
    "since": "2026-07-27"
   },
@@ -691,11 +696,11 @@
    "plabel": "At risk"
   },
   {
-   "task": "Beta MoU sign-off (1 Sep board: MoUs with the LAs lawyers, no negative feedback; the 31 August signature target has passed with both unsigned; Salford CSO route now confirmed (SH24 does the assurance); its ISA data scope and a PaSH NHS-number transfer against the DPIA are the remaining block)",
+   "task": "Beta MoU sign-off (9 Sep LA readiness: both MoUs unsigned and with the authorities' solicitors; Salford's clinical-safety-officer deadlock resolved in principle at the 7 Sep escalation call so its legal review can proceed; East Sussex proceeding on Tony Proom's written interim commitment; DCB0160 position statements due next week)",
    "who": "Salford & East Sussex LAs, via Gary Birnie",
    "href": "beta.html#i-signoff",
    "pill": "red",
-   "plabel": "Overdue"
+   "plabel": "Critical path"
   },
   {
    "task": "£198k funding transfer confirmation (ACE-reduction CVN routing it to RDUH via the MoU understood in progress 4 Sep; NHS Commercial seeking DSA assurance)",
